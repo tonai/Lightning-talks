@@ -10,7 +10,11 @@ Presentation time needed : 30-40min
 
 ## `this`
 
+`this` is a special keyword that lives in a function's scope and, in most cases, refer to the current object (typically an object method).
+
 ### Value of `this` within a classic function
+
+When there is no current object , in non-strict mode, the value of this is the so-called global object (window in browsers).
 
 Example :
 ```javascript
@@ -25,6 +29,8 @@ f();
 ```
 
 ### Value of `this` within a classic function in strict mode
+
+When there is no current object , in strict mode, the value of this in non-method function is undefined.
 
 Example :
 ```javascript
@@ -59,6 +65,8 @@ Result : click on the link to see it.
 
 ### Value of `this` within a method
 
+Function-valued properties are called methods. They use this to refer to the object that was used to call them.
+
 ```javascript
 var point = {
   x : 5,
@@ -76,6 +84,8 @@ point.toString();
 
 ### Extracted method loses binding
 
+If you extract a method, it loses its connection with the object.
+
 Example :
 ```javascript
 var toString = point.toString;
@@ -87,6 +97,8 @@ toString();
 ```
 
 ### Each function has its own `this`
+
+Each function has it own "this", even when being nested.
 
 Example :
 ```javascript
@@ -140,6 +152,12 @@ point.dist();
 ```
 
 ## `bind`, `call` and `apply`
+
+Bind is used to set value of "this" inside of a function (It duplicates the function and set the context to the appropriate value).
+
+You can invoque a function using call or apply and set the context (value of this) inside of this function at the same time.
+
+Apply use an array of arguments as second parameter.
 
 ### `bind` with extracted method
 
@@ -324,6 +342,13 @@ But that's fun :stuck_out_tongue:.
 
 ## Constructor
 
+Object factories in JavaScript (ES5) are called "constructors" ("classes" in PHP).
+A constructor is a function that is called with the "new" keyword.
+(Real classes will come with ES6.)
+
+The constructor’s job is to set up the fresh object passed to it via the implicit parameter `this`.
+The fresh object is (implicitly) returned by the constructor and considered its instance (use of instanceof).
+
 ### Simple constructor
 
 Example :
@@ -366,6 +391,14 @@ point instanceof Point;
 
 ## Prototype
 
+"prototype" is a property of any constructor (it is an object).
+
+"prototype" is shared between each instance (used to save memory).
+
+When creating an instance with "new", a reference to the constructor prototype is created in the instance prototype with "this" bound to the instance.
+
+If a method does not exist in an object, JavaScript will check if the method exists in the prototype (recursively).
+
 ### Used to save memory
 
 Example :
@@ -385,6 +418,7 @@ Result :
 ```javascript
 var point = new Point();
 point + '';
+point;
 ```
 
 ### The change of a constructor prototype method will impact all instances
@@ -438,6 +472,11 @@ Point.prototype.toString = function () {
 ```
 
 ## inheritance
+
+There is no native way...
+Each framework implements their own inheritance workflow.
+
+The simplest way is to fill the inherited constructor prototype with an instance of the inheritance class.
 
 ### Using `Object.create`
 
@@ -521,3 +560,6 @@ point3d instanceof Point2D;
 point3d instanceof Object;
 point3d;
 ```
+### Other inheritance examples
+
+[Simple JavaScript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/)
