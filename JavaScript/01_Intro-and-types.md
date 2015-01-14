@@ -155,7 +155,7 @@ point instanceof Point;
 point instanceof Object;
 ```
 
-### Wrapper (beware !)
+### Wrapper ([beware !][www.youtube.com/watch?v=NDtfiX4YwzM])
 
 Example :
 ```javascript
