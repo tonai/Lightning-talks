@@ -207,7 +207,7 @@ Explanations :
 * `filter(...)` returns `["x", "y"]`
 * `map(...)` returns `[25, 4]`
 * `reduce(...)` returns `29`
-* `Math.sqrt()` return `5.385164807134504`
+* `Math.sqrt()` return `5.385164807134504` :metal:
 
 ### Using call for dist workaround
 
@@ -261,7 +261,7 @@ Result :worried: :
 add(1, 2, 3, 4);
 ```
 
-Explanations : [The arguments object is an Array-like object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments), thus array's properties are not all available.
+Explanations : [The arguments object is an Array-like object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/arguments), thus array's properties are not all available.
 
 You can run this function to see what array's properties are available for `arguments` :
 ```javascript
