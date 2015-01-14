@@ -1,4 +1,4 @@
-# Intro and types
+# Scope and functions
 
 ## Foreword
 
