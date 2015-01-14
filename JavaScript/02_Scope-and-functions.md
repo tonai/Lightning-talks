@@ -6,6 +6,8 @@ This files contains examples illustrating [this showing](https://prezi.com/3wids
 
 You can use the chrome console for the above examples (avoid firebug).
 
+Presentation time needed : 15min
+
 ## Functions
 
 ### Function declaration
