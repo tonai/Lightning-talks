@@ -6,6 +6,8 @@ This files contains examples illustrating [this showing](http://prezi.com/wg82mz
 
 You can use the chrome console for the above examples (avoid firebug).
 
+Presentation time needed : 20min
+
 ## Statements VS expressions
 
 ### Statement (instruction) :
