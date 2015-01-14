@@ -237,7 +237,7 @@ Result :
 [] + {};
 ```
 
-![WAT](http://i1.kym-cdn.com/photos/images/original/000/173/580/Wat.jpg)
+![WAT](http://i0.kym-cdn.com/photos/images/original/000/173/575/25810.jpg)
 
 Same as :
 ```javascript
