@@ -129,6 +129,8 @@ typeof NaN;
 
 ![WAT](http://i2.kym-cdn.com/photos/images/original/000/173/576/Wat8.jpg)
 
+But above results are known "bug" and since they exist from a long time, we must deal with them...
+
 ### instanceof
 
 Result :
