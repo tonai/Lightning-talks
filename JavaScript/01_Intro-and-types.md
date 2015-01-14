@@ -2,7 +2,7 @@
 
 ## Foreword
 
-This files contains examples illustrating [this showing](http://prezi.com/wg82mzhhhaz2/javascript-intro-and-types/).
+This files contains examples illustrating [this presentation](http://prezi.com/wg82mzhhhaz2/javascript-intro-and-types/).
 
 You can use the chrome console for the above examples (avoid firebug).
 
