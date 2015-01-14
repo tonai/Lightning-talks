@@ -104,7 +104,7 @@ Result :confused: :
 point.dist();
 ```
 
-### dist workaround 1
+### `dist` workaround 1
 
 Example :
 ```javascript
@@ -122,7 +122,7 @@ Result :
 point.dist();
 ```
 
-### dist workaround 2
+### `dist` workaround 2
 
 Example :
 ```javascript
@@ -153,7 +153,7 @@ Result :
 toString();
 ```
 
-### Using bind for dist workaround 1
+### Using bind for `dist` workaround 1
 
 Example :
 ```javascript
@@ -171,7 +171,7 @@ Result :
 point.dist();
 ```
 
-### Using bind for dist workaround 2
+### Using bind for `dist` workaround 2
 
 Example :
 ```javascript
@@ -209,7 +209,7 @@ Explanations :
 * `reduce(...)` returns `29`
 * `Math.sqrt()` return `5.385164807134504` :metal:
 
-### Using call for dist workaround
+### Using call for `dist` workaround
 
 Example :
 ```javascript
@@ -227,7 +227,7 @@ Result :
 point.dist();
 ```
 
-### Using apply for dist workaround
+### Using apply for `dist` workaround
 
 Example :
 ```javascript
@@ -278,7 +278,7 @@ Explanations :
   It is used to list all properties, methods applicable to arrays.
 * `(properties[i] in arguments)` check if the property exist for `arguments`.
 
-### add workaround
+### `add` workaround
 
 Example :
 ```javascript
@@ -293,7 +293,7 @@ Result :sunglasses: :
 add(1, 2, 3, 4);
 ```
 
-### bind, add and apply at the same time for dist workaround :smiling_imp: :smiling_imp: :smiling_imp:
+### bind, add and apply at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:
 
 Example :
 ```javascript
