@@ -8,9 +8,17 @@ You can use the chrome console for the above examples (avoid firebug).
 
 Presentation time needed : 15min
 
+## First-class citizen
+
+A first-class citizen is an entity which supports all the operations generally available to other entities.
+
+These operations typically include being passed as a parameter, returned from a function, and assigned to a variable.
+
 ## Functions
 
 ### Function declaration
+
+Functions can be defined via a function declaration.
 
 Example :
 ```javascript
@@ -21,6 +29,10 @@ function add(param1, param2) {
 
 ### Function expression
 
+Functions can be defined via a function expression.
+
+A function expression produces a value and can thus be used to directly pass functions as arguments to other functions.
+
 Example :
 ```javascript
 var add = function (param1, param2) {
@@ -29,6 +41,12 @@ var add = function (param1, param2) {
 ```
 
 ### Arguments
+
+When calling a function, missing parameters will get the value `undefined`.
+
+Additional parameters will be ignored.
+
+Except using special `arguments` variable.
 
 Example :
 ```javascript
@@ -61,7 +79,11 @@ myFunc(1, 2, 3);
 
 ## Scope
 
+In JavaScript, you must declare variables via `var` before you can use them.
+
 ### Global scope
+
+The scope of a variable is always the complete function (as opposed to the current block).
 
 Example :
 ```javascript
@@ -107,6 +129,8 @@ x;
 
 ### Hoisted var
 
+Variable declarations are hoisted : The declaration is moved to the beginning of the function (but not assignments).
+
 Example :
 ```javascript
 function myFunc() {
@@ -147,6 +171,8 @@ function myFunc() {
 
 ### Hoisted function
 
+Function declarations are hoisted too.
+
 Example :
 ```javascript
 function foo() {
@@ -163,6 +189,10 @@ foo();
 ```
 
 ## Closure
+
+Each function stays connected to the variables of the functions that surround it, even after it leaves the scope it was created in.
+
+A closure is a function plus the connection to the variables of its surrounding scopes. 
 
 Example :
 ```javascript
@@ -225,7 +255,9 @@ result[3]();
 
 Result will be the same, because the context of `i` is global and not local to the function. 
 
-## IIFE
+## IIFE (Immediately Invoked Function Expression)
+
+Pattern used to simulate a scope, for example to keep a variable from becoming global.
 
 ### Use it to create a local context
 
