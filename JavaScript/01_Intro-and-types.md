@@ -155,7 +155,7 @@ point instanceof Point;
 point instanceof Object;
 ```
 
-### Wrapper ([beware !][www.youtube.com/watch?v=NDtfiX4YwzM])
+### Wrapper ([beware !][beware])
 
 Example :
 ```javascript
@@ -307,3 +307,5 @@ Same as :
 ```
 
 Because `({} + {});` is an expression and `{} + {};` is a statement.
+
+[beware]: http://www.youtube.com/watch?v=NDtfiX4YwzM&t=0m28s
