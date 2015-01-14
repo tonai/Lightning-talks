@@ -8,9 +8,9 @@ You can use the chrome console for the above examples (avoid firebug).
 
 Presentation time needed : 30-40min
 
-## This
+## `this`
 
-### Value of this within a classic function
+### Value of `this` within a classic function
 
 Example :
 ```javascript
@@ -24,7 +24,7 @@ Result :
 f();
 ```
 
-### Value of this within a classic function in strict mode
+### Value of `this` within a classic function in strict mode
 
 Example :
 ```javascript
@@ -39,7 +39,7 @@ Result :
 f_strict();
 ```
 
-### Other value of this (event callback)
+### Other value of `this` (event callback)
 
 Example :
 ```javascript
@@ -57,7 +57,7 @@ Result : click on the link to see it.
 
 ## Object literals methods
 
-### Value of this within a method
+### Value of `this` within a method
 
 ```javascript
 var point = {
@@ -86,7 +86,7 @@ Result :
 toString();
 ```
 
-### Each function has its own this
+### Each function has its own `this`
 
 Example :
 ```javascript
@@ -139,9 +139,9 @@ Result :
 point.dist();
 ```
 
-## bind, call and apply
+## `bind`, `call` and `apply`
 
-### bind with extracted method
+### `bind` with extracted method
 
 Example :
 ```javascript
@@ -153,7 +153,7 @@ Result :
 toString();
 ```
 
-### Using bind for `dist` workaround 1
+### Using `bind` for `dist` workaround 1
 
 Example :
 ```javascript
@@ -171,7 +171,7 @@ Result :
 point.dist();
 ```
 
-### Using bind for `dist` workaround 2
+### Using `bind` for `dist` workaround 2
 
 Example :
 ```javascript
@@ -209,7 +209,7 @@ Explanations :
 * `reduce(...)` returns `29`
 * `Math.sqrt()` return `5.385164807134504` :metal:
 
-### Using call for `dist` workaround
+### Using `call` for `dist` workaround
 
 Example :
 ```javascript
@@ -227,7 +227,7 @@ Result :
 point.dist();
 ```
 
-### Using apply for `dist` workaround
+### Using `apply` for `dist` workaround
 
 Example :
 ```javascript
@@ -261,7 +261,7 @@ Result :worried: :
 add(1, 2, 3, 4);
 ```
 
-Explanations : [The arguments object is an Array-like object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/arguments), thus array's properties are not all available.
+Explanations : The `arguments` object is an [Array-like object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/arguments), thus array's properties are not all available.
 
 You can run this function to see what array's properties are available for `arguments` :
 ```javascript
@@ -293,7 +293,7 @@ Result :sunglasses: :
 add(1, 2, 3, 4);
 ```
 
-### bind, add and apply at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:
+### `bind`, `call` and `apply` at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:
 
 Example :
 ```javascript
@@ -357,7 +357,7 @@ var Point = function(){
 };
 ```
 
-But it's not considered as an instance :
+But it's no more considered as an instance of `Point` :
 ```javascript
 var point = Point();
 point + '';
