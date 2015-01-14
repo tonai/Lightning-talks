@@ -145,11 +145,92 @@ function myFunc() {
 
 ### Hoisted function
 
+Example :
 ```javascript
+function foo() {
+  bar();
+  function bar() {
+    console.log('bar');
+  }
+}
 ```
 
+Result :
 ```javascript
+foo();
 ```
 
+## Closure
+
+Example :
 ```javascript
+function createIncrementor(start) {
+  return function () {
+    start++
+    return start;
+  }
+}
+```
+
+Result :
+```javascript
+var inc = createIncrementor(5);
+inc();
+inc();
+inc();
+```
+
+Example :
+```javascript
+function createIncrementor(start) {
+  return {
+    add: function () {
+      start++
+      return start;
+    },
+    minus: function () {
+      start--
+      return start;
+    },
+  }
+}
+```
+
+Result :
+```javascript
+var inc = createIncrementor(5);
+inc.add();
+inc.minus();
+inc.minus();
+inc.add();
+inc.add();
+
+```
+
+Example :
+```javascript
+var result = [];
+for (var i=0; i < 5; i++) {
+  result.push(function () { return i });
+}
+```
+
+Result :
+```javascript
+result[1]();
+result[3]();
+```
+
+## IIFE
+
+Example :
+```javascript
+(function () {
+  var x = 2;
+}());
+```
+
+Result :
+```javascript
+x;
 ```
