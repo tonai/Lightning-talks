@@ -2,7 +2,7 @@
 
 ## Foreword
 
-This files contains examples illustrating [this showing](https://prezi.com/3widspvzh9ck/javascript-scope-and-functions/).
+This files contains examples illustrating [this presentation](https://prezi.com/3widspvzh9ck/javascript-scope-and-functions/).
 
 You can use the chrome console for the above examples (avoid firebug).
 
@@ -223,7 +223,11 @@ result[1]();
 result[3]();
 ```
 
+Result will be the same, because the context of `i` is global and not local to the function. 
+
 ## IIFE
+
+### Use it to create a local context
 
 Example :
 ```javascript
