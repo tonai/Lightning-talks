@@ -76,7 +76,7 @@ Workaround : use closures and [IIFE](02_Scope-and-functions.md#iife-immediately-
 
 Declare your variables at the beginning of each function.
 
-Why : because JavaScript variables declarations are [automatically hoisted)(02_Scope-and-functions.md#hoisted-var). So you will avoid some strange behaviours.
+Why : because JavaScript variables declarations are [automatically hoisted](02_Scope-and-functions.md#hoisted-var). So you will avoid some strange behaviours.
 
 Note : you can initialize them later.
 
@@ -140,7 +140,32 @@ In fact, you can almost always write a module.
 
 One JavaScript file contains only one module, and one module represents only one functionality.
 
+### Start
+
+Start by defining a local scope for your module :
+```javascript
+(function(){
+})();
+```
+
 ### Strict mode
 
 [Strict mode](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Strict_mode) can help you to minimise errors.
 
+But it's important to declare the strict mode inside of your IIFE.
+Declaring it outside can lead to troubles with vendor modules when using a tool that will concatenate all your files into one.
+
+For example, some modules can use this type of code to get the global scope :
+```javascript
+(function(){
+  var global = (function(){return this})();
+  console.log(global); // Returns window or undefined in strict mode (in the browser).
+})();
+```
+
+Module :
+```javascript
+(function(){
+  'use strict';
+})();
+```
