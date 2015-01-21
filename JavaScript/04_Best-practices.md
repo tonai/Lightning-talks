@@ -12,7 +12,7 @@ Some style guides already exist :
 * [Google JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
 * [jQuery JavaScript Style Guide](http://contribute.jquery.org/style-guide/js/)
 * [Node.js Style Guide](https://github.com/felixge/node-style-guide)
-* [npm's coding style]https://docs.npmjs.com/misc/coding-style
+* [npm's coding style](https://docs.npmjs.com/misc/coding-style)
 * [Douglas Crockford’s JavaScript coding style](http://javascript.crockford.com/code.html)
 * [Idiomatic JavaScript](https://github.com/rwaldron/idiomatic.js)
 * ...
@@ -65,7 +65,7 @@ Avoid use of global variables.
 
 Why : because they can easily be overwritten by another code part.
 
-Workaround : use closures and IIFE.
+Workaround : use closures and [IIFE](02_Scope-and-functions.md#iife-immediately-invoked-function-expression).
 
 ```javascript
 (function(){
@@ -76,7 +76,7 @@ Workaround : use closures and IIFE.
 
 Declare your variables at the beginning of each function.
 
-Why : because JavaScript variables declarations are automatically hoisted. So you will avoid some strange behaviours.
+Why : because JavaScript variables declarations are [automatically hoisted)(02_Scope-and-functions.md#hoisted-var). So you will avoid some strange behaviours.
 
 Note : you can initialize them later.
 
@@ -101,7 +101,7 @@ if (x) {
 }
 ```
 
-Workaround : use function expression (JavaScript does have first-class functions).
+Workaround : use [function expression](02_Scope-and-functions.md#function-expression). JavaScript does have [first-class functions](02_Scope-and-functions.md#first-class-citizen).
 
 ```javascript
 var foo;
@@ -131,3 +131,16 @@ Note : you can use wrappers for type casting (without the `new` operator).
 ```javascript
 var x = Boolean(1);
 ```
+
+## Writing a module
+
+### When do I need to write a module ?
+
+In fact, you can almost always write a module.
+
+One JavaScript file contains only one module, and one module represents only one functionality.
+
+### Strict mode
+
+[Strict mode](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Strict_mode) can help you to minimise errors.
+
