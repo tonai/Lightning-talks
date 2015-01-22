@@ -1,8 +1,10 @@
 (function($){
   'use strict';
   
-  /* Plugin default options. */
+  /* Plugin name. */
   var pluginName = 'myPlugin';
+  
+  /* Plugin default options. */
   var defaultOptions = {};
   
   /**
