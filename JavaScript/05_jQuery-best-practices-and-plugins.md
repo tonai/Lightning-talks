@@ -155,8 +155,8 @@ Example :
   };
   
   /* Expose jQuery plugin. */
-  $.fn.myModuleName = function(options) {
-    this.each(function() {
+  $.fn.myPlugin = function(options) {
+    return this.each(function() {
       new Plugin(this, options);
     });
   };
@@ -165,7 +165,94 @@ Example :
 
 Usage :
 ```javascript
-jQuery('.js-element').myModuleName({
+jQuery('.js-element').myPlugin({
   label: 'myLabel'
 });
 ```
+
+### Avoid duplicates on the same element
+
+You can use a HTML5 data using your module name to prevent multiple instance of the same plugin to the same element.
+
+Example :
+```javascript
+(function($){
+  'use strict';
+  
+  /* Plugin default options. */
+  var pluginName = 'myPlugin';
+  var defaultOptions = {
+    label: 'myDefaultLabel'
+  };
+  
+  /**
+   * Constructor.
+   */
+  function Plugin(element, options) {
+    // Merge specific and default options.
+    this.options = $.extend({}, defaultOptions, options);
+    
+    // Initialize the main element.
+    this.$element = (element instanceof $)? element: $(element);
+    
+    // Save the instance reference into the DOM element.
+    this.$element.data(moduleName, this);
+    
+    // Log the label.
+    console.log(this.options.label);
+  };
+  
+  /* Expose jQuery plugin. */
+  $.fn[pluginName] = function(options) {
+    return this.each(function() {
+      var $this = $(this);
+      if (!$this.data(pluginName)) {
+        new Plugin($this, options);
+      }
+    });
+  };
+})(jQuery);
+```
+
+If you don't want to expose the instance through the DOM, you can simply replace `this` by `1` :
+```javascript
+this.$element.data(moduleName, 1);
+```
+
+### Optimize your DOM queries
+
+Avoid to get a DOM element inside of a callback.
+If the element already exists, save it at the beginning.
+
+Do not :
+```javascript
+/**
+ * Resize callback.
+ */
+Plugin.prototype.resize = function() {
+  var $items = $element.find('.js-element__item');
+  $items.addClass('is-resized');
+};
+```
+
+Do :
+```javascript
+/**
+ * Initialize instance (call this.setup() in the constructor).
+ */
+Plugin.prototype.setup = function() {
+  this.$items = this.$element.find('.js-element__item');
+};
+
+/**
+ * Resize callback.
+ */
+Plugin.prototype.resize = function() {
+  this.$items.addClass('is-resized');
+};
+```
+
+Based on my own experience, I'd like to add 3 methods for my plugins :
+* `setup` : Used to fetch DOM elements, calculate data...etc.
+* `bind`  : Used to regroup all events binding in this function.
+* `init`  : Used to initialize the default plugin state.
