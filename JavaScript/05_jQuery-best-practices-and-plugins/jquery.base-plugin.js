@@ -24,7 +24,7 @@
     this.setup && this.setup();
     this.bind  && this.bind();
     this.init  && this.init();
-  };
+  }
 
   /********** Start plugin specific code **********/
 
