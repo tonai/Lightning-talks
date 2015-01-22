@@ -258,3 +258,5 @@ Based on my own experience, I'd like to add 3 methods for my plugins :
 * `setup` : Used to fetch DOM elements, calculate data...etc.
 * `bind`  : Used to regroup all events binding in this function.
 * `init`  : Used to initialize the default plugin state.
+
+Check the [jQuery base plugin](JavaScript/05_jQuery-best-practices-and-plugins/jquery.base-plugin.js) and a [little example](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
