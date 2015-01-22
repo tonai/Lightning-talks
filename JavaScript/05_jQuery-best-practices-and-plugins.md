@@ -196,7 +196,7 @@ Example :
     this.$element = (element instanceof $)? element: $(element);
     
     // Save the instance reference into the DOM element.
-    this.$element.data(moduleName, this);
+    this.$element.data(pluginName, this);
     
     // Log the label.
     console.log(this.options.label);
@@ -216,7 +216,7 @@ Example :
 
 If you don't want to expose the instance through the DOM, you can simply replace `this` by `1` :
 ```javascript
-this.$element.data(moduleName, 1);
+this.$element.data(pluginName, 1);
 ```
 
 ### Optimize your DOM queries
