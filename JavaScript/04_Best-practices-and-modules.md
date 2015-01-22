@@ -17,7 +17,7 @@ Some style guides already exist :
 * [Idiomatic JavaScript](https://github.com/rwaldron/idiomatic.js)
 * ...
 
-But they don't agree to the same rules...
+But they don't all agree to the same rules...
 
 Example for identation :
 * Google, npm, Node.js and Idiomatic recommend to use 2 spaces.
@@ -90,10 +90,18 @@ Note : you can initialize them later.
 
 Proposition :
 ```javascript
-var foo, bar, baz;
-var x = 1;
-var y = 2;
-var z = x+ y;
+(function(){
+  var foo, bar, baz;
+  var x = 1;
+  var y = 2;
+  var z = x+ y;
+  
+  // Some code.
+  
+  foo = 'foo';
+  
+  // Some code.
+})();
 ```
 
 ### Function declaration
@@ -117,6 +125,8 @@ if (x) {
   foo = function() {};
 }
 ```
+
+As function declaration are also [hoisted](02_Scope-and-functions.md#hoisted-function) try to declare them at the top too.
 
 ### Wrapper objects
 
@@ -329,7 +339,7 @@ When you should provide a callback (event, AJAX...etc.), define it in a separate
 
 But do not forget to use the `bind` method to define the value of `this` to be what you expect :
 ```javascript
-var MyModule = (function(global){
+var MyModule = (function(window){
   'use strict';
   
   /* Plugin default options. */
@@ -346,7 +356,7 @@ var MyModule = (function(global){
     this.merge(this.options, options);
     
     // Attach event listener.
-    global.addEventListener('resize', this.resize.bind(this));
+    window.addEventListener('resize', this.resize.bind(this));
   };
 
   /**
@@ -372,8 +382,10 @@ var MyModule = (function(global){
   
   return Plugin;
 })(window);
+```
 
-/* Create an instance with specific options. */
+Create an instance with specific options :
+```javascript
 new MyModule({
   label: 'myLabel'
 });
