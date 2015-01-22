@@ -278,7 +278,7 @@ var myModuleInstance = new MyModuleGloballyAccessible();
 ### Allow for Configuration and Translation
 
 Store all specific data into a dedicated object that you can overwrite for each instance.
-This includes labels, CSS classes, IDs, presets...etc.
+This includes labels, CSS classes, IDs, presets, magic numbers...etc.
 
 Example :
 ```javascript
@@ -299,7 +299,7 @@ Example :
     this.merge(this.options, options);
     
     // Log the label.
-    console.log(this.options.label)
+    console.log(this.options.label);
   };
 
   /**
@@ -308,8 +308,7 @@ Example :
    * @param {object} source Source object.
    */
   MyModule.prototype.merge = function(target, source) {
-    var i;
-    for (i in source) {
+    for (var i in source) {
       if (source.hasOwnProperty(i)) {
         target[i] = source[i];
       }
@@ -322,4 +321,60 @@ Example :
     label: 'myLabel'
   });
 })();
+```
+
+### Avoid eavy nesting
+
+When you should provide a callback (event, AJAX...etc.), define it in a separate method to avoid heavy nesting.
+
+But do not forget to use the `bind` method to define the value of `this` to be what you expect :
+```javascript
+var MyModule = (function(global){
+  'use strict';
+  
+  /* Plugin default options. */
+  var defaultOptions = {
+    label: 'myDefaultLabel'
+  };
+
+  /**
+   * Constructor.
+   */
+  function Plugin(options) {
+    // Merge specific and default options.
+    this.options = this.merge({}, defaultOptions);
+    this.merge(this.options, options);
+    
+    // Attach event listener.
+    global.addEventListener('resize', this.resize.bind(this));
+  };
+
+  /**
+   * Resize callback.
+   */
+  Plugin.prototype.resize = function() {
+    console.log(this.options.label);
+  };
+  
+  /**
+   * Merge target object with source object.
+   * @param {object} target Target object.
+   * @param {object} source Source object.
+   */
+  Plugin.prototype.merge = function(target, source) {
+    for (var i in source) {
+      if (source.hasOwnProperty(i)) {
+        target[i] = source[i];
+      }
+    }
+    return target;
+  };
+  
+  return Plugin;
+})(window);
+
+/* Create an instance with specific options. */
+new MyModule({
+  label: 'myLabel'
+});
 ```
