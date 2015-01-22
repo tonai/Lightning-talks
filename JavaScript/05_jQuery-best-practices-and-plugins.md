@@ -31,7 +31,7 @@ Example :
 $element = $('.js-element');
 ```
 
-## Use a container element
+### Use a container element
 
 For "complex" plugins that need to manipulate differents elements, use a container element you will use to instantiate your plugin, and use the `find` jQuery function from this element, inside the plugin to select the elements you need.
 
@@ -48,6 +48,10 @@ Slider example :
 </div>
 ```
 
+In this example we will use all `js-` prefixed classes (and only) in our JavaScript.
+
+We will use other classes like `slider`, `slider__item-wrapper` for styling (and of course we will not apply style on `js-` prefixed elements).
+
 ```javascript
 $slider = $('.js-slider');
 $items  = $slider.find('.js-slider__item');
@@ -56,3 +60,18 @@ $prev   = $slider.find('.js-slider__prev');
 ```
 
 This will ensure that all your slider instances to be independent from each other.
+
+### Namespace your events
+
+You can namespace an event by using this syntax :
+```javascript
+$element.on('click.my-namespace', function(){/*...*/});
+```
+
+By using this, you can :
+
+* Easily remove a specific event without removing all other events attached to it :
+```javascript
+$element.off('click.my-namespace');
+```
+
