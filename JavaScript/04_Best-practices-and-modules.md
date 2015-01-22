@@ -301,9 +301,9 @@ Example :
   };
   
   /**
-   * Constructor of MyModule.
+   * Constructor.
    */
-  function MyModule(options) {
+  function Plugin(options) {
     // Merge specific and default options.
     this.options = this.merge({}, defaultOptions);
     this.merge(this.options, options);
@@ -317,7 +317,7 @@ Example :
    * @param {object} target Target object.
    * @param {object} source Source object.
    */
-  MyModule.prototype.merge = function(target, source) {
+  Plugin.prototype.merge = function(target, source) {
     for (var i in source) {
       if (source.hasOwnProperty(i)) {
         target[i] = source[i];
@@ -327,7 +327,7 @@ Example :
   };
   
   /* Create an instance with specific options. */
-  new MyModule({
+  new Plugin({
     label: 'myLabel'
   });
 })();
