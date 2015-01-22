@@ -259,4 +259,4 @@ Based on my own experience, I'd like to add 3 methods for my plugins :
 * `bind`  : Used to regroup all events binding in this function.
 * `init`  : Used to initialize the default plugin state.
 
-Check the [jQuery base plugin](JavaScript/05_jQuery-best-practices-and-plugins/jquery.base-plugin.js) and a [little example](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
+Check this [jQuery base plugin](05_jQuery-best-practices-and-plugins/jquery.base-plugin.js) and one [little example](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
