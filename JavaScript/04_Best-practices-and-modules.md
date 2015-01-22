@@ -1,4 +1,4 @@
-# Best practices
+# Best practices and modules
 
 ## Foreword
 
@@ -65,7 +65,7 @@ Avoid use of global variables.
 
 Why : because they can easily be overwritten by another code part.
 
-Workaround : use closures and [IIFE](02_Scope-and-functions.md#iife-immediately-invoked-function-expression).
+Workaround : use [closures](02_Scope-and-functions.md#closure) and [IIFE](02_Scope-and-functions.md#iife-immediately-invoked-function-expression).
 
 ```javascript
 (function(){
@@ -195,7 +195,7 @@ It's a fact, your module can depends on other modules, framework...etc.
 Without a module loader (AMD, CommonJS or ECMAScript6), specify your dependencies by passing them into your module scope.
 
 3 benefits :
-* By doing this, you will list your module dependencies, and will be easier in the future to reuse your module with a module loader for instance.
+* By doing so, you will list your module dependencies, and will be easier in the future to reuse your module with a module loader for instance.
 * You will create a local variable that can not be deleted by other module (example of jQuery noConflict mode).
 * You can rename the dependencies inside of your module.
 
