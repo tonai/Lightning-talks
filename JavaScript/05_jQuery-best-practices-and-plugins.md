@@ -117,7 +117,7 @@ Example :
     
     // Log the label.
     console.log(this.options.label);
-  };
+  }
   
   /* Create an instance with specific options. */
   new MyModule({
@@ -152,7 +152,7 @@ Example :
     
     // Log the label.
     console.log(this.options.label);
-  };
+  }
   
   /* Expose jQuery plugin. */
   $.fn.myPlugin = function(options) {
@@ -202,7 +202,7 @@ Example :
     
     // Log the label.
     console.log(this.options.label);
-  };
+  }
   
   /* Expose jQuery plugin. */
   $.fn[pluginName] = function(options) {
