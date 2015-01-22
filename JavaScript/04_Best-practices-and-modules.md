@@ -294,21 +294,20 @@ Example :
    * Constructor of MyModule.
    */
   function MyModule(options) {
-    var i;
-    
     // Merge specific and default options.
-    this.options = this.extend({}, defaultOptions);
-    this.extend(this.options, options);
+    this.options = this.merge({}, defaultOptions);
+    this.merge(this.options, options);
     
+    // Log the label.
     console.log(this.options.label)
   };
 
   /**
-   * Extend target object with source object.
+   * Merge target object with source object.
    * @param {object} target Target object.
    * @param {object} source Source object.
    */
-  MyModule.prototype.extend = function(target, source) {
+  MyModule.prototype.merge = function(target, source) {
     var i;
     for (i in source) {
       if (source.hasOwnProperty(i)) {
