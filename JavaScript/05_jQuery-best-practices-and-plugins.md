@@ -70,6 +70,12 @@ $element.on('click.my-namespace', function(){/*...*/});
 
 By using this, you can :
 
+* Easily call your specific callback, without calling all other callbacks attached to it :
+
+```javascript
+$element.trigger('click.my-namespace');
+```
+
 * Easily remove a specific event without removing all other events attached to it :
 
 ```javascript
@@ -83,3 +89,83 @@ $element.off('.my-namespace');
 ```
 
 It is useful inside your plugin, but it will alse avoid nightmares to someone who need to extend your plugin.
+
+## jQuery plugin
+
+### Merging options
+
+With jQuery you have a built-in function for merging objects : `extend`.
+
+It will simplify [the module defined in the previous section](04_Best-practices-and-modules.md#allow-for-configuration-and-translation) :
+
+Example :
+```javascript
+(function($){
+  'use strict';
+  
+  /* Plugin default options. */
+  var defaultOptions = {
+    label: 'myDefaultLabel'
+  };
+  
+  /**
+   * Constructor.
+   */
+  function Plugin(options) {
+    // Merge specific and default options.
+    this.options = $.extend({}, defaultOptions, options);
+    
+    // Log the label.
+    console.log(this.options.label);
+  };
+  
+  /* Create an instance with specific options. */
+  new MyModule({
+    label: 'myLabel'
+  });
+})(jQuery);
+```
+
+### jQuery plugin based on an element
+
+Based on this previous code you can easily define a jQuery plugin based on an element (or a container element).
+
+Example :
+```javascript
+(function($){
+  'use strict';
+  
+  /* Plugin default options. */
+  var defaultOptions = {
+    label: 'myDefaultLabel'
+  };
+  
+  /**
+   * Constructor.
+   */
+  function Plugin(element, options) {
+    // Merge specific and default options.
+    this.options = $.extend({}, defaultOptions, options);
+    
+    // Initialize the main element.
+    this.$element = (element instanceof $)? element: $(element);
+    
+    // Log the label.
+    console.log(this.options.label);
+  };
+  
+  /* Expose jQuery plugin. */
+  $.fn.myModuleName = function(options) {
+    this.each(function() {
+      new Plugin(this, options);
+    });
+  };
+})(jQuery);
+```
+
+Usage :
+```javascript
+jQuery('.js-element').myModuleName({
+  label: 'myLabel'
+});
+```
