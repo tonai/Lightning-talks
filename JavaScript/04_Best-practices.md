@@ -72,6 +72,14 @@ Workaround : use closures and [IIFE](02_Scope-and-functions.md#iife-immediately-
 })();
 ```
 
+In the case you absolutely need to set a global variable. Do it explicitly and use a namespace :
+```javascript
+(function(){
+  // Do something...
+  window.myNamespace.myVar = 42;
+})();
+```
+
 ### Variable declaration
 
 Declare your variables at the beginning of each function.
@@ -132,6 +140,29 @@ Note : you can use wrappers for type casting (without the `new` operator).
 var x = Boolean(1);
 ```
 
+### Shorthands
+
+Don't use shorthands that will lead to incomprehensible code.
+
+Here is some shorthands patterns that can be used in some cases :
+
+Declaring a variable :
+```javascript
+var myMethod = function(options) {
+  this.options = options || {};
+}
+```
+
+Quick existence test :
+```javascript
+this.init && this.init();
+// Or
+var myElement = document.getElementById('myId');
+myElement && myElement.addEventListener('click', function(){/*...*/});
+```
+
+But do not overuse them...
+
 ## Writing a module
 
 ### When do I need to write a module ?
@@ -140,32 +171,156 @@ In fact, you can almost always write a module.
 
 One JavaScript file contains only one module, and one module represents only one functionality.
 
-### Start
-
-Start by defining a local scope for your module :
-```javascript
-(function(){
-})();
-```
+Keep your code modularized and specialized, that is : make sure to write smaller, generic helper functions that fulfill one specific task rather than catch-all methods.
 
 ### Strict mode
 
 [Strict mode](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Strict_mode) can help you to minimise errors.
 
-But it's important to declare the strict mode inside of your IIFE.
+But it's important to declare the strict mode inside of the local scope of your module.
 Declaring it outside can lead to troubles with vendor modules when using a tool that will concatenate all your files into one.
 
-For example, some modules can use this type of code to get the global scope :
+For example, the value of `this` [can differ in strict mode](03_Constructor-and-prototype.md#this) and some modules can use this type of code to get the global scope :
 ```javascript
 (function(){
   var global = (function(){return this})();
-  console.log(global); // Returns window or undefined in strict mode (in the browser).
+  console.log(global); // Returns window (in the browser) or undefined in strict mode.
 })();
 ```
 
-Module :
+### Dependencies
+
+It's a fact, your module can depends on other modules, framework...etc.
+
+Without a module loader (AMD, CommonJS or ECMAScript6), specify your dependencies by passing them into your module scope.
+
+3 benefits :
+* By doing this, you will list your module dependencies, and will be easier in the future to reuse your module with a module loader for instance.
+* You will create a local variable that can not be deleted by other module (example of jQuery noConflict mode).
+* You can rename the dependencies inside of your module.
+
+Example :
+```javascript
+jQuery(function(){
+  console.log(jQuery);
+})
+```
+
+It should log the jQuery object after the document's ready event.
+
+But it will log `undefined` if another module declares :
+```javascript
+jQuery.noConflict(true);
+```
+
+Usage example :
+```javascript
+(function(global, $){
+  'use strict';
+  global.myNamespace = {
+    myVar: $('mySelector'),
+  };
+})(window, jQuery);
+```
+
+### Constructor and prototype
+
+Define your module using [constructor](03_Constructor-and-prototype.md#constructor) and [prototype](03_Constructor-and-prototype.md#prototype). It will save memory and makes your code more flexible.
+
+Add methods one by one to avoid to lose the native [constructor prototype property](03_Constructor-and-prototype.md#the-constructor-prototype-property).
+
+Example :
 ```javascript
 (function(){
   'use strict';
+  
+  /**
+   * Constructor of MyModule.
+   */
+  function MyModule() {
+    this.init();
+  };
+  
+  /**
+   * Initialize instances of MyModule.
+   */
+  MyModule.prototype.init = function() {
+    // Do something.
+  };
+})();
+```
+
+### Export your module
+
+Without a module loader (AMD, CommonJS or ECMAScript6), export your module to be used by your app.
+
+With Vanilla JavaScript you will need to add your module in the global scope by doing so :
+```javascript
+var MyModuleGloballyAccessible = (function(){
+  'use strict';
+  
+  /**
+   * Constructor of MyModule.
+   */
+  function MyModule() {/*...*/};
+  
+  /*...*/
+  
+  return MyModule;
+})();
+```
+
+You can then use it within your app :
+```javascript
+var myModuleInstance = new MyModuleGloballyAccessible();
+```
+
+### Allow for Configuration and Translation
+
+Store all specific data into a dedicated object that you can overwrite for each instance.
+This includes labels, CSS classes, IDs, presets...etc.
+
+Example :
+```javascript
+(function(){
+  'use strict';
+  
+  /* Plugin default options. */
+  var defaultOptions = {
+    label: 'myDefaultLabel'
+  };
+  
+  /**
+   * Constructor of MyModule.
+   */
+  function MyModule(options) {
+    var i;
+    
+    // Merge specific and default options.
+    this.options = this.extend({}, defaultOptions);
+    this.extend(this.options, options);
+    
+    console.log(this.options.label)
+  };
+
+  /**
+   * Extend target object with source object.
+   * @param {object} target Target object.
+   * @param {object} source Source object.
+   */
+  MyModule.prototype.extend = function(target, source) {
+    var i;
+    for (i in source) {
+      if (source.hasOwnProperty(i)) {
+        target[i] = source[i];
+      }
+    }
+    return target;
+  };
+  
+  /* Create an instance with specific options. */
+  new MyModule({
+    label: 'myLabel'
+  });
 })();
 ```
