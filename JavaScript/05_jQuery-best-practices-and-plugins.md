@@ -2,7 +2,7 @@
 
 ## Foreword
 
-You can use the chrome console for the above examples (avoid firebug).
+You can use the navigator's debug console (F12) to try the above examples yourself.
 
 Presentation time needed : 20min
 
