@@ -4,7 +4,7 @@
 
 You can use the chrome console for the above examples (avoid firebug).
 
-Presentation time needed : 20min
+Presentation time needed : 30min
 
 ## Existing JavaScript style guides
 
@@ -333,7 +333,7 @@ Example :
 })();
 ```
 
-### Avoid eavy nesting
+### Avoid heavy nesting
 
 When you should provide a callback (event, AJAX...etc.), define it in a separate method to avoid heavy nesting.
 
