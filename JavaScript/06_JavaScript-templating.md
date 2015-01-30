@@ -158,7 +158,7 @@ Result :
 ```javascript
 var result = tmpl('myTemplate', {
   name:  'Lightning talks',
-  color: '#660000',
+  color: '#FF0000',
   nodes: [
     {
       title: 'Intro and types',
