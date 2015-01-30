@@ -93,9 +93,7 @@ Advantages :
 Example :
 ```javascript
 var template = '<span>Hello <%= name %> !</span>';
-var data = {
-  name: 'World'
-};
+var data = {name: 'World'};
 ```
 
 Result :
@@ -116,7 +114,22 @@ Example :
 
 Result :
 ```javascript
-tmpl('myTemplate', data);
+tmpl('myTemplate', {name: 'World'});
+```
+
+#### Writing a partial
+
+Example :
+```javascript
+var wrapperTemplate = '<div><%= content %></div>';
+var contentTemplate = '<span>Hello <%= name %> !</span>';
+var result = tmpl(wrapperTemplate, {content: content});
+```
+
+Result :
+```javascript
+var content = tmpl(contentTemplate, {name: 'World'});
+tmpl(wrapperTemplate, {content: content});
 ```
 
 #### More complexe example
@@ -148,16 +161,16 @@ var result = tmpl('myTemplate', {
   color: '#660000',
   nodes: [
     {
-      title:   'Intro and types',
-      url:     'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Intro-and-types.md'
+      title: 'Intro and types',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Intro-and-types.md'
     },
     {
-      title:   'Scope and functions',
-      url:     'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/02_Scope-and-functions.md'
+      title: 'Scope and functions',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/02_Scope-and-functions.md'
     },
     {
-      title:   'Constructor and prototype',
-      url:     'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/03_Constructor-and-prototype.md'
+      title: 'Constructor and prototype',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/03_Constructor-and-prototype.md'
     }
   ]
 });
@@ -168,7 +181,7 @@ You can then append the result to the DOM using jQuery for instance :
 jQuery('body').append(result);
 ```
 
-Live example : see [this JSFiddle](http://jsfiddle.net/hzsd3k16/1/).
+Live example : see [this JSFiddle](http://jsfiddle.net/hzsd3k16/2/).
 
 #### Pre-compilation
 
