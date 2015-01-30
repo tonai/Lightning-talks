@@ -39,7 +39,9 @@ Optionnaly we also can found other features like :
 * comments
 * partials (include a template in another)
 
-Each template engine choose it's own syntax for each if this notions.
+Each template engine choose it's own syntax for each of this notions.
+And some of them also allow changing them.
+
 But 2 styles seems to be quite recurrent.
 
 ### Mustache style
