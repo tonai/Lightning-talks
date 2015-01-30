@@ -168,7 +168,7 @@ You can then append the result to the DOM using jQuery for instance :
 jQuery('body').append(result);
 ```
 
-See [this JSFiddle](http://jsfiddle.net/hzsd3k16/1/).
+Live example : see [this JSFiddle](http://jsfiddle.net/hzsd3k16/1/).
 
 #### Pre-compilation
 
@@ -190,6 +190,8 @@ var result2 = preCompiledTemplate(data2);
 var result3 = preCompiledTemplate(data3);
 ```
 
+Live example : see markers pop-ups on [Kering Foundation map](http://keringfoundation.org/actions?finalized=1) .
+
 ### Integration with Drupal
 
-Take a look a this Drupal project : [microtemplating](https://git.smile.fr/tocab/microtemplating).
+Take a look at this Drupal project : [microtemplating](https://git.smile.fr/tocab/microtemplating).
