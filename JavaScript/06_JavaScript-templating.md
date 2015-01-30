@@ -22,7 +22,7 @@ There is a lot of JavaScript template engines :
 * underscore
 * ...
 
-If you don't know which template to choose, take a look to this page : [Template-Engine-Chooser!](http://garann.github.io/template-chooser/).
+If you don't know which template to choose, take a look to this page : [Template-Engine-Chooser!](http://garann.github.io/template-chooser/)
 It will help you choosing the right template engine for your needs.
 
 ## Syntax
@@ -73,7 +73,7 @@ Used by :
 * microtemplating (without encoding interpolation)
 * underscore
 
-## Focus on one temlate engine : microtempling
+## Focus on one template engine : microtempling
 
 ### Introduction
 
