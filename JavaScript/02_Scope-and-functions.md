@@ -272,3 +272,8 @@ Result :
 ```javascript
 x;
 ```
+
+## References
+
+* [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
+* [Expressions versus statements in JavaScript](http://www.2ality.com/2012/09/expressions-vs-statements.html)
