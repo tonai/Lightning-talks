@@ -260,3 +260,9 @@ Based on my own experience, I'd like to add 3 methods for my plugins :
 * `init`  : Used to initialize the default plugin state.
 
 Check this [jQuery base plugin](05_jQuery-best-practices-and-plugins/jquery.base-plugin.js) and one [little example](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
+
+## References
+
+* [CSS Architecture](http://engineering.appfolio.com/2012/11/16/css-architecture/)
+* [SMACSS](https://smacss.com/)
+
