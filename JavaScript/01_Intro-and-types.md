@@ -23,9 +23,14 @@ JavaScript various influences:
 
 An expression produces a value and can be written wherever a value is expected (for example as an argument in a function call).
 
-### Statement (instruction) :
+### Statements
 
-A statement performs an action (if, for...)
+A statement performs an action :
+* variable assignment with `var`
+* function declaration starting with `function`
+* `if`
+* `for`
+* ...
 
 Example :
 ```javascript
@@ -43,34 +48,71 @@ Result :
 x;
 ```
 
-### Expression statement
+### Expressions
 
-Wherever JavaScript expects a statement, you can also write an expression (=expression statement).
+An expression produce a value.
 
-But the reverse does not hold
+Example :
+```javascript
+1 + 2;
+y >= 0 ? y : -y; // conditional (ternary) operator
+```
+
+They can be used as a function argument.
 
 Example :
 ```javascript
 var y = 2;
-var x = (y >= 0 ? y : -y);
-```
-
-Result :
-```javascript
-x;
-```
-
-Example :
-```javascript
-var y = 2;
-function myFunc(x) {
+function square(x) {
   console.log(x);
+  return x * x;
 }
 ```
 
 Result :
 ```javascript
-myFunc(y >= 0 ? y : -y);
+square(y >= 0 ? y : -y);
+```
+
+They can't start with `{` or with `function`.
+
+### Semicolon and comma
+
+You can chain statements with the `;` operator.
+
+Result :
+```javascript
+square(1);
+square(2);
+```
+
+For expression you also can use `,`.
+
+The result is also an expression (it's the result of the last expression).
+
+Result :
+```javascript
+square(1), square(2);
+```
+
+### Expression statements
+
+An expression statement is basically the combination of performing an action and returning a value.
+Another way to say it : it is expressions that have side effects.
+
+Example of Expression statements :
+* assignment without `var`
+* function call
+* increment operator `++`, but also `--`, `+=`...etc.
+* `delete` operator (return a boolean in non strict mode)
+* ...
+
+Wherever JavaScript expects a statement, you can also write an expression (=expression statement).
+
+But the reverse does not hold :
+```javascript
+square(var z = 3); // KO
+square(z = 3); // OK because it produces the value 3.
 ```
 
 ## Primitives VS objetcs
@@ -224,14 +266,14 @@ Object literal is an expression that produces an object.
 Example :
 ```javascript
 {
-  foo: myFunc(2)
+  foo: square(2)
 }
 ```
 
 Same as :
 ```javascript
 var obj = 
-  foo: myFunc(2)
+  foo: square(2)
 };
 ```
 
@@ -358,5 +400,15 @@ Same as :
 ```
 
 Because `({} + {});` is an expression and `{} + {};` is a statement.
+
+## References
+
+* [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
+* [Expressions versus statements in JavaScript](http://www.2ality.com/2012/09/expressions-vs-statements.html)
+* [Expression Statements](http://docstore.mik.ua/orelly/webprog/jscript/ch06_01.htm)
+* [JavaScript values: not everything is an object](http://www.2ality.com/2011/03/javascript-values-not-everything-is.html)
+* [Categorizing values in JavaScript](http://www.2ality.com/2013/01/categorizing-values.html)
+* [WAT](https://www.destroyallsoftware.com/talks/wat)
+* [What is {} + {} in JavaScript?](http://www.2ality.com/2012/01/object-plus-object.html)
 
 [beware]: http://www.youtube.com/watch?v=NDtfiX4YwzM&t=0m28s
