@@ -9,7 +9,7 @@ Presentation time needed : 30min
 ## Existing JavaScript style guides
 
 Some style guides already exist :
-* [Google JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+* [Google JavaScript Style Guide][Google]
 * [jQuery JavaScript Style Guide](http://contribute.jquery.org/style-guide/js/)
 * [Node.js Style Guide](https://github.com/felixge/node-style-guide)
 * [npm's coding style](https://docs.npmjs.com/misc/coding-style)
@@ -24,7 +24,7 @@ Example for identation :
 * jQuery recommends to use tabs.
 * Crockford recommends to 4 spaces.
 
-[Here](http://seravo.fi/2013/javascript-the-winning-style) is an article showing some of those differences.
+[Here][Seravo] is an article showing some of those differences.
 
 The important point is to define those rules at the beginning of your project, and all developers that will work on this project should apply them.
 Even if they don't agree...
@@ -390,3 +390,13 @@ new MyModule({
   label: 'myLabel'
 });
 ```
+
+## References
+
+* [Google JavaScript Style Guide][Google]
+* [JavaScript, the winning style][Seravo]
+* [Javascript best practices part 1](http://www.thinkful.com/learn/javascript-best-practices-1/)
+* [Javascript best practices part 2](http://www.thinkful.com/learn/javascript-best-practices-2/)
+
+[Google](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+[Seravo](http://seravo.fi/2013/javascript-the-winning-style)
