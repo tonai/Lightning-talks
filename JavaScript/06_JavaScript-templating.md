@@ -214,5 +214,5 @@ Take a look at this Drupal project : [Drupal microtemplating](https://git.smile.
 * [Template-Engine-Chooser!][garann]
 * [JavaScript Micro-Templating][microtemplating]
 
-[microtemplating](http://ejohn.org/blog/javascript-micro-templating/)
-[garann](http://garann.github.io/template-chooser/)
+[microtemplating]: http://ejohn.org/blog/javascript-micro-templating/
+[garann]: http://garann.github.io/template-chooser/
