@@ -398,5 +398,5 @@ new MyModule({
 * [Javascript best practices part 1](http://www.thinkful.com/learn/javascript-best-practices-1/)
 * [Javascript best practices part 2](http://www.thinkful.com/learn/javascript-best-practices-2/)
 
-[Google](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-[Seravo](http://seravo.fi/2013/javascript-the-winning-style)
+[Google]: https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+[Seravo]: http://seravo.fi/2013/javascript-the-winning-style
