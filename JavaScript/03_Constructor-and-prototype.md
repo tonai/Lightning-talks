@@ -563,3 +563,9 @@ point3d;
 ### Other inheritance examples
 
 [Simple JavaScript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/)
+
+## References
+
+* [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
+* [JavaScript inheritance by example](http://www.2ality.com/2012/01/js-inheritance-by-example.html)
+* [An easy way to understand JavaScript’s prototypal inheritance](http://www.2ality.com/2010/12/javascripts-prototypal-inheritance.html)
