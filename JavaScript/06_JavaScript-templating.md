@@ -22,7 +22,7 @@ There is a lot of JavaScript template engines :
 * underscore
 * ...
 
-If you don't know which template to choose, take a look to this page : [Template-Engine-Chooser!](http://garann.github.io/template-chooser/)
+If you don't know which template to choose, take a look to this page : [Template-Engine-Chooser!][garann]
 It will help you choosing the right template engine for your needs.
 
 ## Syntax
@@ -77,7 +77,7 @@ Used by :
 
 ### Introduction
 
-This template was writen by John Resig, the creator of jQuery, on [his blog](http://ejohn.org/blog/javascript-micro-templating/).
+This template was writen by John Resig, the creator of jQuery, on [his blog][microtemplating].
 
 Advantages :
 * pre-compilation available
@@ -207,4 +207,12 @@ Live example : see markers pop-ups on [Kering Foundation map](http://keringfound
 
 ### Integration with Drupal
 
-Take a look at this Drupal project : [microtemplating](https://git.smile.fr/tocab/microtemplating).
+Take a look at this Drupal project : [Drupal microtemplating](https://git.smile.fr/tocab/microtemplating).
+
+## References
+
+* [Template-Engine-Chooser!][garann]
+* [JavaScript Micro-Templating][microtemplating]
+
+[microtemplating](http://ejohn.org/blog/javascript-micro-templating/)
+[garann](http://garann.github.io/template-chooser/)
