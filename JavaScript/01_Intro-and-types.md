@@ -400,6 +400,7 @@ Same as :
 ```
 
 Because `({} + {});` is an expression and `{} + {};` is a statement.
+(because expression can'y start with `{`)
 
 ## References
 
