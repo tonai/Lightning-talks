@@ -1,11 +1,8 @@
 (function($){
   'use strict';
   
-  /* Plugin name. */
-  var pluginName = 'myPlugin';
-  
-  /* Plugin default options. */
-  var defaultOptions = {};
+  /* Plugin variables. */
+  var pluginName, defaultOptions = {};
   
   /**
    * Constructor.
@@ -27,6 +24,12 @@
   }
 
   /********** Start plugin specific code **********/
+  
+    /* Plugin name. */
+  pluginName = 'myPlugin';
+  
+  /* Plugin default options. */
+  defaultOptions = {};
 
   /**
    * Setup plugin.
@@ -45,7 +48,7 @@
   Plugin.prototype.init = function() {};
 
   /********** End plugin specific code **********/
-
+  
   /* Expose jQuery plugin. */
   $.fn[pluginName] = function(options) {
     return this.each(function() {
