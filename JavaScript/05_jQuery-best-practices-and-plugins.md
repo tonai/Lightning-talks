@@ -240,7 +240,7 @@ Plugin.prototype.resize = function() {
 Do :
 ```javascript
 /**
- * Initialize instance (call this.setup() in the constructor).
+ * Initialize instance (setup is called in the constructor).
  */
 Plugin.prototype.setup = function() {
   this.$items = this.$element.find('.js-element__item');
@@ -254,12 +254,16 @@ Plugin.prototype.resize = function() {
 };
 ```
 
-Based on my own experience, I'd like to add 3 methods for my plugins :
+I'd like to add 3 methods for my plugins :
 * `setup` : Used to fetch DOM elements, calculate data...etc.
 * `bind`  : Used to regroup all events binding in this function.
 * `init`  : Used to initialize the default plugin state.
 
-Check this [jQuery base plugin](05_jQuery-best-practices-and-plugins/jquery.base-plugin.js) and one [little example](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js) integrated in [this JSFiddle](http://jsfiddle.net/d3ov5jek/).
+Final reusable plugin template : [jQuery base plugin](05_jQuery-best-practices-and-plugins/jquery.base-plugin.js)!
+
+Plus an example based on this template : [homothetic-resize](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
+
+Example integrated in [this JSFiddle](http://jsfiddle.net/d3ov5jek/).
 
 ## References
 
