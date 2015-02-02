@@ -1,14 +1,8 @@
 (function($){
   'use strict';
   
-  /* Plugin name. */
-  var pluginName = 'homotheticResize';
-  
-  /* Plugin default options. */
-  var defaultOptions = {
-    widthAttr  : 'width',
-    heightAttr : 'height'
-  };
+  /* Plugin variables. */
+  var pluginName, defaultOptions = {};
   
   /**
    * Constructor.
@@ -30,6 +24,15 @@
   }
 
   /********** Start plugin specific code **********/
+  
+  /* Plugin name. */
+  var pluginName = 'homotheticResize';
+  
+  /* Plugin default options. */
+  var defaultOptions = {
+    widthAttr  : 'width',
+    heightAttr : 'height'
+  };
 
   /**
    * Setup plugin.
