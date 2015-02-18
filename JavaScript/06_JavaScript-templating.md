@@ -123,7 +123,6 @@ Example :
 ```javascript
 var wrapperTemplate = '<div><%= content %></div>';
 var contentTemplate = '<span>Hello <%= name %> !</span>';
-var result = tmpl(wrapperTemplate, {content: content});
 ```
 
 Result :
