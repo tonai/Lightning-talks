@@ -206,7 +206,7 @@ Live example : see markers pop-ups on [Kering Foundation map](http://keringfound
 
 ### Integration with Drupal
 
-Take a look at this Drupal project : [Drupal microtemplating](https://git.smile.fr/tocab/microtemplating).
+Take a look at this Drupal project : [Drupal microtemplating](https://git.smile.fr/drupal/microtemplating).
 
 ## References
 
