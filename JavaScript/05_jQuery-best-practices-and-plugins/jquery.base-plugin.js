@@ -5,7 +5,12 @@
   var pluginName, defaultOptions = {};
   
   /**
-   * Constructor.
+   * Plugin Constructor.
+   *
+   * @param {Node|jQuery} element
+   *   Main DOM element.
+   * @param {object} options
+   *   Instance specific options.
    */
   function Plugin(element, options) {
     // Merge specific and default options.
