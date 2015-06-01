@@ -26,10 +26,10 @@
   /********** Start plugin specific code **********/
   
   /* Plugin name. */
-  var pluginName = 'homotheticResize';
+  pluginName = 'homotheticResize';
   
   /* Plugin default options. */
-  var defaultOptions = {
+  defaultOptions = {
     widthAttr  : 'width',
     heightAttr : 'height'
   };
