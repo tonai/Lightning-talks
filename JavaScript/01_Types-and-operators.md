@@ -41,10 +41,6 @@ if (y >= 0) {
 } else {
   x = -y;
 }
-```
-
-Result :
-```javascript
 x;
 ```
 
@@ -67,10 +63,6 @@ function square(x) {
   console.log(x);
   return x * x;
 }
-```
-
-Result :
-```javascript
 square(y >= 0 ? y : -y);
 ```
 
@@ -80,7 +72,7 @@ They can't start with `{` or with `function`.
 
 You can chain statements with the `;` operator.
 
-Result :
+Example :
 ```javascript
 square(1);
 square(2);
@@ -90,7 +82,7 @@ For expression you also can use `,`.
 
 The result is also an expression (it's the result of the last expression).
 
-Result :
+Example :
 ```javascript
 square(1), square(2);
 ```
@@ -130,10 +122,6 @@ Example :
 ```javascript
 var prim1 = 123;
 var prim2 = 123;
-```
-
-Result :
-```javascript
 prim1 === prim2;
 ```
 
@@ -146,10 +134,6 @@ Example :
 ```javascript
 var obj1 = {};
 var obj2 = {};
-```
-
-Result :
-```javascript
 obj1 === obj2;
 obj1 === obj1;
 ```
@@ -157,20 +141,12 @@ obj1 === obj1;
 Example :
 ```javascript
 var obj3 = obj1;
-```
-
-Result :
-```javascript
 obj1 === obj3;
 ```
 
 Example :
 ```javascript
 obj1.x = 2;
-```
-
-Result :
-```javascript
 obj3.x;
 ```
 
@@ -186,7 +162,7 @@ Other possible values :
 
 Use typeof to find out whether a given value is an object or a primitive and, in the latter case, what type of primitive it is.
 
-Result :
+Example :
 ```javascript
 typeof true;
 typeof 1;
@@ -199,7 +175,7 @@ typeof myVar;
 
 ### typeof WAT !
 
-Result :
+Example :
 ```javascript
 typeof (function(){});
 typeof null;
@@ -214,7 +190,7 @@ But above results are known "bug" and since they exist from a long time, we must
 
 Use instanceof to determine whether an object is an instance of a given type. instanceof always returns false for primitive values. 
 
-Result :
+Example :
 ```javascript
 {} instanceof Object;
 [] instanceof Object;
@@ -232,10 +208,6 @@ function Point(x, y) {
   this.y = y;
 }
 var point = new Point(1, 2);
-```
-
-Result :
-```javascript
 point instanceof Point;
 point instanceof Object;
 ```
@@ -247,10 +219,6 @@ Do not use wrappers (Boolean, Number, String) by using the `new` keyword.
 Example :
 ```javascript
 var string = new String("abc");
-```
-
-Result :
-```javascript
 string instanceof String;
 typeof string;
 string.valueOf() instanceof String;
@@ -281,10 +249,6 @@ Same as :
 var obj = 
   foo: square(2)
 };
-```
-
-Result :
-```javascript
 obj;
 ```
 
@@ -307,10 +271,6 @@ function myFunc(printTwo) {
   }
   console.log("Three");
 }
-```
-
-Result :
-```javascript
 myFunc();
 myFunc(1);
 ```
@@ -410,7 +370,7 @@ More precisely, it will return as result in order :
 * the first falsy value (`undefined`, `null`, `false`, `0`, `NaN`, `''`)
 * if not the last truthy value
 
-Examples :
+Example :
 ```javascript
 false && 0;
 0 && false;
@@ -428,7 +388,7 @@ More precisely, it will return as result in order :
 * the first truthy value
 * if not the last falsy value
 
-Examples :
+Example :
 ```javascript
 false || 0;
 0 || false;
@@ -547,7 +507,7 @@ void function(){
 
 ## WAT !!!!!
 
-Result :
+Example :
 ```javascript
 [] + [];
 ```
@@ -561,7 +521,7 @@ Same as :
 
 -------------------------
 
-Result :
+Example :
 ```javascript
 [] + {};
 ```
@@ -575,7 +535,7 @@ Same as :
 
 -------------------------
 
-Result :
+Example :
 ```javascript
 {} + [];
 ```
@@ -599,7 +559,7 @@ Number([].toString());
 
 -------------------------
 
-Result :
+Example :
 ```javascript
 {} + {};
 ```
@@ -623,7 +583,7 @@ Number({}.toString());
 
 -------------------------
 
-Result :
+Example :
 ```javascript
 ({} + {});
 ```
