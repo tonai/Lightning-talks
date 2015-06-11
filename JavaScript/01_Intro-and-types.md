@@ -1,4 +1,4 @@
-# Intro and types
+# Types and operators
 
 ## Foreword
 
@@ -6,7 +6,7 @@ This files contains examples illustrating [this presentation](http://prezi.com/w
 
 You can use the navigator's debug console (F12) to try the above examples yourself.
 
-Presentation time needed : 20min
+Presentation time needed : 30min
 
 ## History
 
@@ -174,6 +174,12 @@ Result :
 obj3.x;
 ```
 
+### Other values
+
+Other possible values :
+* Infinity
+* NaN (Not a Number)
+
 ## typeof and instanceof
 
 ### typeof
@@ -309,6 +315,236 @@ myFunc();
 myFunc(1);
 ```
 
+## Operators
+
+### Arithmetic operators
+
+Addition `+` :
+```javascript
+var x = 1;
+var y = 2;
+x + y;
+```
+
+This operator is also used for concatenating strings :
+```javascript
+'hello' + ' ' + 'world';
+```
+
+Subtraction `-` :
+```javascript
+x - y;
+```
+
+Division `/` :
+```javascript
+x / y;
+```
+
+Multiplication `*` :
+```javascript
+x * y;
+```
+
+Remainder `%` :
+```javascript
+x % y;
+```
+
+Increment `++` :
+```javascript
+x++;
+++x;
+```
+
+Decrement `--` :
+```javascript
+x--;
+--x;
+```
+
+Unary negation :
+```javascript
+-x;
+```
+
+Unary plus (Convert to number) :
+```javascript
++x;
+```
+
+### Comparison operators
+
+Equality `!=` and Inequality `==` :
+```javascript
+x == y;
+x != y;
+```
+
+Identity (Strict equality) `===`and Non-identity `!==` :
+```javascript
+x === y;
+x !== y;
+```
+
+Greater than `>` and greater than or equal `>=` operator :
+```javascript
+x > y;
+x >= y;
+```
+
+Less than `<` and less than or equal `<=` operator :
+```javascript
+x < y;
+x <= y;
+```
+
+### Logical Operators
+
+Logical AND `&&` :
+```javascript
+true && false;
+```
+
+More precisely, it will return as result in order :
+* the first falsy value (`undefined`, `null`, `false`, `0`, `NaN`, `''`)
+* if not the last truthy value
+
+Examples :
+```javascript
+false && 0;
+0 && false;
+true && 1;
+1 && true;
+true && false && 0 && 1;
+```
+
+Logical OR `||` :
+```javascript
+true || false;
+```
+
+More precisely, it will return as result in order :
+* the first truthy value
+* if not the last falsy value
+
+Examples :
+```javascript
+false || 0;
+0 || false;
+true || 1;
+1 || true;
+false || true || 1 || 0;
+```
+
+Logical NOT `!` :
+```javascript
+!true;
+```
+
+Grouping operator `()` :
+```javascript
+(false && false) || true;
+false && (false || true);
+```
+
+[Here the full Operator precedence table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence).
+
+### Bitwise Operators
+
+Bitwise operators convert values to 32 bits binaries equivalent before applying the operator.
+That means :
+* `7` will be converted into `00000000000000000000000000000111`
+* `9` will be converted into `00000000000000000000000000001001`
+* `-9` will be converted into `11111111111111111111111111110111`
+
+Bitwise AND `&` (Returns a one in each bit position for which the corresponding bits of both operands are ones.) :
+```javascript
+7 & 9;
+```
+
+Bitwise AND `|` (Returns a one in each bit position for which the corresponding bits of either or both operands are ones.) :
+```javascript
+7 | 9;
+```
+
+Bitwise XOR `^` (Returns a one in each bit position for which the corresponding bits of either but not both operands are ones.) :
+```javascript
+7 ^ 9;
+```
+This also works with booleans.
+
+Bitwise NOT `~` (Inverts the bits of its operand.) :
+```javascript
+~7;
+```
+
+Left shift `<<` (Shifts bits x places to the left by shifting in zeroes from the right.) :
+```javascript
+9 << 2;
+```
+
+Sign-propagating right shift `>>` (Shifts bits x places to the right by discarding bits shifted off.) :
+```javascript
+-9 >> 2;
+```
+
+Zero-fill right shift `>>` (Shifts bits x places to the right by discarding bits shifted off, and shifting in zeroes from the left.) :
+```javascript
+-9 >>> 2;
+```
+
+### Other operators
+
+Assignment operators :
+```javascript
+x = y;
+x += y;
+x -= y;
+x *= y;
+x /= y;
+x %= y;
+x &= y;
+x |= y;
+x ^= y;
+x <<= y;
+x >>= y;
+x >>>= y;
+```
+
+`in` operators :
+```javascript
+var x = 3;
+var array = [1, 2, 3];
+var object = {1: 1, 2: 2, 3: 3};
+x in array;
+x in object;
+```
+
+`delete` operator (deletes a property from an object.) :
+```javascript
+delete array[1];
+array;
+array.length;
+delete object[1];
+object;
+```
+
+`void` operator (discards an expression's return value.) :
+```javascript
+void x;
+void (x + y);
+void function(){
+  var x = 42;
+  console.log(x);
+  return x;
+}();
+```
+
+* Conditional (ternary) operator
+* `typeof` operator
+* `instanceof` operator
+
 ## WAT !!!!!
 
 Result :
@@ -411,5 +647,10 @@ Because `({} + {});` is an expression and `{} + {};` is a statement.
 * [Categorizing values in JavaScript](http://www.2ality.com/2013/01/categorizing-values.html)
 * [WAT](https://www.destroyallsoftware.com/talks/wat)
 * [What is {} + {} in JavaScript?](http://www.2ality.com/2012/01/object-plus-object.html)
+* [Arithmetic operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators)
+* [Comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
+* [Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
+* [Bitwise operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
+* [Assignment operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)
 
 [beware]: http://www.youtube.com/watch?v=NDtfiX4YwzM&t=0m28s
