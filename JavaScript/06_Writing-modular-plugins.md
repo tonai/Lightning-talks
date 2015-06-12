@@ -37,7 +37,7 @@ This is the most common way wich is easy to unserstand and works well.
 
 You then need to merge these options with your plugins' defaults :
 * [JavaScript way](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/04_Best-practices-and-modules.md#allow-for-configuration-and-translation)
-* [jQuery way]((https://github.com/tonai/Lightning-talks/blob/master/JavaScript/05_jQuery-best-practices-and-plugins.md#merging-options).)
+* [jQuery way](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/05_jQuery-best-practices-and-plugins.md#merging-options)
 
 #### HTML input
 
