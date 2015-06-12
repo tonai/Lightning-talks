@@ -96,7 +96,7 @@ It is useful inside your plugin, but it will alse avoid nightmares to someone wh
 
 With jQuery you have a built-in function for merging objects : `extend`.
 
-It will simplify [the module defined in the previous section](04_Best-practices-and-modules.md#allow-for-configuration-and-translation) :
+It will simplify [the plugin defined in the previous section](04_Best-practices-and-modules.md#allow-for-configuration-and-translation) :
 
 Example :
 ```javascript
@@ -120,7 +120,7 @@ Example :
   }
   
   /* Create an instance with specific options. */
-  new MyModule({
+  new Plugin({
     label: 'myLabel'
   });
 })(jQuery);
@@ -172,7 +172,7 @@ jQuery('.js-element').myPlugin({
 
 ### Avoid duplicates on the same element
 
-You can use a HTML5 data using your module name to prevent multiple instance of the same plugin to the same element.
+You can use a HTML5 data using your plugin name to prevent multiple instance of the same plugin to the same element.
 
 Example :
 ```javascript
