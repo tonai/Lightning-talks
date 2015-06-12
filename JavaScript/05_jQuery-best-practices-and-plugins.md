@@ -170,6 +170,18 @@ jQuery('.js-element').myPlugin({
 });
 ```
 
+The idea is to iterate through each DOM element that will match the selector (here `.js-element`) and create a plugin instance.
+
+We return the result of `this.each` to maintain the [jQuery chaining](http://api.jquery.com/Types/#jQuery) functionality allowing to write something like this for example :
+```javascript
+jQuery('.js-element')
+  .hide()
+  .myPlugin({
+    label: 'myLabel'
+  })
+  .show();
+```
+
 ### Avoid duplicates on the same element
 
 You can use a HTML5 data using your plugin name to prevent multiple instance of the same plugin to the same element.
