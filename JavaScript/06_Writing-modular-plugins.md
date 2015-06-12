@@ -4,7 +4,7 @@
 
 You can use the navigator's debug console (F12) to try the above examples yourself.
 
-Presentation time needed : 20min
+Presentation time needed : 30min
 
 ## Introduction
 
@@ -12,7 +12,7 @@ When writing modular plugins you need to think of few things :
 * modularity and reusability
 * availability of a plugin API
 * extensibility
-* compatibility with modules loader (AMD, CommonJS & ES Harmony)
+* compatibility with modules loader
 
 ### Modularity and reusability
 
@@ -109,7 +109,27 @@ It allows the user to have some controls of your plugin after the initialization
 
 :construction:
 
+### Using callbacks
+
+:construction:
+
+### Event oriented
+
+:construction:
+
 ## Compatibility with modules loader
+
+:construction:
+
+### AMD
+
+:construction:
+
+### CommonJS
+
+:construction:
+
+### ES Harmony
 
 :construction:
 
