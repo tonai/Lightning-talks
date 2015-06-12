@@ -78,22 +78,40 @@ var Plugin = function(element) {
 
 It's easy to convert the above example to add an `options` input and merge them with `defaultOptions` in the `extend` function.
 
-Allowing both can be usefull to have 2 levels of options (the second one overrides the first one) :
-* JavaScript input is the first level and can be applied to a set of elements.
-* HTML input is the second level and is applied to specific elements.
+Allowing both ways can be useful, because it allows to have multiples levels of options, the last one overriding the previous one :
+* Default options applied to all elements.
+* JavaScript input applied to a set of elements.
+* HTML input applied to a specific element.
 
 [Here](https://github.com/tonai/jquery-contenttoggle) is an example of a plugin using this 2 levels of options.
 
 ## Availability of a plugin API
 
+It allows the user to have some controls of your plugin after the initialization.
 
+### Instance access
 
+:construction:
 
+### Exposing a specific API
 
+:construction:
 
+### Event oriented
 
+:construction:
 
+### Mixed
 
+:construction:
+
+## Extensibility
+
+:construction:
+
+## Compatibility with modules loader
+
+:construction:
 
 ## References
 
