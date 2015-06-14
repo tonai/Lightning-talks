@@ -10,13 +10,13 @@ Presentation time needed : 30min
 
 When writing modular plugins you need to think of few things :
 * modularity and reusability
-* availability of a plugin API
+* user control level
 * extensibility
 * compatibility with modules loader
 
 ### Modularity and reusability
 
-This is done by allowing the user to pass some options that will change the way your plugin work.
+It's the concept of allowing the user to customize the look, the behavior...etc. of your plugin by using options.
 
 There is 2 ways of managing this options.
 
@@ -85,9 +85,11 @@ Allowing both ways can be useful, because it allows to have multiples levels of 
 
 [Here](https://github.com/tonai/jquery-contenttoggle) is an example of a plugin using this 2 levels of options.
 
-## Availability of a plugin API
+## User control level
 
-It allows the user to have some controls of your plugin after the initialization.
+It's the concept of letting the user to to have some control of your plugin after the initialization.
+
+When writing a plugin, you have to choose the level of control you let to the user.
 
 ### Instance access
 
