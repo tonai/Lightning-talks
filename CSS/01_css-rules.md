@@ -236,7 +236,7 @@ Special cases :
 
 Example :
 
-| Rule                                                                   | D | C | B | A |
+| Rules                                                                  | D | C | B | A |
 |------------------------------------------------------------------------|---|---|---|---|
 | `.highlight h3`                                                        | 0 | 0 | 1 | 1 |
 | `html > head + body #input[type="checkbox"]:checked + *.label::before` | 0 | 1 | 3 | 4 |
@@ -253,8 +253,8 @@ But if multiple `!important` CSS declarations are conflicting each other, then t
 
 So you can write the complete specificty table like this :
 
-| Rule | D !important | C !important | B !important | A !important  | D | C | B | A |
-|------|--------------|--------------|--------------|---------------|---|---|---|---|
+| Rules | D !important | C !important | B !important | A !important  | D | C | B | A |
+|-------|--------------|--------------|--------------|---------------|---|---|---|---|
 
 ### Source order
 
@@ -266,5 +266,5 @@ When multiple CSS declarations with the same complete specifity are conflicting 
 * [Selectors Level 3](http://www.w3.org/TR/selectors/)
 * [CSS Pseudo-elements](http://www.w3schools.com/css/css_pseudo_elements.asp)
 * [inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance)
-* [Inheritance and cascade](www.w3.org/wiki/Inheritance_and_cascade)
+* [Inheritance and cascade](http://www.w3.org/wiki/Inheritance_and_cascade)
 * [Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
