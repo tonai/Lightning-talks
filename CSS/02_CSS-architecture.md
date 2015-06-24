@@ -30,10 +30,10 @@ body.homepage .widget {
 }
 ```
 
-* Predictability : I can't have a yellow widget on the homepage.
-* Reusability : I can't have a white widget on a classic content page.
-* Scalability : You need to learn all particular cases.
+* Predictability : When using the widget in the homepage you may first expect it to be yellow.
+* Reusability : If I want to reuse the white widget on a classic content page, I need to add new CSS rules.
 * Maintainability : If I have to change the look of the widget I need to change all particular cases.
+* Scalability : You need to learn all particular cases.
 
 ### Overly complicated selectors
 
@@ -44,16 +44,51 @@ Example:
 #sidebar > div > h3 + p { }
 ```
 
-* Predictability : No because it depends on the region it is located.
-* Reusability : The more complicated a selector is, the more coupled it is to the HTML...
-* Scalability : The more complicated a selector is, the more difficult it is to find what it does.
+* Predictability : The more complicated a selector is, the more coupled it is to the HTML.
+* Reusability : Rules depends on context, so you need to duplicate them if you want to reuse some styles.
 * Maintainability : If a single element changes in the chaîn, all the rule is broken.
+* Scalability : The more complicated a selector is, the more difficult it is to find what it does.
 
 ### Overly generic class names
+
+Example :
+```CSS`
+.widget {}
+.widget .title {}
+.widget .contents {}
+.widget .action {}
+```
+
+* Predictability : When used in some contexts (eg in a sidebar) the widget may inherit unwanted styles from other elements like `.sidebar .title`.
+* Reusability : You may need to override some styles in some contexts.
+* Maintainability : Adding rules in some contexts may break existing widgets.
+* Scalability : The probability of breaking existing widget by adding some rules is even greater.
+
+### Making a rule do too much
+
+```CSS
+.widget {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: red;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+```
+
+* Predictability : Because of the absolute positioning, the widget depends on the ancestors styles and so is not predictable.
+* Reusability : The look and feel is reusable but not the positionning. Problem : they are both linked in the same declaration block...
+* Maintainability : Adding a relative positioning to some ancestor will break the widget.
+* Scalability : New developers may copy-paste the widget if it does not position itself correctly because of the fear of existing widget regressions.
+
+## Best practices
 
 :construction:
 
 ## References
 
-* [Scalable and Modular Architecture for CSS](https://smacss.com/)
 * [CSS Architecture](http://engineering.appfolio.com/2012/11/16/css-architecture/)
+* [Scalable and Modular Architecture for CSS](https://smacss.com/)
+* [Get BEM](http://getbem.com/introduction/)
+* [Bonnes pratiques en CSS : BEM et OOCSS](http://www.alsacreations.com/article/lire/1641-bonnes-pratiques-en-css-bem-et-oocss.html)
