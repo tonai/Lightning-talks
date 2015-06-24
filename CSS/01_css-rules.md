@@ -10,13 +10,13 @@ Presentation time needed : 30min
 
 When writing a CSS rule you can use multiples basic types of selectors :
 * Universal selector `*` will match all DOM elements.
-* HTML tag name selector (like `strong`, `div`...etc.) will match targeted DOM elements.
+* Type selector (like `strong`, `div`...etc.) will match all DOM elements whose HTML tag name corresponds.
 * Class selector start with a dot (`.`) and will match all DOM elements whose `class` attribute contains the targeted class.
 * ID selector start with a hash (`#`) and will match all DOM elements whose `id` attribute is equal to the targeted class.
 
 Reminder : Multiple elements in a document can have the same class value but the id name must be unique in the document.
 
-You can also combine the HTML tag name selector with the class selector or the id selector for selecting a DOM element corresponding to both conditions.
+You can also combine the type selector with the class selector or the id selector for selecting a DOM element corresponding to both conditions.
 Example :
 ```CSS
 a.highlight {
@@ -106,32 +106,164 @@ Will apply all styles included in the declaration block to each rules `h2`, `.ti
 
 Some properties are automatically inherited by descendants without explicitly having a matching rule.
 
-In that case, if no value for an inherited property has been specified on an element, the element gets the computed value of that property on its parent element.
+In that case, if no value for an inherited property has been specified on an element, the element gets the `computed` value of that property on its parent element.
 
 Example :
 ```CSS
-body {
-  color: black;
-}
-.green {
+p {
   color: green;
 }
 ```
 
 ```HTML
+<p>This paragraph has <em>emphasized text</em> in it.</p>
+```
+the words "emphasized text" will appear green whereas no rules are matching this element directly.
+
+### Non-inherited properties
+
+For non-inherited properties, if no value for that property has been specified on an element, the element gets the `initial` value of that property.
+
+Example :
+```CSS
+p {
+  border: 1px solid #000;
+}
+```
+
+```HTML
+<p>This paragraph has <em>emphasized text</em> in it.</p>
+```
+the words "emphasized text" will not have a border (since the initial value of `border-style` is `none`).
+
+You can change that behavior by using the `inherit` value.
+
+Example :
+```CSS
+p {
+  border: 1px solid #000;
+}
+em {
+  border: inherit;
+}
+```
+
+```HTML
+<p>This paragraph has <em>emphasized text</em> in it.</p>
+```
+
+### Font-sizes
+
+When declaring the `font-size` property on an element by using a relative unit like `%` or `em`, the font-size of that element will be calculated relative to the closest ancestor having a `font-size` property.
+
+That value can also be declared using a relative unit, and thus will also be calculated using the same process.
+
+If no ancestor can be found, the `initial` value, which is `medium`, will be used.  
+This value depends itself to your browser configuration, but is equal to `16px` by default.
+
+Example :
+```CSS
+div {
+  font-size: 80%;
+}
+em {
+  font-size: 125%;
+}
+```
+
+```HTML
 <body>
-  <p>This paragraph has not emphasized text in it.<</p>
-  <p class="green">This paragraph has <em>emphasized text</em> in it.</p>
+  Text in the body.
+  <div>
+    Text in the div.
+    <p>This paragraph has <em>emphasized text</em> in it.</p>
+  </div>
 </body>
 ```
-the first paragraph will appear black and the words "emphasized text" will appear green whereas no rules are matching these element directly.
+The computed font sizes for elements are (with a standard configuration) :
+* body : font-size = medium = 16px
+* div : font-size = 0.8 * 16 = 12.8 = 13px
+* p : font-size = inherit = 13px
+* em : font-size = 1.25 * 13 = 16px
 
-## Specificity (rule accuracy)
+When using the `em` unit in a property other than `font-size`, the size will be calculated relative to the font size of the element itself.
 
-:construction:
+Example :
+```CSS
+div {
+  font-size: 80%;
+  padding: 2em;
+}
+```
+
+```HTML
+<body>
+  <div>
+    Text in the div.
+  </div>
+</body>
+```
+The computed value for the `div` element are (with a standard configuration) :
+* font-size = 0.8 * 16 = 12.8 = 13px
+* padding = 2 * 13 = 26px
+
+## Cascade
+
+It is the mechanism used to find which declarations that apply on an element when that element is targeted with multiple conflicting rules.
+
+There are three main concepts that control the order in which CSS declarations are applied :
+* Specificity
+* Importance
+* Source order
+
+### Specificity
+
+If multiple CSS declarations are conflicting for a given element then the most specific selector will overrides others.
+
+Specificity has four components, from less to more :
+* the number of type selectors or pseudo-elements in the rule (A)
+* the number of class selectors, attribute selectors or pseudo-classes in the rule (B)
+* the number of id selectors in the rule (C)
+* inline style using the `style` attribute (D)
+
+Special cases :
+* The universal selector `*` has a null specificity.
+* The negation pseudo-class `:not` is not considered a pseudo-class in the specificity calculation. But selectors placed into the negation pseudo-class count as normal selectors when determining the count of selector types.
+
+Example :
+| Rule                                                                 | D | C | B | A |
+|----------------------------------------------------------------------|---|---|---|---|
+| .highlight h3                                                        | 0 | 0 | 1 | 1 |
+|----------------------------------------------------------------------|---|---|---|---|
+| html > head + body #input[type="checkbox"]:checked + *.label::before | 0 | 1 | 3 | 4 |
+|----------------------------------------------------------------------|---|---|---|---|
+| #input label:not(#exception)                                         | 0 | 2 | 0 | 1 |
+|----------------------------------------------------------------------|---|---|---|---|
+| <span style="color:red;" >Red text</span>                            | 1 | 0 | 0 | 0 |
+
+[Here](http://specificity.keegan.st/) is a online specifity calculator.
+
+### Importance
+
+When an `!important` rule is used on a style declaration, this declaration overrides any other declaration made in the CSS, wherever it is in the declaration list.
+
+But if multiple `!important` CSS declarations are conflicting each other, then the specificity applies on those declarations.
+
+So you can write the complete specificty table like this :
+
+| !important    |               |
+|---|---|---|---|---|---|---|---|
+| D | C | B | A | D | C | B | A |
+
+### Source order
+
+When multiple CSS declarations with the same complete specifity are conflicting each other, the last will overrides the others.
 
 ## References
 
 * [Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
 * [Selectors Level 3](http://www.w3.org/TR/selectors/)
 * [CSS Pseudo-elements](http://www.w3schools.com/css/css_pseudo_elements.asp)
+* [inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance)
+* [Inheritance and cascade](www.w3.org/wiki/Inheritance_and_cascade)
+* [Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
