@@ -253,8 +253,8 @@ But if multiple `!important` CSS declarations are conflicting each other, then t
 
 So you can write the complete specificty table like this :
 
-| D !important | C !important | B !important | A !important  | D | C | B | A |
-|--------------|--------------|--------------|---------------|---|---|---|---|
+| Rule | D !important | C !important | B !important | A !important  | D | C | B | A |
+|------|--------------|--------------|--------------|---------------|---|---|---|---|
 
 ### Source order
 
