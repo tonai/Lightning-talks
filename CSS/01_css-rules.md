@@ -17,6 +17,7 @@ When writing a CSS rule you can use multiples basic types of selectors :
 Reminder : Multiple elements in a document can have the same class value but the id name must be unique in the document.
 
 You can also combine the type selector with the class selector or the id selector for selecting a DOM element corresponding to both conditions.
+
 Example :
 ```CSS
 a.highlight {
@@ -38,6 +39,7 @@ Attributes selector are writen using hooks (`[` and `]`) and are used to match s
 * `[att*=val]` will match all DOM elements whose targeted attribute contains the specified value.
 
 Attribute selectors can be used independently or combined with a simple selector.
+
 Example :
 ```CSS
 code[hreflang=fr] {
@@ -49,6 +51,7 @@ Will apply all styles included in the declaration block to all `code` elements h
 ### Pseudo-classes
 
 A CSS pseudo-class start with a colon (`:`) followed by a keyword that is added to selectors that specifies a special case of the element to be selected.
+
 Example :
 ```CSS
 a:hover {
@@ -89,6 +92,7 @@ Combinator are used to separate 2 sequences of selectors :
 ### Groups of selectors
 
 You can group multiple rules together, which have the same styles, using the comma `,`.
+
 Example :
 ```CSS
 h2,
@@ -231,6 +235,7 @@ Special cases :
 * The negation pseudo-class `:not` is not considered a pseudo-class in the specificity calculation. But selectors placed into the negation pseudo-class count as normal selectors when determining the count of selector types.
 
 Example :
+
 | Rule                                                                 | D | C | B | A |
 |----------------------------------------------------------------------|---|---|---|---|
 | .highlight h3                                                        | 0 | 0 | 1 | 1 |
@@ -251,9 +256,7 @@ But if multiple `!important` CSS declarations are conflicting each other, then t
 
 So you can write the complete specificty table like this :
 
-| !important    |               |
-|---|---|---|---|---|---|---|---|
-| D | C | B | A | D | C | B | A |
+| D !important | C !important | B !important | A !important  | D | C | B | A |
 
 ### Source order
 
