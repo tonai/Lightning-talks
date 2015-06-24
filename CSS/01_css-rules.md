@@ -222,7 +222,7 @@ There are three main concepts that control the order in which CSS declarations a
 
 ### Specificity
 
-If multiple CSS declarations are conflicting for a given element then the most specific selector will overrides others.
+If multiple CSS declarations are conflicting for a given element then the most specific selector overrides others.
 
 Specificity has four components, from less to more :
 * the number of type selectors or pseudo-elements in the rule (A)
@@ -258,7 +258,7 @@ So you can write the complete specificty table like this :
 
 ### Source order
 
-When multiple CSS declarations with the same complete specifity are conflicting each other, the last will overrides the others.
+When multiple CSS declarations with the same complete specifity are conflicting each other, the last one overrides the previous rules.
 
 ## References
 
