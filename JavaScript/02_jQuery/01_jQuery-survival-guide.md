@@ -69,6 +69,8 @@ console.log($links);
 * `.children([Selector])` : Get the children of each element in the set of matched elements, optionally filtered by a selector.
 * `.find([Selector|Element|jQuery])` : Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
 
+[CodePen example](http://codepen.io/tonai/pen/EjRVGQ).
+
 ### Navigating into the DOM - siblings
 
 * `.next([Selector])` : Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
@@ -81,6 +83,8 @@ console.log($links);
 * `.nextUntil([Selector|Element|jQuery])` : Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
 * `.prevUntil([Selector|Element|jQuery])` : Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
 
+[CodePen example](http://codepen.io/tonai/pen/LVrGYM).
+
 ### Navigating into the DOM - parents
 
 * `.parent([Selector])` : Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
@@ -89,6 +93,8 @@ console.log($links);
 * `.parentsUntil([Selector|Element|jQuery])` : Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.
 
 * `.offsetParent()` : Get the closest ancestor element that is positioned.
+
+[CodePen example](http://codepen.io/tonai/pen/jPKWEB).
 
 ### Reducing the set
 
@@ -102,9 +108,13 @@ console.log($links);
 * `.has([Selector|Element])` : Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
 * `.slice(start [, end])` : Reduce the set of matched elements to a subset specified by a range of indices.
 
+[CodePen example](http://codepen.io/tonai/pen/yNEeyo).
+
 ### Adding elements into the set
 
 * `.add([Selector|Element|jQuery|htmlString])` : Create a new jQuery object with elements added to the set of matched elements.
+
+[CodePen example](http://codepen.io/tonai/pen/GJGoJR).
 
 ### Using `end` and `addBack`
 
@@ -143,6 +153,8 @@ console.log($el); // Returns BODY Element
 $el = $el.addBack();
 console.log($el); // Returns HTML and BODY Element
 ```
+
+[CodePen example](http://codepen.io/tonai/pen/YXvwXo).
 
 ### Other
 
