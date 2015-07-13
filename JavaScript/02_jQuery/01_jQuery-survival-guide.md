@@ -30,12 +30,12 @@ This syntax is a shortcut for `jQuery(document).ready(callback)`.
 
 ### `jQuery(htmlString)`
 
-jQuery attempts to create new DOM elements as described by the HTML string.
+jQuery attempts to create new DOM elements as described by the HTML string.  
 Then a jQuery object is created and returned that refers to these elements
 
 ### `jQuery(selector [, context])`
 
-This is equivalent to the native `querySelectorAll` function that we already have seen here(https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/03_DOM-and-events.md#getting-a-dom-element), but return a jQuery object.
+This is equivalent to the native `querySelectorAll` function that we have already seen [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/03_DOM-and-events.md#getting-a-dom-element), but returns a jQuery object.
 
 If a context is specified (DOM element, document or jQuery object), the behavour is the same as `jQuery(context).find(selector)`.
 
@@ -61,6 +61,98 @@ for (var i = 0; i < 3; i++) {
 }
 console.log($links);
 ```
+
+## jQuery traversing
+
+### Navigating into the DOM - children
+
+* `.children([Selector])` : Get the children of each element in the set of matched elements, optionally filtered by a selector.
+* `.find([Selector|Element|jQuery])` : Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
+
+### Navigating into the DOM - siblings
+
+* `.next([Selector])` : Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
+* `.prev([Selector])` : Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
+
+* `.nextAll([Selector])` : Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.
+* `.prevAll([Selector])` : Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
+* `.siblings([Selector])` : Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
+
+* `.nextUntill([Selector|Element|jQuery])` : Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
+* `.prevUntill([Selector|Element|jQuery])` : Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
+
+### Navigating into the DOM - parents
+
+* `.parent([Selector])` : Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
+* `.parents([Selector])` : Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.
+* `.closest([Selector|Element|jQuery])` : For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
+* `.parentsUntil([Selector|Element|jQuery])` : Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.
+
+* `.offsetParent()` : Get the closest ancestor element that is positioned.
+
+### Reducing the set
+
+* `.eq(index)` : Reduce the set of matched elements to the one at the specified index. Index can be negative.
+* `.get(index)` : Retrieve the DOM elements matched by the jQuery object. Same as `[index]`.
+* `.first()` : Reduce the set of matched elements to the first in the set. Same as `.eq(0)`.
+* `.last()` : Reduce the set of matched elements to the final one in the set. Same as `.eq(-1)`.
+
+* `.filter([Selector|Element|jQuery|Function])` : Reduce the set of matched elements to those that match the selector or pass the function’s test.
+* `.not([Selector|jQuery|Function])` : Remove elements from the set of matched elements.
+* `.has([Selector|Element])` : Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
+* `.slice(start [, end])` : Reduce the set of matched elements to a subset specified by a range of indices.
+
+### Adding elements into the set
+
+* `.add([Selector|Element|jQuery|htmlString])` : Create a new jQuery object with elements added to the set of matched elements.
+
+### Using `end` and `addBack`
+
+Because most of jQuery methods returns a jQuery object you can chain methods one behind the other.
+
+Example :
+```JavaScript
+jQuery('html').children('body').find('h1');
+```
+
+The `end` method ends the most recent filtering operation in the current chain and return the set of matched elements to its previous state.
+
+Example :
+```JavaScript
+var $el;
+$el = jQuery('html');
+console.log($el); // Returns HTML Element
+$el = $el.children('body');
+console.log($el); // Returns BODY Element
+$el = $el.find('h1');
+console.log($el); // Returns H1 Element
+$el = $el.end();
+console.log($el); // Returns BODY Element
+$el = $el.end();
+console.log($el); // Returns HTML Element
+```
+
+The `.addBack([Selector])` method adds the previous set of elements on the stack to the current set, optionally filtered by a selector.
+
+```JavaScript
+var $el;
+$el = jQuery('html');
+console.log($el); // Returns HTML Element
+$el = $el.children('body');
+console.log($el); // Returns BODY Element
+$el = $el.addBack();
+console.log($el); // Returns HTML and BODY Element
+```
+
+### Other
+
+* `.is([Selector|Element|jQuery|Function])` : Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.
+* `.index([Selector|Element|jQuery])` : Search for a given element from among the matched elements.
+
+
+
+
+
 
 ## References
 
