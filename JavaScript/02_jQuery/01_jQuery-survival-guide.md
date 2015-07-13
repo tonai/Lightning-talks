@@ -66,53 +66,53 @@ console.log($links);
 
 ### Navigating into the DOM - children
 
-* `jQuery.children([Selector])` : Get the children of each element in the set of matched elements, optionally filtered by a selector.
-* `jQuery.find([Selector|Element|jQuery])` : Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
+* `.children([Selector])` : Get the children of each element in the set of matched elements, optionally filtered by a selector.
+* `.find([Selector|Element|jQuery])` : Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
 
 [CodePen example](http://codepen.io/tonai/pen/EjRVGQ).
 
 ### Navigating into the DOM - siblings
 
-* `jQuery.next([Selector])` : Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
-* `jQuery.prev([Selector])` : Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
+* `.next([Selector])` : Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
+* `.prev([Selector])` : Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
 
-* `jQuery.nextAll([Selector])` : Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.
-* `jQuery.prevAll([Selector])` : Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
-* `jQuery.siblings([Selector])` : Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
+* `.nextAll([Selector])` : Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.
+* `.prevAll([Selector])` : Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
+* `.siblings([Selector])` : Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
 
-* `jQuery.nextUntil([Selector|Element|jQuery])` : Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
-* `jQuery.prevUntil([Selector|Element|jQuery])` : Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
+* `.nextUntil([Selector|Element|jQuery])` : Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
+* `.prevUntil([Selector|Element|jQuery])` : Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
 
 [CodePen example](http://codepen.io/tonai/pen/LVrGYM).
 
 ### Navigating into the DOM - parents
 
-* `jQuery.parent([Selector])` : Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
-* `jQuery.parents([Selector])` : Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.
-* `jQuery.closest([Selector|Element|jQuery])` : For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
-* `jQuery.parentsUntil([Selector|Element|jQuery])` : Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.
+* `.parent([Selector])` : Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
+* `.parents([Selector])` : Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.
+* `.closest([Selector|Element|jQuery])` : For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
+* `.parentsUntil([Selector|Element|jQuery])` : Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.
 
-* `jQuery.offsetParent()` : Get the closest ancestor element that is positioned.
+* `.offsetParent()` : Get the closest ancestor element that is positioned.
 
 [CodePen example](http://codepen.io/tonai/pen/jPKWEB).
 
 ### Reducing the set
 
-* `jQuery.eq(index)` : Reduce the set of matched elements to the one at the specified index. Index can be negative.
-* `jQuery.get(index)` : Retrieve the DOM elements matched by the jQuery object. Same as `[index]`.
-* `jQuery.first()` : Reduce the set of matched elements to the first in the set. Same as `.eq(0)`.
-* `jQuery.last()` : Reduce the set of matched elements to the final one in the set. Same as `.eq(-1)`.
+* `.eq(index)` : Reduce the set of matched elements to the one at the specified index. Index can be negative.
+* `.get(index)` : Retrieve the DOM elements matched by the jQuery object. Same as `[index]`.
+* `.first()` : Reduce the set of matched elements to the first in the set. Same as `.eq(0)`.
+* `.last()` : Reduce the set of matched elements to the final one in the set. Same as `.eq(-1)`.
 
-* `jQuery.filter([Selector|Element|jQuery|Function])` : Reduce the set of matched elements to those that match the selector or pass the function’s test.
-* `jQuery.not([Selector|jQuery|Function])` : Remove elements from the set of matched elements.
-* `jQuery.has([Selector|Element])` : Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
-* `jQuery.slice(start [, end])` : Reduce the set of matched elements to a subset specified by a range of indices.
+* `.filter([Selector|Element|jQuery|Function])` : Reduce the set of matched elements to those that match the selector or pass the function’s test.
+* `.not([Selector|jQuery|Function])` : Remove elements from the set of matched elements.
+* `.has([Selector|Element])` : Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
+* `.slice(start [, end])` : Reduce the set of matched elements to a subset specified by a range of indices.
 
 [CodePen example](http://codepen.io/tonai/pen/yNEeyo).
 
 ### Adding elements into the set
 
-* `jQuery.add([Selector|Element|jQuery|htmlString])` : Create a new jQuery object with elements added to the set of matched elements.
+* `.add([Selector|Element|jQuery|htmlString])` : Create a new jQuery object with elements added to the set of matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/GJGoJR).
 
@@ -125,7 +125,7 @@ Example :
 jQuery('html').children('body').find('h1');
 ```
 
-The `jQuery.end()` method ends the most recent filtering operation in the current chain and return the set of matched elements to its previous state.
+The `.end()` method ends the most recent filtering operation in the current chain and return the set of matched elements to its previous state.
 
 Example :
 ```JavaScript
@@ -142,7 +142,7 @@ $el = $el.end();
 console.log($el); // Returns HTML Element
 ```
 
-The `jQuery.addBack([Selector])` method adds the previous set of elements on the stack to the current set, optionally filtered by a selector.
+The `.addBack([Selector])` method adds the previous set of elements on the stack to the current set, optionally filtered by a selector.
 
 ```JavaScript
 var $el;
@@ -158,8 +158,8 @@ console.log($el); // Returns HTML and BODY Element
 
 ### Other
 
-* `jQuery.is([Selector|Element|jQuery|Function])` : Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.
-* `jQuery.index([Selector|Element|jQuery])` : Search for a given element from among the matched elements.
+* `.is([Selector|Element|jQuery|Function])` : Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.
+* `.index([Selector|Element|jQuery])` : Search for a given element from among the matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/waXMzz)
 
@@ -176,61 +176,61 @@ The following methods are `jQuery.ajax()` shorthand methods :
 
 ## jQuery Attributes
 
-`jQuery.addClass()`
-`jQuery.hasClass()`
-`jQuery.removeClass()`
-`jQuery.toggleClass()`
+* `.addClass()`
+* `.hasClass()`
+* `.removeClass()`
+* `.toggleClass()`
 
-`jQuery.attr()`
-`jQuery.removeAttr()`
+* `.attr()`
+* `.removeAttr()`
 
-`jQuery.prop()`
-`jQuery.removeProp()`
+* `.prop()`
+* `.removeProp()`
 
-`jQuery.val()`
+* `.val()`
 
 ## jQuery CSS
 
-`jQuery.css()`
+* `.css()`
 
-`jQuery.height()`
-`jQuery.width()`
-`jQuery.innerHeight()`
-`jQuery.innerWidth()`
-`jQuery.outerHeight()`
-`jQuery.outerWidth()`
+* `.height()`
+* `.width()`
+* `.innerHeight()`
+* `.innerWidth()`
+* `.outerHeight()`
+* `.outerWidth()`
 
-`jQuery.offset()`
-`jQuery.position()`
+* `.offset()`
+* `.position()`
 
-`jQuery.scrollLeft()`
-`jQuery.scrollTop()`
+* `.scrollLeft()`
+* `.scrollTop()`
 
 ## jQuery Effects
 
-`jQuery.animate()`
-`jQuery.delay()`
-`jQuery.stop()`
+* `.animate()`
+* `.delay()`
+* `.stop()`
 
-`jQuery.fadeIn()`
-`jQuery.fadeOut()`
-`jQuery.fadeTo()`
-`jQuery.fadeToggle()`
+* `.fadeIn()`
+* `.fadeOut()`
+* `.fadeTo()`
+* `.fadeToggle()`
 
-`jQuery.hide()`
-`jQuery.show()`
-`jQuery.toggle()`
+* `.hide()`
+* `.show()`
+* `.toggle()`
 
-`jQuery.slideIn()`
-`jQuery.slideOut()`
-`jQuery.slideToggle()`
+* `.slideIn()`
+* `.slideOut()`
+* `.slideToggle()`
 
 ## jQuery Events
 
-`jQuery.on()`
-`jQuery.off()`
-`jQuery.trigger()`
-`jQuery.triggerHandler()`
+* `.on()`
+* `.off()`
+* `.trigger()`
+* `.triggerHandler()`
 
 The following methods are `jQuery.on()` shorthand methods :
 * `jQuery.click()`
@@ -239,39 +239,39 @@ The following methods are `jQuery.on()` shorthand methods :
 
 ## jQuery DOM Insertion
 
-`jQuery.html()`
-`jQuery.text()`
+* `.html()`
+* `.text()`
 
-`jQuery.append()`
-`jQuery.appendTo()`
-`jQuery.prepend()`
-`jQuery.prependTo()`
+* `.append()`
+* `.appendTo()`
+* `.prepend()`
+* `.prependTo()`
 
-`jQuery.after()`
-`jQuery.before()`
-`jQuery.insertAfter()`
-`jQuery.insertBefore()`
+* `.after()`
+* `.before()`
+* `.insertAfter()`
+* `.insertBefore()`
 
-`jQuery.detach()`
-`jQuery.empty()`
-`jQuery.remove()`
+* `.detach()`
+* `.empty()`
+* `.remove()`
 
 ## jQuery miscellaneous
 
-`jQuery.data()`
-`jQuery.removeData()`
+* `jQuery.data()` && `.data()`
+* `jQuery.removeData()` && `.removeData()`
 
-`jQuery.each()`
-`jQuery.map()`
+* `jQuery.each()` && `.each()`
+* `jQuery.map()` && `.map()`
 
-`jQuery.extend()`
+* `jQuery.extend()`
 
-`jQuery.inArray()`
-`jQuery.isArray()`
+* `jQuery.inArray()`
+* `jQuery.isArray()`
 
-`jQuery.proxy()`
+* `jQuery.proxy()`
 
-`jQuery.trim()`
+* `jQuery.trim()`
 
 ## References
 
