@@ -291,5 +291,5 @@ element.dispatchEvent(event);
 * [Node](https://developer.mozilla.org/docs/Web/API/Node)
 * [Element](https://developer.mozilla.org/docs/Web/API/element)
 * [DOM Core](http://quirksmode.org/dom/core/)
-* [EventTarget]https://developer.mozilla.org/docs/Web/API/EventTarget)
+* [EventTarget](https://developer.mozilla.org/docs/Web/API/EventTarget)
 * [Event dispatch and DOM event flow](http://www.w3.org/TR/DOM-Level-3-Events/#event-flow)
