@@ -164,9 +164,16 @@ if (element.addEventListener) {
 
 Or you can also use a [polyfill](https://gist.github.com/jonathantneal/3748027).
 
+You can also bind an event by using the associated `on` attribute, directly in the HTML document.
+
+Example :
+```JavaScript
+<a href="#" onclick="console.log(this);">Click here !</a>
+```
+
 ### Event types
 
-Below are listed commonly used event types :
+Below are listed commonly used standard event types :
 
 Mouse interaction :
 * click / dblclick
@@ -203,16 +210,16 @@ Flow events
 
 [Here](https://developer.mozilla.org/en-US/docs/Web/Events) a complete list of events.
 
-### Event flow
+### Event propagation
 
 The event flow is divided into 3 steps :
-* Capture phase
-* Target phase
-* Bubble phase
+* Capture phase (1)
+* Target phase (2)
+* Bubble phase (3)
 
 ![Graphical representation of an event dispatched in a DOM tree using the DOM event flow](http://www.w3.org/TR/DOM-Level-3-Events/eventflow.svg)
 
-Event listeners registered for the target phase will be handled once the event has reached its target.  
+Event listeners registered for the target phase (2) will be handled once the event has reached its target.  
 So if you bind an event on a DOM tree's leaf, it will always be triggered during the target phase.
 
 Otherwise the event will be triggered during the bubble phase.
@@ -237,12 +244,45 @@ For a unique user action, like a simple `click`, it also triggers other events l
 
 ### Event object
 
+In your event listener you always get, as first argument, the `Event` object containing some precious informations :
+* `Event.target` : represents the DOM element where the event occurs. This is the element that corresponds to the target phase (2).
+* `Event.currentTarget` : represents the DOM element where the event has been attached (same as `this` by default).
+* `Event.eventPhase` : correponds to the current phase (1), (2) or (3).
+* `Event.type` : the type of the triggered event (`click`, `mousedown`...etc.).
 
+You also have access to some interesting methods :
+* `Event.preventDefault()` : prevents the default behaviour of the browser (i.e. following a link...etc.).
+* `Event.stopPropagation()` : stops the propagation of the event in the DOM tree.
+* `Event.stopImmediatePropagation()` : stops the propagation of the event in the DOM tree AND prevents other listeners of the same event from being called.
 
+See this [codepen](http://codepen.io/tonai/pen/BNVNmV) for an example.
 
-### Trigger / Remove
+### Remove and trigger events
 
+You can remove an event listener with `Element.removeEventListener()`.
 
+You can manually trigger an event using `Element.dispatchEvent()`.  
+This is usefull when using custom event types.
+
+Example :
+```JavaScript
+var element = document.getElementById('readme');
+var eventName = 'customEvent';
+var useCapture = false;
+var callback = function(){
+  console.log('Remove event listener.');
+  element.removeEventListener(eventName, callback, useCapture);
+};
+
+console.log('Add event listener.');
+element.addEventListener(eventName, callback, useCapture);
+```
+
+Result :
+```JavaScript
+var event = new Event(eventName);
+element.dispatchEvent(event);
+```
 
 ## References
 
