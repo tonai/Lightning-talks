@@ -78,8 +78,8 @@ console.log($links);
 * `.prevAll([Selector])` : Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
 * `.siblings([Selector])` : Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
 
-* `.nextUntill([Selector|Element|jQuery])` : Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
-* `.prevUntill([Selector|Element|jQuery])` : Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
+* `.nextUntil([Selector|Element|jQuery])` : Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
+* `.prevUntil([Selector|Element|jQuery])` : Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
 
 ### Navigating into the DOM - parents
 
