@@ -127,6 +127,13 @@ var firstInstance = $('.js-homotheticResize').eq(0).data('homotheticResize');
 
 ### Exposing a specific API
 
+An other way to grant the user some access to your plugin is by exposing a specific API.
+
+An API is made of a collection of methods, that are different from the methods developped in the class.  
+So you can choose specifically the methods that the user can use and what they do.
+
+For that you need to keep each instances in a variable, thus you also need to expose a method for creating that instance.
+
 :construction:
 
 ### Event oriented
