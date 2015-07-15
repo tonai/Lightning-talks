@@ -173,7 +173,7 @@ var myPlugin = MyPlugin(options);
 myPlugin.publicMethod1();
 ```
 
-[Here](03_Best-practices/plugins/api.base-plugins.js) is a more complete example.
+[Here](../03_Best-practices/plugins/api.base-plugins.js) is a more complete example.
 
 ### Event oriented
 
