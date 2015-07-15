@@ -95,7 +95,7 @@ When writing a plugin, you have to choose the level of control you let to the us
 
 The simplest way is to let the user manipulate the plugin instance.
 
-In fact this is the default behavior if your plugin expose a constructor like [this example](../03_Best-practices/plugins/jquery.base-plugin.js).  
+In fact this is the default behavior if your plugin expose a constructor like [this example](../03_Best-practices/plugins/base-plugin.js).  
 But not if you are developing a jQuery plugin.
 
 In that case you will need to expose the instance to the user.  
@@ -174,6 +174,8 @@ myPlugin.publicMethod1();
 ```
 
 [Here](../03_Best-practices/plugins/api.base-plugins.js) is a more complete example.
+
+You can use a similar method for jQuery plugins with the same explanations as above.
 
 ### Event oriented
 
