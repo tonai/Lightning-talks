@@ -160,16 +160,20 @@ var result = tmpl('myTemplate', {
   color: '#FF0000',
   nodes: [
     {
-      title: 'Intro and types',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Intro-and-types.md'
+      title: 'Intro and operators',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/01_Types-and-operators.md'
     },
     {
       title: 'Scope and functions',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/02_Scope-and-functions.md'
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/02_Scope-and-functions.md'
+    },
+    {
+      title: 'DOM and events',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/03_DOM-and-events.md'
     },
     {
       title: 'Constructor and prototype',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/03_Constructor-and-prototype.md'
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md'
     }
   ]
 });

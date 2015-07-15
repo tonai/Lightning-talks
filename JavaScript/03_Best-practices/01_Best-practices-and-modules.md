@@ -65,7 +65,7 @@ Avoid use of global variables.
 
 Why : because they can easily be overwritten by another code part.
 
-Workaround : use [closures](02_Scope-and-functions.md#closure) and [IIFE](02_Scope-and-functions.md#iife-immediately-invoked-function-expression).
+Workaround : use [closures](../01_Bases/02_Scope-and-functions.md#closure) and [IIFE](../01_Bases/02_Scope-and-functions.md#iife-immediately-invoked-function-expression).
 
 ```javascript
 (function(){
@@ -84,7 +84,7 @@ In the case you absolutely need to set a global variable. Do it explicitly and u
 
 Declare your variables at the beginning of each function.
 
-Why : because JavaScript variables declarations are [automatically hoisted](02_Scope-and-functions.md#hoisted-var). So you will avoid some strange behaviours.
+Why : because JavaScript variables declarations are [automatically hoisted](../01_Bases/02_Scope-and-functions.md#hoisted-var). So you will avoid some strange behaviours.
 
 Note : you can initialize them later.
 
@@ -95,11 +95,11 @@ Proposition :
   var x = 1;
   var y = 2;
   var z = x+ y;
-  
+
   // Some code.
-  
+
   foo = 'foo';
-  
+
   // Some code.
 })();
 ```
@@ -117,7 +117,7 @@ if (x) {
 }
 ```
 
-Workaround : use [function expression](02_Scope-and-functions.md#function-expression). JavaScript does have [first-class functions](02_Scope-and-functions.md#first-class-citizen).
+Workaround : use [function expression](../01_Bases/02_Scope-and-functions.md#function-expression). JavaScript does have [first-class functions](../01_Bases/02_Scope-and-functions.md#first-class-citizen).
 
 ```javascript
 var foo;
@@ -126,7 +126,7 @@ if (x) {
 }
 ```
 
-As function declaration are also [hoisted](02_Scope-and-functions.md#hoisted-function) try to declare them at the top too.
+As function declaration are also [hoisted](../01_Bases/02_Scope-and-functions.md#hoisted-function) try to declare them at the top too.
 
 ### Wrapper objects
 
@@ -190,7 +190,7 @@ Keep your code modularized and specialized, that is : make sure to write smaller
 But it's important to declare the strict mode inside of the local scope of your module.
 Declaring it outside can lead to troubles with vendor modules when using a tool that will concatenate all your files into one.
 
-For example, the value of `this` [can differ in strict mode](03_Constructor-and-prototype.md#this) and some modules can use this type of code to get the global scope :
+For example, the value of `this` [can differ in strict mode](../01_Bases/04_Constructor-and-prototype.md#this) and some modules can use this type of code to get the global scope :
 ```javascript
 (function(){
   var global = (function(){return this})();
@@ -235,22 +235,22 @@ Usage example :
 
 ### Constructor and prototype
 
-Define your module using [constructor](03_Constructor-and-prototype.md#constructor) and [prototype](03_Constructor-and-prototype.md#prototype). It will save memory and makes your code more flexible.
+Define your module using [constructor](../01_Bases/04_Constructor-and-prototype.md#constructor) and [prototype](../01_Bases/04_Constructor-and-prototype.md#prototype). It will save memory and makes your code more flexible.
 
-Add methods one by one to avoid to lose the native [constructor prototype property](03_Constructor-and-prototype.md#the-constructor-prototype-property).
+Add methods one by one to avoid to lose the native [constructor prototype property](../01_Bases/04_Constructor-and-prototype.md#the-constructor-prototype-property).
 
 Example :
 ```javascript
 (function(){
   'use strict';
-  
+
   /**
    * Constructor of MyModule.
    */
   function MyModule() {
     this.init();
   };
-  
+
   /**
    * Initialize instances of MyModule.
    */
@@ -268,14 +268,14 @@ With Vanilla JavaScript you will need to add your module in the global scope by 
 ```javascript
 var MyModuleGloballyAccessible = (function(){
   'use strict';
-  
+
   /**
    * Constructor of MyModule.
    */
   function MyModule() {/*...*/};
-  
+
   /*...*/
-  
+
   return MyModule;
 })();
 ```
@@ -294,12 +294,12 @@ Example :
 ```javascript
 (function(){
   'use strict';
-  
+
   /* Plugin default options. */
   var defaultOptions = {
     label: 'myDefaultLabel'
   };
-  
+
   /**
    * Constructor.
    */
@@ -307,7 +307,7 @@ Example :
     // Merge specific and default options.
     this.options = this.merge({}, defaultOptions);
     this.merge(this.options, options);
-    
+
     // Log the label.
     console.log(this.options.label);
   };
@@ -325,7 +325,7 @@ Example :
     }
     return target;
   };
-  
+
   /* Create an instance with specific options. */
   new Plugin({
     label: 'myLabel'
@@ -341,7 +341,7 @@ But do not forget to use the `bind` method to define the value of `this` to be w
 ```javascript
 var MyModule = (function(window){
   'use strict';
-  
+
   /* Plugin default options. */
   var defaultOptions = {
     label: 'myDefaultLabel'
@@ -354,7 +354,7 @@ var MyModule = (function(window){
     // Merge specific and default options.
     this.options = this.merge({}, defaultOptions);
     this.merge(this.options, options);
-    
+
     // Attach event listener.
     window.addEventListener('resize', this.resize.bind(this));
   };
@@ -365,7 +365,7 @@ var MyModule = (function(window){
   Plugin.prototype.resize = function() {
     console.log(this.options.label);
   };
-  
+
   /**
    * Merge target object with source object.
    * @param {object} target Target object.
@@ -379,7 +379,7 @@ var MyModule = (function(window){
     }
     return target;
   };
-  
+
   return Plugin;
 })(window);
 ```

@@ -36,8 +36,8 @@ var pluginInstance = new Plugin(options);
 This is the most common way wich is easy to unserstand and works well.
 
 You then need to merge these options with your plugins' defaults :
-* [JavaScript way](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/04_Best-practices-and-modules.md#allow-for-configuration-and-translation)
-* [jQuery way](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/05_jQuery-best-practices-and-plugins.md#merging-options)
+* [JavaScript way](../03_Best-practices/01_Best-practices-and-modules.md#allow-for-configuration-and-translation)
+* [jQuery way](../03_Best-practices/02_jQuery-best-practices-and-plugins.md#merging-options)
 
 #### HTML input
 
@@ -65,7 +65,7 @@ var defaultOptions = {
 var Plugin = function(element) {
   this.$element = (element instanceof $)? element: $(element);
   this.options = $.extend({}, defaultOptions); // Clone defaultOptions object.
-  
+
   $.each(this.$element.data(), function(index, value){
     if (index in defaultOptions) {
       this.options[index] = value;
@@ -95,10 +95,10 @@ When writing a plugin, you have to choose the level of control you let to the us
 
 The simplest way is to let the user manipulate the plugin instance.
 
-In fact this is the default behavior if your plugin expose a constructor like [this example](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/04_Best-practices-and-modules.md#avoid-heavy-nesting).  
+In fact this is the default behavior if your plugin expose a constructor like [this example](../03_Best-practices/01_Best-practices-and-modules.md#avoid-heavy-nesting).
 But not if you are developping a jQuery plugin.
 
-In that case you will need to expose the instance to the user.  
+In that case you will need to expose the instance to the user.
 Whether by returning the instance :
 ```JavaScript
 // Define a jQuery plugin.
@@ -115,9 +115,9 @@ var instances = $('.js-plugin');
 
 But there is 2 problems with this notation :
 * `.js-plugin` represent several DOM elements, so we need to return an array of instances (or we can only operate on the first element).
-* by not returning a jQuery object, it will break the [jQuery chaining functionality](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/05_jQuery-best-practices-and-plugins.md#jquery-plugin-based-on-an-element).
+* by not returning a jQuery object, it will break the [jQuery chaining functionality](../03_Best-practices/02_jQuery-best-practices-and-plugins.md#jquery-plugin-based-on-an-element).
 
-Or you can make the instance accessible through the DOM element like [this example](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
+Or you can make the instance accessible through the DOM element like [this example](../03_Best-practices/plugins/jquery.homothetic-resize.js).
 
 You can get the instance like this :
 ```JavaScript
@@ -129,7 +129,7 @@ var firstInstance = $('.js-homotheticResize').eq(0).data('homotheticResize');
 
 An other way to grant the user some access to your plugin is by exposing a specific API.
 
-An API is made of a collection of methods, that are different from the methods developped in the class.  
+An API is made of a collection of methods, that are different from the methods developped in the class.
 So you can choose specifically the methods that the user can use and what they do.
 
 For that you need to keep each instances in a variable, thus you also need to expose a method for creating that instance.

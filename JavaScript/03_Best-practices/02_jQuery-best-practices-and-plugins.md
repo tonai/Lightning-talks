@@ -96,29 +96,29 @@ It is useful inside your plugin, but it will alse avoid nightmares to someone wh
 
 With jQuery you have a built-in function for merging objects : `extend`.
 
-It will simplify [the plugin defined in the previous section](04_Best-practices-and-modules.md#allow-for-configuration-and-translation) :
+It will simplify [the plugin defined in the previous section](../03_Best-practices/01_Best-practices-and-modules.md#allow-for-configuration-and-translation) :
 
 Example :
 ```javascript
 (function($){
   'use strict';
-  
+
   /* Plugin default options. */
   var defaultOptions = {
     label: 'myDefaultLabel'
   };
-  
+
   /**
    * Constructor.
    */
   function Plugin(options) {
     // Merge specific and default options.
     this.options = $.extend({}, defaultOptions, options);
-    
+
     // Log the label.
     console.log(this.options.label);
   }
-  
+
   /* Create an instance with specific options. */
   new Plugin({
     label: 'myLabel'
@@ -134,26 +134,26 @@ Example :
 ```javascript
 (function($){
   'use strict';
-  
+
   /* Plugin default options. */
   var defaultOptions = {
     label: 'myDefaultLabel'
   };
-  
+
   /**
    * Constructor.
    */
   function Plugin(element, options) {
     // Merge specific and default options.
     this.options = $.extend({}, defaultOptions, options);
-    
+
     // Initialize the main element.
     this.$element = (element instanceof $)? element: $(element);
-    
+
     // Log the label.
     console.log(this.options.label);
   }
-  
+
   /* Expose jQuery plugin. */
   $.fn.myPlugin = function(options) {
     return this.each(function() {
@@ -190,32 +190,32 @@ Example :
 ```javascript
 (function($){
   'use strict';
-  
+
   /* Plugin name. */
   var pluginName = 'myPlugin';
-  
+
   /* Plugin default options. */
   var defaultOptions = {
     label: 'myDefaultLabel'
   };
-  
+
   /**
    * Constructor.
    */
   function Plugin(element, options) {
     // Merge specific and default options.
     this.options = $.extend({}, defaultOptions, options);
-    
+
     // Initialize the main element.
     this.$element = (element instanceof $)? element: $(element);
-    
+
     // Save the instance reference into the DOM element.
     this.$element.data(pluginName, this);
-    
+
     // Log the label.
     console.log(this.options.label);
   }
-  
+
   /* Expose jQuery plugin. */
   $.fn[pluginName] = function(options) {
     return this.each(function() {
@@ -271,9 +271,9 @@ I'd like to add 3 methods for my plugins :
 * `bind`  : Used to regroup all events binding in this function.
 * `init`  : Used to initialize the default plugin state.
 
-Final reusable plugin template : [jQuery base plugin](05_jQuery-best-practices-and-plugins/jquery.base-plugin.js)!
+Final reusable plugin template : [jQuery base plugin](../03_Best-practices/plugins/jquery.base-plugin.js)!
 
-Plus an example based on this template : [homothetic-resize](05_jQuery-best-practices-and-plugins/jquery.homothetic-resize.js).
+Plus an example based on this template : [homothetic-resize](../03_Best-practices/plugins/jquery.homothetic-resize.js).
 
 Example integrated in [this JSFiddle](http://jsfiddle.net/d3ov5jek/).
 
