@@ -7,20 +7,28 @@ This presentation make an easier comparison of the different available jQuery me
 
 Presentation time needed : 30min
 
-## jQuery Attributes
+## jQuery attributes
+
+### jQuery attributes and classes
+
+* `.attr(String|Object [, String|Number])` : Get the value of an attribute **for the first element** in the set of matched elements or set one or more attributes for every matched element.
+* `.removeAttr(String)` : Remove an attribute from each element in the set of matched elements.
 
 * `.addClass(String)` : Adds the specified class(es) to each element in the set of matched elements.
 * `.hasClass(String)` : Determine whether any of the matched elements are assigned the given class.
 * `.removeClass([String])` : Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
 * `.toggleClass(String [, Boolean])` : Add or remove one or more classes from each element in the set of matched elements, depending on either the class’s presence or the value of the state argument.
 
-* `.attr(String|Object [, String|Number])` : Get the value of an attribute **for the first element** in the set of matched elements or set one or more attributes for every matched element.
-* `.removeAttr(String)` : Remove an attribute from each element in the set of matched elements.
+[CodePen example](http://codepen.io/tonai/pen/mJKaXJ).
+
+### jQuery properties and values
 
 * `.prop(String|Object [, Mixed])` : Get the value of a property **for the first element** in the set of matched elements or set one or more properties for every matched element.
 * `.removeProp(String)` : Remove a property for the set of matched elements.
 
 * `.val([String|Number|Array])` : Get the current value **of the first element** in the set of matched elements or set the value of every matched element.
+
+[CodePen example](http://codepen.io/tonai/pen/waXREJ).
 
 ## jQuery CSS
 
