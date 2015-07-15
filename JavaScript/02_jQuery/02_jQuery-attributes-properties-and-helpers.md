@@ -41,16 +41,18 @@ Presentation time needed : 30min
 * `.outerHeight([Boolean|String|Number])` : Get the current computed height **for the first element** in the set of matched elements, including padding, border, and optionally margin. Returns a number (without "px") representation of the value or null if called on an empty set of elements.
 * `.outerWidth([Boolean|String|Number])` : Get the current computed width **for the first element** in the set of matched elements, including padding and border, and optionally margin. Returns a number (without "px") representation of the value or null if called on an empty set of elements.
 
-* `.offset([Object])` : Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document.
-* `.position()` : Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.
+* `.offset([Object])` : Get the current coordinates **of the first element**, or set the coordinates of every element, in the set of matched elements, relative to the document.
+* `.position()` : Get the current coordinates **of the first element** in the set of matched elements, relative to the offset parent.
 
-* `.scrollLeft([Number])` : Get the current horizontal position of the scroll bar for the first element in the set of matched elements or set the horizontal position of the scroll bar for every matched element.
-* `.scrollTop([Number])` : Get the current vertical position of the scroll bar for the first element in the set of matched elements or set the vertical position of the scroll bar for every matched element.
+* `.scrollLeft([Number])` : Get the current horizontal position of the scroll bar **for the first element** in the set of matched elements or set the horizontal position of the scroll bar for every matched element.
+* `.scrollTop([Number])` : Get the current vertical position of the scroll bar **for the first element** in the set of matched elements or set the vertical position of the scroll bar for every matched element.
+
+[CodePen example](http://codepen.io/tonai/pen/rVKogQ).
 
 ## jQuery helpers
 
 * `jQuery.data(Element [, String|Object] [, Mixed])` : Store arbitrary data associated with the specified element and/or return the value that was set.
-* `.data([String|Object] [, Mixed])` : Store arbitrary data associated with the matched elements or return the value at the named data store for the first element in the set of matched elements.
+* `.data([String|Object] [, Mixed])` : Store arbitrary data associated with the matched elements or return the value at the named data store **for the first element** in the set of matched elements.
 
 * `jQuery.removeData(Element [, String])` : Remove a previously-stored piece of data.
 * `.removeData([String])` : Remove a previously-stored piece of data.
