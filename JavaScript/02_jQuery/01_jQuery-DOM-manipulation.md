@@ -1,8 +1,9 @@
-# jQuery survival guide
+# jQuery DOM manipulation
 
 ## Foreword
 
-You can use the navigator's debug console (F12) to try the above examples yourself.
+This presentation is not a complete explanation of all the jQuery API as some usages are intentionally not explaned.  
+This presentation make an easier comparison of the different available jQuery methods.
 
 Presentation time needed : 30min
 
@@ -89,7 +90,7 @@ console.log($links);
 
 * `.parent([Selector])` : Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
 * `.parents([Selector])` : Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.
-* `.closest([Selector|Element|jQuery])` : For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
+* `.closest(Selector|Element|jQuery)` : For each element in the set, get the first element that matches the selector by testing **the element itself** and traversing up through its ancestors in the DOM tree.
 * `.parentsUntil([Selector|Element|jQuery])` : Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.
 
 * `.offsetParent()` : Get the closest ancestor element that is positioned.
@@ -103,16 +104,16 @@ console.log($links);
 * `.first()` : Reduce the set of matched elements to the first in the set. Same as `.eq(0)`.
 * `.last()` : Reduce the set of matched elements to the final one in the set. Same as `.eq(-1)`.
 
-* `.filter([Selector|Element|jQuery|Function])` : Reduce the set of matched elements to those that match the selector or pass the function’s test.
-* `.not([Selector|jQuery|Function])` : Remove elements from the set of matched elements.
-* `.has([Selector|Element])` : Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
+* `.filter(Selector|Element|jQuery|Function)` : Reduce the set of matched elements to those that match the selector or pass the function’s test.
+* `.not(Selector|jQuery|Function)` : Remove elements from the set of matched elements.
+* `.has(Selector|Element)` : Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
 * `.slice(start [, end])` : Reduce the set of matched elements to a subset specified by a range of indices.
 
 [CodePen example](http://codepen.io/tonai/pen/yNEeyo).
 
 ### Adding elements into the set
 
-* `.add([Selector|Element|jQuery|htmlString])` : Create a new jQuery object with elements added to the set of matched elements.
+* `.add(Selector|Element|jQuery|htmlString)` : Create a new jQuery object with elements added to the set of matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/GJGoJR).
 
@@ -158,120 +159,47 @@ console.log($el); // Returns HTML and BODY Element
 
 ### Other
 
-* `.is([Selector|Element|jQuery|Function])` : Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.
+* `.is(Selector|Element|jQuery|Function)` : Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.
 * `.index([Selector|Element|jQuery])` : Search for a given element from among the matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/waXMzz)
 
-## jQuery AJAX
+## jQuery manipulation
 
-`jQuery.ajax()`
+### jQuery DOM insertion / shifting, inside
 
-The following methods are `jQuery.ajax()` shorthand methods :
-* `jQuery.get()`
-* `jQuery.getJSON()`
-* `jQuery.getScript()`
-* `jQuery.post()`
-* `jQuery.load()`
+* `.appendTo(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements to the end of the target.
+* `.prependTo(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements to the beginning of the target.
+* `.append(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, to the end of each element in the set of matched elements.
+* `.prepend(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.
 
-## jQuery Attributes
+[CodePen example](http://codepen.io/tonai/pen/VLdBRV)
 
-* `.addClass()`
-* `.hasClass()`
-* `.removeClass()`
-* `.toggleClass()`
+### jQuery DOM insertion / shifting, outside
 
-* `.attr()`
-* `.removeAttr()`
+* `.insertAfter(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements after the target.
+* `.insertBefore(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements before the target.
+* `.after(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, after each element in the set of matched elements.
+* `.before(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, before each element in the set of matched elements.
 
-* `.prop()`
-* `.removeProp()`
+[CodePen example](http://codepen.io/tonai/pen/ZGRjdy)
 
-* `.val()`
+### jQuery DOM removal
 
-## jQuery CSS
+* `.empty()` : Remove all child nodes of the set of matched elements from the DOM.
+* `.detach([Selector])` : Remove the set of matched elements from the DOM, optionally filtered by a selector.
+* `.remove([Selector])` : Remove the set of matched elements from the DOM, optionally filtered by a selector. In addition all bound events and jQuery data associated with the elements are removed.
 
-* `.css()`
+[CodePen example](http://codepen.io/tonai/pen/xGzaxz)
 
-* `.height()`
-* `.width()`
-* `.innerHeight()`
-* `.innerWidth()`
-* `.outerHeight()`
-* `.outerWidth()`
+### jQuery DOM replacement
 
-* `.offset()`
-* `.position()`
+* `.html([htmlString])` : Get the HTML contents of the **first** element in the set of matched elements or set the HTML contents of every matched element.
+* `.text([string])` : Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.
 
-* `.scrollLeft()`
-* `.scrollTop()`
+**Note** : when using the `.html()` method, all DOM elements that are replaced are cleaned up the same way as when using the `.remove([Selector])` method.
 
-## jQuery Effects
-
-* `.animate()`
-* `.delay()`
-* `.stop()`
-
-* `.fadeIn()`
-* `.fadeOut()`
-* `.fadeTo()`
-* `.fadeToggle()`
-
-* `.hide()`
-* `.show()`
-* `.toggle()`
-
-* `.slideIn()`
-* `.slideOut()`
-* `.slideToggle()`
-
-## jQuery Events
-
-* `.on()`
-* `.off()`
-* `.trigger()`
-* `.triggerHandler()`
-
-The following methods are `jQuery.on()` shorthand methods :
-* `jQuery.click()`
-* `jQuery.mousedown()`
-* ...etc.
-
-## jQuery DOM Insertion
-
-* `.html()`
-* `.text()`
-
-* `.append()`
-* `.appendTo()`
-* `.prepend()`
-* `.prependTo()`
-
-* `.after()`
-* `.before()`
-* `.insertAfter()`
-* `.insertBefore()`
-
-* `.detach()`
-* `.empty()`
-* `.remove()`
-
-## jQuery miscellaneous
-
-* `jQuery.data()` && `.data()`
-* `jQuery.removeData()` && `.removeData()`
-
-* `jQuery.each()` && `.each()`
-* `jQuery.map()` && `.map()`
-
-* `jQuery.extend()`
-
-* `jQuery.inArray()`
-* `jQuery.isArray()`
-
-* `jQuery.proxy()`
-
-* `jQuery.trim()`
+[CodePen example](http://codepen.io/tonai/pen/jPKvby)
 
 ## References
 
