@@ -29,7 +29,7 @@ the `jQuery()` function can be use different ways :
 
 This syntax is a shortcut for `jQuery(document).ready(Function)`.
 
-### `jQuery(htmlString)`
+### `jQuery(HtmlString)`
 
 jQuery attempts to create new DOM elements as described by the HTML string.
 Then a jQuery object is created and returned that refers to these elements
@@ -113,7 +113,7 @@ console.log($links);
 
 ### Adding elements into the set
 
-* `.add(Selector|Element|jQuery|htmlString)` : Create a new jQuery object with elements added to the set of matched elements.
+* `.add(Selector|Element|jQuery|HtmlString)` : Create a new jQuery object with elements added to the set of matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/GJGoJR).
 
@@ -168,19 +168,19 @@ console.log($el); // Returns HTML and BODY Element
 
 ### jQuery DOM insertion / shifting, inside
 
-* `.appendTo(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements to the end of the target.
-* `.prependTo(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements to the beginning of the target.
-* `.append(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, to the end of each element in the set of matched elements.
-* `.prepend(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.
+* `.appendTo(Selector|Element|Array|jQuery|HtmlString)` : Insert every element in the set of matched elements to the end of the target.
+* `.prependTo(Selector|Element|Array|jQuery|HtmlString)` : Insert every element in the set of matched elements to the beginning of the target.
+* `.append(Element|Array|jQuery|HtmlString)` : Insert content, specified by the parameter, to the end of each element in the set of matched elements.
+* `.prepend(Element|Array|jQuery|HtmlString)` : Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/VLdBRV)
 
 ### jQuery DOM insertion / shifting, outside
 
-* `.insertAfter(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements after the target.
-* `.insertBefore(Selector|Element|Array|jQuery|htmlString)` : Insert every element in the set of matched elements before the target.
-* `.after(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, after each element in the set of matched elements.
-* `.before(Element|Array|jQuery|htmlString)` : Insert content, specified by the parameter, before each element in the set of matched elements.
+* `.insertAfter(Selector|Element|Array|jQuery|HtmlString)` : Insert every element in the set of matched elements after the target.
+* `.insertBefore(Selector|Element|Array|jQuery|HtmlString)` : Insert every element in the set of matched elements before the target.
+* `.after(Element|Array|jQuery|HtmlString)` : Insert content, specified by the parameter, after each element in the set of matched elements.
+* `.before(Element|Array|jQuery|HtmlString)` : Insert content, specified by the parameter, before each element in the set of matched elements.
 
 [CodePen example](http://codepen.io/tonai/pen/ZGRjdy)
 
@@ -194,8 +194,8 @@ console.log($el); // Returns HTML and BODY Element
 
 ### jQuery DOM replacement
 
-* `.html([htmlString])` : Get the HTML contents of the **first** element in the set of matched elements or set the HTML contents of every matched element.
-* `.text([string])` : Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.
+* `.html([HtmlString])` : Get the HTML contents of the **first** element in the set of matched elements or set the HTML contents of every matched element.
+* `.text([String])` : Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.
 
 **Note** : when using the `.html()` method, all DOM elements that are replaced are cleaned up the same way as when using the `.remove([Selector])` method.
 
