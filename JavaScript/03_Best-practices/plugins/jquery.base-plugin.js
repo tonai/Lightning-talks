@@ -1,9 +1,9 @@
 (function($){
   'use strict';
-  
+
   /* Plugin variables. */
   var pluginName, defaultOptions = {};
-  
+
   /**
    * Plugin Constructor.
    *
@@ -22,17 +22,17 @@
     // Save the instance reference into the DOM element.
     this.$element.data(pluginName, this);
 
-    // Object initialisation.
+    // Object initialization.
     this.setup && this.setup();
     this.bind  && this.bind();
     this.init  && this.init();
   }
 
   /********** Start plugin specific code **********/
-  
+
     /* Plugin name. */
   pluginName = 'myPlugin';
-  
+
   /* Plugin default options. */
   defaultOptions = {};
 
@@ -53,7 +53,7 @@
   Plugin.prototype.init = function() {};
 
   /********** End plugin specific code **********/
-  
+
   /* Expose jQuery plugin. */
   $.fn[pluginName] = function(options) {
     return this.each(function() {
