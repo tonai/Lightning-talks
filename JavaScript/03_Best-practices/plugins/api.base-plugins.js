@@ -59,5 +59,35 @@
   /********** End plugin specific code **********/
 
   /* Export the plugin. */
-  window[pluginName] = Plugin;
+  window[pluginName] = function(options){
+    var instance = new Plugin(options);
+
+    return {
+      /**
+       * Get an option from his key.
+       *
+       * @param {string} key The option key.
+       * @return {mixed} The option value.
+       */
+      getOption: function(key){
+        var returnValue;
+        if (!key) {
+          returnValue = instance.options;
+        } else if (instance.options[key]) {
+          returnValue = instance.options[key];
+        }
+        return instance.options;
+      },
+
+      /**
+       * Set an option.
+       *
+       * @param {string} key The option key.
+       * @param {string} value The option value.
+       */
+      setOption: function(key, value){
+        instance.options[key] = value;
+      }
+    };
+  };
 })();
