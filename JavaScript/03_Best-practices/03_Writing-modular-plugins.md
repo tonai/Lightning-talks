@@ -95,10 +95,10 @@ When writing a plugin, you have to choose the level of control you let to the us
 
 The simplest way is to let the user manipulate the plugin instance.
 
-In fact this is the default behavior if your plugin expose a constructor like [this example](../03_Best-practices/01_Best-practices-and-modules.md#avoid-heavy-nesting).
+In fact this is the default behavior if your plugin expose a constructor like [this example](../03_Best-practices/plugins/jquery.base-plugin.js).  
 But not if you are developing a jQuery plugin.
 
-In that case you will need to expose the instance to the user.
+In that case you will need to expose the instance to the user.  
 Whether by returning the instance :
 ```JavaScript
 // Define a jQuery plugin.
@@ -129,12 +129,51 @@ var firstInstance = $('.js-homotheticResize').eq(0).data('homotheticResize');
 
 An other way to grant the user some access to your plugin is by exposing a specific API.
 
-An API is made of a collection of methods, that are different from the methods developped in the class.
+An API is made of a collection of methods, that are different from the methods developped in the class.  
 So you can choose specifically the methods that the user can use and what they do.
 
-For that you need to keep each instances in a variable, thus you also need to expose a method for creating that instance.
+In fact, with this method, you can simulate classic public and private methods in standard OOP languages.
 
-:construction:
+For achieving this, you need to keep the instance in a variable, consequently you also need to expose a function for creating that instance.  
+Compared to [this example](../03_Best-practices/plugins/jquery.base-plugin.js), you won't export the class directly but rather something like this :
+```JavaScript
+(function(){
+  'use strict';
+  
+  /* Plugin variables. */
+  var pluginName, defaultOptions = {};
+  
+  /* Constructor. */
+  function Plugin(options) { [...] };
+  
+  /* Plugin name. */
+  pluginName = 'MyPlugin';
+  
+  /* Private methods. */
+  Plugin.prototype.privateMethod1 = function() { [...] };
+  Plugin.prototype.privateMethod2 = function() { [...] };
+  
+  /* Export the plugin. */
+  window[pluginName] = function(options){
+    var instance = new Plugin(options);
+    
+    /* Public methods. */
+    return {
+      publicMethod1: function(){ [...] },
+      publicMethod2: function(){ [...] }
+    };
+  };
+})();
+```
+
+The user can use it like this :
+```JavaScript
+var options = {};
+var myPlugin = MyPlugin(options);
+myPlugin.publicMethod1();
+```
+
+[Here](03_Best-practices/plugins/api.base-plugins.js) is a more complete example.
 
 ### Event oriented
 
