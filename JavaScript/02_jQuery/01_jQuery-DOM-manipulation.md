@@ -194,8 +194,8 @@ console.log($el); // Returns HTML and BODY Element
 
 ### jQuery DOM replacement
 
-* `replaceAll(Selector|Element|Array|jQuery)` : Replace each target element with the set of matched elements.
-* `replaceWith(lement|Array|jQuery|HtmlString)` : Replace each element in the set of matched elements with the provided new content and return the set of elements that was removed.
+* `.replaceAll(Selector|Element|Array|jQuery)` : Replace each target element with the set of matched elements.
+* `.replaceWith(lement|Array|jQuery|HtmlString)` : Replace each element in the set of matched elements with the provided new content and return the set of elements that was removed.
 
 * `.html([HtmlString])` : Get the HTML contents of the **first** element in the set of matched elements or set the HTML contents of every matched element.
 * `.text([String])` : Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.
