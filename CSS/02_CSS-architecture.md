@@ -90,5 +90,5 @@ Example :
 
 * [CSS Architecture](http://engineering.appfolio.com/2012/11/16/css-architecture/)
 * [Scalable and Modular Architecture for CSS](https://smacss.com/)
-* [Get BEM](http://getbem.com/introduction/)
+* [BEM](https://en.bem.info/method/definitions/)
 * [Bonnes pratiques en CSS : BEM et OOCSS](http://www.alsacreations.com/article/lire/1641-bonnes-pratiques-en-css-bem-et-oocss.html)
