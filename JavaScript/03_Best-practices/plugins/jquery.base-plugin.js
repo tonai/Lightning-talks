@@ -30,7 +30,7 @@
 
   /********** Start plugin specific code **********/
 
-    /* Plugin name. */
+  /* Plugin name. */
   pluginName = 'myPlugin';
 
   /* Plugin default options. */

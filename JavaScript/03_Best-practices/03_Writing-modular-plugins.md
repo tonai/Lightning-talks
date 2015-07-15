@@ -96,7 +96,7 @@ When writing a plugin, you have to choose the level of control you let to the us
 The simplest way is to let the user manipulate the plugin instance.
 
 In fact this is the default behavior if your plugin expose a constructor like [this example](../03_Best-practices/01_Best-practices-and-modules.md#avoid-heavy-nesting).
-But not if you are developping a jQuery plugin.
+But not if you are developing a jQuery plugin.
 
 In that case you will need to expose the instance to the user.
 Whether by returning the instance :

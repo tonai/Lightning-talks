@@ -2,7 +2,7 @@
   'use strict';
 
   /* Plugin default options. */
-  var defaultOptions = {};
+  var pluginName, defaultOptions = {};
 
   /**
    * Constructor.
@@ -34,6 +34,9 @@
 
   /********** Start plugin specific code **********/
 
+  /* Plugin name. */
+  pluginName = 'MyPlugin';
+
   /* Plugin default options. */
   defaultOptions = {};
 
@@ -56,5 +59,5 @@
   /********** End plugin specific code **********/
 
   /* Export the plugin. */
-  return Plugin;
+  window[pluginName] = Plugin;
 })();
