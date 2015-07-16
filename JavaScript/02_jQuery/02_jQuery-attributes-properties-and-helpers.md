@@ -30,6 +30,16 @@ Presentation time needed : 30min
 
 [CodePen example](http://codepen.io/tonai/pen/waXREJ).
 
+### jQuery data
+
+* `jQuery.data(Element [, String|Object] [, Mixed])` : Store arbitrary data associated with the specified element and/or return the value that was set.
+* `.data([String|Object] [, Mixed])` : Store arbitrary data associated with the matched elements or return the value at the named data store **for the first element** in the set of matched elements.
+
+* `jQuery.removeData(Element [, String])` : Remove a previously-stored piece of data.
+* `.removeData([String])` : Remove a previously-stored piece of data.
+
+[CodePen example](http://codepen.io/tonai/pen/doKxvr).
+
 ## jQuery CSS
 
 * `.css(String|Object [, String|Number])` : Get the value of a computed style property **for the first element** in the set of matched elements or set one or more CSS properties for every matched element.
@@ -51,11 +61,7 @@ Presentation time needed : 30min
 
 ## jQuery helpers
 
-* `jQuery.data(Element [, String|Object] [, Mixed])` : Store arbitrary data associated with the specified element and/or return the value that was set.
-* `.data([String|Object] [, Mixed])` : Store arbitrary data associated with the matched elements or return the value at the named data store **for the first element** in the set of matched elements.
-
-* `jQuery.removeData(Element [, String])` : Remove a previously-stored piece of data.
-* `.removeData([String])` : Remove a previously-stored piece of data.
+### jQuery object and array helpers
 
 * `jQuery.each(Object|Array, Function)` : A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function’s arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.
 * `.each(Function)` : Iterate over a jQuery object, executing a function for each matched element.
@@ -63,15 +69,21 @@ Presentation time needed : 30min
 * `jQuery.map(Object|Array, Function)` : Translate all items in an array or object to new array of items.
 * `.map(Function)` : Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.
 
-* `jQuery.extend([Boolean, ] Object [, Object] [, Object] [, ...])` : Merge the contents of two or more objects together into the first object.
-
 * `jQuery.inArray(Mixed, Array [, Number])` : Search for a specified value within an array and return its index (or -1 if not found).
 * `jQuery.isArray(Mixed)` : Determine whether the argument is an array.
+* `jQuery.unique(Array)` : Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers.
+
+[CodePen example](http://codepen.io/tonai/pen/xGzvLy)
+
+### jQuery other helpers
+
+* `jQuery.trim(String)` : Remove the whitespace from the beginning and end of a string.
+
+* `jQuery.extend([Boolean, ] Object [, Object] [, Object] [, ...])` : Merge the contents of two or more objects together into the first object.
 
 * `jQuery.proxy(Function, Object [, Mixed] [, Mixed] [, ...])` : Takes a function and returns a new one that will always have a particular context.
 
-* `jQuery.trim(String)` : Remove the whitespace from the beginning and end of a string.
-* `jQuery.unique(Array)` : Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers.
+[CodePen example](http://codepen.io/tonai/pen/bdKXKg)
 
 ## References
 
