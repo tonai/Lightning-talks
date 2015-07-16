@@ -141,7 +141,7 @@ But be careful when using this method, because it can lead to XSS security vulne
 
 ### Binding an event
 
-Events are binded to a DOM element throught the `Element.addEventListener()` method.
+Events are bound to a DOM element throught the `Element.addEventListener()` method.
 
 But for Internet Explorer, this method only exists since the 9 version.
 
@@ -238,7 +238,7 @@ element.addEventListener(eventName, function(){
 
 See this [codepen](http://codepen.io/tonai/pen/pJKoEj) for an example.
 
-If multiple event listeners are binded to the same element for the same event type, they will be triggered in the same order they were attached to that element.
+If multiple event listeners are bound to the same element for the same event type, they will be triggered in the same order they were attached to that element.
 
 For a unique user action, like a simple `click`, it also triggers other events like `mousedown` and `mouseup` which are respectively triggered before and after the `click` event.
 
