@@ -63,15 +63,63 @@ Presentation time needed : 30min
 
 ### jQuery object and array helpers
 
-* `jQuery.each(Object|Array, Function)` : A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function’s arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.
 * `.each(Function)` : Iterate over a jQuery object, executing a function for each matched element.
+* `jQuery.each(Object|Array, Function)` : A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function’s arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.
 
-* `jQuery.map(Object|Array, Function)` : Translate all items in an array or object to new array of items.
+```JavaScript
+var array = [
+  'value 1',
+  [],
+  function(){}
+];
+var object = {
+  prop1: 'value 1',
+  prop2: [],
+  prop3: function(){}
+};
+
+// Array :
+$.each(array, function(key, value){
+  console.log(key);
+  console.log(value);
+});
+
+// Object :
+$.each(object, function(key, value){
+  console.log(key);
+  console.log(value);
+});
+```
+
 * `.map(Function)` : Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.
+* `jQuery.map(Object|Array, Function)` : Translate all items in an array or object to new array of items.
+
+```JavaScript
+var result = $.map(array, function(value, key){
+  return value.toString();
+});
+result;
+```
 
 * `jQuery.inArray(Mixed, Array [, Number])` : Search for a specified value within an array and return its index (or -1 if not found).
+
+```JavaScript
+$.inArray('value 1', array);
+$.inArray('value 3', array);
+```
+
 * `jQuery.isArray(Mixed)` : Determine whether the argument is an array.
+
+```JavaScript
+$.isArray(array);
+$.isArray(object);
+```
+
 * `jQuery.unique(Array)` : Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers.
+
+```JavaScript
+$.unique(['item 1', 'item 2', 'item 1']);
+```
 
 [CodePen example](http://codepen.io/tonai/pen/xGzvLy)
 
@@ -79,9 +127,44 @@ Presentation time needed : 30min
 
 * `jQuery.trim(String)` : Remove the whitespace from the beginning and end of a string.
 
+```JavaScript
+var string = "\n\n\t\t\t" + 'space          ' + "\n\n";
+$.trim(string);
+```
+
 * `jQuery.extend([Boolean, ] Object [, Object] [, Object] [, ...])` : Merge the contents of two or more objects together into the first object.
 
+```JavaScript
+var obj1 = {
+  prop1: 'value 1',
+  prop2: string,
+  prop3: function(){}
+};
+var obj2 = {
+  prop3: 'value 3'
+};
+var obj3 = {
+  prop2: 'value 2'
+};
+$.extend({}, obj1, obj2, obj3);
+```
+
 * `jQuery.proxy(Function, Object [, Mixed] [, Mixed] [, ...])` : Takes a function and returns a new one that will always have a particular context.
+
+```JavaScript
+var log = function (param1, param2) {
+  'use strict';
+  console.log(this);
+  console.log(param1);
+  console.log(param2);
+};
+log('callValue');
+func = $.proxy(log, emptyObj);
+func('callValue');
+// Same as : func = log.bind(emptyObj);
+func = $.proxy(log, emptyObj, 'proxyValue');
+func('callValue');
+```
 
 [CodePen example](http://codepen.io/tonai/pen/bdKXKg)
 
