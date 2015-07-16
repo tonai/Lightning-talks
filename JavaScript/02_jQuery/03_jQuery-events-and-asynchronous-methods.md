@@ -11,8 +11,12 @@ Presentation time needed : 30min
 
 * `.on(String [, String] [, Mixed], Function)` : Attach an event handler function for one or more events to the selected elements.
 * `.off([String] [, String], Function)` : Remove an event handler.
+
 * `.trigger([String|Event] [, Array|Object])` : Execute all handlers and behaviors attached to the matched elements for the given event type.
 * `.triggerHandler([String|Event] [, Array|Object])` : Execute all handlers attached to an element for an event.
+
+**Note** : The `.trigger()` and `.triggerHandler()` do not use the native `dispatchEvent` function we have seen [here](../01_Bases/03_DOM-and-events.md).  
+It uses a jQuery internal mechanism and thus the 2 jQuery functions can only trigger event handlers that have been bound with jQuery methods.
 
 The following methods are `jQuery.on()` shorthand methods :
 * `jQuery.click()`
