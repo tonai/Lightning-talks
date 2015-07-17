@@ -166,6 +166,23 @@ func = $.proxy(log, emptyObj, 'proxyValue');
 func('callValue');
 ```
 
+* `jQuery.noConflict([Boolean])` : Relinquish jQuery’s control of the $ variable.
+
+```JavaScript
+console.log($); // OK
+console.log(jQuery); // OK
+
+$.noConflict();
+console.log($); // KO
+console.log(jQuery); // OK
+
+
+var j$ = jQuery.noConflict(true);
+console.log($); // KO
+console.log(jQuery); // KO
+console.log(j$); // OK
+```
+
 [CodePen example](http://codepen.io/tonai/pen/bdKXKg)
 
 ## References
