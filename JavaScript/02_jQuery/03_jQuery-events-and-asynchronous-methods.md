@@ -10,6 +10,7 @@ Presentation time needed : 30min
 ## jQuery events
 
 * `.on(String [, String] [, Mixed], Function)` : Attach an event handler function for one or more events to the selected elements.
+* `.one(String [, String] [, Mixed], Function)` : Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
 * `.off([String] [, String], Function)` : Remove an event handler.
 
 * `.trigger([String|Event] [, Array|Object])` : Execute all handlers and behaviors attached to the matched elements for the given event type.
@@ -20,10 +21,17 @@ It uses a jQuery internal mechanism and thus the 2 jQuery functions can only tri
 
 [CodePen example](http://codepen.io/tonai/pen/LVBYyz).
 
-The following methods are `jQuery.on()` shorthand methods :
-* `jQuery.click()`
-* `jQuery.mousedown()`
+The following methods are `.on()` shorthand methods :
+* `.click()`
+* `.mousedown()`
 * ...etc.
+
+**Note** : Do not use anymore following methods :
+* `.delegate()`
+* `.undelegate()`
+* `.bind()`
+* `.unbind()`
+* `.live()`
 
 ## jQuery AJAX
 
