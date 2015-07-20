@@ -238,10 +238,12 @@ Example :
 
 | Rules                                                                  | D | C | B | A |
 |------------------------------------------------------------------------|---|---|---|---|
-| `.highlight h3`                                                        | 0 | 0 | 1 | 1 |
+| `.highlight label`                                                     | 0 | 0 | 1 | 1 |
 | `html > head + body #input[type="checkbox"]:checked + *.label::before` | 0 | 1 | 3 | 4 |
-| `#input label:not(#exception)`                                         | 0 | 2 | 0 | 1 |
-| `<span style="color:red;" >Red text</span>`                            | 1 | 0 | 0 | 0 |
+| `#input + label:not(#exception)`                                      | 0 | 2 | 0 | 1 |
+| `<label style="color:red;" >Red text</label>`                          | 1 | 0 | 0 | 0 |
+
+[CodePen example](http://codepen.io/tonai/pen/pJZXEX).
 
 [Here](http://specificity.keegan.st/) is a online specifity calculator.
 
