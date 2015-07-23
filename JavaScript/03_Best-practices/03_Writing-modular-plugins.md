@@ -14,7 +14,7 @@ When writing modular plugins you need to think of few things :
 * extensibility
 * compatibility with modules loader
 
-### Modularity and reusability
+## Modularity and reusability
 
 It's the concept of allowing the user to customize the look, the behavior...etc. of your plugin by using options.
 
@@ -87,7 +87,7 @@ Allowing both ways can be useful, because it allows to have multiples levels of 
 
 ## User control level
 
-It's the concept of letting the user to to have some control of your plugin after the initialization.
+It's the concept of letting the user to have some control of your plugin after the initialization.
 
 When writing a plugin, you have to choose the level of control you let to the user.
 
@@ -232,6 +232,60 @@ The option of using a specific API is often a choice made by plugin developers, 
 Using the event oriented way is quite equivalent but think of that is not possible, natively, to return a value from an event handler, and thus it is also not a natural method, even when using a framework, of getting a value by triggering an event.  
 If you do so, explain it carefully in your documentation.
 
+## Extensibility
+
+It's the concept of letting the user to execute pieces of codes at some points of your plugin.
+
+When writing a plugin, you have to think where these points are located in your code and what method the user will need to use.
+
+### Using option callbacks
+
+You can use your plugin options to let the user defines callback functions.
+Transform the function to change the value of `this` on initialization so that the user can access to your plugin properties :
+```JavaScript
+/* Setup plugin. */
+Plugin.prototype.setup = function() {
+  if (typeof this.options.userCallback === 'function') {
+    this.options.userCallback = this.options.userCallback.bind(this);
+  }
+};
+```
+
+You can also allow the usage of strings representing global functions.  
+Transform the string option into a function on initialization :
+```JavaScript
+/* Setup plugin. */
+Plugin.prototype.setup = function() {
+  if (typeof this.options.userCallback === 'string' &&
+      window[this.options.userCallback] &&
+      typeof window[this.options.userCallback] === 'function') {
+    this.options.userCallback = window[ this.options.userCallback ].bind(this);
+  } else if (typeof this.options.userCallback === 'function') {
+    this.options.userCallback = this.options.userCallback.bind(this);
+  }
+};
+```
+
+You can also allow the user to conditionnaly control the execution of some methods in your plugin :
+```JavaScript
+/* Open something. */
+Plugin.prototype.open = function() {
+  if (typeof this.options.beforeOpenCallback !== "function" || this.options.beforeOpenCallback())) {
+    [...]
+  }
+};
+```
+
+The inside code of the open method will only be executed if the `beforeOpenCallback` return `true`.
+
+### Event oriented
+
+:construction:
+
+### Conclusion
+
+:construction:
+
 In addition, do not "over-protect" your plugin and your methods because it can disappoint advanced users (developers) who want to extend your plugin with something of whom you haven't think of or for their specific cases.
 
 So it is also a good thing to let other developers to extend the possibility of your plugin.  
@@ -248,19 +302,7 @@ var prototype = firstInstance.constructor.prototype;
 ```
 
 Remember that the prototype is shared between all instances, and modifying it will also affect already created instances.  
-See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md#prototype) for explainations.
-
-## Extensibility
-
-:construction:
-
-### Using callbacks
-
-:construction:
-
-### Event oriented
-
-:construction:
+See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md#prototype) for explanations.
 
 ## Compatibility with modules loader
 
