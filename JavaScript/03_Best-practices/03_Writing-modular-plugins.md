@@ -179,7 +179,51 @@ You can use a similar method for jQuery plugins with the same explanations as ab
 
 ### Event oriented
 
-:construction:
+You can also use event handlers defined in your plugins that the user can trigger using custom event names.
+
+Bind your event handlers on the DOM element on which your plugin is based.  
+If not, bind your event handlers on the global `window` object.
+
+Defines them for example in a `bind` method :
+```JavaScript
+/* Bind events. */
+Plugin.prototype.bind = function() {
+  this.element.addEventListener('open', this.open.bind(this));
+  this.element.addEventListener('close', this.close.bind(this));
+};
+
+/* Open callback. */
+Plugin.prototype.open = function() { [...] };
+
+/* Close callback. */
+Plugin.prototype.close = function() { [...] };
+```
+
+The user can trigger them like this :
+```JavaScript
+element.dispatchEvent(new Event('open'));
+element.dispatchEvent(new Event('close'));
+```
+
+with jQuery, your can also return a value from an event handler that the user can get back by using the jQuery `.triggerHandler()` method.
+
+Definition :
+```JavaScript
+/* Bind events. */
+Plugin.prototype.bind = function() {
+  this.$element.on('getOptions.' + pluginName, this.getOptions.bind(this));
+};
+
+/* Get options callback. */
+Plugin.prototype.getOptions = function() {
+  return this.options;
+};
+```
+
+Usage :
+```JavaScript
+var options = $element.triggerHandler('getOptions');
+```
 
 ### Mixed
 
