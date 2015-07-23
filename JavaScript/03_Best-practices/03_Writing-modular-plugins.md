@@ -236,13 +236,16 @@ In addition, do not "over-protect" your plugin and your methods because it can d
 
 So it is also a good thing to let other developers to extend the possibility of your plugin.  
 For that you need to give access to your plugin `prototype` :
+
 1. By giving access to your plugin constructor, for example, by exposing it globally.
-2. Through the instance, if the `constructor` property has not been overriden. For example :
-   ```JavaScript
-   $('.js-homotheticResize').homotheticResize();
-   var firstInstance = $('.js-homotheticResize').eq(0).data('homotheticResize');
-   var prototype = firstInstance.constructor.prototype;
-   ```
+2. Through the instance, if the `constructor` property has not been overriden.
+
+For example :
+```JavaScript
+$('.js-homotheticResize').homotheticResize();
+var firstInstance = $('.js-homotheticResize').eq(0).data('homotheticResize');
+var prototype = firstInstance.constructor.prototype;
+```
 
 Remember that the prototype is shared between all instances, and modifying it will also affect already created instances.  
 See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md#prototype) for explainations.
