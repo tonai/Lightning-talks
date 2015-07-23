@@ -10,8 +10,8 @@ Presentation time needed : 30min
 
 When writing modular plugins you need to think of few things :
 * modularity and reusability
-* user control level
 * extensibility
+* user control level
 * compatibility with modules loader
 
 ## Modularity and reusability
@@ -84,6 +84,87 @@ Allowing both ways can be useful, because it allows to have multiples levels of 
 * HTML input applied to a specific element.
 
 [Here](https://github.com/tonai/jquery-contenttoggle) is an example of a plugin using this 2 levels of options.
+
+## Extensibility
+
+It's the concept of letting the user to execute pieces of codes at some points of your plugin.
+
+When writing a plugin, you have to think where these points are located in your code and what method the user will need to use.
+
+### Using option callbacks
+
+You can use your plugin options to let the user defines callback functions.
+Transform the function to change the value of `this` on initialization so that the user can access to your plugin properties :
+```JavaScript
+/* Setup plugin. */
+Plugin.prototype.setup = function() {
+  if (typeof this.options.userCallback === 'function') {
+    this.options.userCallback = this.options.userCallback.bind(this);
+  }
+};
+```
+
+You can also allow the usage of strings representing global functions.  
+Transform the string option into a function on initialization :
+```JavaScript
+/* Setup plugin. */
+Plugin.prototype.setup = function() {
+  if (typeof this.options.userCallback === 'string' &&
+      window[this.options.userCallback] &&
+      typeof window[this.options.userCallback] === 'function') {
+    this.options.userCallback = window[ this.options.userCallback ].bind(this);
+  } else if (typeof this.options.userCallback === 'function') {
+    this.options.userCallback = this.options.userCallback.bind(this);
+  }
+};
+```
+
+You can also allow the user to conditionnaly control the execution of some methods in your plugin :
+```JavaScript
+/* Toggle something. */
+Plugin.prototype.toggle = function() {
+  if (typeof this.options.beforeToggleCallback !== 'function' || this.options.beforeToggleCallback())) {
+    [...]
+  }
+};
+```
+
+The inside code of the toggle method will only be executed if the `beforeToggleCallback` return `true`.
+
+### Event oriented
+
+Your plugin can also trigger some custom events at some point of your code on which the user can bind specific event handlers.
+
+Trigger your custom events on the DOM element on which your plugin is based.  
+If not, trigger your custom events on the global `window` object.
+
+For example you can trigger a custom event at the end of the execution of a method :
+```JavaScript
+/* Toggle something. */
+Plugin.prototype.toggle = function() {
+  [...]
+  this.isOpen = !this.isOpen;
+  
+  // Native JavaScript.
+  this.element.dispatchEvent(new Event('afterToggle', {instance: this}));
+  
+  // jQuery way.
+  this.$element.trigger('afterToggle', [this]);
+};
+```
+
+The user can bind an event handler like this :
+```JavaScript
+// Native JavaScript.
+element.addEventListener('afterToggle', function(event){
+  if (event.instance.isOpen) { [...] }
+});
+
+// jQuery way.
+$element.on('afterToggle', function(event, instance){
+  if (instance.isOpen) { [...] }
+});
+```
 
 ## User control level
 
@@ -179,10 +260,7 @@ You can use a similar method for jQuery plugins with the same explanations as ab
 
 ### Event oriented
 
-You can also use event handlers defined in your plugins that the user can trigger using custom event names.
-
-Bind your event handlers on the DOM element on which your plugin is based.  
-If not, bind your event handlers on the global `window` object.
+Like in the "Extensibility" chapter but in the other direction, you can also use event handlers defined in your plugins that the user can trigger using custom event names.
 
 Defines them for example in a `bind` method :
 ```JavaScript
@@ -231,60 +309,6 @@ The option of using a specific API is often a choice made by plugin developers, 
 
 Using the event oriented way is quite equivalent but think of that is not possible, natively, to return a value from an event handler, and thus it is also not a natural method, even when using a framework, of getting a value by triggering an event.  
 If you do so, explain it carefully in your documentation.
-
-## Extensibility
-
-It's the concept of letting the user to execute pieces of codes at some points of your plugin.
-
-When writing a plugin, you have to think where these points are located in your code and what method the user will need to use.
-
-### Using option callbacks
-
-You can use your plugin options to let the user defines callback functions.
-Transform the function to change the value of `this` on initialization so that the user can access to your plugin properties :
-```JavaScript
-/* Setup plugin. */
-Plugin.prototype.setup = function() {
-  if (typeof this.options.userCallback === 'function') {
-    this.options.userCallback = this.options.userCallback.bind(this);
-  }
-};
-```
-
-You can also allow the usage of strings representing global functions.  
-Transform the string option into a function on initialization :
-```JavaScript
-/* Setup plugin. */
-Plugin.prototype.setup = function() {
-  if (typeof this.options.userCallback === 'string' &&
-      window[this.options.userCallback] &&
-      typeof window[this.options.userCallback] === 'function') {
-    this.options.userCallback = window[ this.options.userCallback ].bind(this);
-  } else if (typeof this.options.userCallback === 'function') {
-    this.options.userCallback = this.options.userCallback.bind(this);
-  }
-};
-```
-
-You can also allow the user to conditionnaly control the execution of some methods in your plugin :
-```JavaScript
-/* Open something. */
-Plugin.prototype.open = function() {
-  if (typeof this.options.beforeOpenCallback !== "function" || this.options.beforeOpenCallback())) {
-    [...]
-  }
-};
-```
-
-The inside code of the open method will only be executed if the `beforeOpenCallback` return `true`.
-
-### Event oriented
-
-:construction:
-
-### Conclusion
-
-:construction:
 
 In addition, do not "over-protect" your plugin and your methods because it can disappoint advanced users (developers) who want to extend your plugin with something of whom you haven't think of or for their specific cases.
 
