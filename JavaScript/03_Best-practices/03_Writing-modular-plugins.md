@@ -330,13 +330,17 @@ See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Ba
 
 ## Compatibility with modules loader
 
+The current iteration of JavaScript does not provide developers with the means to import some piece of code / module.
+
+This is fulfilled by above methods, and thus you plugin needs to be prepared.
+
+### CommonJS
+
 :construction:
 
 ### AMD
 
-:construction:
-
-### CommonJS
+The AMD module format itself is a proposal for defining modules where both the module and dependencies can be asynchronously loaded.
 
 :construction:
 
