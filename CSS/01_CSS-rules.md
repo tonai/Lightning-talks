@@ -238,12 +238,14 @@ Example :
 
 | Rules                                                                  | D | C | B | A |
 |------------------------------------------------------------------------|---|---|---|---|
-| `.highlight label`                                                     | 0 | 0 | 1 | 1 |
+| `label.label`                                                          | 0 | 0 | 1 | 1 |
 | `html > head + body #input[type="checkbox"]:checked + *.label::before` | 0 | 1 | 3 | 4 |
-| `#input + label:not(#exception)`                                      | 0 | 2 | 0 | 1 |
+| `#input + label:not(#exception)`                                       | 0 | 2 | 0 | 1 |
 | `<label style="color:red;" >Red text</label>`                          | 1 | 0 | 0 | 0 |
 
 [CodePen example](http://codepen.io/tonai/pen/pJZXEX).
+
+**Note** : Here the `before` element is green because the other color are inherited from the label element, and that a value defined on an element has always priority over inherited values.
 
 [Here](http://specificity.keegan.st/) is a online specifity calculator.
 
