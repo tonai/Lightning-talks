@@ -225,9 +225,27 @@ Usage :
 var options = $element.triggerHandler('getOptions');
 ```
 
-### Mixed
+### Conclusion
 
-:construction:
+The option of using a specific API is often a choice made by plugin developers, because is it a very user friendly solution and it offers a good separation between "private" and "public" methods that JavaScript does not provide natively.
+
+Using the event oriented way is quite equivalent but think of that is not possible, natively, to return a value from an event handler, and thus it is also not a natural method, even when using a framework, of getting a value by triggering an event.  
+If you do so, explain it carefully in your documentation.
+
+In addition, do not "over-protect" your plugin and your methods because it can disappoint advanced users (developers) who want to extend your plugin with something of whom you haven't think of or for their specific cases.
+
+So it is also a good thing to let other developers to extend the possibility of your plugin.  
+For that you need to give access to your plugin `prototype` :
+1. By giving access to your plugin constructor, for example, by exposing it globally.
+2. Through the instance, if the `constructor` property has not been overriden. For example :
+   ```JavaScript
+   $('.js-homotheticResize').homotheticResize();
+   var firstInstance = $('.js-homotheticResize').eq(0).data('homotheticResize');
+   var prototype = firstInstance.constructor.prototype;
+   ```
+
+Remember that the prototype is shared between all instances, and modifying it will also affect already created instances.  
+See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md#prototype) for explainations.
 
 ## Extensibility
 
