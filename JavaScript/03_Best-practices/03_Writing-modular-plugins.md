@@ -334,7 +334,7 @@ The current iteration of JavaScript does not provide developers with the means t
 
 This is fulfilled by above methods, and thus you plugin needs to be prepared.
 
-### CommonJS
+### [CommonJS][CommonJS]
 
 The CommonJS module proposal specifies a simple API for declaring modules.
 
@@ -371,7 +371,7 @@ You plugin file `./app/HelloWorld.js` :
 })();
 ```
 
-### AMD
+### [AMD][AMD]
 
 The AMD module format itself is a proposal for defining modules where both the module and dependencies can be asynchronously loaded.
 
@@ -406,7 +406,7 @@ define(['jquery', function($){
 })();
 ```
 
-### UMD
+### [UMD][UMD]
 
 The UMD pattern typically attempts to offer compatibility with the most popular script loaders of the day (e.g RequireJS amongst others).
 
@@ -474,6 +474,11 @@ module HelloWorld{
 ## References
 
 * [Writing Modular JavaScript With AMD, CommonJS & ES Harmony](http://addyosmani.com/writing-modular-js/)
-* [AMD](http://www.requirejs.org/docs/whyamd.html)
-* [CommonJS](http://wiki.commonjs.org/wiki/CommonJS)
-* [UMD](https://github.com/umdjs/umd)
+* [AMD][AMD]
+* [CommonJS][CommonJS]
+* [UMD][UMD]
+
+[AMD]: http://www.requirejs.org/docs/whyamd.html
+[CommonJS]: http://wiki.commonjs.org/wiki/CommonJS
+[UMD]: https://github.com/umdjs/umd
+
