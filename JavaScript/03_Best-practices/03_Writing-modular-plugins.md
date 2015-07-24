@@ -336,21 +336,140 @@ This is fulfilled by above methods, and thus you plugin needs to be prepared.
 
 ### CommonJS
 
-:construction:
+The CommonJS module proposal specifies a simple API for declaring modules.
+
+These specifications are more server-side centered but can be brought to browser for example by using [browserify](http://browserify.org/).
+
+Application main file `app.js` :
+```JavaScript
+(function(){
+  'use strict';
+
+  /* Dependencies. */
+  var HelloWorld = require('./app/HelloWorld.js'); // Require with path.
+  
+  /* Create instance. */
+  new HelloWorld();
+})();
+```
+
+You plugin file `./app/HelloWorld.js` :
+```JavaScript
+(function(){
+  'use strict';
+
+  /* Dependencies. */
+  var $ = require('jquery'); // Require with alias.
+  
+  /* Constructor. */
+  var Plugin = function(){
+    $('body').append('<p>Hello world</p>');
+  };
+  
+  /* Export plugin. */
+  module.exports = Plugin;
+})();
+```
 
 ### AMD
 
 The AMD module format itself is a proposal for defining modules where both the module and dependencies can be asynchronously loaded.
 
-:construction:
+You can use these specifications by using [requirejs](http://www.requirejs.org/).
+
+Application main file `app.js` :
+```JavaScript
+define(function(require){
+  'use strict';
+  
+  /* Dependencies. */
+  var HelloWorld = require('./app/HelloWorld.js');
+  
+  /* Create instance. */
+  new HelloWorld();
+});
+```
+
+You plugin file `./app/HelloWorld.js` :
+```JavaScript
+/* Dependencies. */
+define(['jquery', function($){
+  'use strict';
+  
+  /* Constructor. */
+  var Plugin = function(){
+    $('body').append('<p>Hello world</p>');
+  };
+  
+  /* Export plugin. */
+  return Plugin;
+})();
+```
 
 ### UMD
 
-:construction:
+The UMD pattern typically attempts to offer compatibility with the most popular script loaders of the day (e.g RequireJS amongst others).
+
+In many cases it uses AMD as a base, with special-casing added to handle CommonJS compatibility.
+
+You plugin file `./app/HelloWorld.js` :
+```JavaScript
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node/CommonJS
+    module.exports = factory(require('jquery'));
+  } else {
+    // Browser globals
+    factory(jQuery);
+  }
+}(function ($) {
+  /* Constructor. */
+  var Plugin = function(){
+    $('body').append('<p>Hello world</p>');
+  };
+  
+  /* Export plugin. */
+  return Plugin;
+}));
+```
 
 ### ES Harmony
 
-:construction:
+Take a look at the future of JavaScript.
+
+Application main file `app.js` :
+```JavaScript
+(function(){
+  'use strict';
+  
+  /* Dependencies. */
+  import HWConstructor from HelloWorld;
+  
+  /* Create instance. */
+  new HWConstructor();
+})();
+```
+
+You plugin file `./app/HelloWorld.js` :
+```JavaScript
+module HelloWorld{
+  'use strict';
+  
+  /* Dependencies. */
+  module $ from 'http://.../jquery.js';
+  
+  /* Constructor. */
+  var Plugin = function(){
+    $('body').append('<p>Hello world</p>');
+  };
+  
+  /* Export plugin. */
+   export var HWConstructor = Plugin;
+};
+```
 
 ## References
 
