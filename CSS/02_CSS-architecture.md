@@ -82,6 +82,146 @@ Example :
 * Maintainability : Adding a relative positioning to some ancestor will break the widget.
 * Scalability : New developers may copy-paste the widget if it does not position itself correctly because of the fear of existing widget regressions.
 
+## Categorizing CSS Rules
+
+SMACSS defines 5types of categories :
+* Base
+* Layout
+* Module
+* State
+* Theme
+
+I'd like to had one special category :
+* JavaScript
+
+### Base rules
+
+Base rules are the defaults.
+
+Example :
+```CSS
+html, body, form {
+  margin: 0; padding: 0;
+}
+input[type=text] {
+  border: 1px solid #999;
+}
+a {
+  color: #039;
+}
+a:hover {
+  color: #03C;
+}
+```
+
+### Layout
+
+Layout rules divide the page into sections.  
+They are used for managing the page's disposition and classes begin with `l-`.
+
+Example :
+```CSS
+.l-inline {
+  display: inline;
+}
+.l-col {
+  display: inline-block;
+  width: 100%;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+```
+
+### Module
+
+Modules are the reusable, modular parts of our design.  
+They are used for styling.
+
+Example :
+```CSS
+.block {
+  background-color: #555;
+}
+```
+
+### State
+
+State rules are ways to describe how our modules or layouts will look when in a particular state.  
+The state classes begin with `is-`.
+
+Example :
+```CSS
+/* Standalone rule. */
+.is-error {
+  color: red;
+}
+/* Module rules. */
+.tab {
+    background-color: purple;
+    color: white;
+}
+.is-tab-active {
+    background-color: white;
+    color: black;
+}
+```
+
+Since the state will likely need to override the style of a more complex rule set, the use of `!important` is allowed.
+
+### Theme
+
+Theme rules are similar to state rules in that they describe how modules or layouts might look.  
+Most sites don’t require a layer of theming but it is good to be aware of it.
+
+Themes can affect any of the primary types.  
+Just having a separate theme file should hopefully be enough.
+
+Example :
+```CSS
+/* in module-name.css */
+.mod {
+    border: 1px solid;
+}
+/* in theme.css */
+.mod {
+    border-color: blue;
+}
+```
+
+### JavaScript
+
+Here we only speak of HTML classes that are used for JavaScript.  
+JavaScript classes are used to select DOM elements needed in your scripts.
+
+With JavaScript you can also control the addition of removal of state classes.  
+But remember that no styles should be applied to JavaScript classes.
+
+We used specific JavaScript classes to separate styles from functionalities.
+The JavaScript classes begin with `js-`.
+
+HTMl :
+```HTML
+<ul class="menu">
+  <li class="menu-group js-menu-group">
+    <a class="menu-item js-menu-item" href="#">Menu item 1</a>
+    <div class="menu-submenu js-menu-submenu is-hidden">...</div>
+  </li>
+</ul>
+```
+
+JavaScript with jQuery :
+```JavaScript
+$('.js-menu-group').each(function(){
+  var $menuGroup = $(this);
+  var $menuItem = $menuGroup.find('.js-menu-item');
+  var $menuSubmenu = $menuGroup.find('.js-menu-submenu');
+  $menuItem.on('click', function(){
+    $('.js-menu-submenu').removeClass('is-hidden');
+    $menuSubmenu.addClass('is-hidden');
+  });
+});
+```
+
 ## Best practices
 
 :construction:
