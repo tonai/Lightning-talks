@@ -260,7 +260,7 @@ Element modifiers are implemented in the same fashion.
   <div class="block-menu__group"></div>
   <div class="block-menu__group"></div>
   <div class="block-menu__group"></div>
-  <div class="block-menu__group--special"></div>
+  <div class="block-menu__group block-menu__group--special"></div>
 </div>
 ```
 
