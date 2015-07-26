@@ -82,19 +82,30 @@ Example :
 * Maintainability : Adding a relative positioning to some ancestor will break the widget.
 * Scalability : New developers may copy-paste the widget if it does not position itself correctly because of the fear of existing widget regressions.
 
-## Categorizing CSS Rules
+## Best practices
 
-SMACSS defines 5types of categories :
+### Be intentional
+
+Applying classes directly to the elements you want to style is the best way to keep your CSS predictable.
+
+```CSS
+/* Grenade */
+#main-nav ul li ul { }
+
+/* Sniper Rifle */
+.subnav { }
+```
+
+### Separate your concerns
+
+SMACSS (Scalable and Modular Architecture for CSS) defines 5types of categories :
 * Base
 * Layout
 * Module
 * State
 * Theme
 
-I'd like to had one special category :
-* JavaScript
-
-### Base rules
+#### Base rules
 
 Base rules are the defaults.
 
@@ -114,10 +125,14 @@ a:hover {
 }
 ```
 
-### Layout
+Types selector should only be used for this concern.
+
+#### Layout
 
 Layout rules divide the page into sections.  
 They are used for managing the page's disposition and classes begin with `l-`.
+
+Remember that to effectively separate content from presentation it’s often essential to separate content from its container.
 
 Example :
 ```CSS
@@ -132,7 +147,7 @@ Example :
 }
 ```
 
-### Module
+#### Module
 
 Modules are the reusable, modular parts of our design.  
 They are used for styling.
@@ -144,7 +159,7 @@ Example :
 }
 ```
 
-### State
+#### State
 
 State rules are ways to describe how our modules or layouts will look when in a particular state.  
 The state classes begin with `is-`.
@@ -168,7 +183,7 @@ Example :
 
 Since the state will likely need to override the style of a more complex rule set, the use of `!important` is allowed.
 
-### Theme
+#### Theme
 
 Theme rules are similar to state rules in that they describe how modules or layouts might look.  
 Most sites don’t require a layer of theming but it is good to be aware of it.
@@ -188,47 +203,103 @@ Example :
 }
 ```
 
-### JavaScript
+### Name your classes with a logical structure
+
+You can use the BEM (Block, Element, Modifier) notation for organizing your classes.
+
+#### Block
+
+A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
+
+Example :
+```HTML
+<div class="block-menu">
+  ...
+</div>
+```
+
+#### Element
+
+An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
+
+The block class name will be used as a namespace and the element class name is added using the `__` (double underscore) separator.
+
+Example :
+```HTML
+<div class="block-menu">
+  <div class="block-menu__group">
+    <a class="block-menu__item" href="#">Menu item 1</a>
+    <div class="block-menu__submenu">...</div>
+  </div>
+</div>
+```
+
+#### Modifiers for blocks
+
+We often need to create a block very similar to an existing one, but with slightly altered its appearance or behavior.
+
+The block class name will be used as a namespace and the modifier class name is added using the `--` (double hyphen) separator.  
+Several modifiers can be used at once.
+
+Example :
+```HTML
+<div class="block-menu block-menu--secondary">
+  <div class="block-menu__group">
+    <a class="block-menu__item" href="#">Menu item 1</a>
+    <div class="block-menu__submenu">...</div>
+  </div>
+</div>
+```
+
+#### Element modifiers
+
+Element modifiers are implemented in the same fashion.
+
+```HTML
+<div class="block-menu">
+  <div class="block-menu__group"></div>
+  <div class="block-menu__group"></div>
+  <div class="block-menu__group"></div>
+  <div class="block-menu__group--special"></div>
+</div>
+```
+
+### Separate styles from functionalities
 
 Here we only speak of HTML classes that are used for JavaScript.  
 JavaScript classes are used to select DOM elements needed in your scripts.
 
 With JavaScript you can also control the addition of removal of state classes.  
-But remember that no styles should be applied to JavaScript classes.
+But no styles should be applied to JavaScript classes.
 
-We used specific JavaScript classes to separate styles from functionalities.
 The JavaScript classes begin with `js-`.
 
 HTMl :
 ```HTML
-<ul class="menu">
-  <li class="menu-group js-menu-group">
-    <a class="menu-item js-menu-item" href="#">Menu item 1</a>
-    <div class="menu-submenu js-menu-submenu is-hidden">...</div>
-  </li>
-</ul>
+<div class="block-menu">
+  <div class="block-menu__group js-block-menu__group">
+    <a class="block-menu__item js-block-menu__item" href="#">Menu item 1</a>
+    <div class="block-menu__submenu js-block-menu__submenu is-hidden">...</div>
+  </div>
+</div>
 ```
 
 JavaScript with jQuery :
 ```JavaScript
-$('.js-menu-group').each(function(){
+$('.js-block-menu__group').each(function(){
   var $menuGroup = $(this);
-  var $menuItem = $menuGroup.find('.js-menu-item');
-  var $menuSubmenu = $menuGroup.find('.js-menu-submenu');
+  var $menuItem = $menuGroup.find('.js-block-menu__item');
+  var $menuSubmenu = $menuGroup.find('.js-block-menu__submenu');
   $menuItem.on('click', function(){
-    $('.js-menu-submenu').removeClass('is-hidden');
-    $menuSubmenu.addClass('is-hidden');
+    $('.js-block-menu__submenu').addClass('is-hidden');
+    $menuSubmenu.removeClass('is-hidden');
   });
 });
 ```
-
-## Best practices
-
-:construction:
 
 ## References
 
 * [CSS Architecture](http://engineering.appfolio.com/2012/11/16/css-architecture/)
 * [Scalable and Modular Architecture for CSS](https://smacss.com/)
 * [BEM](https://en.bem.info/method/definitions/)
-* [Bonnes pratiques en CSS : BEM et OOCSS](http://www.alsacreations.com/article/lire/1641-bonnes-pratiques-en-css-bem-et-oocss.html)
+* [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
