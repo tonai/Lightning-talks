@@ -255,6 +255,9 @@ You also have access to some interesting methods :
 * `Event.stopPropagation()` : stops the propagation of the event in the DOM tree.
 * `Event.stopImmediatePropagation()` : stops the propagation of the event in the DOM tree AND prevents other listeners of the same event from being called.
 
+Returning `false` from an event handler is equivalent to `Event.preventDefault()`.  
+But returning `false` from an event handler bound with jQuery is equivalent to `Event.preventDefault()` and Event.stopPropagation()`.
+
 See this [codepen](http://codepen.io/tonai/pen/BNVNmV) for an example.
 
 ### Remove and trigger events
