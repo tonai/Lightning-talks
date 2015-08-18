@@ -5,7 +5,7 @@
 This presentation is not a complete explanation of all the jQuery API as some usages are intentionally not explaned.  
 This presentation make an easier comparison of the different available jQuery methods.
 
-Presentation time needed : 30min
+Presentation time needed : 15min
 
 ## The Deferred object
 
@@ -50,7 +50,7 @@ var deferred = $.Deferred();
 
 [CodePen example](http://codepen.io/tonai/pen/eNaLpe).
 
-### jQuery promises
+## jQuery promises
 
 Promises are like deferred object but you can't call the methods used to update the state yourself (`notify`, `notifyWith`, `reject`, `rejectWith`, `resolve` and `resolveWith`).
 
@@ -61,7 +61,7 @@ You will get the promises directly on the DOM element :
 
 [CodePen example](http://codepen.io/tonai/pen/vOwzaO).
 
-### Waiting for multiples deferred objects
+## Waiting for multiples deferred objects
 
 * `jQuery.when(Deferred [, Deferred] [, ...])` : Provides a way to execute callback functions based on one or more objects, usually Deferred objects that represent asynchronous events.
 
