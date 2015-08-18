@@ -340,6 +340,83 @@ CSS result :
 }
 ```
 
+### Imports and partials
+
+You can import a file into another one.
+
+In `app.less` :
+```Less
+@import "app/my-partial"
+```
+Will import the `app/my-partial.less` into `app.less`.
+
+In `app.scss` :
+```Less
+@import "app/my-partial"
+```
+Will import the `app/my-partial.scss` into `app.scss`.
+
+### Statements
+
+You can also use conditions, loops and internal functions.  
+Loops and conditions are more tricky in less.
+
+Less :
+```Less
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .col-@{i} {
+    position: absolute;
+    width: percentage(1 / @n);
+    left: percentage((@i - 1) / @n);
+  }
+  .generate-columns(@n, (@i + 1));
+}
+.generate-columns(3);
+```
+
+Sass :
+```Sass
+@mixin generate-columns($n) {
+  @for $i from 1 through $n {
+    .col-#{$i} {
+      position: absolute;
+      width: percentage(1 / $n);
+      left: percentage(($i - 1) / $n);
+    }
+  }
+}
+@include generate-columns(3);
+```
+
+CSS result :
+```CSS
+.col-1 {
+  position: absolute;
+  width: 33.33333%;
+  left: 0%;
+}
+.col-2 {
+  position: absolute;
+  width: 33.33333%;
+  left: 33.33333%;
+}
+.col-3 {
+  position: absolute;
+  width: 33.33333%;
+  left: 66.66667%;
+}
+```
+
+Take a look a the bootstrap grid for a more advanced example :
+* Less :
+  * https://github.com/twbs/bootstrap/blob/master/less/grid.less
+  * https://github.com/twbs/bootstrap/blob/master/less/mixins/grid.less
+  * https://github.com/twbs/bootstrap/blob/master/less/mixins/grid-framework.less
+* Sass :
+  * https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_grid.scss
+  * https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/mixins/_grid.scss
+  * https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/mixins/_grid-framework.scss
+
 ## Online testing
 
 * [LESSTESTER](http://lesstester.com/)
