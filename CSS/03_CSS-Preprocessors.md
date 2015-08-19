@@ -126,7 +126,7 @@ $main-color: #3D9BB3;
 
 CSS result :
 ```CSS
-a {
+.link {
   color: #3D9BB3;
 }
 ```
