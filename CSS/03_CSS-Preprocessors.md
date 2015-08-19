@@ -74,6 +74,7 @@ Variables are scoped and can be manipulated with operators.
 
 Less :
 ```Less
+@width: 50px;
 .link {
   @width: 20px;
   width: @width;
@@ -83,6 +84,7 @@ Less :
 
 Sass :
 ```Sass
+$width: 50px;
 .link {
   $width: 20px;
   width: $width;
