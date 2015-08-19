@@ -359,7 +359,7 @@ Will import the `app/my-partial.scss` into `app.scss`.
 ### Statements
 
 You can also use conditions, loops and internal functions.  
-Loops and conditions are more tricky in less.
+Loops are a little more tricky in less (recursive mixins).
 
 Less :
 ```Less
