@@ -18,6 +18,7 @@ A jQuery object can be used to perform any of the usual jQuery method we will se
 ## jQuery core
 
 the `jQuery()` function can be use different ways :
+
 1. by passing a function as first argument
 2. by passing a HTML string (starts with `<tag ... >`) as first argument
 3. by passing a selector as first argument, and an optionnal context as second argument
