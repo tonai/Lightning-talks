@@ -6,13 +6,15 @@ This files contains examples illustrating [this presentation](https://prezi.com/
 
 You can use the navigator's debug console (F12) to try the above examples yourself.
 
-Presentation time needed : 15min
+Presentation time needed : 30min
 
 ## First-class citizen
 
 A first-class citizen is an entity which supports all the operations generally available to other entities.
 
 These operations typically include being passed as a parameter, returned from a function, and assigned to a variable.
+
+**JavaScript does have first-class function.**
 
 ## Functions
 
@@ -131,7 +133,7 @@ x;
 
 Variable declarations are hoisted : The declaration is moved to the beginning of the function (but not assignments).
 
-Example :
+Example (**x should be defined in the global scope, you may reload your page for the example to work**) :
 ```javascript
 function myFunc() {
   console.log(x);
@@ -253,7 +255,16 @@ result[1]();
 result[3]();
 ```
 
-Result will be the same, because the context of `i` is global and not local to the function. 
+Result will be the same, because the context of `i` is global and not local to the function.
+
+It's ok if you execute the function immediatly :
+```javascript
+var result = [];
+for (var i=0; i < 5; i++) {
+  result.push(function () { return i })();
+}
+result[1];
+```
 
 ## IIFE (Immediately Invoked Function Expression)
 
