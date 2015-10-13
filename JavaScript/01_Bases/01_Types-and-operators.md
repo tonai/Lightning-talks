@@ -6,7 +6,7 @@ This files contains examples illustrating [this presentation](http://prezi.com/w
 
 You can use the navigator's debug console (F12) to try the above examples yourself.
 
-Presentation time needed : 30min
+Presentation time needed : 45min
 
 ## History
 
@@ -192,10 +192,10 @@ Use instanceof to determine whether an object is an instance of a given type. in
 
 Example :
 ```javascript
-{} instanceof Object;
+({} instanceof Object);
 [] instanceof Object;
-(function() {}) instanceof Function;
-(function() {}) instanceof Object;
+(function() {} instanceof Function);
+(function() {} instanceof Object);
 new Date() instanceof Date;
 new Date() instanceof Object;
 true instanceof Object;
@@ -212,7 +212,7 @@ point instanceof Point;
 point instanceof Object;
 ```
 
-### Wrapper ([beware !][beware])
+### Wrapper
 
 Do not use wrappers (Boolean, Number, String) by using the `new` keyword.
 
@@ -246,7 +246,7 @@ Example :
 
 Same as :
 ```javascript
-var obj = 
+var obj = {
   foo: square(2)
 };
 obj;
@@ -256,7 +256,7 @@ obj;
 
 But JavaScript has blocks that can exist on their own.
 
-You can give them a label and break from them.
+You can give them a label and **break from them**.
 
 Example :
 ```javascript
@@ -494,11 +494,6 @@ object;
 ```javascript
 void x;
 void (x + y);
-void function(){
-  var x = 42;
-  console.log(x);
-  return x;
-}();
 ```
 
 * Conditional (ternary) operator
@@ -612,5 +607,3 @@ Because `({} + {});` is an expression and `{} + {};` is a statement.
 * [Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
 * [Bitwise operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
 * [Assignment operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)
-
-[beware]: http://www.youtube.com/watch?v=NDtfiX4YwzM&t=0m28s
