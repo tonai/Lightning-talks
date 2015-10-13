@@ -21,9 +21,7 @@ JavaScript various influences:
 
 ## Statements VS expressions
 
-An expression produces a value and can be written wherever a value is expected (for example as an argument in a function call).
-
-### Statements
+### Statements (assertion, déclaration)
 
 A statement performs an action :
 * variable assignment with `var`
@@ -46,7 +44,7 @@ x;
 
 ### Expressions
 
-An expression produce a value.
+An expression produces a value and can be written wherever a value is expected (for example as an argument in a function call).
 
 Example :
 ```javascript
