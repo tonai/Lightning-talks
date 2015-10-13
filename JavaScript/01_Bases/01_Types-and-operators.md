@@ -105,6 +105,39 @@ square(var z = 3); // KO
 square(z = 3); // OK because it produces the value 3.
 ```
 
+
+### Label
+
+Any statements (and thus also expressions) can have a label.
+
+`break` can be used with any labeled statement, and `continue` can be used with looping labeled statements.
+
+Statement example with `break` :
+```javascript
+myLabel:
+if (true) {
+  console.log('one');
+  break myLabel;
+  console.log('two');
+}
+```
+
+Statement example with `continue` :
+```javascript
+myLabel:
+for (var i in [0, 1, 2]) {
+  if (i == 0) {
+    continue myLabel;
+  }
+  console.log(i);
+}
+```
+
+Expression example: 
+```javascript
+myLabel: 1 + 2;
+```
+
 ## Primitives VS objetcs
 
 ### Primitives
@@ -237,13 +270,6 @@ Object literal is an expression that produces an object.
 
 Example :
 ```javascript
-{
-  foo: square(2)
-}
-```
-
-Same as :
-```javascript
 var obj = {
   foo: square(2)
 };
@@ -254,24 +280,34 @@ obj;
 
 But JavaScript has blocks that can exist on their own.
 
-You can give them a label and **break from them**.
+Example :
+```javascript
+{
+  foo: console.log('bar');
+}
+```
+
+Blocks are statements and thus you can give them a label and break from them.
 
 Example :
 ```javascript
-function myFunc(printTwo) {
-  console.log(printTwo);
-  printing: {
-    console.log("One");
-    if (!printTwo) {
-      break printing;
-    }
-    console.log("Two");
+printing: {
+  console.log('one');
+  if (true) {
+    break printing;
   }
-  console.log("Three");
+  console.log('two');
 }
-myFunc();
-myFunc(1);
 ```
+
+Beware, the following line is **not** an object literal :
+```javascript
+{
+  foo: square(2)
+}
+```
+
+**Remember:** An expression can not start with `{` because it is reserved for the block statement.
 
 ## Operators
 
