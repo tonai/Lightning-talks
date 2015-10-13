@@ -69,6 +69,8 @@ jQuery.ajax({
   },
 });
 ```
+You can't call it on the [https://github.com](Github) page because of the Content-Security-Policy header.  
+But you can try to call it on the [http://jquery.com/](jQuery) page.
 
 The following methods are `jQuery.ajax()` shorthand methods :
 * `jQuery.get()`
@@ -85,7 +87,7 @@ The following methods are `jQuery.ajax()` shorthand methods :
 * `.slideUp(Object)` OU `.slideUp([String|Number] [, String] [, Function])` : Hide the matched elements with a sliding motion.
 * `.slideToggle(Object)` OU `.slideToggle([String|Number] [, String] [, Function])` : Display or hide the matched elements with a sliding motion.
 
-[CodePen example](http://codepen.io/collection/AVYzwE/).
+[CodePen example](http://codepen.io/tonai/pen/KpBwZv).
 
 ### jQuery fade effect
 
