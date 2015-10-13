@@ -29,6 +29,8 @@ function add(param1, param2) {
 }
 ```
 
+**Remember:** An expression can not start with `function` because it is reserved for the function declaration statement.
+
 ### Function expression
 
 Functions can be defined via a function expression.
