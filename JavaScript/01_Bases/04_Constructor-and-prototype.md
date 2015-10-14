@@ -12,7 +12,7 @@ Presentation time needed : 45min
 
 `this` is a special keyword that lives in a function's scope and, in most cases, refer to the current object (typically an object method).
 
-### Value of `this` within a classic function
+### Value of `this` within a classic function in non strict mode
 
 When there is no current object , in non-strict mode, the value of this is the so-called global object (window in browsers).
 
