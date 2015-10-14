@@ -6,7 +6,7 @@ This files contains examples illustrating [this presentation](https://prezi.com/
 
 You can use the navigator's debug console (F12) to try the above examples yourself.
 
-Presentation time needed : 30-40min
+Presentation time needed : 45min
 
 ## `this`
 
@@ -538,9 +538,22 @@ var Point3D = function(){
 };
 ```
 
-Extending `Point3D` prototype from  `Point2D` prototype :
+Now extend `Point3D` prototype from  `Point2D` prototype.
+
+By creating an instance of `Point2D` (which is an object so a candidate for a prototype) :
+```javascript
+Point3D.prototype = new Point2D();
+```
+
+But we do not need to call `Point2D` contructor, we only whant it's prototype (better) :
 ```javascript
 Point3D.prototype = Object.create(Point2D.prototype);
+```
+
+That's ok but we lost the default `Point3D.prototype.constructor` method, so set it back :
+```javascript
+Point3D.prototype = Object.create(Point2D.prototype);
+Point3D.prototype.constructor = Point3D;
 ```
 
 Rewriting the `toString` method using the "parent" method (no native shortcut) :
