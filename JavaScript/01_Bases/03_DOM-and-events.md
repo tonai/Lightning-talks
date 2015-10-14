@@ -4,7 +4,7 @@
 
 You can use the navigator's debug console (F12) to try the above examples yourself.
 
-Presentation time needed : 30min
+Presentation time needed : 45min
 
 ## DOM
 
