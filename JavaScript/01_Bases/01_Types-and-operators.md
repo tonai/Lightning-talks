@@ -21,7 +21,7 @@ JavaScript various influences:
 
 ## Statements VS expressions
 
-### Statements (assertion, déclaration)
+### Statements (assertion, declaration)
 
 A statement performs an action :
 * variable assignment with `var`
@@ -138,7 +138,7 @@ Expression example:
 myLabel: 1 + 2;
 ```
 
-## Primitives VS objetcs
+## Primitives VS objects
 
 ### Primitives
 
