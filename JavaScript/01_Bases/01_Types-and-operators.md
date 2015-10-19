@@ -2,9 +2,9 @@
 
 ## Foreword
 
-This files contains examples illustrating [this presentation](http://prezi.com/wg82mzhhhaz2/javascript-intro-and-types/).
+This file contains examples illustrating [this presentation](http://prezi.com/wg82mzhhhaz2/javascript-intro-and-types/).
 
-You can use the navigator's debug console (F12) to try the above examples yourself.
+You can use the navigator's debug console (F12) to try the following examples yourself.
 
 Presentation time needed : 45min
 
