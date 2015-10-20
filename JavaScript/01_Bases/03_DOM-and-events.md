@@ -34,6 +34,12 @@ document.querySelector('#readme .anchor');
 document.querySelectorAll('#readme .anchor');
 ```
 
+These are Vanilla JS methods for selecting one or some DOM elements and are therefore the most efficient compared to popular JS frameworks !
+* http://jsperf.com/retrieve-dom-element-by-id-comparison
+* http://jsperf.com/retrieve-dom-element-by-tag-name-comparison
+* http://jsperf.com/retrieve-dom-element-by-class-comparison
+* http://jsperf.com/retrieve-dom-element-with-query-comparison
+
 ### Navigate into the DOM
 
 When selecting an `Element` you can use the above mehods, except `document.getElementById` and `document.getElementsByName`, to "navigate" deeper into the DOM.
