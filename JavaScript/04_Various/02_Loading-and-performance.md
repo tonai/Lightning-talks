@@ -581,7 +581,7 @@ document.body.removeChild(link);
 
 &nbsp;
 
-### Resize
+### Reload and resize
 
 **33 :**
 ```javascript
@@ -621,6 +621,8 @@ window.dispatchEvent(event);
 &nbsp;
 
 &nbsp;
+
+This is a violation a the [HTML specs](https://html.spec.whatwg.org/multipage/browsers.html#dom-location-reload).
 
 **35 :**
 ```javascript
@@ -776,8 +778,65 @@ window.onresize();
 | 38 |           |          | X          | X   | X    | X    |          |
 | 39 | X         | X        | X          | X   | X    | X    | X        |
 
+## Understanding network
+
+In the developer toolbar you can see the following timing in the network tab :
+* **Stalled/Blocking :** Time the request spent waiting before it could be sent. This time is inclusive of any time spent in proxy negotiation. Additionally, this time will include when the browser is waiting for an already established connection to become available for re-use, obeying Chrome's maximum six TCP connection per origin rule.
+* **Proxy Negotiation :** Time spent negotiating with a proxy server connection.
+* **DNS Lookup :** Time spent performing the DNS lookup. Every new domain on a page requires a full roundtrip to do the DNS lookup.
+* **Initial Connection / Connecting :** Time it took to establish a connection, including TCP handshakes/retries and negotiating a SSL.
+* **SSL :** Time spent completing a SSL handshake.
+* **Request Sent / Sending :** Time spent issuing the network request. Typically a fraction of a millisecond. (upload)
+* **Waiting (TTFB) :** Time spent waiting for the initial response, also known as the Time To First Byte. This time captures the latency of a round trip to the server in addition to the time spent waiting for the server to deliver the response.
+* **Content Download / Downloading :** Time spent receiving the response data.
+
+## Resources and scripts
+
+### Speculative parsing
+
+Traditionally in browsers the HTML parser has run on the main thread and has blocked after a `</script>` tag until the script has been retrieved from the network and executed.
+
+In modern browsers, resources are downloaded before scripts are finished executing. This is called [speculative parsing][speculative-parsing].
+
+But scripts does still need to be executed in order.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/51.html)
+
+DomContentLoaded ~= 7s  
+Load ~= 7s
+
+### `async` attribute
+
+You can use the `async` attribute to speed up the DOM rendering. Scripts aren't blocking anymore because they are executed asynchronously.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/52.html)
+
+But you don't have control on the order the scripts are executed anymore.
+
+The `async` attribute is not supported by IE < 10 : http://caniuse.com/#search=async
+
+DomContentLoaded ~= 50ms  
+Load ~= 7s
+
+### `defer` attribute
+
+The `defer` attribute will tell the browser that the execution of the script can be deferred after that the DOM has been completely parsed.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/53.html)
+
+Deferred scripts are executed in order and the DomContentLoaded is only triggered at the end.
+
+The `defer` attribute can have a different comportment that the one defined in the specs for IE < 10 : http://caniuse.com/#search=defer
+
+DomContentLoaded ~= 7s  
+Load ~= 7s
+
 ## References
 
 * [Request Quest][request-quest]
+* [Resource network timing][resource-network-timing]
+* [Optimizing your pages for speculative parsing][speculative-parsing]
 
 [request-quest]: http://jakearchibald.github.io/request-quest/
+[resource-network-timing]: https://developer.chrome.com/devtools/docs/network#resource-network-timing
+[speculative-parsing]: https://developer.mozilla.org/en-US/docs/Web/HTML/Optimizing_your_pages_for_speculative_parsing
