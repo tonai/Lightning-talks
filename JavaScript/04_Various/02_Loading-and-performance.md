@@ -815,7 +815,7 @@ But you don't have control on the order the scripts are executed anymore.
 
 The `async` attribute is not supported by IE < 10 : http://caniuse.com/#search=async
 
-DomContentLoaded ~= 50ms  
+DomContentLoaded ~= 100-150ms  
 Load ~= 7s
 
 ### `defer` attribute
@@ -827,6 +827,40 @@ The `defer` attribute will tell the browser that the execution of the script can
 Deferred scripts are executed in order and the DomContentLoaded is only triggered at the end.
 
 The `defer` attribute can have a different comportment that the one defined in the specs for IE < 10 : http://caniuse.com/#search=defer
+
+DomContentLoaded ~= 7s  
+Load ~= 7s
+
+### Creating a `script` tag with JavaScript
+
+This methos is similar to the `async` attribute method, but with no browser restriction.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/54.html)
+
+DomContentLoaded ~= 100-150ms  
+Load ~= 7s
+
+### Creating an `img` tag with JavaScript
+
+As scripts need to be executed in order, it will delay the loading of images.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/55.html)
+
+DomContentLoaded ~= 7s  
+Load ~= 7s
+
+And if create both tags with JavaScript you may expect the result :
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/56.html)
+
+DomContentLoaded ~= 100-150ms  
+Load ~= 7s
+
+### Including scripts at the end of the `body`
+
+The most simple method to render the content quickly while keeping the script execution order.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/57.html)
 
 DomContentLoaded ~= 7s  
 Load ~= 7s
