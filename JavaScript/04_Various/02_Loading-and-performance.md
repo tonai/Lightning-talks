@@ -858,7 +858,7 @@ Load ~= 7s
 
 ### Including scripts at the end of the `body`
 
-The most simple method to render the content quickly while keeping the script execution order.
+The most simple and reliable method to render the content quickly while keeping the script execution order.
 
 => [Try it yourself !](http://tonai.github.io/Lightning-talks/JavaScript/04_Various/02_Loading-and-performance/57.html)
 
