@@ -1,0 +1,22 @@
+{
+  "name": "responsive-vs-adpative",
+  "version": "1.0.0",
+  "authors": [
+    "tocab"
+  ],
+  "description": "Responsive VS adapative designs.",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "mobile-detect": "mobile-detect.js#~1.3.0",
+    "modernizr": "~2.8.3"
+  }
+}

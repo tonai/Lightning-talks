@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20120731 at Fri Sep 11 15:23:17 2015
+ By Tony CABAYE
+</metadata>
+<defs>
+<font id="icons" horiz-adv-x="512" >
+  <font-face 
+    font-family="icons"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="512"
+    panose-1="2 0 6 9 0 0 0 0 0 0"
+    ascent="448"
+    descent="-64"
+    bbox="0 -64 512 448"
+    underline-thickness="25"
+    underline-position="-52"
+    unicode-range="U+F101-F103"
+  />
+<missing-glyph 
+d="M17 0v341h136v-341h-136zM34 17h102v307h-102v-307z" />
+    <glyph glyph-name=".notdef" 
+d="M17 0v341h136v-341h-136zM34 17h102v307h-102v-307z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" 
+ />
+    <glyph glyph-name="uniF101" unicode="&#xf101;" 
+d="M119 195l226 192q8 8 20 7t20 -10q7 -8 6 -20t-9 -20l-174 -149l173 -150q9 -8 10 -19.5t-7 -20t-19.5 -9.5t-20.5 7z" />
+    <glyph glyph-name="uniF102" unicode="&#xf102;" 
+d="M391 195l-225 -192q-8 -8 -20 -7t-20 9q-7 9 -6 21t9 19l174 150l-174 149q-8 8 -9 20t6.5 20.5t19.5 9.5t20 -7z" />
+    <glyph glyph-name="uniF103" unicode="&#xf103;" 
+d="M512 192h-64v-256h-128v160h-128v-160h-128v256h-64l256 256z" />
+  </font>
+</defs></svg>

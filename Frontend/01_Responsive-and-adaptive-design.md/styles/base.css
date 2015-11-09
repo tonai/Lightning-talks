@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  color: #000;
+  font-size: medium;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #4682b4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #4682b4;
+  text-decoration: underline;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+

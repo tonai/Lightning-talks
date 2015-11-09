@@ -1,0 +1,8 @@
+.l-page {
+  padding-left: 40px;
+  padding-right: 40px;
+  width: calc(100% - 80px);
+  margin-left: auto;
+  margin-right: auto;
+}
+

@@ -1,0 +1,30 @@
+.l-page {
+  padding-left: 40px;
+  padding-right: 40px;
+  width: calc(100% - 80px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.l-grid {
+  font-size: 0;
+  margin: 0 -40px 40px;
+}
+
+.l-grid__col {
+  display: inline-block;
+  font-size: medium;
+  vertical-align: top;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+
+.l-w50 {
+  width: 50%;
+}
+
+.l-w25 {
+  width: 25%;
+}
+
