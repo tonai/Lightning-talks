@@ -68,6 +68,15 @@ Common breakpoints :
 * 768px : usually used resolution for tablet in portrait position (portrait resolution of most ipad).
 * 1024px : usually used resolution for tablet in landscape position (landscape resolution of most ipad).
 
+### Graceful degradation
+
+Graceful degradation allow the page to "degrade", or remain presentable even if certain technologies assumed by the design were not present, without being jarring to the user of such older software.
+
+For example, the CSS property `border-radius` allow box to have rounded corners which was very complicated to do before.
+
+This property is not compatible with IE < 9, so when using this browser, the user won't have rounded corners.  
+But this is not really important.
+
 ## The different behaviors across devices
 
 ### Fixed layout
@@ -80,7 +89,8 @@ When resizing your brower a scrollbar will appear at the bottom of the screen.
 
 ### Fluid layout
 
-The width of the content has a relative value.
+The width of the content has a relative value.  
+It can also have a maximum width value.
 
 You won't have a scrollbar when resizing, but it can't really fit for small resolutions.
 
@@ -90,15 +100,47 @@ You won't have a scrollbar when resizing, but it can't really fit for small reso
 
 This technique uses CSS media queries.
 
-You 
+You will have multiples fixed layout for multiple intervals of resolutions.
+
+You can rearrange columns, hide and show some blocs...etc. for specific displays.
+
+It is a technique that is best to use when working on an existing site, and you want better displays for tablets and mobiles for example, without changing the current desktop look and feel.
 
 => [Try it yourself !](http://tonai.github.io/Lightning-talks/Frontend/01_Responsive-and-adaptive-design/adaptive-layout.html)
 
+This is one of the techniques when talking about `Responsive Web Design` (RWD).
+
+### Responsive layout
+
+This technique uses CSS media queries.
+
+You will have multiples fluid layout for multiple intervals of resolutions.
+
+Like the `Adaptive layout`, you can rearrange columns...etc. for specific displays.
+
+This method is oftenly used when creating new sites.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/Frontend/01_Responsive-and-adaptive-design/responsive-layout.html)
+
+This is one of the techniques when talking about `Responsive Web Design` (RWD).
+
+### Adaptive Web Design
+
+`Adaptive Web Design` (AWD) uses a predefined set of layout sizes based on device screen size along with CSS and JavaScript.
+The AWD approach adapts to the detected device by using many of the components of **progressive enhancement**.
+
+A simple example is to redirect the user to different pages depending on the detected device.
+
+With this technique you can deliver a complete different HTML which allow network and rendering optimization for the device.
+
+=> [Try it yourself !](http://tonai.github.io/Lightning-talks/Frontend/01_Responsive-and-adaptive-design/adaptive-design-desktop.html)
 
 ## References
 
 * [HyperText Markup Language][HTML]
 * [Cascading Style Sheets][CSS]
+* [Progressive enhancement][PE]
 
 [HTML]: https://en.wikipedia.org/wiki/HTML
 [CSS]: https://en.wikipedia.org/wiki/Cascading_Style_Sheets
+[PE]: https://en.wikipedia.org/wiki/Progressive_enhancement
