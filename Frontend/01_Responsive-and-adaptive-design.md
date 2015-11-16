@@ -108,8 +108,6 @@ It is a technique that is best to use when working on an existing site, and you 
 
 => [Try it yourself !](http://tonai.github.io/Lightning-talks/Frontend/01_Responsive-and-adaptive-design/adaptive-layout.html)
 
-This is one of the techniques when talking about `Responsive Web Design` (RWD).
-
 ### Responsive layout
 
 This technique uses CSS media queries.
@@ -122,16 +120,23 @@ This method is oftenly used when creating new sites.
 
 => [Try it yourself !](http://tonai.github.io/Lightning-talks/Frontend/01_Responsive-and-adaptive-design/responsive-layout.html)
 
-This is one of the techniques when talking about `Responsive Web Design` (RWD).
+Ethan Marcotte says :
+> Fluid grids, flexible images, and media queries are the three technical ingredients for responsive web design, but it also requires a different way of thinking.
 
 ### Adaptive Web Design
 
 `Adaptive Web Design` (AWD) uses a predefined set of layout sizes based on device screen size along with CSS and JavaScript.
+
+With this definition it may be confused with the adaptive layout, but in fact AWD is a concept that encompass
+RWD.
+
 The AWD approach adapts to the detected device by using many of the components of **progressive enhancement**.
 
-A simple example is to redirect the user to different pages depending on the detected device.
+Progressive enhancement is a strategy for web design that emphasizes accessibility, semantic HTML markup, and external stylesheet and scripting technologies.  
+Progressive enhancement uses web technologies in a layered fashion that allows everyone to access the basic content and functionality of a web page, using any browser or Internet connection, while also providing an enhanced version of the page to those with more advanced browser software or greater bandwidth.
 
-With this technique you can deliver a complete different HTML which allow network and rendering optimization for the device.
+A simple example is to redirect the user to different pages depending on the detected device.  
+With this technique you can deliver a complete different HTML which allow network and rendering optimization for the targeted device.
 
 => [Try it yourself !](http://tonai.github.io/Lightning-talks/Frontend/01_Responsive-and-adaptive-design/adaptive-design-desktop.html)
 
@@ -139,8 +144,10 @@ With this technique you can deliver a complete different HTML which allow networ
 
 * [HyperText Markup Language][HTML]
 * [Cascading Style Sheets][CSS]
+* [Responsive Web Design][RWD]
 * [Progressive enhancement][PE]
 
 [HTML]: https://en.wikipedia.org/wiki/HTML
 [CSS]: https://en.wikipedia.org/wiki/Cascading_Style_Sheets
+[RWD]: http://alistapart.com/article/responsive-web-design
 [PE]: https://en.wikipedia.org/wiki/Progressive_enhancement
