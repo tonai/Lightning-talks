@@ -601,6 +601,8 @@ window.onresize = function() {
 
 &nbsp;
 
+This is a violation a the [HTML specs](https://html.spec.whatwg.org/multipage/browsers.html#dom-location-reload).
+
 **34 :**
 ```javascript
 window.onresize = function() {
@@ -621,8 +623,6 @@ window.dispatchEvent(event);
 &nbsp;
 
 &nbsp;
-
-This is a violation a the [HTML specs](https://html.spec.whatwg.org/multipage/browsers.html#dom-location-reload).
 
 **35 :**
 ```javascript
