@@ -7,7 +7,7 @@ This presentation make an easier comparison of the different available jQuery me
 
 Presentation time needed : 15min
 
-## Table of content
+## Table of contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
