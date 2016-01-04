@@ -312,6 +312,8 @@ console.log('foo');
 console.log('baz');
 ```
 
+**Remember:** An expression can not start with `{` because it is reserved for the block declaration statement.
+
 Blocks are statements and thus you can give them a label and break from them.
 
 Example :
