@@ -76,7 +76,28 @@ square(1);
 square(2);
 ```
 
-For expression you also can use `,`.
+But in contrary to some other languages, it is not mandatory.
+The following lines will work :
+```javascript
+square(1)
+square(2)
+```
+
+But not using the `;` operator may also lead to some errors.
+
+OK :
+```javascript
+1;
+(2);
+```
+
+KO :
+```javascript
+1
+(2)
+```
+
+For expression you can also use `,`.
 
 The result is also an expression (it's the result of the last expression).
 
@@ -87,7 +108,7 @@ square(1), square(2);
 
 ### Expression statements
 
-An expression statement is basically the combination of performing an action and returning a value.
+An expression statement is basically the combination of performing an action and returning a value.  
 Another way to say it : it is expressions that have side effects.
 
 Example of Expression statements :
@@ -148,6 +169,7 @@ The primitive values are:
 * strings
 * null
 * undefined
+* symbol (ES6)
 
 Example :
 ```javascript
@@ -200,8 +222,8 @@ typeof 1;
 typeof "aze";
 typeof [];
 typeof {};
-var myVar;
-typeof myVar;
+var myVar; typeof myVar;
+var mySymbol = Symbol("foo"); typeof mySymbol;
 ```
 
 ### typeof WAT !
@@ -230,6 +252,7 @@ Example :
 new Date() instanceof Date;
 new Date() instanceof Object;
 true instanceof Object;
+mySymbol instanceof Symbol
 ```
 
 Example :
@@ -282,9 +305,11 @@ But JavaScript has blocks that can exist on their own.
 
 Example :
 ```javascript
+console.log('foo');
 {
-  foo: console.log('bar');
+  console.log('bar');
 }
+console.log('baz');
 ```
 
 Blocks are statements and thus you can give them a label and break from them.
@@ -323,6 +348,12 @@ x + y;
 This operator is also used for concatenating strings :
 ```javascript
 'hello' + ' ' + 'world';
+```
+
+If a number is "added" to a string, the result will be a string :
+```javascript
+1 + 2 + 'world';
+'world' + 1 + 2;
 ```
 
 Subtraction `-` :
