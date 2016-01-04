@@ -6,6 +6,29 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 45min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [DOM](#dom)
+  - [Getting a DOM element](#getting-a-dom-element)
+  - [Navigate into the DOM](#navigate-into-the-dom)
+  - [Creating a DOM element](#creating-a-dom-element)
+  - [Removing](#removing)
+  - [Attributes](#attributes)
+  - [innerHTML](#innerhtml)
+- [Events](#events)
+  - [Binding an event](#binding-an-event)
+  - [Event types](#event-types)
+  - [Event propagation](#event-propagation)
+  - [Event object](#event-object)
+  - [Remove and trigger events](#remove-and-trigger-events)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## DOM
 
 DOM is for Document Object Modeland provides a representation of the document as a structured group of nodes and objects that have properties and methods.

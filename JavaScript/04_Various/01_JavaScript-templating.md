@@ -6,6 +6,30 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 20min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Existing JavaScript template engine](#existing-javascript-template-engine)
+- [Syntax](#syntax)
+  - [General notions](#general-notions)
+  - [Mustache style](#mustache-style)
+  - [ERB style (Ruby template engine)](#erb-style-ruby-template-engine)
+- [Focus on one template engine : microtempling](#focus-on-one-template-engine--microtempling)
+  - [Introduction](#introduction)
+  - [Usage](#usage)
+    - [String template](#string-template)
+    - [HTML template](#html-template)
+    - [Writing a partial](#writing-a-partial)
+    - [More complexe example](#more-complexe-example)
+    - [Pre-compilation](#pre-compilation)
+  - [Integration with Drupal](#integration-with-drupal)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Existing JavaScript template engine
 
 There is a lot of JavaScript template engines :

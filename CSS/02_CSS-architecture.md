@@ -4,6 +4,36 @@
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Goal](#goal)
+- [Common Bad Practices](#common-bad-practices)
+  - [Modifying a components based on parents](#modifying-a-components-based-on-parents)
+  - [Overly complicated selectors](#overly-complicated-selectors)
+  - [Overly generic class names](#overly-generic-class-names)
+  - [Making a rule do too much](#making-a-rule-do-too-much)
+- [Best practices](#best-practices)
+  - [Be intentional](#be-intentional)
+  - [Separate your concerns](#separate-your-concerns)
+    - [Base rules](#base-rules)
+    - [Layout](#layout)
+    - [Module](#module)
+    - [State](#state)
+    - [Theme](#theme)
+  - [Name your classes with a logical structure](#name-your-classes-with-a-logical-structure)
+    - [Block](#block)
+    - [Element](#element)
+    - [Modifiers for blocks](#modifiers-for-blocks)
+    - [Element modifiers](#element-modifiers)
+  - [Separate styles from functionalities](#separate-styles-from-functionalities)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Goal
 
 The goal of CSS architecture is to improve the following aspects :

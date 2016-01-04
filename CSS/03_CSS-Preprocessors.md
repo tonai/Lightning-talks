@@ -4,6 +4,34 @@
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [introduction](#introduction)
+  - [What are CSS preprocessors ?](#what-are-css-preprocessors-)
+  - [Who are they ?](#who-are-they-)
+- [Common features](#common-features)
+  - [Variables](#variables)
+    - [Simple variables](#simple-variables)
+    - [Operations](#operations)
+    - [Interpolation](#interpolation)
+  - [CSS rules extension](#css-rules-extension)
+    - [Nesting](#nesting)
+    - [Inheritance](#inheritance)
+  - [Mixins and Functions](#mixins-and-functions)
+    - [Simple mixins](#simple-mixins)
+    - [Parametric mixins](#parametric-mixins)
+    - [Functions](#functions)
+  - [Imports and partials](#imports-and-partials)
+  - [Statements](#statements)
+- [Online testing](#online-testing)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ##introduction
 
 ### What are CSS preprocessors ?

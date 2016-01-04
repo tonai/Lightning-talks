@@ -8,6 +8,45 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 45min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [`this`](#this)
+  - [Value of `this` within a classic function in non strict mode](#value-of-this-within-a-classic-function-in-non-strict-mode)
+  - [Value of `this` within a classic function in strict mode](#value-of-this-within-a-classic-function-in-strict-mode)
+  - [Other value of `this` (event callback)](#other-value-of-this-event-callback)
+- [Object literals methods](#object-literals-methods)
+  - [Value of `this` within a method](#value-of-this-within-a-method)
+  - [Extracted method loses binding](#extracted-method-loses-binding)
+  - [Each function has its own `this`](#each-function-has-its-own-this)
+  - [`dist` workaround 1](#dist-workaround-1)
+  - [`dist` workaround 2](#dist-workaround-2)
+- [`bind`, `call` and `apply`](#bind-call-and-apply)
+  - [`bind` with extracted method](#bind-with-extracted-method)
+  - [Using `bind` for `dist` workaround 1](#using-bind-for-dist-workaround-1)
+  - [Using `bind` for `dist` workaround 2](#using-bind-for-dist-workaround-2)
+  - [Using `call` for `dist` workaround](#using-call-for-dist-workaround)
+  - [Using `apply` for `dist` workaround](#using-apply-for-dist-workaround)
+  - [Exercice : create a function that adds each of its argument each other](#exercice--create-a-function-that-adds-each-of-its-argument-each-other)
+  - [`add` workaround](#add-workaround)
+  - [`bind`, `call` and `apply` at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:](#bind-call-and-apply-at-the-same-time-for-dist-workaround-smiling_imp-smiling_imp-smiling_imp)
+- [Constructor](#constructor)
+  - [Simple constructor](#simple-constructor)
+- [Prototype](#prototype)
+  - [Used to save memory](#used-to-save-memory)
+  - [The change of a constructor prototype method will impact all instances](#the-change-of-a-constructor-prototype-method-will-impact-all-instances)
+  - [The constructor prototype property](#the-constructor-prototype-property)
+- [inheritance](#inheritance)
+  - [Using `Object.create`](#using-objectcreate)
+  - [Simple inheritance example](#simple-inheritance-example)
+  - [Other inheritance examples](#other-inheritance-examples)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## `this`
 
 `this` is a special keyword that lives in a function's scope and, in most cases, refer to the current object (typically an object method).

@@ -8,6 +8,28 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [First-class citizen](#first-class-citizen)
+- [Functions](#functions)
+  - [Function declaration](#function-declaration)
+  - [Function expression](#function-expression)
+  - [Arguments](#arguments)
+- [Scope](#scope)
+  - [Global scope](#global-scope)
+  - [Hoisted var](#hoisted-var)
+  - [Hoisted function](#hoisted-function)
+- [Closure](#closure)
+- [IIFE (Immediately Invoked Function Expression)](#iife-immediately-invoked-function-expression)
+  - [Use it to create a local context](#use-it-to-create-a-local-context)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## First-class citizen
 
 A first-class citizen is an entity which supports all the operations generally available to other entities.

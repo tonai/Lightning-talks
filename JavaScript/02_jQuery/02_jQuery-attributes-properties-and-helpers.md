@@ -7,6 +7,24 @@ This presentation make an easier comparison of the different available jQuery me
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [jQuery attributes](#jquery-attributes)
+  - [jQuery attributes and classes](#jquery-attributes-and-classes)
+  - [jQuery properties and values](#jquery-properties-and-values)
+  - [jQuery data](#jquery-data)
+- [jQuery CSS](#jquery-css)
+- [jQuery helpers](#jquery-helpers)
+  - [jQuery object and array helpers](#jquery-object-and-array-helpers)
+  - [jQuery other helpers](#jquery-other-helpers)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## jQuery attributes
 
 ### jQuery attributes and classes

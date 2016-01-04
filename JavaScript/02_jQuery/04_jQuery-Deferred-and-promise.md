@@ -7,6 +7,23 @@ This presentation make an easier comparison of the different available jQuery me
 
 Presentation time needed : 15min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [The Deferred object](#the-deferred-object)
+  - [Creating a deferred object.](#creating-a-deferred-object)
+  - [State property.](#state-property)
+  - [Binding callbacks](#binding-callbacks)
+  - [Updating the state](#updating-the-state)
+- [jQuery promises](#jquery-promises)
+- [Waiting for multiples deferred objects](#waiting-for-multiples-deferred-objects)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## The Deferred object
 
 The `Deferred` object is used to control the flow and to chain up synchronous or asynchronous functions.

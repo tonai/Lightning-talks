@@ -6,6 +6,26 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 20min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [JavaScript and DOM](#javascript-and-dom)
+  - [HTML classes](#html-classes)
+  - [Variable naming](#variable-naming)
+  - [Use a container element](#use-a-container-element)
+  - [Namespace your events](#namespace-your-events)
+- [jQuery plugin](#jquery-plugin)
+  - [Merging options](#merging-options)
+  - [jQuery plugin based on an element](#jquery-plugin-based-on-an-element)
+  - [Avoid duplicates on the same element](#avoid-duplicates-on-the-same-element)
+  - [Optimize your DOM queries](#optimize-your-dom-queries)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## JavaScript and DOM
 
 ### HTML classes

@@ -6,6 +6,37 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 45min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Load or not quiz](#load-or-not-quiz)
+  - [Images](#images)
+  - [Background images](#background-images)
+  - [Images with JavaScript](#images-with-javascript)
+  - [Background images with JavaScript](#background-images-with-javascript)
+  - [Scripts](#scripts)
+  - [Scripts with JavaScript](#scripts-with-javascript)
+  - [Links with JavaScript](#links-with-javascript)
+  - [Iframes](#iframes)
+  - [Using document.write](#using-documentwrite)
+  - [Reload and resize](#reload-and-resize)
+  - [Fonts](#fonts)
+  - [Answers](#answers)
+- [Understanding network](#understanding-network)
+- [Resources and scripts](#resources-and-scripts)
+  - [Speculative parsing](#speculative-parsing)
+  - [`async` attribute](#async-attribute)
+  - [`defer` attribute](#defer-attribute)
+  - [Creating a `script` tag with JavaScript](#creating-a-script-tag-with-javascript)
+  - [Creating an `img` tag with JavaScript](#creating-an-img-tag-with-javascript)
+  - [Including scripts at the end of the `body`](#including-scripts-at-the-end-of-the-body)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Load or not quiz
 
 ### Images

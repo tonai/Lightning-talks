@@ -4,6 +4,31 @@
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Writing a rule](#writing-a-rule)
+  - [Simple selectors](#simple-selectors)
+  - [Attributes selectors](#attributes-selectors)
+  - [Pseudo-classes](#pseudo-classes)
+  - [Pseudo-elements](#pseudo-elements)
+  - [Combinators](#combinators)
+  - [Groups of selectors](#groups-of-selectors)
+- [Inheritance](#inheritance)
+  - [Inherited properties](#inherited-properties)
+  - [Non-inherited properties](#non-inherited-properties)
+  - [Font-sizes](#font-sizes)
+- [Cascade](#cascade)
+  - [Specificity](#specificity)
+  - [Importance](#importance)
+  - [Source order](#source-order)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Writing a rule
 
 ### Simple selectors

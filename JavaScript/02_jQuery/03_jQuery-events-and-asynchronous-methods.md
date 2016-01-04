@@ -7,6 +7,23 @@ This presentation make an easier comparison of the different available jQuery me
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [jQuery events](#jquery-events)
+- [jQuery AJAX](#jquery-ajax)
+- [jQuery effects](#jquery-effects)
+  - [jQuery slide effect](#jquery-slide-effect)
+  - [jQuery fade effect](#jquery-fade-effect)
+  - [jQuery fade and slide effect](#jquery-fade-and-slide-effect)
+  - [jQuery animations](#jquery-animations)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## jQuery events
 
 * `.on(String [, String] [, Mixed], Function)` : Attach an event handler function for one or more events to the selected elements.

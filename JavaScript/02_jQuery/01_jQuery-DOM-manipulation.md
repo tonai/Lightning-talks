@@ -7,6 +7,37 @@ This presentation make an easier comparison of the different available jQuery me
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [jQuery object](#jquery-object)
+- [jQuery core](#jquery-core)
+  - [`jQuery(Function)`](#jqueryfunction)
+  - [`jQuery(HtmlString)`](#jqueryhtmlstring)
+  - [`jQuery(Selector [, context])`](#jqueryselector--context)
+  - [`jQuery(jQuery)`](#jqueryjquery)
+  - [`jQuery(Element|Array|Object)`](#jqueryelementarrayobject)
+  - [`jQuery()`](#jquery)
+- [jQuery traversing](#jquery-traversing)
+  - [Navigating into the DOM - children](#navigating-into-the-dom---children)
+  - [Navigating into the DOM - siblings](#navigating-into-the-dom---siblings)
+  - [Navigating into the DOM - parents](#navigating-into-the-dom---parents)
+  - [Reducing the set](#reducing-the-set)
+  - [Adding elements into the set](#adding-elements-into-the-set)
+  - [Using `end` and `addBack`](#using-end-and-addback)
+  - [Other](#other)
+- [jQuery manipulation](#jquery-manipulation)
+  - [jQuery DOM insertion / shifting, inside](#jquery-dom-insertion--shifting-inside)
+  - [jQuery DOM insertion / shifting, outside](#jquery-dom-insertion--shifting-outside)
+  - [jQuery DOM removal](#jquery-dom-removal)
+  - [jQuery DOM replacement](#jquery-dom-replacement)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## jQuery object
 
 A jQuery object contains a collection of DOM elements that have been created from an HTML string or selected from a document.

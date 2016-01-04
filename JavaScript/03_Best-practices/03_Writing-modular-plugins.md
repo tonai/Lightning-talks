@@ -6,6 +6,34 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Introduction](#introduction)
+- [Modularity and reusability](#modularity-and-reusability)
+    - [JavaScript input](#javascript-input)
+    - [HTML input](#html-input)
+  - [Using both](#using-both)
+- [Extensibility](#extensibility)
+  - [Using option callbacks](#using-option-callbacks)
+  - [Event oriented](#event-oriented)
+- [User control level](#user-control-level)
+  - [Instance access](#instance-access)
+  - [Exposing a specific API](#exposing-a-specific-api)
+  - [Event oriented](#event-oriented-1)
+  - [Conclusion](#conclusion)
+- [Compatibility with modules loader](#compatibility-with-modules-loader)
+  - [[CommonJS][CommonJS]](#commonjscommonjs)
+  - [[AMD][AMD]](#amdamd)
+  - [[UMD][UMD]](#umdumd)
+  - [ES Harmony](#es-harmony)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Introduction
 
 When writing modular plugins you need to think of few things :

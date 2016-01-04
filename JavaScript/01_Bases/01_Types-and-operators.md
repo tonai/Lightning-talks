@@ -8,6 +8,46 @@ You can use the navigator's debug console (F12) to try the following examples yo
 
 Presentation time needed : 45min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [History](#history)
+- [Statements VS expressions](#statements-vs-expressions)
+  - [Statements (assertion, declaration)](#statements-assertion-declaration)
+  - [Expressions](#expressions)
+  - [Semicolon and comma](#semicolon-and-comma)
+  - [Expression statements](#expression-statements)
+  - [Label](#label)
+- [Primitives VS objects](#primitives-vs-objects)
+  - [Primitives](#primitives)
+  - [Objects](#objects)
+  - [Other values](#other-values)
+- [typeof and instanceof](#typeof-and-instanceof)
+  - [typeof](#typeof)
+  - [typeof WAT !](#typeof-wat-)
+  - [instanceof](#instanceof)
+  - [Wrapper](#wrapper)
+- [Objects literal VS blocks](#objects-literal-vs-blocks)
+  - [Objects literal](#objects-literal)
+  - [Blocks](#blocks)
+- [Operators](#operators)
+  - [Arithmetic operators](#arithmetic-operators)
+  - [Comparison operators](#comparison-operators)
+  - [Logical Operators](#logical-operators)
+  - [Bitwise Operators](#bitwise-operators)
+  - [Other operators](#other-operators)
+- [WAT !!!!!](#wat-)
+- [](#)
+- [](#-1)
+- [](#-2)
+- [](#-3)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## History
 
 Created by Netscape in 1995 JavaScript is a language based on the ECMAScript standard (currently the 5th version).

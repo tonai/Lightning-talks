@@ -4,6 +4,28 @@
 
 Presentation time needed : 15min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Some technical concepts](#some-technical-concepts)
+  - [HyperText Markup Language](#hypertext-markup-language)
+  - [Cascading Style Sheets](#cascading-style-sheets)
+  - [CSS media queries](#css-media-queries)
+  - [Breakpoints](#breakpoints)
+  - [Graceful degradation](#graceful-degradation)
+- [The different behaviors across devices](#the-different-behaviors-across-devices)
+  - [Fixed layout](#fixed-layout)
+  - [Fluid layout](#fluid-layout)
+  - [Adaptive layout](#adaptive-layout)
+  - [Responsive layout](#responsive-layout)
+  - [Adaptive Web Design](#adaptive-web-design)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Some technical concepts
 
 ### HyperText Markup Language

@@ -6,6 +6,33 @@ You can use the navigator's debug console (F12) to try the above examples yourse
 
 Presentation time needed : 30min
 
+## Table of content
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Existing JavaScript style guides](#existing-javascript-style-guides)
+- [Standard coding best practices](#standard-coding-best-practices)
+- [Basic rules](#basic-rules)
+  - [Semicolon](#semicolon)
+  - [Globals](#globals)
+  - [Variable declaration](#variable-declaration)
+  - [Function declaration](#function-declaration)
+  - [Wrapper objects](#wrapper-objects)
+  - [Shorthands](#shorthands)
+- [Writing a module](#writing-a-module)
+  - [When do I need to write a module ?](#when-do-i-need-to-write-a-module-)
+  - [Strict mode](#strict-mode)
+  - [Dependencies](#dependencies)
+  - [Constructor and prototype](#constructor-and-prototype)
+  - [Export your module](#export-your-module)
+  - [Allow for Configuration and Translation](#allow-for-configuration-and-translation)
+  - [Avoid heavy nesting](#avoid-heavy-nesting)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Existing JavaScript style guides
 
 Some style guides already exist :
