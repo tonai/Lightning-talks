@@ -40,10 +40,6 @@ Presentation time needed : 45min
   - [Bitwise Operators](#bitwise-operators)
   - [Other operators](#other-operators)
 - [WAT !!!!!](#wat-)
-- [](#)
-- [](#-1)
-- [](#-2)
-- [](#-3)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -614,6 +610,16 @@ Example :
 [] + [];
 ```
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 ![WAT](http://i0.kym-cdn.com/photos/images/original/000/195/379/1320452774001.png)
 
 Same as :
@@ -621,12 +627,24 @@ Same as :
 [].toString() + [].toString();
 ```
 
--------------------------
+&nbsp;
+
+&nbsp;
 
 Example :
 ```javascript
 [] + {};
 ```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ![WAT](http://i0.kym-cdn.com/photos/images/original/000/173/575/25810.jpg)
 
@@ -635,12 +653,24 @@ Same as :
 [].toString() + {}.toString();
 ```
 
--------------------------
+&nbsp;
+
+&nbsp;
 
 Example :
 ```javascript
 {} + [];
 ```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ![WAT](http://mybroadband.co.za/vb/attachment.php?attachmentid=71940&d=1379691163)
 
@@ -659,12 +689,24 @@ Same as :
 Number([].toString());
 ```
 
--------------------------
+&nbsp;
+
+&nbsp;
 
 Example :
 ```javascript
 {} + {};
 ```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ![WAT](http://i1.kym-cdn.com/photos/images/original/000/173/580/Wat.jpg)
 
@@ -683,12 +725,24 @@ Same as :
 Number({}.toString());
 ```
 
--------------------------
+&nbsp;
+
+&nbsp;
 
 Example :
 ```javascript
 ({} + {});
 ```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ![WAT](http://i1.kym-cdn.com/photos/images/original/000/173/589/RsLid.jpg)
 
