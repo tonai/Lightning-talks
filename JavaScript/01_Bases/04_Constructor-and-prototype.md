@@ -1,13 +1,5 @@
 # Constructor and prototype
 
-## Foreword
-
-This files contains examples illustrating [this presentation](https://prezi.com/qtvjlm_557ab/javascript-constructor-and-prototype/).
-
-You can use the navigator's debug console (F12) to try the above examples yourself.
-
-Presentation time needed : 45min
-
 ## Table of contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -31,8 +23,10 @@ Presentation time needed : 45min
   - [Using `call` for `dist` workaround](#using-call-for-dist-workaround)
   - [Using `apply` for `dist` workaround](#using-apply-for-dist-workaround)
   - [Exercice : create a function that adds each of its argument each other](#exercice--create-a-function-that-adds-each-of-its-argument-each-other)
-  - [`add` workaround](#add-workaround)
+  - [`add` workaround with ES5](#add-workaround-with-es5)
+  - [`add` workaround with ES6](#add-workaround-with-es6)
   - [`bind`, `call` and `apply` at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:](#bind-call-and-apply-at-the-same-time-for-dist-workaround-smiling_imp-smiling_imp-smiling_imp)
+  - [Arrow functions (ES6)](#arrow-functions-es6)
 - [Constructor](#constructor)
   - [Simple constructor](#simple-constructor)
 - [Prototype](#prototype)
@@ -253,12 +247,6 @@ Result :
 point.dist();
 ```
 
-pros :
-* Can work with an infinite amount of properties (x , y, z...).
-
-cons :
-* Too complex to understand. It should be rewritten to be clearer. This was done on purpose for this example.
-
 Explanations :
 * `Object.keys(this)` returns `["x", "y", "toString", "dist"]`
 * `filter(...)` returns `["x", "y"]`
@@ -304,6 +292,16 @@ point.dist();
 
 ### Exercice : create a function that adds each of its argument each other
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 Try :
 ```javascript
 var add = function() {
@@ -335,7 +333,7 @@ Explanations :
   It is used to list all properties, methods applicable to arrays.
 * `(properties[i] in arguments)` check if the property exist for `arguments`.
 
-### `add` workaround
+### `add` workaround with ES5
 
 Example :
 ```javascript
@@ -345,9 +343,34 @@ var add = function() {
   });
 };
 ```
+
 Result :sunglasses: :
 ```javascript
 add(1, 2, 3, 4);
+```
+
+### `add` workaround with ES6
+
+You can cast `arguments` in a real array using the spread operator.
+
+Example :
+```javascript
+var add = function() {
+  return [...arguments].reduce(function(a, b){
+    return a + b;
+  });
+};
+```
+
+Or simply use the rest parameter which is a real array.
+
+Example :
+```javascript
+var add = function(...args) {
+  return args.reduce(function(a, b){
+    return a + b;
+  });
+};
 ```
 
 ### `bind`, `call` and `apply` at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:
@@ -378,6 +401,45 @@ Ok that's just over-engineering..
 ![Over-engineering is bad](http://i.imgur.com/JPsizDt.jpg)
 
 But that's fun :stuck_out_tongue:.
+
+### Arrow functions (ES6)
+
+The `this` inside an arrow function is the same `this` as in the parent scope from where they were defined.
+
+i.e. you don't need to use `bind`...etc. (these methods don't work with arrow functions).
+
+Example :
+```javascript
+point.dist = function () {
+  return Math.sqrt(
+    Object.keys(this)
+      .filter(prop => typeof this[prop] == 'number')
+      .map(prop => this[prop] * this[prop])
+      .reduce((a, b) => a + b)
+  );
+};
+```
+
+Result :
+```javascript
+point.dist();
+```
+
+This also mean, you can't really use arrow functions for defining methods.
+
+Example :
+```javascript
+var pointBis = {
+  x : 5,
+  y : 2,
+  toString : () => this.x + ',' + this.y
+};
+```
+
+Result :
+```javascript
+pointBis.toString();
+```
 
 ## Constructor
 

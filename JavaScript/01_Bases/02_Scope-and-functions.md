@@ -1,13 +1,5 @@
 # Scope and functions
 
-## Foreword
-
-This files contains examples illustrating [this presentation](https://prezi.com/3widspvzh9ck/javascript-scope-and-functions/).
-
-You can use the navigator's debug console (F12) to try the above examples yourself.
-
-Presentation time needed : 30min
-
 ## Table of contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -18,7 +10,10 @@ Presentation time needed : 30min
 - [Functions](#functions)
   - [Function declaration](#function-declaration)
   - [Function expression](#function-expression)
+  - [Arrow functions (ES6)](#arrow-functions-es6)
+  - [Defaulut values (ES6)](#defaulut-values-es6)
   - [Arguments](#arguments)
+  - [Rest parameters (ES6)](#rest-parameters-es6)
 - [Scope](#scope)
   - [Global scope](#global-scope)
   - [Hoisted var](#hoisted-var)
@@ -59,11 +54,59 @@ Functions can be defined via a function expression.
 
 A function expression produces a value and can thus be used to directly pass functions as arguments to other functions.
 
+In this case there is no need to give any name to these functions (anonymous function) but as they produce a value, you can store them in variables.
+
 Example :
 ```javascript
 var add = function (param1, param2) {
   return param1 + param2;
 };
+```
+
+### Arrow functions (ES6)
+
+This is a shortcut for function expression using the `=>` sign.
+
+Example :
+```javascript
+(param1, param2) => param1 + param2;
+```
+
+The `return` statement is implicit.
+
+The parenthesis for parameters are optional if and only if there is only one parameter :
+```javascript
+x => x * x;
+```
+
+You might want to have some other statements and not just one expression to return.  
+In this case you’ll have to use bracket notation.  
+But in this case there is no implicit `return` anymore.
+
+Example :
+```javascript
+(param1, param2) => {
+  var sum = param1 + param2;
+  return sum * sum;
+}
+```
+
+If you want to return an object  without using the bracket notation you must wrap it in parenthesis :
+```javascript
+x => ({square: x * x});
+```
+
+### Defaulut values (ES6)
+
+In ES6 you can now give default value to missing parameters.
+
+Example : 
+```javascript
+add();
+function add(param1 = 0, param2 = 0) {
+  return param1 + param2;
+}
+add();
 ```
 
 ### Arguments
@@ -94,6 +137,38 @@ Example :
 ```javascript
 function myFunc(x, y) {
   console.log(arguments);
+}
+```
+
+Result :
+```javascript
+myFunc(1, 2);
+myFunc(1, 2, 3);
+```
+
+### Rest parameters (ES6)
+
+Sounds like a more flexible `arguments` by using the same syntax as the spread operator `...`.
+
+Example
+```javascript
+function myFunc(...all) {
+  console.log(all);
+}
+```
+
+Result :
+```javascript
+myFunc(1, 2);
+myFunc(1, 2, 3);
+```
+
+It is compatible with `classical` arguments (rest parameter must be the last formal parameter).
+
+Example
+```javascript
+function myFunc(first, ...rest) {
+  console.log(first, rest);
 }
 ```
 
@@ -312,3 +387,4 @@ x;
 
 * [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
 * [Expressions versus statements in JavaScript](http://www.2ality.com/2012/09/expressions-vs-statements.html)
+* [ES6 Arrow Functions in Depth](https://ponyfoo.com/articles/es6-arrow-functions-in-depth)

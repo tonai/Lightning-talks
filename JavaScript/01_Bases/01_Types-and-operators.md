@@ -1,13 +1,5 @@
 # Types and operators
 
-## Foreword
-
-This file contains examples illustrating [this presentation](http://prezi.com/wg82mzhhhaz2/javascript-intro-and-types/).
-
-You can use the navigator's debug console (F12) to try the following examples yourself.
-
-Presentation time needed : 45min
-
 ## Table of contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -33,11 +25,15 @@ Presentation time needed : 45min
 - [Objects literal VS blocks](#objects-literal-vs-blocks)
   - [Objects literal](#objects-literal)
   - [Blocks](#blocks)
+- [Assignment Destructuring (ES6)](#assignment-destructuring-es6)
+  - [Arrays](#arrays)
+  - [Objects](#objects-1)
 - [Operators](#operators)
   - [Arithmetic operators](#arithmetic-operators)
   - [Comparison operators](#comparison-operators)
   - [Logical Operators](#logical-operators)
   - [Bitwise Operators](#bitwise-operators)
+  - [Spread operator `...` (ES6)](#spread-operator--es6)
   - [Other operators](#other-operators)
 - [WAT !!!!!](#wat-)
 - [References](#references)
@@ -216,7 +212,7 @@ prim1 === prim2;
 
 ### Objects
 
-All other values are objects.
+All other values are objects.  
 (object = all values that are not primitive)
 
 Example :
@@ -335,6 +331,56 @@ var obj = {
 obj;
 ```
 
+If you want to store an axisting variable into an object you can use the shortand (ES6).
+
+Example :
+```javascript
+var x = 2;
+var y = 3;
+var obj = {
+  x,
+  y,
+  z: 5
+};
+obj;
+```
+
+There is also a shortand for defining a method (ES6).
+
+ES 5 :
+```javascript
+var obj = {
+  add: function (a, b) {
+    return a + b;
+  }
+};
+obj.add(1,2);
+```
+
+ES 6 :
+```javascript
+var obj = {
+  add (a, b) {
+    return a + b;
+  }
+};
+obj.add(1,2);
+```
+
+And you can compute property names by using `[]` (ES6).
+
+Example :
+```javascript
+var propertyName = 'bar';
+var obj = {
+  [propertyName]: 'bar',
+  [propertyName.substr(0, 2) + 'z']: 'baz'
+};
+obj;
+```
+
+You can't combine computed property names and property value shorthands.
+
 ### Blocks
 
 But JavaScript has blocks that can exist on their own.
@@ -372,6 +418,85 @@ Beware, the following line is **not** an object literal :
 
 **Remember:** An expression can not start with `{` because it is reserved for the block statement.
 
+## Assignment Destructuring (ES6)
+
+This is quite similar to the `list()` construct in PHP.
+
+### Arrays
+
+Example :
+```javascript
+var array = ['foo', 'bar', 'baz'];
+var [a, b, c] = array;
+console.log(a, b, c);
+```
+
+You can skip items you don't need :
+```javascript
+var array = ['foo', 'bar', 'baz'];
+var [, , d] = array;
+console.log(d);
+```
+
+You can use it recursively :
+```javascript
+var array = ['foo', ['bar', 'baz']];
+var [e, [f , g]] = array;
+console.log(e, f, g);
+```
+
+It's ok for swapping variables :
+```javascript
+var a = 1;
+var b = 2;
+[a, b] = [b, a];
+console.log(a, b);
+```
+
+### Objects
+
+Example
+```javascript
+var myObject = {x: 2, y: 3, z: 5};
+var {x, z} = myObject;
+console.log(x, z);
+```
+
+**Remember:** An expression can not start with `{`.
+
+You can use aliases if you don't want the property name to be the name of the variable (or if you can't) :
+```javascript
+var myObject = {x: 2, y: 3, z: 5};
+var {x: foo, z: bar} = myObject;
+console.log(foo, bar);
+```
+
+When using aliases, you can combine it with computed property names :
+```javascript
+var myObject = {x: 2, y: 3, z: 5};
+var propertyName = 'x';
+var {[propertyName]: foo} = myObject;
+console.log(foo);
+```
+
+You can also define default values :
+```javascript
+var myObject = {foo: 'bar', baz: undefined};
+var {foo = 1, bar = 2, baz = 3} = myObject;
+console.log(foo, bar, baz);
+```
+
+Like for arrays it can also be used recursively and combined :
+```javascript
+var myObject = {
+  foo: {
+    bar: [2, 3]
+  }
+};
+var {foo: {bar: [x = 1, y = 2, z = 3]}} = myObject;
+console.log(x, y, z);
+```
+
 ## Operators
 
 ### Arithmetic operators
@@ -390,8 +515,7 @@ This operator is also used for concatenating strings :
 
 If a number is "added" to a string, the result will be a string :
 ```javascript
-1 + 2 + 'world';
-'world' + 1 + 2;
+1 + ' world';
 ```
 
 Subtraction `-` :
@@ -555,6 +679,23 @@ Sign-propagating right shift `>>` (Shifts bits x places to the right by discardi
 Zero-fill right shift `>>` (Shifts bits x places to the right by discarding bits shifted off, and shifting in zeroes from the left.) :
 ```javascript
 -9 >>> 2;
+```
+
+### Spread operator `...` (ES6)
+
+Classically used on an array in an function call to spread all array items as arguments :
+```javascript
+function add(a, b, c) {
+  return a + b + c;
+}
+add(...[1, 2, 3]);
+add(1, ...[2, 3]);
+add(...[1, 2], 3);
+```
+
+But can also be used for array concatenation :
+```javascript
+[1, 2, ...[3, 4, 5], 6, 7];
 ```
 
 ### Other operators
@@ -768,3 +909,4 @@ Because `({} + {});` is an expression and `{} + {};` is a statement.
 * [Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
 * [Bitwise operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
 * [Assignment operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)
+* [ES6 JavaScript Destructuring in Depth](https://ponyfoo.com/articles/es6-destructuring-in-depth)
