@@ -1,4 +1,4 @@
-# Constructor and prototype
+# Prototype and classes
 
 ## Table of contents
 
@@ -9,34 +9,34 @@
 - [`this`](#this)
   - [Value of `this` within a classic function in non strict mode](#value-of-this-within-a-classic-function-in-non-strict-mode)
   - [Value of `this` within a classic function in strict mode](#value-of-this-within-a-classic-function-in-strict-mode)
-  - [Other value of `this` (event callback)](#other-value-of-this-event-callback)
-- [Object literals methods](#object-literals-methods)
-  - [Value of `this` within a method](#value-of-this-within-a-method)
-  - [Extracted method loses binding](#extracted-method-loses-binding)
-  - [Each function has its own `this`](#each-function-has-its-own-this)
-  - [`dist` workaround 1](#dist-workaround-1)
-  - [`dist` workaround 2](#dist-workaround-2)
+  - [Value of `this` within an event callback](#value-of-this-within-an-event-callback)
+  - [Value of `this` within an object literals method](#value-of-this-within-an-object-literals-method)
+  - [Value of `this` within an arrow functions (ES6)](#value-of-this-within-an-arrow-functions-es6)
 - [`bind`, `call` and `apply`](#bind-call-and-apply)
   - [`bind` with extracted method](#bind-with-extracted-method)
-  - [Using `bind` for `dist` workaround 1](#using-bind-for-dist-workaround-1)
-  - [Using `bind` for `dist` workaround 2](#using-bind-for-dist-workaround-2)
-  - [Using `call` for `dist` workaround](#using-call-for-dist-workaround)
-  - [Using `apply` for `dist` workaround](#using-apply-for-dist-workaround)
-  - [Exercice : create a function that adds each of its argument each other](#exercice--create-a-function-that-adds-each-of-its-argument-each-other)
-  - [`add` workaround with ES5](#add-workaround-with-es5)
-  - [`add` workaround with ES6](#add-workaround-with-es6)
-  - [`bind`, `call` and `apply` at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:](#bind-call-and-apply-at-the-same-time-for-dist-workaround-smiling_imp-smiling_imp-smiling_imp)
-  - [Arrow functions (ES6)](#arrow-functions-es6)
+  - [Using `bind` for calculating the distance in a 2 dimensional space (ES5)](#using-bind-for-calculating-the-distance-in-a-2-dimensional-space-es5)
+  - [Using `call` for calculating the distance in a 2 dimensional space (ES5)](#using-call-for-calculating-the-distance-in-a-2-dimensional-space-es5)
+  - [Using `apply` for calculating the distance in a 2 dimensional space (ES5)](#using-apply-for-calculating-the-distance-in-a-2-dimensional-space-es5)
+  - [Exercice : calculate the distance in a multidimensional space (ES5)](#exercice--calculate-the-distance-in-a-multidimensional-space-es5)
+  - [Exercice : create a function that adds each of its argument each other (ES5)](#exercice--create-a-function-that-adds-each-of-its-argument-each-other-es5)
+  - [`arguments` workaround (ES5)](#arguments-workaround-es5)
+  - [`arguments` workaround (ES6)](#arguments-workaround-es6)
+  - [`bind`, `call` and `apply` together for calculating the distance in a 2 dimensional space (ES5) :smiling_imp: :smiling_imp: :smiling_imp:](#bind-call-and-apply-together-for-calculating-the-distance-in-a-2-dimensional-space-es5-smiling_imp-smiling_imp-smiling_imp)
+  - [Using arrow function for calculating the distance in a multidimensional space (ES6)](#using-arrow-function-for-calculating-the-distance-in-a-multidimensional-space-es6)
 - [Constructor](#constructor)
   - [Simple constructor](#simple-constructor)
 - [Prototype](#prototype)
   - [Used to save memory](#used-to-save-memory)
   - [The change of a constructor prototype method will impact all instances](#the-change-of-a-constructor-prototype-method-will-impact-all-instances)
   - [The constructor prototype property](#the-constructor-prototype-property)
-- [inheritance](#inheritance)
+- [Inheritance](#inheritance)
   - [Using `Object.create`](#using-objectcreate)
   - [Simple inheritance example](#simple-inheritance-example)
-  - [Other inheritance examples](#other-inheritance-examples)
+  - ["Static" methods](#static-methods)
+- [Classes (ES6)](#classes-es6)
+  - [Simple classe](#simple-classe)
+  - [Inheritance](#inheritance-1)
+  - [Static methods](#static-methods)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -47,7 +47,7 @@
 
 ### Value of `this` within a classic function in non strict mode
 
-When there is no current object , in non-strict mode, the value of this is the so-called global object (window in browsers).
+In non-strict mode, the value of `this`  in non-method function is the global object (`window` in browsers).
 
 Example :
 ```javascript
@@ -63,7 +63,7 @@ f();
 
 ### Value of `this` within a classic function in strict mode
 
-When there is no current object , in strict mode, the value of this in non-method function is undefined.
+In strict mode, the value of `this` in non-method function is undefined.
 
 Example :
 ```javascript
@@ -78,7 +78,7 @@ Result :
 f_strict();
 ```
 
-### Other value of `this` (event callback)
+### Value of `this` within an event callback
 
 Example :
 ```javascript
@@ -94,9 +94,7 @@ document.getElementsByTagName('body')[0].appendChild(a);
 
 Result : click on the link to see it.
 
-## Object literals methods
-
-### Value of `this` within a method
+### Value of `this` within an object literals method
 
 Function-valued properties are called methods. They use this to refer to the object that was used to call them.
 
@@ -115,9 +113,7 @@ Result :
 point.toString();
 ```
 
-### Extracted method loses binding
-
-If you extract a method, it loses its connection with the object.
+**Warning :** if you extract a method, it loses its connection with the object.
 
 Example :
 ```javascript
@@ -129,9 +125,9 @@ Result :
 toString();
 ```
 
-### Each function has its own `this`
+### Value of `this` within an arrow functions (ES6)
 
-Each function has it own "this", even when being nested.
+Whereas each function has it own `this`, even when being nested.
 
 Example :
 ```javascript
@@ -149,16 +145,15 @@ Result :confused: :
 point.dist();
 ```
 
-### `dist` workaround 1
+The `this` inside an arrow function is the same `this` as in the parent scope from where they were defined.
+
+i.e. you don't need to use `bind`...etc. (these methods don't work with arrow functions).
 
 Example :
 ```javascript
 point.dist = function () {
-  var square = function(value) {
-    return value * value;
-  };
-
-  return Math.sqrt(square(this.x) + square(this.y));
+  var square = prop => this[prop] * this[prop];
+  return Math.sqrt(square('x') + square('y'));
 };
 ```
 
@@ -167,21 +162,20 @@ Result :
 point.dist();
 ```
 
-### `dist` workaround 2
+This also mean, you can't use arrow functions for defining methods.
 
 Example :
 ```javascript
-point.dist = function () {
-  return Math.sqrt(this.square('x') + this.square('y'));
-};
-point.square = function(prop) {
-  return this[prop] * this[prop];
+var pointBis = {
+  x : 5,
+  y : 2,
+  toString : () => this.x + ',' + this.y
 };
 ```
 
 Result :
 ```javascript
-point.dist();
+pointBis.toString();
 ```
 
 ## `bind`, `call` and `apply`
@@ -204,14 +198,15 @@ Result :
 toString();
 ```
 
-### Using `bind` for `dist` workaround 1
+### Using `bind` for calculating the distance in a 2 dimensional space (ES5)
 
 Example :
 ```javascript
 point.dist = function () {
   var square = function(prop) {
     return this[prop] * this[prop];
-  }.bind(this);
+  };
+  square = square.bind(this);
 
   return Math.sqrt(square('x') + square('y'));
 };
@@ -222,7 +217,43 @@ Result :
 point.dist();
 ```
 
-### Using `bind` for `dist` workaround 2
+### Using `call` for calculating the distance in a 2 dimensional space (ES5)
+
+Example :
+```javascript
+point.dist = function () {
+  var square = function(prop) {
+    return this[prop] * this[prop];
+  };
+
+  return Math.sqrt(square.call(this, 'x') + square.call(this, 'y'));
+};
+```
+
+Result :
+```javascript
+point.dist();
+```
+
+### Using `apply` for calculating the distance in a 2 dimensional space (ES5)
+
+Example :
+```javascript
+point.dist = function () {
+  var square = function(prop) {
+    return this[prop] * this[prop];
+  };
+
+  return Math.sqrt(square.apply(this, ['x']) + square.call(this, ['y']));
+};
+```
+
+Result :
+```javascript
+point.dist();
+```
+
+### Exercice : calculate the distance in a multidimensional space (ES5)
 
 Example :
 ```javascript
@@ -254,43 +285,7 @@ Explanations :
 * `reduce(...)` returns `29`
 * `Math.sqrt()` return `5.385164807134504` :metal:
 
-### Using `call` for `dist` workaround
-
-Example :
-```javascript
-point.dist = function () {
-  var square = function(prop) {
-    return this[prop] * this[prop];
-  };
-
-  return Math.sqrt(square.call(this, 'x') + square.call(this, 'y'));
-};
-```
-
-Result :
-```javascript
-point.dist();
-```
-
-### Using `apply` for `dist` workaround
-
-Example :
-```javascript
-point.dist = function () {
-  var square = function(prop) {
-    return this[prop] * this[prop];
-  };
-
-  return Math.sqrt(square.apply(this, ['x']) + square.call(this, ['y']));
-};
-```
-
-Result :
-```javascript
-point.dist();
-```
-
-### Exercice : create a function that adds each of its argument each other
+### Exercice : create a function that adds each of its argument each other (ES5)
 
 &nbsp;
 
@@ -333,7 +328,7 @@ Explanations :
   It is used to list all properties, methods applicable to arrays.
 * `(properties[i] in arguments)` check if the property exist for `arguments`.
 
-### `add` workaround with ES5
+### `arguments` workaround (ES5)
 
 Example :
 ```javascript
@@ -344,12 +339,12 @@ var add = function() {
 };
 ```
 
-Result :sunglasses: :
+Result :
 ```javascript
 add(1, 2, 3, 4);
 ```
 
-### `add` workaround with ES6
+### `arguments` workaround (ES6)
 
 You can cast `arguments` in a real array using the spread operator.
 
@@ -373,7 +368,9 @@ var add = function(...args) {
 };
 ```
 
-### `bind`, `call` and `apply` at the same time for `dist` workaround :smiling_imp: :smiling_imp: :smiling_imp:
+ES6 is cool :sunglasses:
+
+### `bind`, `call` and `apply` together for calculating the distance in a 2 dimensional space (ES5) :smiling_imp: :smiling_imp: :smiling_imp:
 
 Example :
 ```javascript
@@ -396,17 +393,11 @@ Result :triumph: :
 point.dist();
 ```
 
-Ok that's just over-engineering..
+Ok that's just over-engineering... :stuck_out_tongue:
 
 ![Over-engineering is bad](http://i.imgur.com/JPsizDt.jpg)
 
-But that's fun :stuck_out_tongue:.
-
-### Arrow functions (ES6)
-
-The `this` inside an arrow function is the same `this` as in the parent scope from where they were defined.
-
-i.e. you don't need to use `bind`...etc. (these methods don't work with arrow functions).
+### Using arrow function for calculating the distance in a multidimensional space (ES6)
 
 Example :
 ```javascript
@@ -425,21 +416,7 @@ Result :
 point.dist();
 ```
 
-This also mean, you can't really use arrow functions for defining methods.
-
-Example :
-```javascript
-var pointBis = {
-  x : 5,
-  y : 2,
-  toString : () => this.x + ',' + this.y
-};
-```
-
-Result :
-```javascript
-pointBis.toString();
-```
+:trophy: :trophy: :trophy:
 
 ## Constructor
 
@@ -466,26 +443,6 @@ var Point = function(){
 Result :
 ```javascript
 var point = new Point();
-point + '';
-point instanceof Point;
-```
-
-In fact, it's just the same as what we had earlier if you write it like this (like an object factory) :
-```javascript
-var Point = function(){
-  return {
-    x : 5,
-    y : 2,
-    toString : function () {
-      return this.x + ',' + this.y;
-    }
-  };
-};
-```
-
-But it's no more considered as an instance of `Point` :
-```javascript
-var point = Point();
 point + '';
 point instanceof Point;
 ```
@@ -572,7 +529,7 @@ Point.prototype.toString = function () {
 };
 ```
 
-## inheritance
+## Inheritance
 
 There is no native way...
 Each framework implements their own inheritance workflow.
@@ -594,7 +551,7 @@ Point.prototype.toString = function () {
 
 Result :
 ```javascript
-point1 = new Point();
+var point1 = new Point();
 point2 = Object.create(Point.prototype);
 point1.__proto__ === point2.__proto__;
 ```
@@ -607,9 +564,9 @@ But comparing to `point1`, `point2` has not been initialized through the constru
 
 Defining the `Point2D` constuctor and prototype :
 ```javascript
-var Point2D = function(){
-  this.x = 5;
-  this.y = 2;
+var Point2D = function (x, y) {
+  this.x = x;
+  this.y = y;
 };
 Point2D.prototype.toString = function () {
   return this.x + ',' + this.y;
@@ -632,10 +589,10 @@ Point2D.prototype.dist = function () {
 
 Defining the `Point3D` constuctor  :
 ```javascript
-var Point3D = function(){
-  this.x = 1;
-  this.y = 2;
-  this.z = 3;
+var Point3D = function(x, y, z){
+  this.x = x;
+  this.y = y;
+  this.z = z;
 };
 ```
 
@@ -644,20 +601,22 @@ Now extend `Point3D` prototype from  `Point2D` prototype.
 By creating an instance of `Point2D` (which is an object so a candidate for a prototype) :
 ```javascript
 Point3D.prototype = new Point2D();
+Point3D.prototype;
 ```
 
 But we do not need to call `Point2D` contructor, we only whant it's prototype (better) :
 ```javascript
 Point3D.prototype = Object.create(Point2D.prototype);
+Point3D.prototype;
 ```
 
-That's ok but we lost the default `Point3D.prototype.constructor` method, so set it back :
+That's ok but we lost the default `Point3D.prototype.constructor` method, so set it back (bonus) :
 ```javascript
-Point3D.prototype = Object.create(Point2D.prototype);
 Point3D.prototype.constructor = Point3D;
+Point3D.prototype;
 ```
 
-Rewriting the `toString` method using the "parent" method (no native shortcut) :
+Rewriting the `toString` method using the "parent" method (no native shortcut in ES5) :
 ```javascript
 Point3D.prototype.toString = function () {
   return Point2D.prototype.toString.apply(this) + ',' + this.z;
@@ -666,7 +625,7 @@ Point3D.prototype.toString = function () {
 
 Result :
 ```javascript
-point3d = new Point3D();
+var point3d = new Point3D(1, 2, 3);
 point3d.dist();
 point3d + '';
 point3d instanceof Point3D;
@@ -674,12 +633,206 @@ point3d instanceof Point2D;
 point3d instanceof Object;
 point3d;
 ```
-### Other inheritance examples
 
-[Simple JavaScript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/)
+### "Static" methods
+
+Static methods are methods that are called directly on the "class" and not on the instance.
+
+In fact that just methods that are directly added to the constructor (and not to its prototype).
+
+Example :
+```javascript
+Point2D.getSingleton = function(x, y) {
+  if (this.singleton === undefined) {
+    this.singleton = new this(x, y);
+  }
+  return this.singleton;
+};
+```
+
+Result :
+```javascript
+Point2D.getSingleton(5, 2);
+Point2D.getSingleton(1, 3);
+```
+
+But as static method are not in the prototype, they are not inherited.
+
+## Classes (ES6)
+
+Classes in JavaScript are not the same as in other OOP languages.  
+JavaScript is still a prototype language, thus classes are just another syntax of what we have seen above.
+
+### Simple classe
+
+Example
+```javascript
+class Point2D {
+  constructor (x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  toString () {
+    return this.x + ',' + this.y;
+  }
+  dist () {
+    return Math.sqrt(
+      Object.keys(this)
+        .filter(prop => typeof this[prop] == 'number')
+        .map(prop => this[prop] * this[prop])
+        .reduce((a, b) => a + b)
+    );
+  }
+}
+```
+
+Result :
+```javascript
+var point2d = new Point2D(5, 2);
+point2d + '';
+point2d.dist();
+point2d;
+```
+
+### Inheritance
+
+Prototypal inheritance is simplified using the `extends` keyword.
+
+Example :
+```javascript
+class Point3D extends Point2D {
+  constructor (x, y, z) {
+    super(x, y);
+    this.z = z;
+  }
+  toString () {
+    return super.toString() + ',' + this.z;
+  }
+}
+```
+
+Result :
+```javascript
+var point3d = new Point3D(1, 2, 3);
+point3d.dist();
+point3d + '';
+point3d instanceof Point3D;
+point3d instanceof Point2D;
+point3d instanceof Object;
+point3d;
+```
+
+In the constructor `super()` is used to call the parent class constructor.  
+It is mandatory to call it before using the `this` keyword in the child constructor.
+
+In other methods you can call any of the super property or method that are defined in one of the inherited classes.
+
+### Static methods
+
+In classes you can define `static` method which works the same as above.
+
+Example :
+```javascript
+class Point2D {
+  constructor (x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  toString () {
+    return this.x + ',' + this.y;
+  }
+  dist () {
+    return Math.sqrt(
+      Object.keys(this)
+        .filter(prop => typeof this[prop] == 'number')
+        .map(prop => this[prop] * this[prop])
+        .reduce((a, b) => a + b)
+    );
+  }
+  static getSingleton (...pos) {
+    if (this.singleton === undefined) {
+      this.singleton = new this(...pos);
+    }
+    return this.singleton;
+  }
+}
+```
+
+Result :
+```javascript
+Point2D.getSingleton(5, 2);
+Point2D.getSingleton(1, 3);
+```
+
+But in this case static methods are inherited.
+
+Example :
+```javascript
+class Point3D extends Point2D {
+  constructor (x, y, z) {
+    super(x, y);
+    this.z = z;
+  }
+  toString () {
+    return super.toString() + ',' + this.z;
+  }
+}
+Point3D.getSingleton(1, 2, 3);
+```
+
+Hum... was this intended ?  
+Watch out the `__proto__` property of `Point3D`.  
+With ES5 inheritance, the `__proto__` is linked to the `Function` object (containing methods like `bind`, `apply`...etc.).  
+But with ES6 inheritance, it is linked to the `Point2D` object, what actually allows the static method inheritance system.  
+So you should write the `getSingleton` method like this :
+```javascript
+class Point2D {
+  constructor (x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  toString () {
+    return this.x + ',' + this.y;
+  }
+  dist () {
+    return Math.sqrt(
+      Object.keys(this)
+        .filter(prop => typeof this[prop] == 'number')
+        .map(prop => this[prop] * this[prop])
+        .reduce((a, b) => a + b)
+    );
+  }
+  static getSingleton (...pos) {
+    if (!this.hasOwnProperty('singleton')) {
+      this.singleton = new this(...pos);
+    }
+    return this.singleton;
+  }
+}
+```
+
+You can also use the `super` keyword in static methods.
+
+Example :
+```javascript
+class Point3D extends Point2D {
+  constructor (x, y, z) {
+    super(x, y);
+    this.z = z;
+  }
+  toString () {
+    return super.toString() + ',' + this.z;
+  }
+  static getSingleton (...pos) {
+    pos = pos.map(value => value + 1);
+    return super.getSingleton(...pos);
+  }
+}
+```
 
 ## References
 
 * [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
 * [JavaScript inheritance by example](http://www.2ality.com/2012/01/js-inheritance-by-example.html)
 * [An easy way to understand JavaScript’s prototypal inheritance](http://www.2ality.com/2010/12/javascripts-prototypal-inheritance.html)
+* [ES6 Classes in Depth](https://ponyfoo.com/articles/es6-classes-in-depth)

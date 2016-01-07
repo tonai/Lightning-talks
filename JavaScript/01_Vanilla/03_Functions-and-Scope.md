@@ -1,4 +1,4 @@
-# Scope and functions
+# functions and scope
 
 ## Table of contents
 
@@ -16,11 +16,14 @@
   - [Rest parameters (ES6)](#rest-parameters-es6)
 - [Scope](#scope)
   - [Global scope](#global-scope)
-  - [Hoisted var](#hoisted-var)
-  - [Hoisted function](#hoisted-function)
-- [Closure](#closure)
-- [IIFE (Immediately Invoked Function Expression)](#iife-immediately-invoked-function-expression)
-  - [Use it to create a local context](#use-it-to-create-a-local-context)
+  - [Function scope](#function-scope)
+    - [Using `var`](#using-var)
+    - [Hoisting](#hoisting)
+  - [Block scope](#block-scope)
+    - [Using `let`](#using-let)
+    - [Using `const`](#using-const)
+  - [Closure](#closure)
+  - [IIFE (Immediately Invoked Function Expression)](#iife-immediately-invoked-function-expression)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -180,17 +183,33 @@ myFunc(1, 2, 3);
 
 ## Scope
 
-In JavaScript, you must declare variables via `var` before you can use them.
+In JavaScript, you must declare variables via `var`, `let` or `const` before you can use them.
 
 ### Global scope
 
-The scope of a variable is always the complete function (as opposed to the current block).
+The global scope may differ from your execution environment.  
+In browser the global scope in defined by the `window` variable.
+
+A variable defined in the global scope can be accessed by its name directly (if called inside a scope it should not have been overridden in intermediate scopes), or with `window.[variable name]` (like an object property).
+
+### Function scope
+
+#### Using `var`
+
+The scope of a variable declared with `var` is the complete function.
+
+When assigning a value to a variable, with a given name, without declaring it, JavaScript will check recursively if the variable has been declared in parent scopes.
+
+If he found ones, JavaScript will assign the value to the variable, with that given name, living in the closest scope.
+
+If not, JavaScript will create a variable, with that given name, in the global scope.
 
 Example :
 ```javascript
 var x = 1;
 function myFunc() {
   var x = -3;
+  return x;
 }
 ```
 
@@ -205,6 +224,7 @@ Example :
 var x = 1;
 function myFunc() {
   x = -3;
+  return x;
 }
 ```
 
@@ -228,14 +248,14 @@ Result :
 x;
 ```
 
-### Hoisted var
+#### Hoisting
 
 Variable declarations are hoisted : The declaration is moved to the beginning of the function (but not assignments).
 
-Example (**x should be defined in the global scope, you may reload your page for the example to work**) :
+Example :
 ```javascript
 function myFunc() {
-  console.log(x);
+  console.log(y);
 }
 ```
 
@@ -247,9 +267,9 @@ myFunc();
 Example :
 ```javascript
 function myFunc() {
-  console.log(x);
+  console.log(y);
   if (false) {
-    var x = 3;
+    var y = 3;
   }
 }
 ```
@@ -270,7 +290,62 @@ function myFunc() {
 }
 ```
 
-### Hoisted function
+This can lead to some confusion...
+
+Example :
+```javascript
+elements = document.getElementsByTagName('h1');
+for (var i in [...elements]) {
+  console.log(i, elements[i]);
+  elements[i].addEventListener('click', function(){
+    console.log(i);
+  });
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+Results will be the same, because the context of `i` is global and not local to the function.
+
+Example :
+```javascript
+elements = document.getElementsByTagName('h1');
+for (var i in [...elements]) {
+  console.log(i, elements[i]);
+  elements[i].addEventListener('click', function(){
+    var j = i;
+    console.log(j);
+  });
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+KO too :sob:
+
+Example :
+```javascript
+elements = document.getElementsByTagName('h1');
+for (var i in [...elements]) {
+  console.log(i, elements[i]);
+  elements[i].addEventListener('click', function(){
+    var j = i;
+    return function(){
+      console.log(j);
+    }
+  }());
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+Works but...  :neutral_face:
 
 Function declarations are hoisted too.
 
@@ -289,7 +364,80 @@ Result :
 foo();
 ```
 
-## Closure
+### Block scope
+
+#### Using `let`
+
+The scope of a variable declared with `let` is the current block (as opposed to the complete function).
+
+In this case we do not only mean block statement, but also `if`, `while`, `for` blocks...etc.
+
+Example :
+```javascript
+if (true) {
+  let z = 3;
+}
+```
+
+Result :
+```javascript
+z;
+```
+
+In this case, variables are not hoisted.
+
+Example :
+```javascript
+function myFunc() {
+  console.log(z);
+  let z = 3;
+}
+```
+
+Result :
+```javascript
+myFunc();
+```
+
+Previous problem solved with `let` :
+```javascript
+elements = document.getElementsByTagName('h1');
+for (var i in [...elements]) {
+  console.log(i, elements[i]);
+  let j = i;
+  elements[i].addEventListener('click', function(){
+    console.log(j);
+  });
+}
+```
+
+#### Using `const`
+
+`const` works like `let` in terms of scope.
+
+But variable declared with `const` follow the rules below :
+* they must be initialized when they are declared
+* the value can only be assigned during initialization
+* they can't be redeclared (in the same scope)
+
+Example :
+```javascript
+const z = 3;
+z;
+z = 5;
+z;
+const z = 5;
+```
+
+Objects are still references :
+```javascript
+const z = [2, 3];
+z;
+z.push(5);
+z;
+```
+
+### Closure
 
 Each function stays connected to the variables of the functions that surround it, even after it leaves the scope it was created in.
 
@@ -310,6 +458,7 @@ Result :
 var inc = createIncrementor(5);
 inc();
 inc();
+var inc2 = createIncrementor(2);
 inc();
 ```
 
@@ -340,36 +489,11 @@ inc.add();
 
 ```
 
-Example :
-```javascript
-var result = [];
-for (var i=0; i < 5; i++) {
-  result.push(function () { return i });
-}
-```
-
-Result :
-```javascript
-result[1]();
-result[3]();
-```
-
-Result will be the same, because the context of `i` is global and not local to the function.
-
-It's ok if you execute the function immediatly :
-```javascript
-var result = [];
-for (var i=0; i < 5; i++) {
-  result.push(function () { return i })();
-}
-result[1];
-```
-
-## IIFE (Immediately Invoked Function Expression)
+### IIFE (Immediately Invoked Function Expression)
 
 Pattern used to simulate a scope, for example to keep a variable from becoming global.
 
-### Use it to create a local context
+Use it to create a local context.
 
 Example :
 ```javascript
@@ -383,8 +507,53 @@ Result :
 x;
 ```
 
+And to keep references to the object you need.
+
+Example :
+```javascript
+var getMaxWidth = function(elements) {
+  return [...elements]
+    .map(function(element) {
+      return element.offsetWidth;
+    })
+    .reduce(function(a, b) {
+      return Math.max(a, b);
+    });
+};
+```
+
+Result :
+```javascript
+getMaxWidth(document.getElementsByTagName('h1'));
+Math = {};
+getMaxWidth(document.getElementsByTagName('h1'));
+```
+
+Solution :
+```javascript
+var getMaxWidth = function(Math) {
+  return function(elements) {
+    return [...elements]
+      .map(function(element) {
+        return element.offsetWidth;
+      })
+      .reduce(function(a, b) {
+        return Math.max(a, b);
+      });
+  };
+}(Math);
+```
+
+Result :
+```javascript
+getMaxWidth(document.getElementsByTagName('h1'));
+Math = {};
+getMaxWidth(document.getElementsByTagName('h1'));
+```
+
 ## References
 
 * [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
 * [Expressions versus statements in JavaScript](http://www.2ality.com/2012/09/expressions-vs-statements.html)
 * [ES6 Arrow Functions in Depth](https://ponyfoo.com/articles/es6-arrow-functions-in-depth)
+* [ES6 Let, Const and the “Temporal Dead Zone” (TDZ) in Depth](https://ponyfoo.com/articles/es6-let-const-and-temporal-dead-zone-in-depth)
