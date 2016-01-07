@@ -184,20 +184,24 @@ var result = tmpl('myTemplate', {
   color: '#FF0000',
   nodes: [
     {
-      title: 'Intro and operators',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/01_Types-and-operators.md'
+      title: 'Statements, expressions and types',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/01_Statements-expressions-and-types.md'
     },
     {
-      title: 'Scope and functions',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/02_Scope-and-functions.md'
+      title: 'Operators',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/02_Operators.md'
+    },
+    {
+      title: 'Functions and scope',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md'
     },
     {
       title: 'DOM and events',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/03_DOM-and-events.md'
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/04_DOM-and-events.md'
     },
     {
-      title: 'Constructor and prototype',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md'
+      title: 'Prototype and classes',
+      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md'
     }
   ]
 });

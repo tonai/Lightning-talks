@@ -68,7 +68,7 @@ Then a jQuery object is created and returned that refers to these elements
 
 ### `jQuery(Selector [, context])`
 
-This is equivalent to the native `querySelectorAll` function that we have already seen [here](../01_Bases/03_DOM-and-events.md#getting-a-dom-element), but returns a jQuery object.
+This is equivalent to the native `querySelectorAll` function that we have already seen [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/04_DOM-and-events.md#getting-a-dom-element), but returns a jQuery object.
 
 If a context is specified (DOM element, document or jQuery object), the behavour is the same as `jQuery(context).find(selector)`.
 

@@ -354,7 +354,7 @@ var prototype = firstInstance.constructor.prototype;
 ```
 
 Remember that the prototype is shared between all instances, and modifying it will also affect already created instances.  
-See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Bases/04_Constructor-and-prototype.md#prototype) for explanations.
+See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md#prototype) for explanations.
 
 ## Compatibility with modules loader
 

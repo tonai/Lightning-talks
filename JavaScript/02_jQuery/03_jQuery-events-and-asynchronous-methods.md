@@ -33,7 +33,7 @@ Presentation time needed : 30min
 * `.trigger([String|Event] [, Array|Object])` : Execute all handlers and behaviors attached to the matched elements for the given event type.
 * `.triggerHandler([String|Event] [, Array|Object])` : Execute all handlers attached to an element for an event.
 
-**Note** : The `.trigger()` and `.triggerHandler()` do not use the native `dispatchEvent` function we have seen [here](../01_Bases/03_DOM-and-events.md).  
+**Note** : The `.trigger()` and `.triggerHandler()` do not use the native `dispatchEvent` function we have seen [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/04_DOM-and-events.md).  
 It uses a jQuery internal mechanism and thus the 2 jQuery functions can only trigger event handlers that have been bound with jQuery methods.
 
 [CodePen example](http://codepen.io/tonai/pen/LVBYyz).
