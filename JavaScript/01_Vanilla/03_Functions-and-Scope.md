@@ -1,4 +1,4 @@
-# functions and scope
+# Functions and scope
 
 ## Table of contents
 

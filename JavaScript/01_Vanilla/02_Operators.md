@@ -1,4 +1,4 @@
-# Types and operators
+# Operators
 
 ## Table of contents
 
@@ -6,57 +6,55 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Operators](#operators)
-  - [Primary expressions](#primary-expressions)
-    - [Grouping operator `()`](#grouping-operator-)
-  - [Left-hand-side expressions](#left-hand-side-expressions)
-    - [Spread operator `...` (ES6)](#spread-operator--es6)
-  - [Increment and decrement](#increment-and-decrement)
-    - [Decrement operator `--`](#decrement-operator---)
-  - [Unary operators](#unary-operators)
-    - [`delete` operator](#delete-operator)
-    - [`void` operator](#void-operator)
-    - [Unary `typeof` operator](#unary-typeof-operator)
-    - [Unary negation operator](#unary-negation-operator)
-    - [Unary plus operator](#unary-plus-operator)
-    - [Bitwise NOT operator `~`](#bitwise-not-operator-)
-    - [Logical NOT `!`](#logical-not-)
-  - [Arithmetic operators](#arithmetic-operators)
-    - [Addition operator `+`](#addition-operator-)
-    - [Subtraction operator `-`](#subtraction-operator--)
-    - [Division operator `/`](#division-operator-)
-    - [Multiplication operator `*`](#multiplication-operator-)
-    - [Remainder operator `%`](#remainder-operator-%25)
-  - [Relational oparators](#relational-oparators)
-    - [`in` operator](#in-operator)
-    - [`instanceof` operator](#instanceof-operator)
-    - [Greater than `>` and greater than or equal `>=` operator](#greater-than--and-greater-than-or-equal--operator)
-    - [Less than `<` and less than or equal `<=` operator](#less-than--and-less-than-or-equal--operator)
-  - [Equality operators](#equality-operators)
-    - [Equality `!=` and Inequality `==`](#equality--and-inequality-)
-    - [Identity (Strict equality) `===`and Nonidentity `!==`](#identity-strict-equality-and-nonidentity-)
-  - [Bitwise shift operators](#bitwise-shift-operators)
-    - [Bitwise left shift `<<`](#bitwise-left-shift-)
-    - [Bitwise right shift operator `>>`](#bitwise-right-shift-operator-)
-    - [Bitwise unsigned right shift operator `>>>`](#bitwise-unsigned-right-shift-operator-)
-  - [Binary bitwise Operators](#binary-bitwise-operators)
-    - [Bitwise AND `&`](#bitwise-and-&)
-    - [Bitwise AND `|`](#bitwise-and-)
-    - [Bitwise XOR `^`](#bitwise-xor-%5E)
-  - [binary logical Operators](#binary-logical-operators)
-    - [Logical AND `&&`](#logical-and-&&)
-    - [Logical OR `||`](#logical-or-)
-  - [Assignment operators](#assignment-operators)
-  - [Destructuring assignment (ES6)](#destructuring-assignment-es6)
-    - [Arrays](#arrays)
-    - [Objects](#objects)
-  - [Other operators](#other-operators)
+- [Primary expressions](#primary-expressions)
+  - [Grouping operator `()`](#grouping-operator-)
+- [Left-hand-side expressions](#left-hand-side-expressions)
+  - [Spread operator `...` (ES6)](#spread-operator--es6)
+- [Increment and decrement](#increment-and-decrement)
+  - [Increment operator `++`](#increment-operator-)
+  - [Decrement operator `--`](#decrement-operator---)
+- [Unary operators](#unary-operators)
+  - [`delete` operator](#delete-operator)
+  - [`void` operator](#void-operator)
+  - [Unary `typeof` operator](#unary-typeof-operator)
+  - [Unary negation operator](#unary-negation-operator)
+  - [Unary plus operator](#unary-plus-operator)
+  - [Bitwise NOT operator `~`](#bitwise-not-operator-)
+  - [Logical NOT `!`](#logical-not-)
+- [Arithmetic operators](#arithmetic-operators)
+  - [Addition operator `+`](#addition-operator-)
+  - [Subtraction operator `-`](#subtraction-operator--)
+  - [Division operator `/`](#division-operator-)
+  - [Multiplication operator `*`](#multiplication-operator-)
+  - [Remainder operator `%`](#remainder-operator-%25)
+- [Relational oparators](#relational-oparators)
+  - [`in` operator](#in-operator)
+  - [`instanceof` operator](#instanceof-operator)
+  - [Greater than `>` and greater than or equal `>=` operator](#greater-than--and-greater-than-or-equal--operator)
+  - [Less than `<` and less than or equal `<=` operator](#less-than--and-less-than-or-equal--operator)
+- [Equality operators](#equality-operators)
+  - [Equality `!=` and Inequality `==`](#equality--and-inequality-)
+  - [Identity (Strict equality) `===`and Nonidentity `!==`](#identity-strict-equality-and-nonidentity-)
+- [Bitwise shift operators](#bitwise-shift-operators)
+  - [Bitwise left shift `<<`](#bitwise-left-shift-)
+  - [Bitwise right shift operator `>>`](#bitwise-right-shift-operator-)
+  - [Bitwise unsigned right shift operator `>>>`](#bitwise-unsigned-right-shift-operator-)
+- [Binary bitwise Operators](#binary-bitwise-operators)
+  - [Bitwise AND `&`](#bitwise-and-&)
+  - [Bitwise AND `|`](#bitwise-and-)
+  - [Bitwise XOR `^`](#bitwise-xor-%5E)
+- [binary logical Operators](#binary-logical-operators)
+  - [Logical AND `&&`](#logical-and-&&)
+  - [Logical OR `||`](#logical-or-)
+- [Assignment operators](#assignment-operators)
+- [Destructuring assignment (ES6)](#destructuring-assignment-es6)
+  - [Arrays](#arrays)
+  - [Objects](#objects)
+- [Other operators](#other-operators)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Operators
-
-### Primary expressions
+## Primary expressions
 
 Basic keywords and general expressions in JavaScript.
 
@@ -66,7 +64,7 @@ It regroups the following :
 * array initializer `[]` / object initializer `{}` / regexp initializer `//`
 * ...
 
-#### Grouping operator `()`
+### Grouping operator `()`
 
 Example :
 ```javascript
@@ -76,7 +74,7 @@ false && (false || true);
 
 [Here the full Operator precedence table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence).
 
-### Left-hand-side expressions
+## Left-hand-side expressions
 
 Left values are the destination of an assignment.
 
@@ -86,7 +84,7 @@ It regroups the following :
 * Property accessors
 * ...
 
-#### Spread operator `...` (ES6)
+### Spread operator `...` (ES6)
 
 Classically used on an array in an function call to spread all array items as arguments :
 ```javascript
@@ -103,11 +101,11 @@ But can also be used for array concatenation :
 [1, 2, ...[3, 4, 5], 6, 7];
 ```
 
-### Increment and decrement
+## Increment and decrement
 
 Postfix/prefix increment and postfix/prefix decrement operators.
 
-"### Increment operator `++`
+### Increment operator `++`
 
 Example :
 ```javascript
@@ -115,7 +113,7 @@ x++;
 ++x;
 ```
 
-#### Decrement operator `--`
+### Decrement operator `--`
 
 Example :
 ```javascript
@@ -123,11 +121,11 @@ x--;
 --x;
 ```
 
-### Unary operators
+## Unary operators
 
 A unary operation is operation with only one operand.
 
-#### `delete` operator
+### `delete` operator
 
 Deletes a property from an object :
 ```javascript
@@ -138,7 +136,7 @@ delete object[1];
 object;
 ```
 
-#### `void` operator
+### `void` operator
 
 Discards an expression's return value :
 ```javascript
@@ -146,7 +144,7 @@ void x;
 void (x + y);
 ```
 
-#### Unary `typeof` operator
+### Unary `typeof` operator
 
 Use typeof to find out whether a given value is an object or a primitive and, in the latter case, what type of primitive it is.
 
@@ -186,21 +184,21 @@ typeof NaN;
 
 But above results are known "bug" and since they exist from a long time, we must deal with them...
 
-#### Unary negation operator
+### Unary negation operator
 
 Example :
 ```javascript
 -x;
 ```
 
-#### Unary plus operator
+### Unary plus operator
 
 Convert to number :
 ```javascript
 +x;
 ```
 
-#### Bitwise NOT operator `~`
+### Bitwise NOT operator `~`
 
 Inverts the bits of its operand :
 ```javascript
@@ -209,18 +207,18 @@ Inverts the bits of its operand :
 ```
 
 
-#### Logical NOT `!`
+### Logical NOT `!`
 
 Example :
 ```javascript
 !true;
 ```
 
-### Arithmetic operators
+## Arithmetic operators
 
 Arithmetic operators take numerical values (either literals or variables) as their operands and return a single numerical value.
 
-#### Addition operator `+`
+### Addition operator `+`
 
 Example :
 ```javascript
@@ -239,39 +237,39 @@ If a number is "added" to a string, the result will be a string :
 1 + ' world';
 ```
 
-#### Subtraction operator `-`
+### Subtraction operator `-`
 
 Example
 ```javascript
 x - y;
 ```
 
-#### Division operator `/`
+### Division operator `/`
 
 Example :
 ```javascript
 x / y;
 ```
 
-#### Multiplication operator `*`
+### Multiplication operator `*`
 
 Example :
 ```javascript
 x * y;
 ```
 
-#### Remainder operator `%`
+### Remainder operator `%`
 
 Example :
 ```javascript
 x % y;
 ```
 
-### Relational oparators
+## Relational oparators
 
 A comparison operator compares its operands and returns a Boolean value based on whether the comparison is true.
 
-#### `in` operator
+### `in` operator
 
 Example :
 ```javascript
@@ -282,7 +280,7 @@ x in array;
 x in object;
 ```
 
-#### `instanceof` operator
+### `instanceof` operator
 
 Use instanceof to determine whether an object is an instance of a given type. instanceof always returns false for primitive values. 
 
@@ -309,7 +307,7 @@ point instanceof Point;
 point instanceof Object;
 ```
 
-#### Greater than `>` and greater than or equal `>=` operator
+### Greater than `>` and greater than or equal `>=` operator
 
 Example :
 ```javascript
@@ -317,7 +315,7 @@ x > y;
 x >= y;
 ```
 
-#### Less than `<` and less than or equal `<=` operator
+### Less than `<` and less than or equal `<=` operator
 
 Example
 ```javascript
@@ -325,11 +323,11 @@ x < y;
 x <= y;
 ```
 
-### Equality operators
+## Equality operators
 
 The result of evaluating an equality operator is always of type Boolean based on whether the comparison is true
 
-#### Equality `!=` and Inequality `==`
+### Equality `!=` and Inequality `==`
 
 Example
 ```javascript
@@ -337,7 +335,7 @@ x == y;
 x != y;
 ```
 
-#### Identity (Strict equality) `===`and Nonidentity `!==`
+### Identity (Strict equality) `===`and Nonidentity `!==`
 
 Example :
 ```javascript
@@ -345,11 +343,11 @@ x === y;
 x !== y;
 ```
 
-### Bitwise shift operators
+## Bitwise shift operators
 
 Operations to shift all bits of the operand.
 
-#### Bitwise left shift `<<`
+### Bitwise left shift `<<`
 
 Shifts bits x places to the left by shifting in zeroes from the right :
 ```javascript
@@ -357,7 +355,7 @@ Shifts bits x places to the left by shifting in zeroes from the right :
 0b111 << 2 === 0b11100;
 ```
 
-#### Bitwise right shift operator `>>`
+### Bitwise right shift operator `>>`
 
 Shifts bits x places to the right by discarding bits shifted off :
 ```javascript
@@ -365,7 +363,7 @@ Shifts bits x places to the right by discarding bits shifted off :
 0b11111111111111111111111111111001 >> 2 === 0b11111111111111111111111111111110 >> 0;
 ```
 
-#### Bitwise unsigned right shift operator `>>>`
+### Bitwise unsigned right shift operator `>>>`
 
 Shifts bits x places to the right by discarding bits shifted off, and shifting in zeroes from the left :
 ```javascript
@@ -373,25 +371,25 @@ Shifts bits x places to the right by discarding bits shifted off, and shifting i
 0b11111111111111111111111111111001 >>> 2 === 0b00111111111111111111111111111110;
 ```
 
-### Binary bitwise Operators
+## Binary bitwise Operators
 
 Bitwise operators treat their operands as a set of 32 bits (zeros and ones) and return standard JavaScript numerical values.
 
-#### Bitwise AND `&`
+### Bitwise AND `&`
 
 Returns a one in each bit position for which the corresponding bits of both operands are ones :
 ```javascript
 7 & 9;
 ```
 
-#### Bitwise AND `|`
+### Bitwise AND `|`
 
 Returns a one in each bit position for which the corresponding bits of either or both operands are ones :
 ```javascript
 7 | 9;
 ```
 
-#### Bitwise XOR `^`
+### Bitwise XOR `^`
 
 Returns a one in each bit position for which the corresponding bits of either but not both operands are ones :
 ```javascript
@@ -399,9 +397,9 @@ Returns a one in each bit position for which the corresponding bits of either bu
 ```
 This also works with booleans.
 
-### binary logical Operators
+## binary logical Operators
 
-#### Logical AND `&&`
+### Logical AND `&&`
 
 Example :
 ```javascript
@@ -421,7 +419,7 @@ true && 1;
 true && false && 0 && 1;
 ```
 
-#### Logical OR `||`
+### Logical OR `||`
 
 Example :
 ```javascript
@@ -441,7 +439,7 @@ true || 1;
 false || true || 1 || 0;
 ```
 
-### Assignment operators
+## Assignment operators
 
 An assignment operator assigns a value to its left operand based on the value of its right operand.
 
@@ -460,11 +458,11 @@ x >>= y;
 x >>>= y;
 ```
 
-### Destructuring assignment (ES6)
+## Destructuring assignment (ES6)
 
 This is quite similar to the `list()` construct in PHP.
 
-#### Arrays
+### Arrays
 
 Example :
 ```javascript
@@ -495,7 +493,7 @@ var b = 2;
 console.log(a, b);
 ```
 
-#### Objects
+### Objects
 
 Example
 ```javascript
@@ -539,7 +537,7 @@ var {foo: {bar: [x = 1, y = 2, z = 3]}} = myObject;
 console.log(x, y, z);
 ```
 
-### Other operators
+## Other operators
 
 Conditional (ternary) operator `?` :
 ```javascript
