@@ -227,14 +227,18 @@ Keep your code modularized and specialized, that is : make sure to write smaller
 
 [Strict mode](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Strict_mode) can help you to minimise errors.
 
-But it's important to declare the strict mode inside of the local scope of your module.
+But it's important to declare the strict mode inside of the local scope of your module.  
 Declaring it outside can lead to troubles with vendor modules when using a tool that will concatenate all your files into one.
 
-For example, the value of `this` [can differ in strict mode](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md#this) and some modules can use this type of code to get the global scope :
+For example, the value of `this` [can differ in strict mode](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/02_Vanilla_advanced/01_Prototype-and-classes.md#this) and some modules can use this type of code to get the global scope :
 ```javascript
 (function(){
-  var global = (function(){return this})();
-  console.log(global); // Returns window (in the browser) or undefined in strict mode.
+  console.log(function(){return this}());
+})();
+
+(function(){
+  'use strict';
+  console.log(function(){return this}());
 })();
 ```
 

@@ -201,10 +201,6 @@ var result = tmpl('myTemplate', {
     {
       title: 'DOM and events',
       url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/04_DOM-and-events.md'
-    },
-    {
-      title: 'Prototype and classes',
-      url:   'https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md'
     }
   ]
 });

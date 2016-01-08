@@ -354,7 +354,7 @@ var prototype = firstInstance.constructor.prototype;
 ```
 
 Remember that the prototype is shared between all instances, and modifying it will also affect already created instances.  
-See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md#prototype) for explanations.
+See [here](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/02_Vanilla_advanced/01_Prototype-and-classes.md) for explanations.
 
 ## Compatibility with modules loader
 
@@ -464,7 +464,7 @@ You plugin file `./app/HelloWorld.js` :
 }));
 ```
 
-### ES Harmony
+### ES6
 
 Take a look at the future of JavaScript.
 
