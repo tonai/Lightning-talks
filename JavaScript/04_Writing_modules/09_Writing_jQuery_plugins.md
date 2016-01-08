@@ -1,10 +1,4 @@
-# jQuery best practices and plugins
-
-## Foreword
-
-You can use the navigator's debug console (F12) to try the above examples yourself.
-
-Presentation time needed : 20min
+# Writing jQuery plugins
 
 ## Table of contents
 
@@ -27,20 +21,6 @@ Presentation time needed : 20min
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## JavaScript and DOM
-
-### HTML classes
-
-Use specific HTML classes that you will use in your JavaScript plugins to select the DOM elements you need to manipulate.
-
-Prefix those classes with `js-` to differentiate them from other style classes.
-
-For state classes use the `is-` prefix.
-Example :
-* `is-active`
-* `is-open`
-* ...
-
-Avoid the usage of HTML id for your code to be more reusable.
 
 ### Variable naming
 
