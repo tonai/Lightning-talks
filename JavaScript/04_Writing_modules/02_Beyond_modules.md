@@ -51,7 +51,7 @@ var moduleInstance = new Module(options);
 
 This is the most common way wich is easy to unserstand and works well.
 
-You then need to merge these options with your modules' defaults (examples in [previous chapter](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/04_Writing_modules/01_Modules_practice.md)).
+You then need to merge these options with your modules' defaults (examples in [previous chapter](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/04_Writing_modules/01_Writing_modules.md)).
 
 #### HTML input
 
@@ -210,7 +210,7 @@ var instances = $('.js-module');
 
 But there is 2 problems with this notation :
 * `.js-module` represent several DOM elements, so we need to return an array of instances (or we can only operate on the first element).
-* by not returning a jQuery object, it will break the [jQuery chaining functionality](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/04_Writing_modules/01_Modules_practice.md#export-your-plugin-with-jquery).
+* by not returning a jQuery object, it will break the [jQuery chaining functionality](http://api.jquery.com/Types/#jQuery).
 
 Or you can make the instance accessible through the DOM element like [this example](./modules/jquery.homothetic-resize.js).
 
@@ -270,7 +270,7 @@ var myModule = MyModule(options);
 myModule.publicMethod1();
 ```
 
-[Here](./modules/api.base-modules.js) is a more complete example.
+[Here](./modules/api.base-module.js) is a more complete example.
 
 You can use a similar method for jQuery plugins with the same explanations as above.
 
