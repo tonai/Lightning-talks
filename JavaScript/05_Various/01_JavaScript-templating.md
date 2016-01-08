@@ -25,7 +25,10 @@ Presentation time needed : 20min
     - [Writing a partial](#writing-a-partial)
     - [More complexe example](#more-complexe-example)
     - [Pre-compilation](#pre-compilation)
-  - [Integration with Drupal](#integration-with-drupal)
+- [About ES6 templates](#about-es6-templates)
+  - [Variable interpolation](#variable-interpolation)
+  - [Conditionals](#conditionals)
+  - [Array iteration](#array-iteration)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -236,14 +239,82 @@ var result3 = preCompiledTemplate(data3);
 
 Live example : see markers pop-ups on [Kering Foundation map](http://keringfoundation.org/actions?finalized=1) .
 
-### Integration with Drupal
+## About ES6 templates
 
-Take a look at this Drupal project : [Drupal microtemplating](https://www.drupal.org/project/microtemplating).
+### Variable interpolation
+
+Variable interpolation is a native functionnality of ES6 templates.  
+It works like the following :
+```javascript
+var name = 'World';
+var template = `<span>Hello ${name} !</span>`;
+template;
+```
+
+But like this, the template string is not really reusable...  
+You can create a function wrapping the template but you will have to list each template variables as function arguments :
+```javascript
+var template = function(data) {
+  return `<span>Hello ${data.name} !</span>`;
+}
+template({name: 'World'});
+```
+
+For variable interpolation simplification, tagged templates come to the rescue in association with this little function :
+```javascript
+function tmpl(strings, ...keys) {
+  console.log(keys);
+  return (function(values) {
+    var result = [strings[0]];
+    keys.forEach(function(key, i) {
+      result.push(values[key], strings[i + 1]);
+    });
+    return result.join('');
+  });
+}
+```
+
+Result :
+```javascript
+var template = tmpl`<span>Hello ${'name'} !</span>`;
+template({name: 'World'});
+template({name: 'Everybody'});
+```
+
+### Conditionals
+
+Only ther ternary operator is available for conditionnal statements as only expressions are allowed inside templates (as not statements).
+
+But expressions inside the brackets `${}` are evaluated immediately thus this method is also not compatible with the tagged template technique above.
+
+Example :
+```javascript
+var template = function(data) {
+  return `<span>${data.like? 'No longer like': 'Like'}</span>`;
+}
+template({like: false});
+template({like: true});
+```
+
+### Array iteration
+
+It is also possible to do some iterations always by using iteration techniques that are expressions, like using the `map()` function.
+
+Example :
+```javascript
+var template = function(data) {
+  return `<ul>
+${data.items.map(item => `<li>${item}</li>`).join('\n')}
+</ul>`;
+}
+template({items: ['foo', 'bar', 'baz']});
+```
 
 ## References
 
 * [Template-Engine-Chooser!][garann]
 * [JavaScript Micro-Templating][microtemplating]
+* [Template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings)
 
 [microtemplating]: http://ejohn.org/blog/javascript-micro-templating/
 [garann]: http://garann.github.io/template-chooser/
