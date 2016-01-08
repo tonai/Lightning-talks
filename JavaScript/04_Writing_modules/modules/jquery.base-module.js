@@ -1,18 +1,18 @@
 (function($){
   'use strict';
 
-  /* Plugin variables. */
-  var pluginName, defaultOptions = {};
+  /* Module variables. */
+  var moduleName, defaultOptions = {};
 
   /**
-   * Plugin Constructor.
+   * Module Constructor.
    *
    * @param {Node|jQuery} element
    *   Main DOM element.
    * @param {object} options
    *   Instance specific options.
    */
-  function Plugin(element, options) {
+  function Module(element, options) {
     // Merge specific and default options.
     this.options = $.extend({}, defaultOptions, options);
 
@@ -20,7 +20,7 @@
     this.$element = (element instanceof $)? element: $(element);
 
     // Save the instance reference into the DOM element.
-    this.$element.data(pluginName, this);
+    this.$element.data(moduleName, this);
 
     // Object initialization.
     this.setup && this.setup();
@@ -28,38 +28,38 @@
     this.init  && this.init();
   }
 
-  /********** Start plugin specific code **********/
+  /********** Start module specific code **********/
 
-  /* Plugin name. */
-  pluginName = 'myPlugin';
+  /* Module name. */
+  moduleName = 'myModule';
 
-  /* Plugin default options. */
+  /* Module default options. */
   defaultOptions = {};
 
   /**
-   * Setup plugin.
+   * Setup module.
    * e.g. Get DOM elements, setup data...
    */
-  Plugin.prototype.setup = function() {};
+  Module.prototype.setup = function() {};
 
   /**
    * Bind events.
    */
-  Plugin.prototype.bind = function() {};
+  Module.prototype.bind = function() {};
 
   /**
-   * Initialize default plugin state.
+   * Initialize default module state.
    */
-  Plugin.prototype.init = function() {};
+  Module.prototype.init = function() {};
 
-  /********** End plugin specific code **********/
+  /********** End module specific code **********/
 
-  /* Expose jQuery plugin. */
-  $.fn[pluginName] = function(options) {
+  /* Expose jQuery module. */
+  $.fn[moduleName] = function(options) {
     return this.each(function() {
       var $this = $(this);
-      if (!$this.data(pluginName)) {
-        new Plugin($this, options);
+      if (!$this.data(moduleName)) {
+        new Module($this, options);
       }
     });
   };

@@ -1,13 +1,13 @@
 (function($){
   'use strict';
   
-  /* Plugin variables. */
-  var pluginName, defaultOptions = {};
+  /* Module variables. */
+  var moduleName, defaultOptions = {};
   
   /**
    * Constructor.
    */
-  function Plugin(element, options) {
+  function Module(element, options) {
     // Merge specific and default options.
     this.options = $.extend({}, defaultOptions, options);
 
@@ -15,7 +15,7 @@
     this.$element = (element instanceof $)? element: $(element);
 
     // Save the instance reference into the DOM element.
-    this.$element.data(pluginName, this);
+    this.$element.data(moduleName, this);
 
     // Object initialisation.
     this.setup && this.setup();
@@ -23,22 +23,22 @@
     this.init  && this.init();
   }
 
-  /********** Start plugin specific code **********/
+  /********** Start module specific code **********/
   
-  /* Plugin name. */
-  pluginName = 'homotheticResize';
+  /* Module name. */
+  moduleName = 'homotheticResize';
   
-  /* Plugin default options. */
+  /* Module default options. */
   defaultOptions = {
     widthAttr  : 'width',
     heightAttr : 'height'
   };
 
   /**
-   * Setup plugin.
+   * Setup module.
    * e.g. Get DOM elements, setup data...
    */
-  Plugin.prototype.setup = function() {
+  Module.prototype.setup = function() {
     var width  = this.$element.attr(this.options.widthAttr);
     var height = this.$element.attr(this.options.heightAttr);
     this.ratio = parseInt(width, 10) / parseInt(height, 10);
@@ -47,14 +47,14 @@
   /**
    * Bind events.
    */
-  Plugin.prototype.bind = function() {
-    $(window).on('resize.' + pluginName, this.resize.bind(this));
+  Module.prototype.bind = function() {
+    $(window).on('resize.' + moduleName, this.resize.bind(this));
   };
 
   /**
-   * Initialize default plugin state.
+   * Initialize default module state.
    */
-  Plugin.prototype.init = function() {
+  Module.prototype.init = function() {
     this.resize();
   };
   
@@ -62,18 +62,18 @@
    * Event callback.
    * Resize the element homothetically.
    */
-  Plugin.prototype.resize = function() {
+  Module.prototype.resize = function() {
     this.$element.height(this.$element.width() / this.ratio);
   };
 
-  /********** End plugin specific code **********/
+  /********** End module specific code **********/
 
-  /* Expose jQuery plugin. */
-  $.fn[pluginName] = function(options) {
+  /* Expose jQuery module. */
+  $.fn[moduleName] = function(options) {
     return this.each(function() {
       var $this = $(this);
-      if (!$this.data(pluginName)) {
-        new Plugin($this, options);
+      if (!$this.data(moduleName)) {
+        new Module($this, options);
       }
     });
   };

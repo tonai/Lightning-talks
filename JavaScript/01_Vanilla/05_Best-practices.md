@@ -9,20 +9,16 @@
 - [Existing JavaScript style guides](#existing-javascript-style-guides)
 - [Standard coding best practices](#standard-coding-best-practices)
 - [Basic rules](#basic-rules)
+  - [HTML classes](#html-classes)
   - [Semicolon](#semicolon)
   - [Globals](#globals)
   - [Variable declaration](#variable-declaration)
   - [Function declaration](#function-declaration)
   - [Wrapper objects](#wrapper-objects)
   - [Shorthands](#shorthands)
-- [Writing a module](#writing-a-module)
-  - [When do I need to write a module ?](#when-do-i-need-to-write-a-module-)
+  - [Write module](#write-module)
   - [Strict mode](#strict-mode)
   - [Dependencies](#dependencies)
-  - [Constructor and prototype](#constructor-and-prototype)
-  - [Export your module](#export-your-module)
-  - [Allow for Configuration and Translation](#allow-for-configuration-and-translation)
-  - [Avoid heavy nesting](#avoid-heavy-nesting)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -226,6 +222,11 @@ Keep your code modularized and specialized, that is : make sure to write smaller
 ### Strict mode
 
 [Strict mode](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Strict_mode) can help you to minimise errors.
+It disallows lots of bad parts of the language :  
+* Variables can’t be left undeclared
+* Function parameters must have unique names
+* `with` is forbidden
+* ...
 
 But it's important to declare the strict mode inside of the local scope of your module.  
 Declaring it outside can lead to troubles with vendor modules when using a tool that will concatenate all your files into one.

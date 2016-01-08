@@ -1,13 +1,13 @@
 (function(){
   'use strict';
 
-  /* Plugin variables. */
-  var pluginName, defaultOptions = {};
+  /* Module variables. */
+  var moduleName, defaultOptions = {};
 
   /**
    * Constructor.
    */
-  function Plugin(options) {
+  function Module(options) {
     // Merge specific and default options.
     this.options = this.merge({}, defaultOptions);
     this.merge(this.options, options);
@@ -23,7 +23,7 @@
    * @param {object} target Target object.
    * @param {object} source Source object.
    */
-  Plugin.prototype.merge = function(target, source) {
+  Module.prototype.merge = function(target, source) {
     for (var i in source) {
       if (source.hasOwnProperty(i)) {
         target[i] = source[i];
@@ -32,32 +32,32 @@
     return target;
   };
 
-  /********** Start plugin specific code **********/
+  /********** Start module specific code **********/
 
-  /* Plugin name. */
-  pluginName = 'MyPlugin';
+  /* Module name. */
+  moduleName = 'MyModule';
 
-  /* Plugin default options. */
+  /* Module default options. */
   defaultOptions = {};
 
   /**
-   * Setup plugin.
+   * Setup module.
    * e.g. Get DOM elements, setup data...
    */
-  Plugin.prototype.setup = function() {};
+  Module.prototype.setup = function() {};
 
   /**
    * Bind events.
    */
-  Plugin.prototype.bind = function() {};
+  Module.prototype.bind = function() {};
 
   /**
-   * Initialize default plugin state.
+   * Initialize default module state.
    */
-  Plugin.prototype.init = function() {};
+  Module.prototype.init = function() {};
 
-  /********** End plugin specific code **********/
+  /********** End module specific code **********/
 
-  /* Export the plugin. */
-  window[pluginName] = Plugin;
+  /* Export the module. */
+  window[moduleName] = Module;
 })();
