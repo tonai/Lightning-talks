@@ -1,12 +1,5 @@
 # jQuery Deferred and promise
 
-## Foreword
-
-This presentation is not a complete explanation of all the jQuery API as some usages are intentionally not explaned.  
-This presentation make an easier comparison of the different available jQuery methods.
-
-Presentation time needed : 15min
-
 ## Table of contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
