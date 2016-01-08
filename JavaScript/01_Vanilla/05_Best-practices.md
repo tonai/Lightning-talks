@@ -1,10 +1,4 @@
-# Best practices and modules
-
-## Foreword
-
-You can use the navigator's debug console (F12) to try the above examples yourself.
-
-Presentation time needed : 30min
+# Best practices
 
 ## Table of contents
 
@@ -69,13 +63,27 @@ In the rest of the document we will only focus on specific best practices applic
 
 ## Basic rules
 
+### HTML classes
+
+Use specific HTML classes that you will use in your JavaScript plugins to select the DOM elements you need to manipulate.
+
+Prefix those classes with `js-` to differentiate them from other style classes.
+
+For state classes use the `is-` prefix.
+Example :
+* `is-active`
+* `is-open`
+* ...
+
+Avoid references of HTML id into your code for it to be more reusable.
+
 ### Semicolon
 
 Always use semicolons.
 
-Why : Relying on implicit insertion can cause subtle, hard to debug problems. Even more if minified.
+**Why :** Relying on implicit insertion can cause subtle, hard to debug problems. Even more if minified.
 
-Workaround : use a JavaScript syntax checker like [JSLint](http://www.jslint.com/) or [JSHint](http://jshint.com/).
+**Workaround :** use a JavaScript syntax checker like [JSLint](http://www.jslint.com/) or [JSHint](http://jshint.com/).
 
 Example of error :
 ```javascript
@@ -90,9 +98,9 @@ var myMethod = function() {
 
 Avoid use of global variables.
 
-Why : because they can easily be overwritten by another code part.
+**Why :** because they can easily be overwritten by another code part.
 
-Workaround : use [closures](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md#closure) and [IIFE](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md#iife-immediately-invoked-function-expression).
+**Workaround :** use [closures](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md#closure) and [IIFE](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md#iife-immediately-invoked-function-expression).
 
 ```javascript
 (function(){
@@ -111,9 +119,9 @@ In the case you absolutely need to set a global variable. Do it explicitly and u
 
 Declare your variables at the beginning of each function.
 
-Why : because JavaScript variables declarations are [automatically hoisted](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md#hoisting). So you will avoid some strange behaviours.
+**Why :** Because JavaScript variables declarations are [automatically hoisted](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/03_Functions-and-Scope.md#hoisting). Doing so will avoid you some strange behaviours.
 
-Note : you can initialize them later.
+**Note :** Of course, you can initialize them later.
 
 Proposition :
 ```javascript
@@ -135,7 +143,7 @@ Proposition :
 
 Don't declare function within a block.
 
-Why : it is not part of ECMAScript.
+**Why :** it is not part of ECMAScript.
 
 Do not :
 ```javascript
@@ -159,7 +167,7 @@ As function declaration are also hoisted try to declare them at the top too.
 
 Do not use them for primitive types.
 
-Why : Can lead to errors.
+**Why :** Can lead to errors.
 
 Example of error :
 ```javascript
@@ -169,9 +177,9 @@ if (x) {
 }
 ```
 
-Workaround : use shortcut notations.
+**Workaround :** use shorthand notations.
 
-Note : you can use wrappers for type casting (without the `new` operator).
+**Note :** you can use wrappers for type casting (without the `new` operator).
 
 ```javascript
 var x = Boolean(1);
@@ -179,14 +187,21 @@ var x = Boolean(1);
 
 ### Shorthands
 
-Don't use shorthands that will lead to incomprehensible code.
+Don't use shorthands that can lead to incomprehensible code.
+
+Example (Fibonacci sequence calculator) :
+```javascript
+function f(m,r,p,c){
+  return m=m|0&&(r?r===m?c:f(m,r+1,c,p+c):f(m,1,0,1));
+}
+```
 
 Here is some shorthands patterns that can be used in some cases :
 
-Declaring a variable :
+Give a default value to a variable :
 ```javascript
 var myMethod = function(options) {
-  this.options = options || {};
+  options = options || {};
 }
 ```
 
@@ -200,9 +215,7 @@ myElement && myElement.addEventListener('click', function(){/*...*/});
 
 But do not overuse them...
 
-## Writing a module
-
-### When do I need to write a module ?
+### Write module
 
 In fact, you can almost always write a module.
 
@@ -227,9 +240,9 @@ For example, the value of `this` [can differ in strict mode](https://github.com/
 
 ### Dependencies
 
-It's a fact, your module can depends on other modules, framework...etc.
+It's a fact, your module will most probably depend on other modules, framework...etc.
 
-Without a module loader (AMD, CommonJS or ECMAScript6), specify your dependencies by passing them into your module scope.
+Without a module loader (AMD, CommonJS or ES6), specify your dependencies by passing them into your module scope.
 
 3 benefits :
 * By doing so, you will list your module dependencies, and will be easier in the future to reuse your module with a module loader for instance.
@@ -258,164 +271,6 @@ Usage example :
     myVar: $('mySelector'),
   };
 })(window, jQuery);
-```
-
-### Constructor and prototype
-
-Define your module using [constructor](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md#constructor) and [prototype](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md#prototype). It will save memory and makes your code more flexible.
-
-Add methods one by one to avoid to lose the native [constructor prototype property](https://github.com/tonai/Lightning-talks/blob/master/JavaScript/01_Vanilla/05_Prototype-and-classes.md#the-constructor-prototype-property).
-
-Example :
-```javascript
-(function(){
-  'use strict';
-
-  /**
-   * Constructor of MyModule.
-   */
-  function MyModule() {
-    this.init();
-  };
-
-  /**
-   * Initialize instances of MyModule.
-   */
-  MyModule.prototype.init = function() {
-    // Do something.
-  };
-})();
-```
-
-### Export your module
-
-Without a module loader (AMD, CommonJS or ECMAScript6), export your module to be used by your app.
-
-With Vanilla JavaScript you will need to add your module in the global scope by doing so :
-```javascript
-var MyModuleGloballyAccessible = (function(){
-  'use strict';
-
-  /**
-   * Constructor of MyModule.
-   */
-  function MyModule() {/*...*/};
-
-  /*...*/
-
-  return MyModule;
-})();
-```
-
-You can then use it within your app :
-```javascript
-var myModuleInstance = new MyModuleGloballyAccessible();
-```
-
-### Allow for Configuration and Translation
-
-Store all specific data into a dedicated object that you can overwrite for each instance.
-This includes labels, CSS classes, IDs, presets, magic numbers...etc.
-
-Example :
-```javascript
-(function(){
-  'use strict';
-
-  /* Plugin default options. */
-  var defaultOptions = {
-    label: 'myDefaultLabel'
-  };
-
-  /**
-   * Constructor.
-   */
-  function Plugin(options) {
-    // Merge specific and default options.
-    this.options = this.merge({}, defaultOptions);
-    this.merge(this.options, options);
-
-    // Log the label.
-    console.log(this.options.label);
-  };
-
-  /**
-   * Merge target object with source object.
-   * @param {object} target Target object.
-   * @param {object} source Source object.
-   */
-  Plugin.prototype.merge = function(target, source) {
-    for (var i in source) {
-      if (source.hasOwnProperty(i)) {
-        target[i] = source[i];
-      }
-    }
-    return target;
-  };
-
-  /* Create an instance with specific options. */
-  new Plugin({
-    label: 'myLabel'
-  });
-})();
-```
-
-### Avoid heavy nesting
-
-When you should provide a callback (event, AJAX...etc.), define it in a separate method to avoid heavy nesting.
-
-But do not forget to use the `bind` method to define the value of `this` to be what you expect :
-```javascript
-var MyModule = (function(window){
-  'use strict';
-
-  /* Plugin default options. */
-  var defaultOptions = {
-    label: 'myDefaultLabel'
-  };
-
-  /**
-   * Constructor.
-   */
-  function Plugin(options) {
-    // Merge specific and default options.
-    this.options = this.merge({}, defaultOptions);
-    this.merge(this.options, options);
-
-    // Attach event listener.
-    window.addEventListener('resize', this.resize.bind(this));
-  };
-
-  /**
-   * Resize callback.
-   */
-  Plugin.prototype.resize = function() {
-    console.log(this.options.label);
-  };
-
-  /**
-   * Merge target object with source object.
-   * @param {object} target Target object.
-   * @param {object} source Source object.
-   */
-  Plugin.prototype.merge = function(target, source) {
-    for (var i in source) {
-      if (source.hasOwnProperty(i)) {
-        target[i] = source[i];
-      }
-    }
-    return target;
-  };
-
-  return Plugin;
-})(window);
-```
-
-Create an instance with specific options :
-```javascript
-new MyModule({
-  label: 'myLabel'
-});
 ```
 
 ## References
