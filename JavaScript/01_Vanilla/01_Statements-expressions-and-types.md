@@ -31,6 +31,7 @@
     - [Objects literal](#objects-literal)
     - [Arrays](#arrays)
     - [RegExps](#regexps)
+  - [Dates](#dates)
     - [Maps && WeakMaps (ES6)](#maps-&&-weakmaps-es6)
     - [Sets && weakSets (ES6)](#sets-&&-weaksets-es6)
     - [Wrappers](#wrappers)
@@ -495,7 +496,51 @@ var obj = {
 obj;
 ```
 
-There is also a shortand for defining a method (ES6).
+You can define more accurate property metedata by using `Object.defineProperty()`.
+
+Available metadata :
+* **value :** The value associated with the property.
+* **writable :** Can the value change using an assignment operator ?
+* **configurable :** Can the descriptor of the property be changed ? And can the property be deleted ?
+* **enumerable :** Is the property enumerable ?
+* **get :** Property getter.
+* **set :** Property setter.
+
+Example :
+```javascript
+var obj = {};
+Object.defineProperty(obj, 'a', {value: 1, writable: false, configurable: true, enumerable: true});
+Object.defineProperty(obj, 'b', {value: 2, writable: true, configurable: false, enumerable: true});
+Object.defineProperty(obj, 'c', {value: 3, writable: true, configurable: true, enumerable: false});
+Object.defineProperty(obj, 'd', {configurable: true, enumerable: true, get: function () {return 42;}});
+Object.defineProperty(obj, 'e', {configurable: true, enumerable: true, set: function (value) {this.c = value;}});
+```
+
+`get` and `set` are not compatible with `value` and `writable`.
+
+Result :
+```javascript
+obj.a;
+obj.a = 42;
+obj.a;
+
+obj.b;
+delete obj.b;
+obj.b;
+Object.defineProperty(obj, 'b', {value: 2, writable: true, configurable: false, enumerable: false});
+
+for (var i in obj) {
+  console.log(i);
+}
+
+obj.d;
+
+obj.e = 42;
+obj.e;
+obj.c;
+```
+
+Function-properties are called methods.
 
 ES 5 :
 ```javascript
@@ -506,6 +551,8 @@ var obj = {
 };
 obj.add(1,2);
 ```
+
+There is also a shortand for defining a method (ES6).
 
 ES 6 :
 ```javascript
@@ -578,6 +625,26 @@ regexp.test(string);
 regexp.exec(string);
 string.match(regexp);
 string.replace(regexp, '$1 everybody !');
+```
+
+### Dates
+
+Use the `Date` constructor to create dates.
+
+Example : 
+```javascript
+var date = new Date();
+date.getTime();
+date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+```
+
+**Beware :** the month is 0 based.
+
+Example : 
+```javascript
+var date = new Date(1985, 7, 30, 13, 20, 00);
+date.getTime();
+date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 ```
 
 #### Maps && WeakMaps (ES6)
