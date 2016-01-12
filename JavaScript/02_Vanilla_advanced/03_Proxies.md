@@ -6,10 +6,19 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
+- [Terminology](#terminology)
 - [Syntax](#syntax)
-  - [A module ?](#a-module-)
-  - [`export`](#export)
-  - [`import`](#import)
+  - [Constructor](#constructor)
+  - [Revocable Proxies](#revocable-proxies)
+- [Traps](#traps)
+  - [`get`](#get)
+  - [Exercice : create a proxy with access control](#exercice--create-a-proxy-with-access-control)
+  - [`set`](#set)
+  - [Exercice : Two-way data binding "framework"](#exercice--two-way-data-binding-framework)
+  - [`apply`](#apply)
+  - [`construct`](#construct)
+  - [Exercice : Create an `extend` proxy function](#exercice--create-an-extend-proxy-function)
+  - [Other traps](#other-traps)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
