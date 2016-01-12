@@ -227,33 +227,29 @@ Take a look at the future of JavaScript.
 
 Application main file `app.js` :
 ```JavaScript
-(function(){
-  'use strict';
-  
-  /* Dependencies. */
-  import HWConstructor from HelloWorld;
-  
-  /* Create instance. */
-  new HWConstructor();
-})();
+'use strict';
+
+/* Dependencies. */
+import HWConstructor from './app/HelloWorld.js';
+
+/* Create instance. */
+new HWConstructor();
 ```
 
 You plugin file `./app/HelloWorld.js` :
 ```JavaScript
-module HelloWorld{
-  'use strict';
-  
-  /* Dependencies. */
-  module $ from 'http://.../jquery.js';
-  
-  /* Constructor. */
-  var Plugin = function(){
-    $('body').append('<p>Hello world</p>');
-  };
-  
-  /* Export plugin. */
-   export var HWConstructor = Plugin;
+'use strict';
+
+/* Dependencies. */
+import $ from 'jquery';
+
+/* Constructor. */
+var Plugin = function(){
+  $('body').append('<p>Hello world</p>');
 };
+
+/* Export plugin. */
+ export default Plugin;
 ```
 
 But this syntax is now usable, even for ES5 only navigator, by using [Babel][Babel] and [browserify][browserify] in a build process.
