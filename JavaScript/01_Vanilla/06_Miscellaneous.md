@@ -10,7 +10,7 @@
   - [`navigator`](#navigator)
   - [`location`](#location)
   - [`innerHeight` / `innerWidth`](#innerheight--innerwidth)
-  - [history](#history)
+  - [`history`](#history)
 - [Global methods](#global-methods)
   - [`print`](#print)
   - [`alert` / `confirm` / `prompt`](#alert--confirm--prompt)
@@ -57,7 +57,7 @@ Example :
 window.innerWidth+ 'x' + window.innerHeight;
 ```
 
-### history
+### `history`
 
 Provides an interface for manipulating the browser session history.
 
@@ -181,27 +181,32 @@ window.requestAnimationFrame(function(time){
 
 Animate the github icon to move like a ping pong ball across the page.
 
-Initialize the styles :
+Initialize default values and styles :
 ```javascript
-var icon = document.getElementsByClassName('octicon-mark-github')[0];
-var offsetWidth = icon.offsetWidth;
-var offsetHeight = icon.offsetHeight;
+var icon = document.getElementsByClassName('header-logo-wordmark').length?
+  document.getElementsByClassName('header-logo-wordmark')[0]:
+  document.getElementsByClassName('header-logo-invertocat')[0];
+var offsetLeft = icon.offsetLeft;
+var offsetTop = icon.offsetTop;
+var horizontalSpeed = 200;
+var verticalSpeed = 250;
 
-icon.parentNode.style.width = offsetWidth + 'px';
-icon.parentNode.style.height = offsetHeight + 'px';
 icon.style.position = 'absolute';
 icon.style.zIndex = 999;
 ```
 
-Initial animation value :
+Animation variables :
 ```javascript
-var offsetLeft = icon.offsetLeft;
-var offsetTop = icon.offsetTop;
+var position = {
+  x: offsetLeft,
+  y: offsetTop
+}
 var speed = {
-  h: 200,
-  v: 250
+  h: horizontalSpeed,
+  v: verticalSpeed
 }; // px per second
 var previousTime;
+
 ```
 
 &nbsp;
@@ -222,19 +227,23 @@ function animate(time) {
   }
 
   if (previousTime) {
-    offsetLeft += speed.h * (time - previousTime) / 1000;
-    offsetTop += speed.v * (time - previousTime) / 1000;
-    if (offsetLeft < 0 || offsetLeft > window.innerWidth - offsetWidth) {
-      speed.h = -speed.h;
+    position.x += speed.h * (time - previousTime) / 1000;
+    position.y += speed.v * (time - previousTime) / 1000;
+    if (position.x < window.scrollX) {
+      speed.h = horizontalSpeed;
+    } else if (position.x > window.scrollX + window.innerWidth - icon.offsetWidth) {
+      speed.h = -horizontalSpeed;
     }
-    if (offsetTop < 0 || offsetTop > window.innerHeight - offsetHeight) {
-      speed.v = -speed.v;
+    if (position.y < window.scrollY) {
+      speed.v = verticalSpeed;
+    } else if (position.y > window.scrollY + window.innerHeight - icon.offsetHeight) {
+      speed.v = -verticalSpeed;
     }
   }
 
   previousTime = time;
-  icon.style.left = offsetLeft + 'px';
-  icon.style.top = offsetTop + 'px';
+  icon.style.left = position.x + 'px';
+  icon.style.top = position.y + 'px';
 
   window.requestAnimationFrame(animate);
 }
