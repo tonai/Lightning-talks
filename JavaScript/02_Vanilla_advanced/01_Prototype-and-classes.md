@@ -372,7 +372,7 @@ ES6 is cool :sunglasses:
 
 ### `bind`, `call` and `apply` together for calculating the distance in a 2 dimensional space (ES5) :smiling_imp: :smiling_imp: :smiling_imp:
 
-Example :
+Just for the fun :
 ```javascript
 point.dist = function () {
   var square = function(prop) {
@@ -388,6 +388,7 @@ point.dist = function () {
   return Math.sqrt(add.apply(this, ['x', 'y'].map(square.bind(this))));
 };
 ```
+
 Result :triumph: :
 ```javascript
 point.dist();
@@ -830,9 +831,183 @@ class Point3D extends Point2D {
 }
 ```
 
+## Factory pattern
+
+Using the factory pattern is an other way for creating object without using the prototype.
+
+### Factory functions
+
+They define an interface for creating an object.
+
+Example :
+```javascript
+function point2DFactory(x, y) {
+  return {
+    coordinates: [x, y],
+    toString: function() {
+      return x + ',' + y;
+    },
+    dist: function() {
+      return Math.sqrt(
+        this.coordinates
+          .map(a => a * a)
+          .reduce((a, b) => a + b)
+      );
+    }
+  };
+}
+```
+
+Result :
+```javascript
+var point2d = point2DFactory(5, 2);
+point2d + '';
+point2d.dist();
+point2d;
+```
+
+In this case, the "property" `x` and `y` are kind of "private".  
+They are used without the `this` keyword, which in fact, is a good thing, because `this` is really disturbing because its value can vary depending on the context.
+
+You can thus extract the `toString` method without problems (thanks to the closure).
+
+Example :
+```javascript
+var toString = point2d.toString;
+toString();
+```
+
+The drawback is that you will get a slower application if you need to create a lot of object (not using prototype means methods are duplicated).  
+And by a lot of object, I really mean a lot (~1000/frame)...
+
+Example :
+```javascript
+var start = performance.now();
+for (var i = 0; i < 1000; i++) {
+  point2DFactory(5, 2);
+}
+console.log(performance.now() - start);
+
+var start = performance.now();
+for (var i = 0; i < 1000; i++) {
+  new Point2D(5, 2);
+}
+console.log(performance.now() - start);
+```
+
+### Composition over Inheritance
+
+With this method, you can't use inheritance.  
+But you can use something, that is better : composition !
+
+By using inheritance, you design types around what they are.  
+By using composition, you design types around what they do. 
+
+Take a look at the following problem :
+* We have `cats` that `poop` and `meow`
+* We have `dogs` that `poop` and `bark`
+* We have `cleaningRobots` that `drive` and `clean`
+* We have `murderRobots` that `drive` and `kill`
+
+We can design the above problems like this using inheritance :
+```javascript
+class Animal {
+  constructor () {}
+  poop () {}
+}
+  class Cat extends Animal {
+    constructor () {}
+    meow () {}
+  }
+  class Dog extends Animal {
+    constructor () {}
+    bark () {}
+  }
+
+class Robot {
+  constructor () {}
+  drive () {}
+}
+  class cleaningRobot extends Robot {
+    constructor () {}
+    clean () {}
+  }
+  class murderRobot extends Robot {
+    constructor () {}
+    kill () {}
+  }
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+Now what if we want a murderRobotDog that can `drive`, `kill` and `bark` (but not `poop` because robot don't poop) ?!
+
+Composition to the rescue : design types around what they do !
+* `cat` = `pooper` + `meower`
+* `dog` = `pooper` + `barker`
+* `cleaningRobot` = `driver` + `cleaner`
+* `murdergRobot` = `driver` + `killer`
+* `murdergRobotDog` = `driver` + `killer` + `barker`
+
+Example :
+```javascript
+function pooper() {
+  return {
+    poop: function() {}
+  }
+}
+function meower() {
+  return {
+    meow: function() {}
+  }
+}
+function barker() {
+  return {
+    bark: function() {}
+  }
+}
+function driver() {
+  return {
+    drive: function() {}
+  }
+}
+function cleaner() {
+  return {
+    clean: function() {}
+  }
+}
+function killer() {
+  return {
+    kill: function() {}
+  }
+}
+function murdergRobotDogFactory() {
+  return Object.assign(
+    {},
+    driver(),
+    killer(),
+    barker()
+  );
+}
+```
+
+Result :
+```javascript
+murdergRobotDogFactory()
+```
+
 ## References
 
 * [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html)
 * [JavaScript inheritance by example](http://www.2ality.com/2012/01/js-inheritance-by-example.html)
 * [An easy way to understand JavaScript’s prototypal inheritance](http://www.2ality.com/2010/12/javascripts-prototypal-inheritance.html)
 * [ES6 Classes in Depth](https://ponyfoo.com/articles/es6-classes-in-depth)
+* [Composition over Inheritance](https://www.youtube.com/watch?v=wfMtDGfHWpA)
