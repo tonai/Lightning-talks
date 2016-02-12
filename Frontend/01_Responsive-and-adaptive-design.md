@@ -86,9 +86,10 @@ Example :
 A breakpoint is a specific resolution which delimit two interval and therefore two different behaviors.
 
 Common breakpoints :
-* 320px : usually used resolution as the lowest resolution used by smartphone (this is the resolution of iphones until 5S).
 * 768px : usually used resolution for tablet in portrait position (portrait resolution of most ipad).
 * 1024px : usually used resolution for tablet in landscape position (landscape resolution of most ipad).
+
+**Note :** 320px is not a breakpoint but is a well-known value as it usually is the lowest resolution used by smartphone (this is the resolution of iphones until 5S).
 
 ### Graceful degradation
 
