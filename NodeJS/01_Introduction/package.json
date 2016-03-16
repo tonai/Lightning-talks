@@ -1,0 +1,16 @@
+{
+  "name": "NodeJS-introduction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodejs-websocket": "^1.5.0",
+    "ws": "^1.0.1"
+  }
+}
