@@ -54,7 +54,7 @@ Microsoft, for the JScript language, followed this standard (implemented in 1997
 
 ### Influences
 
-JavaScript various influences: 
+JavaScript various influences:
 * Java : name, syntax
 * Perl & Python : string, array, regexp
 * Scheme, AWK, Self
@@ -168,7 +168,7 @@ for (var i in [0, 1, 2]) {
 }
 ```
 
-Expression example: 
+Expression example:
 ```javascript
 myLabel: 1 + 2;
 ```
@@ -251,18 +251,27 @@ square(1)
 square(2)
 ```
 
-But not using the `;` operator may also lead to some errors.
+Not using the `;` operator may also lead to some errors.
 
 OK :
 ```javascript
-1;
-(2);
+square(1);
+(square(2));
 ```
 
 KO :
 ```javascript
-1
-(2)
+square(1)
+(square(2))
+```
+
+But it does not protect you from the `Automatic Semicolon Insertion` mechanism :
+```javascript
+function WhatIsTheAnswer() {
+  return
+    42;
+}
+WhatIsTheAnswer();
 ```
 
 Sometimes you will also see `,` instead of `;`.  
@@ -355,7 +364,7 @@ And if you want a line break into your string you will have to use the `\n` char
 ```javascript
 var string1 = 'Lorem ipsum dolor sit amet, \n' +
 'consectetur adipiscing elit.';
-var string2 = `Lorem ipsum dolor sit amet, 
+var string2 = `Lorem ipsum dolor sit amet,
 consectetur adipiscing elit.`;
 console.log(string1);
 console.log(string2);
@@ -391,7 +400,7 @@ quoteExpression`foo ${string1.substr(0, 5)} bar`;
 
 #### Symbols
 
-A symbol is a unique and immutable data type and may be used as an identifier for object properties. 
+A symbol is a unique and immutable data type and may be used as an identifier for object properties.
 
 Example :
 ```javascript
@@ -631,7 +640,7 @@ string.replace(regexp, '$1 everybody !');
 
 Use the `Date` constructor to create dates.
 
-Example : 
+Example :
 ```javascript
 var date = new Date();
 date.getTime();
@@ -640,7 +649,7 @@ date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + 
 
 **Beware :** the month is 0 based.
 
-Example : 
+Example :
 ```javascript
 var date = new Date(1985, 7, 30, 13, 20, 00);
 date.getTime();
