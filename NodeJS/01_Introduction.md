@@ -116,14 +116,19 @@ Source : http://www.modulecounts.com/
 ### Full-Stack JavaScript
 
 The stack is composed of the following elements :
-* A JSON database like mongoDB
-* A JS server-side framework like Express
-* A JS front-side framework like Angular
+* A JSON database like mongoDB, CouchDB...etc.
+* A JS server-side framework like Express, Socket.io...etc.
+* A JS front-side framework like Angular, React...etc.
 
-This is comparable the well-known LAMP platform but here the only used language is JavaScript.  
-It can be called [MEAN](http://mean.io/).
+This is comparable to the well-known LAMP platform.  
 
-There is no data transformation from the database to the client.
+Some tools helps you to scaffold this kind of project like :
+* [MEAN](http://mean.io/)
+* [MERN](http://mern.io/)
+
+Advantages (not counting the advantages of each tool one by one) :
+* On language used : JavaScript
+* There is no data transformation from the database to the client
 
 ### Real-time applications
 
