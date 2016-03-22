@@ -40,6 +40,8 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+<div class="page-break" />
+
 ## What is JavaScript
 
 ### History
@@ -236,7 +238,7 @@ square(z = 3); // OK because it produces the value 3.
 
 ### Semicolon and comma
 
-You can chain statements using the semicolon `;`.
+You can chain statements using the semicolon `;` character.
 
 Example :
 ```javascript
@@ -245,13 +247,13 @@ square(2);
 ```
 
 But in contrary to some other languages, it is not mandatory (In fact the JavaScript parser will insert semicolon automaticaly in some cases).
-So the following lines will work :
+So the following lines will also work properly :
 ```javascript
 square(1)
 square(2)
 ```
 
-Not using the `;` operator may also lead to some errors.
+By not using the `;` operator you have to be careful because it may lead to errors.
 
 OK :
 ```javascript
@@ -265,7 +267,7 @@ square(1)
 (square(2))
 ```
 
-But it does not protect you from the `Automatic Semicolon Insertion` mechanism :
+But adding semicolon does not protect you from the `Automatic Semicolon Insertion` mechanism :
 ```javascript
 function WhatIsTheAnswer() {
   return

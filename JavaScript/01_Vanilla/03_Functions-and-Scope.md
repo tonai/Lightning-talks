@@ -11,7 +11,7 @@
   - [Function declaration](#function-declaration)
   - [Function expression](#function-expression)
   - [Arrow functions (ES6)](#arrow-functions-es6)
-  - [Defaulut values (ES6)](#defaulut-values-es6)
+  - [Default values (ES6)](#default-values-es6)
   - [Arguments](#arguments)
   - [Rest parameters (ES6)](#rest-parameters-es6)
 - [Scope](#scope)
@@ -99,7 +99,7 @@ If you want to return an object  without using the bracket notation you must wra
 x => ({square: x * x});
 ```
 
-### Defaulut values (ES6)
+### Default values (ES6)
 
 In ES6 you can now give default value to missing parameters.
 
