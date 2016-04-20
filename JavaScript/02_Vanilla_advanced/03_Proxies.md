@@ -12,12 +12,12 @@
   - [Revocable Proxies](#revocable-proxies)
 - [Traps](#traps)
   - [`get`](#get)
-  - [Exercice : create a proxy with access control](#exercice--create-a-proxy-with-access-control)
+  - [Exercise : create a proxy with access control](#exercise--create-a-proxy-with-access-control)
   - [`set`](#set)
-  - [Exercice : Two-way data binding "framework"](#exercice--two-way-data-binding-framework)
+  - [Exercise : Two-way data binding "framework"](#exercise--two-way-data-binding-framework)
   - [`apply`](#apply)
   - [`construct`](#construct)
-  - [Exercice : Create an `extend` proxy function](#exercice--create-an-extend-proxy-function)
+  - [Exercise : Create an `extend` proxy function](#exercise--create-an-extend-proxy-function)
   - [Other traps](#other-traps)
 - [References](#references)
 
@@ -95,7 +95,7 @@ proxy.foo;
 proxy.whatever;
 ```
 
-### Exercice : create a proxy with access control
+### Exercise : create a proxy with access control
 
 All properties and methods starting with `_` in the target should not be accessible through the proxy.
 
@@ -166,7 +166,7 @@ proxy.age;
 target.age;
 ```
 
-### Exercice : Two-way data binding "framework"
+### Exercise : Two-way data binding "framework"
 
 Simple text input associated with a JavaScript object for the model.
 
@@ -250,7 +250,7 @@ Result :
 new proxy(1, 2, 3);
 ```
 
-### Exercice : Create an `extend` proxy function
+### Exercise : Create an `extend` proxy function
 
 Parent constructor is : 
 ```javascript

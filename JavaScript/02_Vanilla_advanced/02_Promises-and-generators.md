@@ -9,18 +9,18 @@
 - [Promises](#promises)
   - [Constructor](#constructor)
   - [Adding listeners](#adding-listeners)
-  - [Exercice : Create a function making an AJAX request and returning a promise](#exercice--create-a-function-making-an-ajax-request-and-returning-a-promise)
+  - [Exercise : Create a function making an AJAX request and returning a promise](#exercise--create-a-function-making-an-ajax-request-and-returning-a-promise)
   - [Chains](#chains)
-  - [Exercice : Get the weather](#exercice--get-the-weather)
+  - [Exercise : Get the weather](#exercise--get-the-weather)
   - [Branches](#branches)
   - [Promisees](#promisees)
   - [Excercice : Preload a set of images](#excercice--preload-a-set-of-images)
 - [Generators](#generators)
   - [Constructor](#constructor-1)
   - [`yield`](#yield)
-  - [Exercice : Create a Fibonacci sequence generator](#exercice--create-a-fibonacci-sequence-generator)
+  - [Exercise : Create a Fibonacci sequence generator](#exercise--create-a-fibonacci-sequence-generator)
   - [`yield*`](#yield)
-  - [Exercice : Create a Collatz conjecture generators](#exercice--create-a-collatz-conjecture-generators)
+  - [Exercise : Create a Collatz conjecture generators](#exercise--create-a-collatz-conjecture-generators)
 - [Asynchronous code looking like synchronous code](#asynchronous-code-looking-like-synchronous-code)
 - [References](#references)
 
@@ -106,7 +106,7 @@ promise.then(
 );
 ```
 
-### Exercice : Create a function making an AJAX request and returning a promise
+### Exercise : Create a function making an AJAX request and returning a promise
 
 The function should take the requested URL as parameter.
 
@@ -192,7 +192,7 @@ new Promise(function (resolve, reject) {
 });
 ```
 
-### Exercice : Get the weather
+### Exercise : Get the weather
 
 Write the following functions :
 * `getCoords` : ask for the user location.
@@ -423,7 +423,7 @@ iterator.next('bar');
 iterator.next('baz');
 ```
 
-### Exercice : Create a Fibonacci sequence generator
+### Exercise : Create a Fibonacci sequence generator
 
 In mathematical terms, the sequence <code>F<sub>n</sub></code> of Fibonacci numbers is defined by the recurrence relation :  
 <code>F<sub>n</sub> = F<sub>{n-1}</sub> + F<sub>{n-2}</sub></code>
@@ -492,7 +492,7 @@ iterator.next();
 iterator.next();
 ```
 
-### Exercice : Create a Collatz conjecture generators
+### Exercise : Create a Collatz conjecture generators
 
 The conjecture can be summarized as follows. Take any natural number `n`. If `n` is even, divide it by `2` to get `n / 2`. If n is odd, multiply it by `3` and add `1` to obtain `3n + 1`.
 

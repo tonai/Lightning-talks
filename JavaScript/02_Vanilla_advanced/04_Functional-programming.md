@@ -25,16 +25,16 @@
   - [First-class function and refactoring](#first-class-function-and-refactoring)
   - [Array `forEach`](#array-foreach)
   - [Array `filter`](#array-filter)
-  - [Exercice : Generating a tree structure](#exercice--generating-a-tree-structure)
+  - [Exercise : Generating a tree structure](#exercise--generating-a-tree-structure)
   - [Array `map`](#array-map)
   - [Array `reduce`](#array-reduce)
-  - [Exercice : calculate the distance between a point an the origin](#exercice--calculate-the-distance-between-a-point-an-the-origin)
-  - [Exercice : Transform a CSV file into a usable JavaScript object](#exercice--transform-a-csv-file-into-a-usable-javascript-object)
+  - [Exercise : calculate the distance between a point an the origin](#exercise--calculate-the-distance-between-a-point-an-the-origin)
+  - [Exercise : Transform a CSV file into a usable JavaScript object](#exercise--transform-a-csv-file-into-a-usable-javascript-object)
   - [Partial application](#partial-application)
   - [Currying](#currying)
   - [Composition](#composition)
-  - [Exercice : calculate the distance between a point an the origin using composition](#exercice--calculate-the-distance-between-a-point-an-the-origin-using-composition)
-  - [Exercice : Calculate baskets' totals from a JSON web service using promises](#exercice--calculate-baskets-totals-from-a-json-web-service-using-promises)
+  - [Exercise : calculate the distance between a point an the origin using composition](#exercise--calculate-the-distance-between-a-point-an-the-origin-using-composition)
+  - [Exercise : Calculate baskets' totals from a JSON web service using promises](#exercise--calculate-baskets-totals-from-a-json-web-service-using-promises)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -436,7 +436,7 @@ var dogs = animals.filter(isDog);
 The `isDog` function can be easily reused and is only doing what its name says.  
 `isDog` is a pure function !
 
-### Exercice : Generating a tree structure
+### Exercise : Generating a tree structure
 
 Imagine the following data :
 ```JavaScript
@@ -531,7 +531,7 @@ var total = animals.reduce(function(previousReturnValue, animal) {
 }, 0);
 ```
 
-### Exercice : calculate the distance between a point an the origin
+### Exercise : calculate the distance between a point an the origin
 
 Imagine the following object :
 ```JavaScript
@@ -608,7 +608,7 @@ var distance = function(point) {
 Do you see the power ?  
 ES6 arrow function syntax perfectly suits with functional programming.
 
-### Exercice : Transform a CSV file into a usable JavaScript object
+### Exercise : Transform a CSV file into a usable JavaScript object
 
 CSV input file `03_input.csv` :
 ```CSV
@@ -973,7 +973,7 @@ If you prefer the UNIX scripting reading direction, some libraries have a `pipel
 var processSimpleMarkdown = fn.pipeline(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
 ```
 
-### Exercice : calculate the distance between a point an the origin using composition
+### Exercise : calculate the distance between a point an the origin using composition
 
 Like above, imagine the following object :
 ```JavaScript
@@ -1044,7 +1044,7 @@ var distance = fn.compose(Math.sqrt, sumTogether, squareEach, onlyNumbers, _.val
 var result = distance(point);
 ```
 
-### Exercice : Calculate baskets' totals from a JSON web service using promises
+### Exercise : Calculate baskets' totals from a JSON web service using promises
 
 Imagine we get a JSON web service with the following output :
 ```JSON

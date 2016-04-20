@@ -17,8 +17,8 @@
   - [Using `bind` for calculating the distance in a 2 dimensional space (ES5)](#using-bind-for-calculating-the-distance-in-a-2-dimensional-space-es5)
   - [Using `call` for calculating the distance in a 2 dimensional space (ES5)](#using-call-for-calculating-the-distance-in-a-2-dimensional-space-es5)
   - [Using `apply` for calculating the distance in a 2 dimensional space (ES5)](#using-apply-for-calculating-the-distance-in-a-2-dimensional-space-es5)
-  - [Exercice : calculate the distance in a multidimensional space (ES5)](#exercice--calculate-the-distance-in-a-multidimensional-space-es5)
-  - [Exercice : create a function that adds each of its argument each other (ES5)](#exercice--create-a-function-that-adds-each-of-its-argument-each-other-es5)
+  - [Exercise : calculate the distance in a multidimensional space (ES5)](#exercise--calculate-the-distance-in-a-multidimensional-space-es5)
+  - [Exercise : create a function that adds each of its argument each other (ES5)](#exercise--create-a-function-that-adds-each-of-its-argument-each-other-es5)
   - [`arguments` workaround (ES5)](#arguments-workaround-es5)
   - [`arguments` workaround (ES6)](#arguments-workaround-es6)
   - [`bind`, `call` and `apply` together for calculating the distance in a 2 dimensional space (ES5) :smiling_imp: :smiling_imp: :smiling_imp:](#bind-call-and-apply-together-for-calculating-the-distance-in-a-2-dimensional-space-es5-smiling_imp-smiling_imp-smiling_imp)
@@ -37,6 +37,9 @@
   - [Simple classe](#simple-classe)
   - [Inheritance](#inheritance-1)
   - [Static methods](#static-methods)
+- [Factory pattern](#factory-pattern)
+  - [Factory functions](#factory-functions)
+  - [Composition over Inheritance](#composition-over-inheritance)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -253,7 +256,7 @@ Result :
 point.dist();
 ```
 
-### Exercice : calculate the distance in a multidimensional space (ES5)
+### Exercise : calculate the distance in a multidimensional space (ES5)
 
 Example :
 ```javascript
@@ -285,7 +288,7 @@ Explanations :
 * `reduce(...)` returns `29`
 * `Math.sqrt()` return `5.385164807134504` :metal:
 
-### Exercice : create a function that adds each of its argument each other (ES5)
+### Exercise : create a function that adds each of its argument each other (ES5)
 
 &nbsp;
 

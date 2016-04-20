@@ -19,7 +19,7 @@
   - [`setTimeout` / `clearTimeout`](#settimeout--cleartimeout)
   - [`setInterval` / `clearInterval`](#setinterval--clearinterval)
   - [`requestAnimationFrame` / `cancelAnimationFrame`](#requestanimationframe--cancelanimationframe)
-  - [Exercice : create an animation](#exercice--create-an-animation)
+  - [Exercise : create an animation](#exercise--create-an-animation)
 - [Global objects](#global-objects)
   - [`Math`](#math)
   - [`JSON`](#json)
@@ -273,7 +273,7 @@ window.requestAnimationFrame(function(time){
 
 `cancelAnimationFrame` works like `clearTimeout` for the `requestAnimationFrame` method.
 
-### Exercice : create an animation
+### Exercise : create an animation
 
 Animate the github icon to move like a ping pong ball across the page.
 
