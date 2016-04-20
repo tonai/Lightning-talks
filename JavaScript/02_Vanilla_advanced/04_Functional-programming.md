@@ -9,10 +9,14 @@
 - [Concepts used in functional programming](#concepts-used-in-functional-programming)
   - [Anonymous function](#anonymous-function)
   - [First-class function](#first-class-function)
-  - [Higher order function](#higher-order-function)
+  - [Higher-order function](#higher-order-function)
   - [Tail call](#tail-call)
-  - [Pure function](#pure-function)
   - [Referential transparency](#referential-transparency)
+  - [Pure function](#pure-function)
+    - [Pure or impure ? - 1](#pure-or-impure----1)
+    - [Pure or impure ? - 2](#pure-or-impure----2)
+    - [Pure or impure ? - 3](#pure-or-impure----3)
+    - [Pure or impure ? - 4](#pure-or-impure----4)
 - [Other definitions](#other-definitions)
   - [Imperative programming](#imperative-programming)
   - [Declarative programming](#declarative-programming)
@@ -21,6 +25,7 @@
   - [First-class function and refactoring](#first-class-function-and-refactoring)
   - [Array `forEach`](#array-foreach)
   - [Array `filter`](#array-filter)
+  - [Exercice : Generating a tree structure](#exercice--generating-a-tree-structure)
   - [Array `map`](#array-map)
   - [Array `reduce`](#array-reduce)
   - [Exercice : calculate the distance between a point an the origin](#exercice--calculate-the-distance-between-a-point-an-the-origin)
@@ -91,40 +96,6 @@ Producing such code instead of a standard call sequence is called `tail call eli
 
 ECMAScript 5 does not implement this optimization but ECMAScript 6 does.
 
-### Pure function
-
-> In computer programming, a function may be considered a `pure function` if both of the following statements about the function hold :
-> * The function always evaluates the same result value given the same argument value(s). The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program, nor can it depend on any external input from I/O devices.
-> * Evaluation of the result does not cause any semantically observable side effect or output, such as mutation of mutable objects or output to I/O devices
-
-Impure function examples :
-```JavaScript
-function getHtmlFromId = function(id) {
-    return document.getElementById(id).innerHTML;
-}
-```
-
-```JavaScript
-var a = 2;
-function add(b) {
-  return a + b;
-}
-```
-
-```JavaScript
-function append(a) {
-  a.push(null);
-  return a;
-}
-```
-
-```JavaScript
-function add(a, b) {
-  console.log(a, b);
-  return a + b;
-}
-```
-
 ### Referential transparency
 
 > An expression is said to be `referentially transparent` if it can be replaced with its value without changing the behavior of a program (in other words, yielding a program that has the same effects and output on the same input).
@@ -132,17 +103,6 @@ function add(a, b) {
 > The opposite term is `referential opacity`.
 >
 > As `referential transparency` requires the same results for a given set of inputs at any point in time, a `referentially transparent` expression is therefore `deterministic`.
->
-> If all functions involved in the expression are `pure functions`, then the expression is `referentially transparent`.  
-> Also, some `impure functions` can be included in the expression if their values are discarded and their side effects are insignificant.  
-
-The following example can be considered to be `referentially transparent` :
-```JavaScript
-function add(a, b) {
-  console.log(a, b);
-  return a + b;
-}
-```
 
 Arithmetic operations are `referentially transparent` :  
 `5 * 5` can be replaced by `25`, for instance.
@@ -158,23 +118,132 @@ function plusOne(x) {
 }
 ```
 
-Working with `referentially transparent` expression make it simpler to reason about.
+### Pure function
 
-Example :
+> In computer programming, a function may be considered a `pure function` if both of the following statements about the function hold :
+> * The function always evaluates the same result value given the same argument value(s). The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program, nor can it depend on any external input from I/O devices.
+> * Evaluation of the result does not cause any semantically observable side effect or output, such as mutation of mutable objects or output to I/O devices
+>
+> If all functions involved in the expression are `pure functions`, then the expression is `referentially transparent`.  
+
+Can we simplify the following expression ?
+`result = f(x) + g(y) * (f(x) - f(x));`
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+`result = f(x) + g(y) * (0);`
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+`result = f(x)`
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+Using the following functions ?
 ```JavaScript
 var a = 0;
-function f(b) { // Impure
+function f(b) {
   return a++ + b;
 }
-function g(c) { // Pure
+function g(c) {
   return c + 1;
 }
 ```
 
-Can we simplify the following expression ?
-* `result = f(x) + g(y) * (f(x) - f(x));`
-* `result = f(x) + g(y) * (0);`
-* `result = f(x)`
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+Working with `referentially transparent` expression / `pure function` make it simpler to reason about.
+
+#### Pure or impure ? - 1
+
+```JavaScript
+var a = 2;
+function add(b) {
+  return a + b;
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+#### Pure or impure ? - 2
+
+```JavaScript
+function getHtmlFromId = function(id) {
+    return document.getElementById(id).innerHTML;
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+#### Pure or impure ? - 3
+
+```JavaScript
+function add(a, b) {
+  console.log(a, b);
+  return a + b;
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+#### Pure or impure ? - 4
+
+```JavaScript
+function append(a) {
+  a.push(null);
+  return a;
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ## Other definitions
 
