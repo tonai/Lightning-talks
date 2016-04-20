@@ -11,6 +11,7 @@
   - [`location`](#location)
   - [`innerHeight` / `innerWidth`](#innerheight--innerwidth)
   - [`history`](#history)
+  - [Exercise : create an pager with history manipulation](#exercise--create-an-pager-with-history-manipulation)
 - [Global methods](#global-methods)
   - [`print`](#print)
   - [`alert` / `confirm` / `prompt`](#alert--confirm--prompt)
@@ -75,6 +76,101 @@ window.history.back();
 window.history.go(-1);
 window.history.forward();
 window.history.go(1);
+```
+
+And you can listen to history changes when a user, for example use the back button in the navigator, with the `onpopstate` event.
+
+### Exercise : create an pager with history manipulation
+
+Create a function that will update the list of displayed items depending on the current page.  
+This function will then update the history (using the hash to represent the current page).
+
+HTML :
+```html
+<ul class="list"></ul>
+<div class="pager">
+  <button type="button" class="prev">Previous</button>
+  <button type="button" class="next">Next</button>
+</div>
+```
+
+Initialization of items in JS :
+```javascript
+var start = 1;
+var total = 12;
+var limit = 3;
+var items = [];
+for (var i = start; i < start + total; i++) {
+  let li = document.createElement('li');
+  li.appendChild(document.createTextNode('item' + i));
+  items.push(li);
+}
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+Initialization :
+```javascript
+var list = document.getElementsByClassName('list')[0];
+var prev = document.getElementsByClassName('prev')[0];
+var next = document.getElementsByClassName('next')[0];
+var currentPage = location.hash !== '' ? Number(location.hash.substr(1)): 0;
+render();
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+Bind events :
+```javascript
+prev.addEventListener('click', function(event){
+  event.preventDefault();
+  if (currentPage > 0) {
+    currentPage--;
+    render();
+  }
+});
+next.addEventListener('click', function(event){
+  event.preventDefault();
+  if (currentPage < Math.ceil(total / limit) - 1) {
+    currentPage++;
+    render();
+  }
+});
+window.addEventListener('popstate', function(event){
+  if (event.state) {
+    currentPage = event.state.page;
+    this.render(true);
+  }
+});
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+Render function :
+```javascript
+function render(skipHistory) {
+  // Clear list.
+  list.innerHTML = '';
+
+  // Update list.
+  for (var j = currentPage * limit; j < Math.min((currentPage + 1) * limit, total); j++) {
+    list.appendChild(items[j]);
+  }
+
+  // Update history.
+  !skipHistory && history.pushState({page: currentPage}, '', '#' + currentPage);
+}
 ```
 
 ## Global methods
