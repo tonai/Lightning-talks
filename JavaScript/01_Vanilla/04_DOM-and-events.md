@@ -240,7 +240,7 @@ The event flow is divided into 3 steps :
 * Target phase (2)
 * Bubble phase (3)
 
-![Graphical representation of an event dispatched in a DOM tree using the DOM event flow](http://www.w3.org/TR/DOM-Level-3-Events/eventflow.svg)
+![Graphical representation of an event dispatched in a DOM tree using the DOM event flow](https://www.w3.org/TR/uievents/images/eventflow.svg)
 
 Event listeners registered for the target phase (2) will be handled once the event has reached its target.  
 So if you bind an event on a DOM tree's leaf, it will always be triggered during the target phase.
