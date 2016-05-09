@@ -248,48 +248,6 @@ Result :
 x;
 ```
 
-#### Hoisting
-
-Variable declarations are hoisted : The declaration is moved to the beginning of the function (but not assignments).
-
-Example :
-```javascript
-function myFunc() {
-  console.log(y);
-}
-```
-
-Result :
-```javascript
-myFunc();
-```
-
-Example :
-```javascript
-function myFunc() {
-  console.log(y);
-  if (false) {
-    var y = 3;
-  }
-}
-```
-
-Result :
-```javascript
-myFunc();
-```
-
-Same as :
-```javascript
-function myFunc() {
-  var x;
-  console.log(x);
-  if (false) {
-    x = 3;
-  }
-}
-```
-
 This can lead to some confusion...
 
 Example :
@@ -346,6 +304,48 @@ for (var i in [...elements]) {
 &nbsp;
 
 Works but...  :neutral_face:
+
+#### Hoisting
+
+Variable declarations are hoisted : The declaration is moved to the beginning of the function (but not assignments).
+
+Example :
+```javascript
+function myFunc() {
+  console.log(y);
+}
+```
+
+Result :
+```javascript
+myFunc();
+```
+
+Example :
+```javascript
+function myFunc() {
+  console.log(y);
+  if (false) {
+    var y = 3;
+  }
+}
+```
+
+Result :
+```javascript
+myFunc();
+```
+
+Same as :
+```javascript
+function myFunc() {
+  var x;
+  console.log(x);
+  if (false) {
+    x = 3;
+  }
+}
+```
 
 Function declarations are hoisted too.
 
