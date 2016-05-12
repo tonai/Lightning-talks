@@ -41,7 +41,7 @@
   - [Bitwise unsigned right shift operator `>>>`](#bitwise-unsigned-right-shift-operator-)
 - [Binary bitwise Operators](#binary-bitwise-operators)
   - [Bitwise AND `&`](#bitwise-and-&)
-  - [Bitwise AND `|`](#bitwise-and-)
+  - [Bitwise OR `|`](#bitwise-or-)
   - [Bitwise XOR `^`](#bitwise-xor-%5E)
 - [binary logical Operators](#binary-logical-operators)
   - [Logical AND `&&`](#logical-and-&&)
@@ -382,7 +382,7 @@ Returns a one in each bit position for which the corresponding bits of both oper
 7 & 9;
 ```
 
-### Bitwise AND `|`
+### Bitwise OR `|`
 
 Returns a one in each bit position for which the corresponding bits of either or both operands are ones :
 ```javascript
