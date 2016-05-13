@@ -524,7 +524,7 @@ Point.prototype.constructor;
 Point === Point.prototype.constructor;
 ```
 
-If you define the prototype as an objec literal you will lose the constructor property.
+If you define the prototype as an object literal you will lose the constructor property.
 
 So it's better to define each methods separately :
 ```javascript
