@@ -76,7 +76,7 @@
         } else if (instance.options[key]) {
           returnValue = instance.options[key];
         }
-        return instance.options;
+        return returnValue;
       },
 
       /**
