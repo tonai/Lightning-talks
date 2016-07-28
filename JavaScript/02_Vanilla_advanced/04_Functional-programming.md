@@ -858,9 +858,9 @@ var dogs = animals.filter(/*isSomeSpecies ?*/);
 
 By using the curry function :
 ```JavaScript
-var _ = require('lodash');
+var R = require('ramda');
 
-isSomeSpecies = _.curry(isSomeSpecies);
+isSomeSpecies = R.curry(isSomeSpecies);
 
 var dogs = animals.filter(isSomeSpecies('dog'));
 ```
@@ -869,12 +869,12 @@ Easy right ?
 
 Curried function are real practical and easy to use :
 ```JavaScript
-var _ = require('lodash');
+var R = require('ramda');
 
 var someOperation = function(a, b, c) {
   return a + b * c;
 }
-someOperation = _.curry(someOperation);
+someOperation = R.curry(someOperation);
 
 someOperation(1, 2, 3); // 7
 someOperation(1)(2)(3); // 7
@@ -906,7 +906,7 @@ Like `curry`, the `combine` function can be found in functional programming libr
 
 Example :
 ```JavaScript
-var fn = require('fn.js');
+var R = require('ramda');
 
 function convertLinks(text) {
   var pattern = /\[([^\]]*)\]\(([^\)]*)\)/i;
@@ -934,7 +934,7 @@ Written by Tony Cabaye.
 
 Support is available [here](https://github.com/tonai/Lightning-talks)`;
 
-var processSimpleMarkdown = fn.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
+var processSimpleMarkdown = R.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
 
 var output = processSimpleMarkdown(input);
 ```
@@ -960,18 +960,18 @@ For example by simply changing the `wrapParagraph` into a more generic function 
 function wrapWithTag(tag, text) {
   return '<' + tag + '>' + text + '</' + tag + '>';
 }
-wrapWithTag = fn.curry(wrapWithTag);
+wrapWithTag = R.curry(wrapWithTag);
 
-var processSimpleMarkdown = fn.compose(wrapWithTag('p'), convertLineBreak, convertParagraph, convertLinks);
+var processSimpleMarkdown = R.compose(wrapWithTag('p'), convertLineBreak, convertParagraph, convertLinks);
 ```
 
  This is much simpler than the nested version.
 
  **Note :** in the Example above `processSimpleMarkdown` is `point-free style` defined function because parameters are not explicit (because it is a composition of other functions).
 
-If you prefer the UNIX scripting reading direction, some libraries have a `pipeline` function which take the arguments in the reverse order :
+If you prefer the UNIX scripting reading direction, some libraries have a `pipe` function which take the arguments in the reverse order :
 ```JavaScript
-var processSimpleMarkdown = fn.pipeline(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
+var processSimpleMarkdown = R.pipe(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
 ```
 
 ### Exercise : calculate the distance between a point an the origin using composition
@@ -990,7 +990,7 @@ var point = {
 
 And by using the following small functions :
 ```JavaScript
-var fn = require('fn.js');
+var R = require('ramda');
 
 function square(value) {
   return value * value;
@@ -999,29 +999,21 @@ function square(value) {
 function sum(a, b) {
   return a + b;
 }
+sum = R.curry(sum);
 
 function istypeOf(type, coordinate) {
   return typeof coordinate == type;
 }
-istypeOf = fn.curry(istypeOf);
-
-function filter(func, array) {
-  return array.filter(func);
-}
-filter = fn.curry(filter);
-
-function map(func, array) {
-  return array.map(func);
-}
-map = fn.curry(map);
-
-function reduce(func, array) {
-  return array.reduce(func);
-}
-reduce = fn.curry(reduce);
+istypeOf = R.curry(istypeOf);
 ```
 
-Create a `distance` function that is a composition.
+Take a look to following [Ramda](http://ramdajs.com/docs/) functions :
+* [values](http://ramdajs.com/docs/#values)
+* [filter](http://ramdajs.com/docs/#filter)
+* [map](http://ramdajs.com/docs/#map)
+* [reduce](http://ramdajs.com/docs/#reduce)
+
+And create a `distance` function that is a composition.
 
 &nbsp;
 
@@ -1035,11 +1027,11 @@ Create a `distance` function that is a composition.
 
 Solution :
 ```JavaScript
-var filterOnlyNumbers = filter(istypeOf('number'));
-var squareMap = map(square);
-var sumTogether = reduce(sum);
+var filterOnlyNumbers = R.filter(istypeOf('number'));
+var squareMap = R.map(square);
+var sumTogether = R.reduce(sum, 0);
 
-var distance = fn.compose(Math.sqrt, sumTogether, squareMap, filterOnlyNumbers, _.values);
+var distance = R.compose(Math.sqrt, sumTogether, squareMap, filterOnlyNumbers, R.values);
 
 var result = distance(point);
 ```
@@ -1084,6 +1076,12 @@ function getBaskets() {
 
 Cut the application into small pieces and use above techniques in association with promises to get the total for each basket.
 
+You might need following [Ramda](http://ramdajs.com/docs/) functions  :
+* [prop](http://ramdajs.com/docs/#prop)
+* [map](http://ramdajs.com/docs/#map)
+* [reduce](http://ramdajs.com/docs/#reduce)
+* [mapObjIndexed](http://ramdajs.com/docs/#mapObjIndexed)
+
 &nbsp;
 
 &nbsp;
@@ -1096,38 +1094,12 @@ Cut the application into small pieces and use above techniques in association wi
 
 Small functions :
 ```JavaScript
-var fn = require('fn.js');
-
-function get(key, object) {
-  return object[key];
-}
-get = fn.curry(get);
+var R = require('ramda');
 
 function sum(a, b) {
   return a + b;
 }
-sum = fn.curry(sum);
-
-function mapArray(func, array) {
-  return array.map(func);
-}
-mapArray = fn.curry(mapArray);
-
-function reduceArray(func, array) {
-  return array.reduce(func, 0);
-}
-reduceArray = fn.curry(reduceArray);
-
-function mapObject(func, object) {
-  var result = {};
-  for (var i in object) {
-    if (object.hasOwnProperty(i)) {
-      result[i] = func(object[i]);
-    }
-  }
-  return result;
-}
-mapObject = fn.curry(mapObject);
+sum = R.curry(sum);
 
 function itemTotal(basketItem) {
   return basketItem.price * basketItem.quantity;
@@ -1138,13 +1110,13 @@ All together :
 ```JavaScript
 getBaskets()
   .then(JSON.parse)
-  .then(get('baskets'))
-  .then(mapObject(mapArray(itemTotal)))
-  .then(mapObject(reduceArray(sum)))
+  .then(R.prop('baskets'))
+  .then(R.mapObjIndexed(R.map(itemTotal)))
+  .then(R.mapObjIndexed(R.reduce(sum, 0)))
   .then(console.log);
 ```
 
-** Warning :** Here we can't transform `mapObject(mapArray(itemTotal))` with a composition because when we add the parameter it look like this `mapObject(mapArray(itemTotal))(input)` and it is not what it is intended for composition (`mapObject(mapArray(itemTotal(input)))`).
+**Warning :** Here we can't transform `R.mapObjIndexed(R.map(itemTotal))` with a composition because when we add the parameter it look like this `R.mapObjIndexed(R.map(itemTotal))(input)` and it is not what it is intended for composition (`R.mapObjIndexed(R.map(itemTotal(input)))`).
 
 ## References
 
