@@ -940,6 +940,7 @@ var output = processSimpleMarkdown(input);
 ```
 
 Here the order of execution inside `processSimpleMarkdown` is :
+
 1. `convertLinks`
 2. `convertParagraph`
 3. `convertLineBreak`
