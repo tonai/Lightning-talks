@@ -958,7 +958,7 @@ Because you can combine it with curried function.
 For example by simply changing the `wrapParagraph` into a more generic function :
 ```JavaScript
 function wrapWithTag(tag, text) {
-  return '</' + tag + '>' + text + '<' + tag + '>';
+  return '<' + tag + '>' + text + '</' + tag + '>';
 }
 wrapWithTag = fn.curry(wrapWithTag);
 
