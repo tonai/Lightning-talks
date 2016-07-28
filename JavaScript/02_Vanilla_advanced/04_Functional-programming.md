@@ -189,6 +189,8 @@ function add(b) {
 
 &nbsp;
 
+First statement not fulfilled if `a` is altered.
+
 #### Pure or impure ? - 2
 
 ```JavaScript
@@ -206,6 +208,8 @@ function getHtmlFromId = function(id) {
 &nbsp;
 
 &nbsp;
+
+First statement not fulfilled : DOM can altered.
 
 #### Pure or impure ? - 3
 
@@ -226,6 +230,8 @@ function add(a, b) {
 
 &nbsp;
 
+Second statement not fulfilled : output to console.
+
 #### Pure or impure ? - 4
 
 ```JavaScript
@@ -244,6 +250,8 @@ function append(a) {
 &nbsp;
 
 &nbsp;
+
+Second statement not fulfilled : the parameter `a` is altered by the `push` method.
 
 ## Other definitions
 
