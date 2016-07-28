@@ -693,14 +693,8 @@ And the following event listener :
 ```JavaScript
 var toggle = function() {
   var target = document.getElementsByClassName('content')[0];
-  var htmlClasses = (target.className || '').split(' ');
   var className = 'hidden';
-  if ((index = htmlClasses.indexOf(className)) !== -1) {
-    delete htmlClasses[index];
-  } else {
-    htmlClasses.push(className);
-  }
-  target.className = htmlClasses.join(' ').replace(/\s+/, ' ').trim();
+  target.classList.toggle(className);
 };
 ```
 
@@ -737,22 +731,14 @@ We can create a separate `show` and `hide` functions and call them into the `tog
 ```JavaScript
 var show = function() {
   var target = document.getElementsByClassName('content')[0];
-  var htmlClasses = (target.className || '').split(' ');
   var className = 'hidden';
-  if ((index = htmlClasses.indexOf(className)) !== -1) {
-    delete htmlClasses[index];
-  }
-  target.className = htmlClasses.join(' ').replace(/\s+/, ' ').trim();
+  target.classList.remove(className);
 }
 
 var hide = function() {
   var target = document.getElementsByClassName('content')[0];
-  var htmlClasses = (target.className || '').split(' ');
   var className = 'hidden';
-  if ((index = htmlClasses.indexOf(className)) === -1) {
-    htmlClasses.push(className);
-  }
-  target.className = htmlClasses.join(' ').replace(/\s+/, ' ').trim();
+  target.classList.add(className);
 }
 
 
@@ -762,9 +748,8 @@ var hide = function() {
 
 var toggle = function() {
   var target = document.getElementsByClassName('content')[0];
-  var htmlClasses = (target.className || '').split(' ');
   var className = 'hidden';
-  if ((index = htmlClasses.indexOf(className)) !== -1) {
+  if ((index = (target.className || '').indexOf(className)) !== -1) {
     show();
   } else {
     hide();
@@ -780,15 +765,13 @@ How about using an other argument in the previous toggle version to enforce the 
 ```JavaScript
 var toggle = function(state) {
   var target = document.getElementsByClassName('content')[0];
-  var htmlClasses = (target.className || '').split(' ');
   var className = 'hidden';
-  var index = htmlClasses.indexOf(className);
+  var index = (target.className || '').indexOf(className);
   if (state === true || (state !== false && index !== -1)) {
-    delete htmlClasses[index];
-  } else if (index === -1) {
-    htmlClasses.push(className);
+    target.classList.remove(className);
+  } else {
+    target.classList.add(className);
   }
-  target.className = htmlClasses.join(' ').replace(/\s+/, ' ').trim();
 };
 ```
 
@@ -813,14 +796,12 @@ trigger.addEventListener('click', toggle.bind(null, false));
 And why not doing the same for the target element and the className ?
 ```JavaScript
 var toggle = function(className, target, state) {
-  var htmlClasses = (target.className || '').split(' ');
-  var index = htmlClasses.indexOf(className);
+  var index = (target.className || '').indexOf(className);
   if (state === true || (state !== false && index !== -1)) {
-    delete htmlClasses[index];
-  } else if (index === -1) {
-    htmlClasses.push(className);
+    target.classList.remove(className);
+  } else {
+    target.classList.add(className);
   }
-  target.className = htmlClasses.join(' ').replace(/\s+/, ' ').trim();
 };
 ```
 
