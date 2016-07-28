@@ -962,13 +962,12 @@ function wrapWithTag(tag, text) {
 }
 wrapWithTag = fn.curry(wrapWithTag);
 
-var wrapWithParagraph = wrapWithTag('p');
-var processSimpleMarkdown = fn.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
+var processSimpleMarkdown = fn.compose(wrapWithTag('p'), convertLineBreak, convertParagraph, convertLinks);
 ```
 
  This is much simpler than the nested version.
 
- **Note :** in the Example above `wrapWithParagraph` and `processSimpleMarkdown` are `point-free style` defined function because parameters are not explicit.
+ **Note :** in the Example above `processSimpleMarkdown` is `point-free style` defined function because parameters are not explicit (because it is a composition of other functions).
 
 If you prefer the UNIX scripting reading direction, some libraries have a `pipeline` function which take the arguments in the reverse order :
 ```JavaScript
@@ -992,7 +991,6 @@ var point = {
 And by using the following small functions :
 ```JavaScript
 var fn = require('fn.js');
-var _ = require('lodash');
 
 function square(value) {
   return value * value;
@@ -1037,11 +1035,11 @@ Create a `distance` function that is a composition.
 
 Solution :
 ```JavaScript
-var onlyNumbers = filter(istypeOf('number'));
-var squareEach = map(square);
+var filterOnlyNumbers = filter(istypeOf('number'));
+var squareMap = map(square);
 var sumTogether = reduce(sum);
 
-var distance = fn.compose(Math.sqrt, sumTogether, squareEach, onlyNumbers, _.values);
+var distance = fn.compose(Math.sqrt, sumTogether, squareMap, filterOnlyNumbers, _.values);
 
 var result = distance(point);
 ```
@@ -1064,12 +1062,12 @@ Imagine we get a JSON web service with the following output :
   }
 }
 ```
+You can create the web service by using [json-server](https://github.com/typicode/json-server).
 
-You can use the following function to get the promised content :
+Use the following function to get the promised content :
 ```JavaScript
 var request = require('ajax-request');
-var Promise = require('bluebird');
-const URL = 'http://localhost:8080';
+const URL = 'http://localhost:3000/db';
 
 function getBaskets() {
   return new Promise(function(resolve, reject){
@@ -1098,6 +1096,8 @@ Cut the application into small pieces and use above techniques in association wi
 
 Small functions :
 ```JavaScript
+var fn = require('fn.js');
+
 function get(key, object) {
   return object[key];
 }
@@ -1136,12 +1136,15 @@ function itemTotal(basketItem) {
 
 All together :
 ```JavaScript
-getBasket()
+getBaskets()
   .then(JSON.parse)
   .then(get('baskets'))
   .then(mapObject(mapArray(itemTotal)))
-  .then(mapObject(reduceArray(sum)));
+  .then(mapObject(reduceArray(sum)))
+  .then(console.log);
 ```
+
+** Warning :** Here we can't transform `mapObject(mapArray(itemTotal))` with a composition because when we add the parameter it look like this `mapObject(mapArray(itemTotal))(input)` and it is not what it is intended for composition (`mapObject(mapArray(itemTotal(input)))`).
 
 ## References
 
