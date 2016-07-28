@@ -430,6 +430,7 @@ var dogs = animals.filter(function(animal) {
 ```
 
 Advantages ?
+
 1. It is a shorter syntax (less code means less bug)
 2. We have decoupled the filtering functionality from the test
 
