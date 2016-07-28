@@ -368,7 +368,7 @@ Iterating over an array is a really common feature that we can make a function f
 ```JavaScript
 function forEach (func, array) {
   for (var i = 0; i < array.length; i++) {
-    addMagic(func[i]);
+    func(array[i]);
   }
 }
 ```
