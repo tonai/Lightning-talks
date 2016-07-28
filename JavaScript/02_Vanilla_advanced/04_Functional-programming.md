@@ -924,7 +924,7 @@ function convertLineBreak(text) {
 }
 
 function wrapWithParagraph(text) {
-  return '</p>' + text + '<p>';
+  return '<p>' + text + '</p>';
 }
 
 var input = `Functional programming
