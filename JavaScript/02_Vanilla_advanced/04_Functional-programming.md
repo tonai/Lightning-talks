@@ -845,7 +845,18 @@ var isSomeSpecies = function(species, animal) {
 };
 ```
 
-Now use the curry function and filter the collection :
+Now how do we use this function in the filter ?
+```JavaScript
+var dogs = animals.filter(/*isSomeSpecies ?*/);
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+By using the curry function :
 ```JavaScript
 var _ = require('lodash');
 
