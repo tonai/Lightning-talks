@@ -406,7 +406,7 @@ iterator.next();
 
 Whenever a `yield` expression is reached, that value is emitted by the iterator and function execution is suspended.
 
-`yield` is an expression this it returns a value equal to the optionnal value passed to the `next()` function.
+`yield` is an expression that returns a value equal to the optionnal value passed to the `next()` function.
 
 ```javascript
 function* myGenerator (i) {
