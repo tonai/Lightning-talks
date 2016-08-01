@@ -512,24 +512,24 @@ Use one generator for odd values and one for even values.
 
 Solution :
 ```javascript
-function* collatzOdd (n) {
+function* collatzEven (n) {
   while (true) {
     if (n % 2 === 0) {
       n /= 2;
       yield n;
     } else {
-      yield* collatzEven(n);
+      yield* collatzOdd(n);
     }
   }
 }
 
-function* collatzEven (n) {
+function* collatzOdd (n) {
   while (true) {
     if (n % 2 === 1) {
       n = 3 * n +1;
       yield n;
     } else {
-      yield* collatzOdd(n);
+      yield* collatzEven(n);
     }
   }
 }
