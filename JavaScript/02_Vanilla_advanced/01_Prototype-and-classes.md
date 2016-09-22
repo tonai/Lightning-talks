@@ -31,6 +31,7 @@
   - [The constructor prototype property](#the-constructor-prototype-property)
 - [Inheritance](#inheritance)
   - [Using `Object.create`](#using-objectcreate)
+  - [Using `Object.setPrototypeOf`](#using-objectsetprototypeof)
   - [Simple inheritance example](#simple-inheritance-example)
   - ["Static" methods](#static-methods)
 - [Classes (ES6)](#classes-es6)
@@ -560,9 +561,34 @@ point2 = Object.create(Point.prototype);
 point1.__proto__ === point2.__proto__;
 ```
 
-`Object.create` is used to create an object whose prototype will be equal to its argument.
+`Object.create` is used to create an **object** whose prototype will be equal to its argument.
 
 But comparing to `point1`, `point2` has not been initialized through the constructor (and thus is not an instance of `Point`).
+
+### Using `Object.setPrototypeOf`
+
+Example :
+```javascript
+var Point = function(){
+  this.x = 5;
+  this.y = 2;
+};
+Point.prototype.toString = function () {
+  return this.x + ',' + this.y;
+};
+```
+
+Result :
+```javascript
+var point1 = new Point();
+var point2 = {};
+Object.setPrototypeOf(point2, Point.prototype);
+point1.__proto__ === point2.__proto__;
+```
+
+`Object.setPrototypeOf` is used to set the prototype of an existing **object** to be equal to some other **object**.
+
+`point2` has also not been initialized since it has been created by hand.
 
 ### Simple inheritance example
 
@@ -620,7 +646,12 @@ Point3D.prototype.constructor = Point3D;
 Point3D.prototype;
 ```
 
-Rewriting the `toString` method using the "parent" method (no native shortcut in ES5) :
+This is a good way, but `Object.setPrototypeOf` keeps that constructor property for us, so just do (best) :
+```javascript
+Object.setPrototypeOf(Point3D.prototype, Point2D.prototype);
+```
+
+Then you can rewrite the `toString` method using the "parent" method (no native shortcut in ES5) :
 ```javascript
 Point3D.prototype.toString = function () {
   return Point2D.prototype.toString.apply(this) + ',' + this.z;
@@ -630,6 +661,7 @@ Point3D.prototype.toString = function () {
 Result :
 ```javascript
 var point3d = new Point3D(1, 2, 3);
+point3d.constructor;
 point3d.dist();
 point3d + '';
 point3d instanceof Point3D;
