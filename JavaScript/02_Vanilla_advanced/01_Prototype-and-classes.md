@@ -631,19 +631,16 @@ Now extend `Point3D` prototype from  `Point2D` prototype.
 By creating an instance of `Point2D` (which is an object so a candidate for a prototype) :
 ```javascript
 Point3D.prototype = new Point2D();
-Point3D.prototype;
 ```
 
 But we do not need to call `Point2D` contructor, we only whant it's prototype (better) :
 ```javascript
 Point3D.prototype = Object.create(Point2D.prototype);
-Point3D.prototype;
 ```
 
 That's ok but we lost the default `Point3D.prototype.constructor` method, so set it back (bonus) :
 ```javascript
 Point3D.prototype.constructor = Point3D;
-Point3D.prototype;
 ```
 
 This is a good way, but `Object.setPrototypeOf` keeps that constructor property for us, so just do (best) :
