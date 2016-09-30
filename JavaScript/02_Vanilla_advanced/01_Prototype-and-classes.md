@@ -25,6 +25,7 @@
   - [Using arrow function for calculating the distance in a multidimensional space (ES6)](#using-arrow-function-for-calculating-the-distance-in-a-multidimensional-space-es6)
 - [Constructor](#constructor)
   - [Simple constructor](#simple-constructor)
+  - [The `new` keyword](#the-new-keyword)
 - [Prototype](#prototype)
   - [Used to save memory](#used-to-save-memory)
   - [The change of a constructor prototype method will impact all instances](#the-change-of-a-constructor-prototype-method-will-impact-all-instances)
@@ -438,9 +439,9 @@ The fresh object is (implicitly) returned by the constructor and considered its 
 
 Example :
 ```javascript
-var Point = function(){
-  this.x = 5;
-  this.y = 2;
+var Point = function(x , y){
+  this.x = x;
+  this.y = y;
   this.toString = function () {
     return this.x + ',' + this.y;
   }
@@ -449,7 +450,32 @@ var Point = function(){
 
 Result :
 ```javascript
-var point = new Point();
+var point = new Point(5, 2);
+point + '';
+point instanceof Point;
+```
+
+### The `new` keyword
+
+What does the `new` keyword in detail is :
+
+1. Creating a new empty object literal.
+2. Set the prototype a that new object to be the prototype of the constructor.
+3. Call the constructor with the object being equal to `this` in the constructor.
+4. Return the object (or if constructor returns something, return that instead)
+
+Now we can create our own `new` function that does exactly the same thing :
+```JavaScript
+function myNewFunction(constructor) {
+  var newObject = {}
+  Object.setPrototypeOf(newObject, constructor.prototype);
+  return constructor.apply(newObject, [].slice.call(arguments, 1)) || newObject;
+}
+```
+
+And use it :
+```JavaScript
+var point = myNewFunction(Point, 5, 2);
 point + '';
 point instanceof Point;
 ```
