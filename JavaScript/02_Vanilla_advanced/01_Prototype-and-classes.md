@@ -398,9 +398,9 @@ Result :triumph: :
 point.dist();
 ```
 
-Ok that's just over-engineering... :stuck_out_tongue:
+Ok that's just for the fun of using the 3 functions at the same time... :stuck_out_tongue:
 
-![Over-engineering is bad](http://i.imgur.com/JPsizDt.jpg)
+But that's not how you should do it. :-1:
 
 ### Using arrow function for calculating the distance in a multidimensional space (ES6)
 
@@ -422,6 +422,8 @@ point.dist();
 ```
 
 :trophy: :trophy: :trophy:
+
+This is the good way of doing it. :+1:
 
 ## Constructor
 
