@@ -695,6 +695,10 @@ point3d instanceof Object;
 point3d;
 ```
 
+`Object.setPrototypeOf` seems to be the best solution but, in fact it has [performance issues](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/setPrototypeOf).
+
+In a real application prefer using `Object.create`.
+
 ### "Static" methods
 
 Static methods are methods that are called directly on the "class" and not on the instance.
