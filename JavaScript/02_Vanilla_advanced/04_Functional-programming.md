@@ -573,10 +573,8 @@ Now create a function that will calculate the distance for the given object.
 
 Solution :
 ```JavaScript
-var _ = require('lodash');
-
 var distance = function(point) {
-  var value = _.values(point)
+  var value = Object.values(point)
     .filter(function(coordinate){
       return typeof coordinate == 'number';
     })
@@ -604,9 +602,8 @@ Now use ES6 arrow function.
 
 Solution :
 ```JavaScript
-var _ = require('lodash');
 var distance = function(point) {
-  var value = _.values(point)
+  var value = Object.values(point)
     .filter(x => typeof x == 'number')
     .map(x => x * x)
     .reduce((a, b) => a + b, 0);
