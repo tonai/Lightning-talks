@@ -664,7 +664,7 @@ var output = fs.readFileSync('01_input.csv', 'utf8')
     customers[name].push({
       name: line[2],
       price: line[3],
-      quantity: line[4],
+      quantity: line[4]
     });
     return customers;
   }, {});
@@ -830,7 +830,7 @@ var animals = [
   {species: 'dog', name: 'Perdita'},
   {species: 'dog', name: 'Lucky'},
   {species: 'cat', name: 'Berlioz'},
-  {species: 'cat', name: 'Toulouse'},
+  {species: 'cat', name: 'Toulouse'}
 ];
 ```
 
@@ -932,6 +932,8 @@ Written by Tony Cabaye.
 Support is available [here](https://github.com/tonai/Lightning-talks)`;
 
 var processSimpleMarkdown = R.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
+// OR
+var processSimpleMarkdown = R.pipe(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
 
 var output = processSimpleMarkdown(input);
 ```
@@ -996,7 +998,6 @@ function square(value) {
 function sum(a, b) {
   return a + b;
 }
-sum = R.curry(sum);
 
 function istypeOf(type, coordinate) {
   return typeof coordinate == type;
@@ -1005,7 +1006,6 @@ istypeOf = R.curry(istypeOf);
 ```
 
 Take a look to following [Ramda](http://ramdajs.com/docs/) functions :
-* [values](http://ramdajs.com/docs/#values)
 * [filter](http://ramdajs.com/docs/#filter)
 * [map](http://ramdajs.com/docs/#map)
 * [reduce](http://ramdajs.com/docs/#reduce)
@@ -1028,7 +1028,9 @@ var filterOnlyNumbers = R.filter(istypeOf('number'));
 var squareMap = R.map(square);
 var sumTogether = R.reduce(sum, 0);
 
-var distance = R.compose(Math.sqrt, sumTogether, squareMap, filterOnlyNumbers, R.values);
+var distance = R.compose(Math.sqrt, sumTogether, squareMap, filterOnlyNumbers, Object.values);
+// OR
+var distance = R.pipe(Object.values, filterOnlyNumbers, squareMap, sumTogether, Math.sqrt);
 
 var result = distance(point);
 ```

@@ -1,5 +1,4 @@
-var fn = require('fn.js');
-var _ = require('lodash');
+var R = require('ramda');
 
 var point = {
   x: 2,
@@ -21,28 +20,15 @@ function sum(a, b){
 function istypeOf(type, coordinate){
   return typeof coordinate == type;
 }
-istypeOf = fn.curry(istypeOf);
+istypeOf = R.curry(istypeOf);
 
-function filter(func, array) {
-  return array.filter(func);
-}
-filter = fn.curry(filter);
+var filterOnlyNumbers = R.filter(istypeOf('number'));
+var squareMap = R.map(square);
+var sumTogether = R.reduce(sum, 0);
 
-function map(func, array) {
-  return array.map(func);
-}
-map = fn.curry(map);
-
-function reduce(func, array) {
-  return array.reduce(func);
-}
-reduce = fn.curry(reduce);
-
-var onlyNumbers = filter(istypeOf('number'));
-var squareEach = map(square);
-var sumTogether = reduce(sum);
-
-var distance = fn.compose(Math.sqrt, sumTogether, squareEach, onlyNumbers, _.values);
+var distance = R.compose(Math.sqrt, sumTogether, squareMap, filterOnlyNumbers, Object.values);
+// OR
+var distance = R.pipe(Object.values, filterOnlyNumbers, squareMap, sumTogether, Math.sqrt);
 
 var result = distance(point);
 

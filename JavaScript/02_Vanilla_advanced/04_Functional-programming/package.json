@@ -6,9 +6,7 @@
   "dependencies": {
     "ajax-request": "^1.2.1",
     "bluebird": "^3.3.3",
-    "fn.js": "^0.8.1",
-    "jquery": "3.0.0-beta1",
-    "lodash": "^4.5.1"
+    "ramda": "^0.23.0"
   },
   "devDependencies": {},
   "scripts": {

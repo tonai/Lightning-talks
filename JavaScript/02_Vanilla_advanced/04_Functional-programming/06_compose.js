@@ -1,4 +1,4 @@
-var fn = require('fn.js');
+var R = require('ramda');
 
 function convertLinks(input) {
   var pattern = /\[([^\]]*)\]\(([^\)]*)\)/i;
@@ -18,7 +18,7 @@ function convertLineBreak(input) {
 function wrapWithTag(tag, text) {
   return '</' + tag + '>' + text + '<' + tag + '>';
 }
-wrapWithTag = fn.curry(wrapWithTag);
+wrapWithTag = R.curry(wrapWithTag);
 
 var input = `Functional programming
 
@@ -28,8 +28,9 @@ Written by tony Cabaye.
 Support is available [here](https://github.com/tonai/Lightning-talks)`;
 
 var wrapWithParagraph = wrapWithTag('p');
-var processSimpleMarkdown = fn.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
-// var processSimpleMarkdown = fn.pipeline(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
+var processSimpleMarkdown = R.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
+// OR
+var processSimpleMarkdown = R.pipe(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
 
 var output = processSimpleMarkdown(input);
 

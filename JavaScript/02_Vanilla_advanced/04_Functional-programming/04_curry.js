@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var R = require('ramda');
 
 var animals = [
   {species: 'dog', name: 'Pongo'},
@@ -7,13 +7,13 @@ var animals = [
   {species: 'dog', name: 'Perdita'},
   {species: 'dog', name: 'Lucky'},
   {species: 'cat', name: 'Berlioz'},
-  {species: 'cat', name: 'Toulouse'},
+  {species: 'cat', name: 'Toulouse'}
 ];
 
 var isSomeSpecies = function(species, animal) {
   return animal.species === species;
 };
-isSomeSpecies = _.curry(isSomeSpecies);
+isSomeSpecies = R.curry(isSomeSpecies);
 
 var dogs = animals.filter(isSomeSpecies('dog'));
 console.log(JSON.stringify(dogs, null, 2));

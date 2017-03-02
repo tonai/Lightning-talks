@@ -1,5 +1,3 @@
-var _ = require('lodash');
-
 var point = {
   x: 2,
   y: 3,
@@ -9,9 +7,8 @@ var point = {
   }
 };
 
-var _ = require('lodash');
 var distance = function(point) {
-  var value = _.values(point)
+  var value = Object.values(point)
     .filter(x => typeof x == 'number')
     .map(x => x * x)
     .reduce((a, b) => a + b, 0);

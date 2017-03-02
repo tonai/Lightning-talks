@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var output = fs.readFileSync('01_input.csv', 'utf8')
+var output = fs.readFileSync('03_input.csv', 'utf8')
   .trim()
   .split('\n')
   .map(line => line.split(','))
@@ -10,7 +10,7 @@ var output = fs.readFileSync('01_input.csv', 'utf8')
     customers[name].push({
       name: line[2],
       price: line[3],
-      quantity: line[4],
+      quantity: line[4]
     });
     return customers;
   }, {});
