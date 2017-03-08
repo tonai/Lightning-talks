@@ -1096,7 +1096,6 @@ var R = require('ramda');
 function sum(a, b) {
   return a + b;
 }
-sum = R.curry(sum);
 
 function itemTotal(basketItem) {
   return basketItem.price * basketItem.quantity;
