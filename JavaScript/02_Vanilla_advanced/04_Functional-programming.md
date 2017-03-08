@@ -899,7 +899,7 @@ Composition is a tool for combining simple functions together.
 The idea is to use functions that take only argument, to combine them together and to return a new function.  
 The output of each function populates the input of the next function.
 
-Like `curry`, the `combine` function can be found in functional programming libraries.
+Like `curry`, the `compose` function can be found in functional programming libraries.
 
 Example :
 ```JavaScript
