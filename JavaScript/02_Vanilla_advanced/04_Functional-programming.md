@@ -932,8 +932,6 @@ Written by Tony Cabaye.
 Support is available [here](https://github.com/tonai/Lightning-talks)`;
 
 var processSimpleMarkdown = R.compose(wrapWithParagraph, convertLineBreak, convertParagraph, convertLinks);
-// OR
-var processSimpleMarkdown = R.pipe(convertLinks, convertParagraph, convertLineBreak, wrapWithParagraph);
 
 var output = processSimpleMarkdown(input);
 ```
