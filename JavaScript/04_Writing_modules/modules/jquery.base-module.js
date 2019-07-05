@@ -12,15 +12,12 @@
    * @param {object} options
    *   Instance specific options.
    */
-  function Module(element, options) {
+  function Module($element, options) {
     // Merge specific and default options.
     this.options = $.extend({}, defaultOptions, options);
 
     // Initialize the main element.
-    this.$element = (element instanceof $)? element: $(element);
-
-    // Save the instance reference into the DOM element.
-    this.$element.data(moduleName, this);
+    this.$element = $element;
 
     // Object initialization.
     this.setup && this.setup();
@@ -59,7 +56,8 @@
     return this.each(function() {
       var $this = $(this);
       if (!$this.data(moduleName)) {
-        new Module($this, options);
+        var instance = new Module($this, options);
+        this.$element.data(moduleName, instance);
       }
     });
   };
