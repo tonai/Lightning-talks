@@ -1,0 +1,4 @@
+{
+  "rootDir": "../",
+  "testMatch": ["**/*.jest.spec.js"]
+}

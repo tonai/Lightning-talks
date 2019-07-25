@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Idle</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <button type="button" id="main">main</button>
+  <button type="button" id="button">button</button>
+  <button type="button" id="alert">alert</button>
+  <div class="main">
+    <div class="timeline" id="timeline"></div>
+  </div>
+  <script src="timeline.js"></script>
+  <script src="idle.js"></script>
+  <script src="scripts-iuu.js"></script>
+  <script>
+    const main = () => {
+      window.timeline = new Timeline(document.getElementById('timeline'));
+      setTimeout(() => drawer.init(), 0);
+      setTimeout(() => contentLoader.init(), 0);
+      setTimeout(() => breakpoints.init(), 0);
+      alerts.init();
+      requestIdleCallback(() => analytics.init());
+    };
+
+    const buttonCallback = () => {
+      button.init()
+    };
+
+    document.getElementById('main').addEventListener('click', main);
+    document.getElementById('button').addEventListener('click', buttonCallback);
+  </script>
+</body>
+</html>

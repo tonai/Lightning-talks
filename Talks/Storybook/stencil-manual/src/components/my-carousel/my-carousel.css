@@ -1,0 +1,24 @@
+.my-carousel {
+  position: relative;
+}
+
+.my-carousel__content {
+  margin: 0 40px;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+}
+
+.my-carousel__prev {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.my-carousel__next {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

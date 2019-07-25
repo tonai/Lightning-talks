@@ -1,0 +1,94 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AMP version</title>
+  <link rel="canonical" href="http://localhost:63342/amp-test/index.html">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Open-source framework for publishing content",
+      "datePublished": "2015-10-07T12:02:41Z",
+      "image": [
+        "logo.jpg"
+      ]
+    }
+  </script>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>
+    .page {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    @media (max-width: 1064px) {
+      .page {
+        margin: 0 20px;
+      }
+    }
+    amp-img {
+      margin: auto;
+    }
+    .lightbox-bg {
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 100%;
+    }
+    .lightbox-vcenter {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      padding: 50px;
+      transform: translateY(-50%);
+    }
+    @media (max-width: 480px) {
+      .lightbox-vcenter {
+        padding: 20px;
+      }
+    }
+  </style>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+  <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+</head>
+<body>
+  <div class="page">
+    <h1>Welcome to the mobile web</h1>
+    <amp-img
+      src="https://www.html5rocks.com/en/tutorials/video/basics/poster.png"
+      layout="responsive"
+      width="640"
+      height="350"
+      on="tap:video-modal.open"
+      role="button"
+      tabindex="0"
+      sizes="(min-width: 320px) 320px, 100vw"
+      aria-label="open lightbox"
+    ></amp-img>
+    <amp-lightbox
+      id="video-modal"
+      layout="nodisplay"
+    >
+      <div
+        class="lightbox-bg"
+        on="tap:video-modal.close"
+        role="button"
+        tabindex="0"
+        aria-label="close lightbox"
+      >
+        <div class="lightbox-vcenter">
+          <amp-video
+            src="https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4"
+            layout="responsive"
+            width="640"
+            height="350"
+            poster="https://www.html5rocks.com/en/tutorials/video/basics/poster.png"
+            controls
+          ></amp-video>
+        </div>
+      </div>
+    </amp-lightbox>
+  </div>
+</body>
+</html>

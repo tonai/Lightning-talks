@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  height: 50vh;
+}
+
+.timeline {
+  display: flex;
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  align-items: center;
+  background-color: olivedrab;
+  border: 1px solid white;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas1" width="300" height="200"></canvas>
+
+  <script>
+    var image = new Image();
+    image.src = 'images/logo.png';
+    image.onload = () => {
+      const canvas = document.getElementById('canvas1');
+      const context = canvas.getContext('2d');
+
+      context.drawImage(image, 0, 0); // image, x, y
+    };
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas2" width="300" height="200"></canvas>
+
+  <script>
+    var image = new Image();
+    image.src = 'images/logo.png';
+    image.onload = () => {
+      const canvas = document.getElementById('canvas2');
+      const context = canvas.getContext('2d');
+
+      context.drawImage(image, 20, 20, 260, 160); // image, x destination, y destination, width destination, height destination
+      context.rect(20, 20, 260, 160); // x, y, width, height
+      context.stroke();
+    };
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas3" width="300" height="200"></canvas>
+
+  <script>
+    var image = new Image();
+    image.src = 'images/logo.png';
+    image.onload = () => {
+      const canvas = document.getElementById('canvas3');
+      const context = canvas.getContext('2d');
+
+      context.drawImage(image, 0, 4, 217, 64, 20, 20, 260, 160); // image, x source, y source, width source, height source, x destination, y destination, width destination, height destination
+      context.rect(20, 20, 260, 160); // x, y, width, height
+      context.stroke();
+    };
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas4" width="300" height="200"></canvas>
+
+  <script>
+    var image = new Image();
+    image.src = 'images/logo.png';
+    image.onload = () => {
+      const canvas = document.getElementById('canvas4');
+      const context = canvas.getContext('2d');
+
+      const pattern = context.createPattern(image, 'repeat');
+      context.fillStyle = pattern;
+      context.rect(20, 20, 260, 160); // x, y, width, height
+      context.stroke();
+      context.fill();
+    };
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas5" width="300" height="200"></canvas>
+  <button id="revert" type="button">Revert</button>
+
+  <script>
+    var image = new Image();
+    image.src = 'images/logo.png';
+    image.onload = () => {
+      const top = 20;
+      const left = 20;
+      const width = 260;
+      const height = 160;
+      const x = left + (width - image.width) / 2;
+      const y = top + (height - image.height) / 2;
+
+      const canvas = document.getElementById('canvas5');
+      const context = canvas.getContext('2d');
+
+      context.drawImage(image, x, y);
+    };
+
+    function revertImage(imageData) {
+      const { data, height, width } = imageData;
+      const newData = new Uint8ClampedArray(height * width * 4); // Use only for canvas : https://mail.mozilla.org/pipermail/es-discuss/2015-August/043902.html
+      for (let i = 0; i < height; i++) {
+        for (let j = 0; j < width; j++) {
+          const previousLinesLength = i * width * 4;
+          newData[j * 4 + previousLinesLength + 0] = data[(width - 1 - j) * 4 + previousLinesLength + 0];
+          newData[j * 4 + previousLinesLength + 1] = data[(width - 1 - j) * 4 + previousLinesLength + 1];
+          newData[j * 4 + previousLinesLength + 2] = data[(width - 1 - j) * 4 + previousLinesLength + 2];
+          newData[j * 4 + previousLinesLength + 3] = data[(width - 1 - j) * 4 + previousLinesLength + 3];
+        }
+      }
+      return new ImageData(newData, width, height);
+    }
+
+    const button = document.getElementById('revert');
+    button.addEventListener('click', () => {
+      const canvas = document.getElementById('canvas5');
+      const context = canvas.getContext('2d');
+
+      const imageData = context.getImageData(0, 0, 300, 200); // x, y, width, height
+      const newImageData = revertImage(imageData);
+      context.clearRect(0, 0, 300, 200); // x, y, width, height
+      context.putImageData(newImageData, 0, 0); // data, x, y
+    });
+  </script>
+
+</body>
+</html>

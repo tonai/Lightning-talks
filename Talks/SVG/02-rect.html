@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    svg {
+      background-color: antiquewhite;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="300" height="200" viewBox="0 0 30 20">
+    <rect width="26" height="16" x="2" y="2" rx="8" ry="4" fill="#0055A4" />
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 30 20">
+    <rect width="26" height="16" x="2" y="2" rx="8" ry="4" fill="#0055A4" transform="rotate(45 15 10) scale(0.5) translate(15,10)" />
+  </svg>
+
+  <hr/>
+
+  <style>
+    .svg {
+      width: 300px;
+      height: 200px;
+    }
+    .rect {
+      fill: #0055A4;
+      rx: 8px;
+      ry: 4px;
+      x: 2px;
+      y: 2px;
+      width: 26px;
+      height: 16px;
+    }
+  </style>
+  <svg class="svg" viewBox="0 0 30 20">
+    <rect class="rect"/>
+  </svg>
+
+  <hr/>
+
+  <style>
+    .svg2 {
+      width: 300px;
+      height: 200px;
+    }
+    .rect2 {
+      fill: #0055A4;
+      rx: 8px;
+      ry: 4px;
+      x: 2px;
+      y: 2px;
+      width: 26px;
+      height: 16px;
+      transform: rotateZ(45deg) scale(0.5);
+      transform-origin: center center;
+    }
+  </style>
+  <svg class="svg2" viewBox="0 0 30 20">
+    <rect class="rect2"/>
+  </svg>
+
+</body>
+</html>

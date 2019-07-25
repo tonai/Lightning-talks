@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    svg {
+      background-color: antiquewhite;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <rect id="rect" width="260" height="160" rx="80" ry="40" />
+    </defs>
+    <use href="#rect" x="0" y="0" fill="#0055A4"/>
+    <use href="#rect" x="20" y="20" fill="#FFFFFF" />
+    <use href="#rect" x="40" y="40" fill="#EF4135" />
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <linearGradient id="gradient">
+        <stop offset="20%"  stop-color="#0055A4"/>
+        <stop offset="40%"  stop-color="#FFFFFF"/>
+        <stop offset="60%"  stop-color="#FFFFFF"/>
+        <stop offset="80%" stop-color="#EF4135"/>
+      </linearGradient>
+    </defs>
+    <rect width="260" height="160" rx="80" ry="40" x="20" y="20" fill="url(#gradient)" />
+  </svg>
+
+</body>
+</html>

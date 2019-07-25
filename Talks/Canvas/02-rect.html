@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas1" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+
+    context.rect(20, 20, 260, 160); // x, y, width, height
+    context.fill();
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas2" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas2');
+    var context = canvas.getContext('2d');
+
+    context.rect(20, 20, 260, 160); // x, y, width, height
+    context.stroke();
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas3" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas3');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = '#0055A4';
+    context.beginPath(); // test without all these lines.
+    context.rect(0, 0, 100, 200); // x, y, width, height
+    context.fill();
+
+    context.fillStyle = '#FFFFFF';
+    context.beginPath(); // test without all these lines.
+    context.rect(100, 0, 100, 200); // x, y, width, height
+    context.fill();
+
+    context.fillStyle = '#EF4135';
+    context.beginPath(); // test without all these lines.
+    context.rect(200, 0, 100, 200); // x, y, width, height
+    context.fill();
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas4" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas4');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = '#0055A4';
+    context.fillRect(0, 0, 100, 200); // x, y, width, height
+
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(100, 0, 100, 200); // x, y, width, height
+
+    context.fillStyle = '#EF4135';
+    context.fillRect(200, 0, 100, 200); // x, y, width, height
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas5" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas5');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = '#0055A4';
+    context.fillRect(20, 20, 260, 160); // x, y, width, height
+
+    context.clearRect(40, 40, 220, 120); // x, y, width, height
+
+    context.strokeStyle = '#EF4135';
+    context.lineWidth = 2;
+    context.strokeRect(60, 60, 180, 80); // x, y, width, height
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas6" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas6');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = '#0055A4';
+    context.strokeStyle = '#EF4135';
+    context.lineWidth = 10;
+    context.beginPath();
+    context.rect(20, 20, 260, 160); // x, y, width, height
+    context.fill();
+    context.stroke();
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas7" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas7');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = '#0055A4';
+    context.strokeStyle = '#EF4135';
+    context.lineWidth = 10;
+    context.beginPath();
+    context.rect(20, 20, 260, 160); // x, y, width, height
+    context.stroke();
+    context.fill();
+  </script>
+
+</body>
+</html>

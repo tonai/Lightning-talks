@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    svg {
+      background-color: antiquewhite;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" viewBox="0 0 300 200">
+    <defs>
+      <rect id="rect" width="260" height="160" rx="80" ry="40" />
+    </defs>
+  </svg>
+
+  <!-- clip-path = Emporte pièce -->
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <clipPath id="clipPath">
+        <rect width="104" height="64" rx="32" ry="16" x="0" y="0"/>
+        <rect width="104" height="64" rx="32" ry="16" x="0" y="96"/>
+        <rect width="104" height="64" rx="32" ry="16" x="156" y="0"/>
+        <rect width="104" height="64" rx="32" ry="16" x="156" y="96"/>
+      </clipPath>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="#0055A4" clip-path="url(#clipPath)" />
+  </svg>
+
+  <hr/>
+
+  <!-- Mask = calque de fusion photoshop -->
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <mask id="mask1">
+        <rect width="300" height="200" x="0" y="0" fill="#FFFFFF" />
+        <rect width="220" height="120" rx="80" ry="40" x="20" y="20" fill="#000000" />
+      </mask>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="#0055A4" mask="url(#mask1)"/>
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <linearGradient id="gradient">
+        <stop offset="0" stop-color="white" stop-opacity="0" />
+        <stop offset="1" stop-color="white" stop-opacity="1" />
+      </linearGradient>
+      <mask id="mask2">
+        <rect width="260" height="160" x="0" y="0" fill="url(#gradient)" />
+      </mask>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="#0055A4" mask="url(#mask2)"/>
+  </svg>
+
+  <hr/>
+
+  <!-- Pattern = remplissage -->
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <pattern id="star1" viewBox="0,0,10,10" width="10%" height="10%" patternUnits="objectBoundingBox">
+        <polygon points="0,0 2,5 0,10 5,8 10,10 8,5 10,0 5,2"/>
+      </pattern>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="url(#star1)"/>
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <pattern id="star2" viewBox="0,0,10,10" width="0.1" height="0.1" patternUnits="objectBoundingBox">
+        <polygon points="0,0 2,5 0,10 5,8 10,10 8,5 10,0 5,2"/>
+      </pattern>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="url(#star2)"/>
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <pattern id="star3" viewBox="0,0,10,10" width="26" height="16" patternUnits="userSpaceOnUse">
+        <polygon points="0,0 2,5 0,10 5,8 10,10 8,5 10,0 5,2"/>
+      </pattern>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="url(#star3)"/>
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <pattern id="star4" viewBox="0,0,10,10" width="8.67%" height="8%" patternUnits="userSpaceOnUse">
+        <polygon points="0,0 2,5 0,10 5,8 10,10 8,5 10,0 5,2"/>
+      </pattern>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="url(#star4)"/>
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <pattern id="star5" viewBox="0,0,10,10" width="16" height="16" patternUnits="userSpaceOnUse">
+        <polygon points="0,0 2,5 0,10 5,8 10,10 8,5 10,0 5,2"/>
+      </pattern>
+    </defs>
+    <use href="#rect" x="20" y="20" fill="url(#star5)"/>
+  </svg>
+
+</body>
+</html>

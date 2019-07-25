@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="/build/mycomponent.js"></script>
+  <style>
+    .carousel-item-content {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content:center;
+      align-items: center
+    }
+  </style>
+</head>
+<body>
+
+  <my-app>
+    <my-carousel>
+      <my-carousel-item index="0">
+        <div class="carousel-item-content" style="background-color: red;">item 1</div>
+      </my-carousel-item>
+      <my-carousel-item index="1">
+        <div class="carousel-item-content" style="background-color: green;">item 2</div>
+      </my-carousel-item>
+      <my-carousel-item index="2">
+        <div class="carousel-item-content" style="background-color: blue;">item 3</div>
+      </my-carousel-item>
+    </my-carousel>
+  </my-app>
+
+</body>
+</html>

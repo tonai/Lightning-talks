@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="canvas1" width="300" height="200"></canvas>
+
+<script>
+  var canvas = document.getElementById('canvas1');
+  var context = canvas.getContext('2d');
+  context.save();
+
+  context.beginPath();
+  context.rect(50, 50, 200, 100); // x, y, width, height
+  context.clip();
+
+  context.fillStyle = '#EF4135';
+  context.beginPath();
+  context.arc(150, 100, 80, 0, 2 * Math.PI); // cx, cy, r, startAngle, endAngle
+  context.fill();
+
+  context.restore();
+  context.strokeStyle = '#0055A4';
+  context.lineWidth = 2;
+  context.beginPath();
+  context.rect(20, 20, 260, 160); // x, y, width, height
+  context.stroke();
+</script>
+
+<hr/>
+
+<canvas id="canvas2" width="300" height="200"></canvas>
+<canvas id="canvas3" width="300" height="200"></canvas>
+<canvas id="canvas4" width="300" height="200"></canvas>
+<select id="select">
+  <option value="source-over" selected>source-over</option>
+  <option value="source-in">source-in</option>
+  <option value="source-out">source-out</option>
+  <option value="source-atop">source-atop</option>
+  <option value="destination-over">destination-over</option>
+  <option value="destination-in">destination-in</option>
+  <option value="destination-out">destination-out</option>
+  <option value="destination-atop">destination-atop</option>
+  <option value="lighter">lighter</option>
+  <option value="copy">copy</option>
+  <option value="xor">xor</option>
+  <option value="multiply">multiply</option>
+  <option value="screen">screen</option>
+  <option value="overlay">overlay</option>
+  <option value="darken">darken</option>
+  <option value="lighten">lighten</option>
+  <option value="color-dodge">color-dodge</option>
+  <option value="color-burn">color-burn</option>
+  <option value="hard-light">hard-light</option>
+  <option value="soft-light">soft-light</option>
+  <option value="difference">difference</option>
+  <option value="exclusion">exclusion</option>
+  <option value="hue">hue</option>
+  <option value="saturation">saturation</option>
+  <option value="color">color</option>
+  <option value="luminosity">luminosity</option>
+</select>
+
+<script>
+  var linearGradient = context.createLinearGradient(0, 0, 300, 0); // x1, y1, x2, y2
+  linearGradient.addColorStop(0.333, '#0055A4');
+  linearGradient.addColorStop(0.333, '#FFFFFF');
+  linearGradient.addColorStop(0.667, '#FFFFFF');
+  linearGradient.addColorStop(0.667, '#EF4135');
+
+  var radialGradient = context.createRadialGradient(150, 100, 0, 150, 100, 100); // x1, y1, r1, x2, y2, r2
+  radialGradient.addColorStop(0, 'rgba(239, 65, 53, 1)');
+  radialGradient.addColorStop(0.2, 'rgba(239, 65, 53, 1)');
+  radialGradient.addColorStop(0.4, 'rgba(255, 255, 255, 1)');
+  radialGradient.addColorStop(0.5, 'rgba(255, 255, 255, 1)');
+  radialGradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.8)');
+  radialGradient.addColorStop(0.8, 'rgba(0, 85, 164, 0.4)');
+  radialGradient.addColorStop(1, 'rgba(0, 85, 164, 0)');
+
+  function drawCircle(context) {
+    context.fillStyle = radialGradient;
+    context.beginPath();
+    context.arc(150, 100, 100, 0, 2 * Math.PI); // cx, cy, r, startAngle, endAngle
+    context.fill();
+  }
+
+  function drawRect(context) {
+    context.fillStyle = linearGradient;
+    context.beginPath();
+    context.rect(0, 50, 300, 100); // x, y, width, height
+    context.fill();
+  }
+
+  function draw(context, globalCompositeOperation = 'source-over') {
+    context.clearRect(0, 0, 300, 200); // x, y, width, height
+    context.globalCompositeOperation = 'source-over';
+    drawRect(context);
+    context.globalCompositeOperation = globalCompositeOperation;
+    drawCircle(context);
+  }
+
+  const select = document.getElementById('select');
+  select.addEventListener('change', (e) => {
+    draw(document.getElementById('canvas4').getContext('2d'), e.target.value);
+  });
+
+  drawCircle(document.getElementById('canvas2').getContext('2d'));
+  drawRect(document.getElementById('canvas3').getContext('2d'));
+  draw(document.getElementById('canvas4').getContext('2d'));
+</script>
+
+</body>
+</html>

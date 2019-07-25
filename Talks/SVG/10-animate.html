@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    svg {
+      background-color: antiquewhite;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <style>
+    .g {
+      transition: all 400ms;
+      transform-origin: center center;
+    }
+    .g:hover {
+      transform: rotateZ(60deg);
+    }
+  </style>
+  <!--style>
+    .g {
+      animation: rotate 5s linear infinite;
+      transform-origin: center center;
+    }
+    @keyframes rotate {
+      from {
+        transform: rotateZ(0);
+      }
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+  </style-->
+  <svg width="200" height="200" viewBox="0 0 200 200">
+    <defs>
+      <radialGradient id="gradient" cx="0.5" cy="1" r="1">
+        <stop offset="20%" stop-color="#EF4135"/>
+        <stop offset="40%"  stop-color="#FFFFFF"/>
+        <stop offset="60%"  stop-color="#FFFFFF"/>
+        <stop offset="80%" stop-color="#0055A4"/>
+      </radialGradient>
+    </defs>
+    <g class="g">
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(24deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(48deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(72deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(96deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(120deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(144deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(168deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(192deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(216deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(240deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(264deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(288deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(312deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(336deg); transform-origin: 100px 100px" />
+      <circle cx="100" cy="100" r="5" fill="red" />
+    </g>
+  </svg>
+
+  <hr/>
+
+  <svg width="200" height="200" viewBox="0 0 200 200">
+    <defs>
+      <animateTransform
+        href="#g"
+        attributeName="transform"
+        attributeType="XML"
+        type="rotate"
+        from="0 100 100"
+        to="360 100 100"
+        dur="5s"
+        begin="click"
+        repeatCount="indefinite"
+        fill="freeze"
+      />
+      <radialGradient id="gradient" cx="0.5" cy="1" r="1">
+        <stop offset="20%" stop-color="#EF4135"/>
+        <stop offset="40%"  stop-color="#FFFFFF"/>
+        <stop offset="60%"  stop-color="#FFFFFF"/>
+        <stop offset="80%" stop-color="#0055A4"/>
+      </radialGradient>
+    </defs>
+    <g id="g">
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(24deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(48deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(72deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(96deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(120deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(144deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(168deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(192deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(216deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(240deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(264deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(288deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(312deg); transform-origin: 100px 100px" />
+      <path d="M100,100 L80,10 Q100,-10 120,10 Z" fill="url(#gradient)" style="transform: rotateZ(336deg); transform-origin: 100px 100px" />
+      <circle cx="100" cy="100" r="5" fill="red" />
+    </g>
+  </svg>
+
+  <hr/>
+
+  <!-- Inspired by https://codepen.io/noahblon/pen/IhLFK -->
+  <svg width="200" height="200" viewbox="0 0 100 100" style="background-color: black">
+    <path fill="#0055A4" d="M0,0 C50,0 50,0 100,0 C100,50 100,50 100,100 C50,100 50,100 0,100 C0,50 0,50 0,0 Z">
+      <animate
+        attributeName="d"
+        dur="5s"
+        begin="click"
+        keyTimes="0;0.33;0.67;1"
+        values="M0,0 C50,0 50,0 100,0 C100,50 100,50 100,100 C50,100 50,100 0,100 C0,50 0,50 0,0 Z;
+                M25,50 C37.5,25 37.5,25 50,0 C75,50 75,50 100,100 C50,100 50,100 0,100 C12.5,75 12.5,75 25,50 Z;
+                M50,0 C77.6,0 100,22.4 100,50 C100,77.6 77.6,100 50,100 C22.4,100, 0,77.6, 0,50 C0,22.4, 22.4,0, 50,0 Z;
+                M0,0 C50,0 50,0 100,0 C100,50 100,50 100,100 C50,100 50,100 0,100 C0,50 0,50 0,0 Z;"
+      />
+      <animate
+        attributeName="fill"
+        dur="5s"
+        begin="click"
+        keyTimes="0;0.33;0.67;1"
+        values="#0055A4;#FFFFFF;#EF4135;#0055A4"
+      />
+    </path>
+  </svg>
+
+  <hr/>
+
+  <svg width="300" height="200" viewBox="0 0 300 200">
+    <path id="path" d="M20,20 C120,20 50,160 150,160 S180,20 280,20" stroke="#EF4135" stroke-width="1" fill="transparent" />
+    <animateMotion
+      href="#circle"
+      dur="1s"
+      begin="click"
+      fill="freeze"
+      path="M0,0 C100,0 30,140 130,140 S160,0 260,0"
+    />
+    <circle id="circle" r="10" cx="20" cy="20" fill="#0055A4" />
+  </svg>
+
+  <!-- Other nice example : https://codepen.io/guerreiro/pen/obhzc -->
+
+</body>
+</html>

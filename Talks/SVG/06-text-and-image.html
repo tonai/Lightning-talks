@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    svg {
+      background-color: antiquewhite;
+      display: block;
+    }
+    .text {
+      position: relative;
+      display: inline-block;
+    }
+    .text::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: red;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="200" height="200" viewBox="0 0 200 200">
+    <image href="images/logo.png" x="0" y="0" width="200" height="200" />
+  </svg>
+
+  <hr/>
+
+  <div class="text">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <text x="0" y="100" font-size="30" fill="#000">Smile</text>
+    </svg>
+  </div>
+
+</body>
+</html>

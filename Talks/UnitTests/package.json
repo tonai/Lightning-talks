@@ -1,0 +1,41 @@
+{
+  "name": "js-unit-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "jasmine": "jasmine --config=config/jasmine.json",
+    "jasmine:auto": "nodemon --exec npm run jasmine",
+    "jasmine:cov": "nyc --reporter=lcov npm run jasmine",
+    "mocha": "mocha --require babel-register \"**/*.mocha.spec.js\"",
+    "mocha:auto": "mocha --watch --require babel-register \"**/*.mocha.spec.js\"",
+    "mocha:cov": "nyc --reporter=lcov npm run mocha",
+    "jest": "jest --config=config/jest.json",
+    "jest:auto": "jest --watch --config=config/jest.json",
+    "jest:cov": "jest --coverage --config=config/jest.json"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ],
+    "include": [
+      "src/**"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "jasmine": "^3.1.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "jest": "^22.4.3",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.17.4",
+    "nyc": "^11.7.2",
+    "sinon": "^5.0.6"
+  }
+}

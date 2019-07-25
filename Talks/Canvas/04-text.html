@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      background-color: antiquewhite;
+    }
+    .text {
+      display: inline-block;
+      position: relative;
+    }
+    .text::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100px;
+      height: 1px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="text">
+    <canvas id="canvas1" width="300" height="200"></canvas>
+  </div>
+
+  <script>
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+
+    context.font = '30px Serif';
+    context.fillText('Sample String', 20, 100); // text, x, y
+  </script>
+
+  <hr/>
+
+  <div class="text">
+    <canvas id="canvas2" width="300" height="200"></canvas>
+  </div>
+
+  <script>
+    var canvas = document.getElementById('canvas2');
+    var context = canvas.getContext('2d');
+
+    context.font = '30px Serif';
+    context.strokeText('Sample String', 20, 100); // text, x, y
+  </script>
+
+  <hr/>
+
+  <div class="text">
+    <canvas id="canvas3" width="300" height="200"></canvas>
+  </div>
+
+  <script>
+    var canvas = document.getElementById('canvas3');
+    var context = canvas.getContext('2d');
+
+    context.textBaseline = 'middle';
+    context.textAlign = 'center';
+
+    context.font = '30px Serif';
+    context.fillText('Sample String', 150, 100); // text, x, y
+  </script>
+
+  <hr/>
+
+  <div class="text">
+    <canvas id="canvas4" width="300" height="200"></canvas>
+  </div>
+
+  <script>
+    var canvas = document.getElementById('canvas4');
+    var context = canvas.getContext('2d');
+
+    context.shadowOffsetX = 3;
+    context.shadowOffsetY = 3;
+    context.shadowBlur = 2;
+    context.shadowColor = '#0055A4';
+
+    context.font = '30px Serif';
+    context.fillText('Sample String', 20, 100); // text, x, y
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas5" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas5');
+    var context = canvas.getContext('2d');
+
+    context.font = '30px Serif';
+    context.lineWidth = 2;
+    context.textBaseline = 'middle';
+
+    var start = 60;
+    var margin = 2;
+    var radius = 5;
+    var { width } = context.measureText('Sample String');
+
+    context.moveTo(50,0); // x, y
+    context.lineTo(50,200); // x, y
+    context.stroke();
+
+    context.moveTo(50,100); // x, y
+    context.lineTo(60,100); // x, y
+    context.stroke();
+
+    context.fillText('Sample String', start + margin, 100); // text, x, y
+
+    context.fillStyle = '#EF4135';
+    context.arc(start + width + radius + margin * 2, 100, radius, 0, 2 * Math.PI); // cx, cy, r, startAngle, endAngle
+    context.fill();
+  </script>
+
+</body>
+</html>

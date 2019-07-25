@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas1" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+
+    var gradient = context.createLinearGradient(0, 0, 300, 0); // x1, y1, x2, y2
+    gradient.addColorStop(0.2, '#0055A4');
+    gradient.addColorStop(0.4, '#FFFFFF');
+    gradient.addColorStop(0.6, '#FFFFFF');
+    gradient.addColorStop(0.8, '#EF4135');
+
+    context.fillStyle = gradient;
+    context.fillRect(20, 20, 260, 160); // x, y, width, height
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas2" width="200" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas2');
+    var context = canvas.getContext('2d');
+
+    var gradient = context.createRadialGradient(100, 100, 0, 100, 100, 100); // x1, y1, r1, x2, y2, r2
+    gradient.addColorStop(0.2, '#EF4135');
+    gradient.addColorStop(0.4, '#FFFFFF');
+    gradient.addColorStop(0.6, '#FFFFFF');
+    gradient.addColorStop(0.8, '#0055A4');
+
+    var petal = new Path2D();
+    petal.moveTo(100, 100); // x, y
+    petal.lineTo(80, 190); // x, y
+    petal.quadraticCurveTo(100, 210, 120, 190); // x1, y1, x2, y2
+
+    context.fillStyle = gradient;
+    context.fill(petal);
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas3" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas3');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = '#0055A4';
+    context.fillRect(0, 0, 260, 160); // x, y, width, height
+
+    context.translate(20, 20); // x, y
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, 260, 160); // x, y, width, height
+
+    context.translate(20, 20); // x, y
+    context.fillStyle = '#EF4135';
+    context.fillRect(0, 0, 260, 160); // x, y, width, height
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas4" width="300" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas4');
+    var context = canvas.getContext('2d');
+
+    context.save();
+    context.fillStyle = '#0055A4';
+    context.fillRect(0, 0, 260, 160); // x, y, width, height
+
+    context.translate(20, 20); // x, y
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, 260, 160); // x, y, width, height
+    context.restore();
+
+    context.translate(40, 40); // x, y
+    context.fillStyle = '#EF4135';
+    context.fillRect(0, 0, 260, 160); // x, y, width, height
+    context.restore();
+  </script>
+
+  <hr/>
+
+  <canvas id="canvas5" width="200" height="200"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas5');
+    var context = canvas.getContext('2d');
+    context.save();
+
+    var gradient = context.createRadialGradient(0, 0, 0, 0, 0, 100); // x1, y1, r1, x2, y2, r2
+    gradient.addColorStop(0.2, '#EF4135');
+    gradient.addColorStop(0.4, '#FFFFFF');
+    gradient.addColorStop(0.6, '#FFFFFF');
+    gradient.addColorStop(0.8, '#0055A4');
+
+    var petal = new Path2D();
+    petal.lineTo(0, 0); // x, y
+    petal.lineTo(-20, 90); // x, y
+    petal.quadraticCurveTo(0, 110, 20, 90); // x1, y1, x2, y2
+
+    context.translate(100, 100); // x, y
+    context.fillStyle = gradient;
+    for (let i = 0; i < 15; i++) {
+      context.fill(petal);
+      context.rotate(2 * Math.PI / 15);
+    }
+    context.restore();
+
+    context.fillStyle = '#EF4135';
+    context.arc(100, 100, 10, 0, 2 * Math.PI); // cx, cy, r, startAngle, endAngle
+    context.fill();
+  </script>
+
+</body>
+</html>
