@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perceptron: one input</title>
+</head>
+<body>
+  <input type="color" id="color-input" />
+  <button type="button" id="guess-button" >Guess</button>
+  <div id="guess-output"></div>
+  <button type="button" id="train-button" >Train</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+  <script src="../shared/drawANN.js"></script>
+  <script src="../shared/batch.js"></script>
+  <script src="../shared/utils.js"></script>
+  <script>
+const colorInput = document.getElementById('color-input');
+const guessButton = document.getElementById('guess-button');
+const guessOutput = document.getElementById('guess-output');
+const trainButton = document.getElementById('train-button');
+
+let weights = [[[rand()]]];
+let biases = [[[rand()]]];
+let activations;
+
+function convertToDecimal(hex) {
+  hex = hex.slice(1);
+  return parseInt(hex, 16) / 16777215;
+}
+
+function convertToHex(input) {
+  return Math.round(input * 16777215).toString(16).padStart(6, '0');
+}
+
+function getZ(w, b, a) {
+  return w * b + a;
+}
+
+function calculate(w, b, a) {
+  return sigmoid(getZ(w, b, a));
+}
+
+function makeGuess(input) {
+  activations = [];
+  activations[0] = [[input]];
+  const guess = calculate(weights[0][0][0], biases[0][0][0], activations[0][0][0]);
+  activations[1] = [[guess]];
+}
+
+function getResult(x) {
+  return x > 0.8 ? 1 : 0;
+}
+
+function getOutput(input, guess, result) {
+  return `Input = ${input} | Guess = ${guess} | Result = ${result}`
+}
+
+function displayGuess() {
+  const value = colorInput.value;
+  const input = convertToDecimal(value);
+
+  makeGuess(input);
+  const y = getResult(input);
+  guessOutput.innerHTML = getOutput(activations[0][0][0], activations[1][0][0], y);
+}
+
+function getDelta(input) {
+  makeGuess(input);
+  const y = getResult(input);
+  // const cost = ( result - guess ) * ( result - guess );
+
+  // dJdW = dZdW * dAdZ * dJdA
+  // dJdB = dZdB * dAdZ * dJdA
+  const dJdA = 2 * ( y - activations[1][0][0] );
+  const dAdZ = sigmoidPrime(getZ(weights[0][0][0], biases[0][0][0], activations[0][0][0]));
+  const dZdW = input;
+  const dZdB = 1;
+
+  const dJdW = dZdW * dAdZ * dJdA;
+  const dJdB = dZdB * dAdZ * dJdA;
+  
+  return [dJdW, dJdB];
+}
+
+function trainFromInput() {
+  const value = colorInput.value;
+  const input = convertToDecimal(value);
+  train(input);
+}
+
+function train(input = rand(0, 1)) {
+  const [dCdW, dCdB] = getDelta(input);
+  weights[0][0][0] += dCdW;
+  biases[0][0][0] += dCdB;
+}
+
+guessButton.addEventListener('click', displayGuess);
+trainButton.addEventListener('click', trainFromInput);
+  </script>
+</body>
+</html>
