@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Classification: Hidden layer, multiple outputs</title>
+  <style>
+table {
+  background-color: #000;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #fff;
+  color: #fff;
+}
+  </style>
+</head>
+<body>
+  <input type="color" id="color-input" />
+  <button type="button" id="guess-button" >Guess</button>
+  <div id="guess-output"></div>
+  <button type="button" id="train-button" >Train</button>
+  <button type="button" id="train-colors-button" >Train colors</button>
+
+  <script src="https://unpkg.com/mathjs@6.5.0/dist/math.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+  <script src="../shared/drawANN.js"></script>
+  <script src="../shared/batch.js"></script>
+  <script src="../shared/utils.js"></script>
+  <script>
+const colorInput = document.getElementById('color-input');
+const guessButton = document.getElementById('guess-button');
+const guessOutput = document.getElementById('guess-output');
+const trainButton = document.getElementById('train-button');
+const trainColorsButton = document.getElementById('train-colors-button');
+
+const learningRate = 0.1;
+const layers = [3, 4, 6];
+let weights = [];
+let biases = [];
+let activations;
+
+for (let i = 0; i < layers.length - 1; i++) {
+  const neurons0 = layers[i];
+  const neurons1 = layers[i + 1];
+
+  weights[i] = [];
+  for (let j = 0; j < neurons0; j++) {
+    weights[i][j] = [];
+
+    for (let k = 0; k < neurons1; k++) {
+      weights[i][j][k] = rand();
+    }
+  }
+
+  biases[i] = [];
+  biases[i][0] = [];
+  for (let k = 0; k < neurons1; k++) {
+    biases[i][0][k] = rand();
+  }
+}
+
+function getZ(w, b, a) {
+  return math.add(math.multiply(a, w), b);
+}
+
+function calculate(w, b, a) {
+  return math.map(getZ(w, b, a), sigmoid);
+}
+
+function calculateLast(w, b, a) {
+  return math.map(getZ(w, b, a), x => x < 0 ? 0 : 1);
+}
+
+function makeGuess(input) {
+  activations = [];
+  activations[0] = [input];
+  for (let i = 0; i < weights.length; i++) {
+    activations[i + 1] = i === weights.length - 1
+      ? calculateLast(weights[i], biases[i], activations[i])
+      : calculate(weights[i], biases[i], activations[i]);
+  }
+}
+
+function getResult(x) {
+  return [
+    x[0] > 0.75 && x[1] < 0.5 && x[2] < 0.5 ? 1 : 0, // Red
+    x[1] > 0.75 && x[0] < 0.5 && x[2] < 0.5 ? 1 : 0, // Green
+    x[2] > 0.75 && x[1] < 0.5 && x[0] < 0.5 ? 1 : 0, // Blue
+    x[0] > 0.75 && x[1] > 0.75 && x[2] < 0.5 ? 1 : 0, // Yellow
+    x[1] > 0.75 && x[2] > 0.75 && x[0] < 0.5 ? 1 : 0, // Cyan
+    x[0] > 0.75 && x[2] > 0.75 && x[1] < 0.5 ? 1 : 0, // Magenta
+  ];
+}
+
+function getOutput(input, guess, result) {
+  return `
+<table>
+  <tr>
+    <th></th>
+    <th>Red</th>
+    <th>Green</th>
+    <th>Blue</th>
+    <th>Yellow</th>
+    <th>Cyan</th>
+    <th>Magenta</th>
+  </tr>
+  <tr>
+    <th>Input</th>
+    ${input[0].map(x => {
+      return `<td class="cell" style="background-color:#${convertToHex([x, x, x])};}"></td>`
+    }).join('')}
+  </tr>
+  <tr>
+    <th>Guess</th>
+    ${guess[0].map(x => {
+      return `<td class="cell" style="background-color:#${convertToHex([x, x, x])};}"></td>`
+    }).join('')}
+  </tr>
+  <tr>
+    <th>Result</th>
+    ${result[0].map(x => {
+      return `<td class="cell" style="background-color:#${convertToHex([x, x, x])};}"></td>`
+    }).join('')}
+  </tr>
+</table>
+`;
+}
+
+function displayGuess() {
+  const value = colorInput.value;
+  const input = convertToDecimal(value);
+
+  makeGuess(input);
+  const y = [getResult(input)];
+  guessOutput.innerHTML = getOutput(activations[0], activations[activations.length - 1], y);
+}
+
+function getDelta(input) {
+  makeGuess(input);
+  const y = [getResult(input)];
+
+  const dJdA = math.multiply(2, math.add(y, math.map(activations[activations.length - 1], x => -x)));
+  const dZdW = activations[activations.length - 2];
+  const dZdA1 = weights[activations.length - 2];
+
+  const delta = dJdA;
+  const dJdW = math.multiply(math.transpose(dZdW), delta);
+  const dJdB = delta;
+
+  const deltas = [
+    [math.multiply(dJdW, learningRate)],
+    [math.multiply(dJdB, learningRate)]
+  ];
+
+  if (layers.length === 2) {
+    return deltas;
+  }
+
+  const layerW = weights.slice();
+  const layerB = biases.slice(0, -1);
+  const layerA = activations.slice(0, -2);
+  return getRecursiveDelta(delta, layerW, layerB, layerA, deltas);
+}
+
+function getRecursiveDelta(prevDelta, layerW, layerB, layerA, deltas) {
+  const weights = layerW.pop();
+  const biases = layerB.pop();
+  const activations = layerA.pop();
+
+  const dAdZ = math.map(getZ(layerW[layerW.length - 1], biases, activations), sigmoidPrime);
+
+  const delta = [math.multiply(prevDelta, math.transpose(weights))[0].map((x, i) => x * dAdZ[0][i])];
+  const dJdW = math.multiply(math.transpose(activations), delta);
+  const dJdB = delta;
+
+  deltas[0].unshift(math.multiply(dJdW, learningRate));
+  deltas[1].unshift(math.multiply(dJdB, learningRate));
+
+  if (layerW.length > 1) {
+    return getRecursiveDelta(delta, layerW, layerB, layerA, deltas);
+  }
+
+  return deltas;
+}
+
+function trainFromInput() {
+  const value = colorInput.value;
+  const input = convertToDecimal(value);
+  train(input);
+}
+
+function trainColors() {
+  train([1, 0, 0]);
+  train([0, 1, 0]);
+  train([0, 0, 1]);
+  train([1, 1, 0]);
+  train([0, 1, 1]);
+  train([1, 0, 1]);
+}
+
+function train(input = [rand(0, 1), rand(0, 1), rand(0, 1)]) {
+  const [deltaW, deltaB] = getDelta(input);
+  weights = weights.map((weights, index) => math.add(weights, deltaW[index]));
+  biases = biases.map((biases, index) => math.add(biases, deltaB[index]));
+}
+
+guessButton.addEventListener('click', displayGuess);
+trainButton.addEventListener('click', trainFromInput);
+trainColorsButton.addEventListener('click', trainColors);
+   </script>
+</body>
+</html>
